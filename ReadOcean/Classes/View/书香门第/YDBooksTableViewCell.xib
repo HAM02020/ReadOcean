@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="5OS-fA-ZAg" customClass="YDBooksTableViewCell" customModule="ReadOcean" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="259"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5OS-fA-ZAg" id="uyt-dp-jcN">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="259"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAh-dx-uuQ">
+                        <rect key="frame" x="12" y="12" width="166" height="235"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boook1" translatesAutoresizingMaskIntoConstraints="NO" id="e6h-V5-kro">
+                                <rect key="frame" x="0.0" y="0.0" width="166" height="191"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fk-Yg-F04">
+                                <rect key="frame" x="62" y="199" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="e6h-V5-kro" firstAttribute="top" secondItem="WAh-dx-uuQ" secondAttribute="top" id="ERm-5H-MpN"/>
+                            <constraint firstAttribute="trailing" secondItem="e6h-V5-kro" secondAttribute="trailing" id="Epm-jg-GCy"/>
+                            <constraint firstAttribute="bottom" secondItem="e6h-V5-kro" secondAttribute="bottom" constant="44" id="Oex-H4-0fX"/>
+                            <constraint firstItem="9fk-Yg-F04" firstAttribute="centerX" secondItem="e6h-V5-kro" secondAttribute="centerX" id="QJR-tK-ana"/>
+                            <constraint firstItem="e6h-V5-kro" firstAttribute="leading" secondItem="WAh-dx-uuQ" secondAttribute="leading" id="shN-YC-DJG"/>
+                            <constraint firstItem="9fk-Yg-F04" firstAttribute="top" secondItem="e6h-V5-kro" secondAttribute="bottom" constant="8" id="zDw-el-Lmy"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x67-is-dD9">
+                        <rect key="frame" x="197" y="12" width="166" height="235"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boook1" translatesAutoresizingMaskIntoConstraints="NO" id="RtX-c1-Ifb">
+                                <rect key="frame" x="-1" y="0.0" width="168" height="191"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh9-Dl-xZh">
+                                <rect key="frame" x="62" y="199" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RtX-c1-Ifb" firstAttribute="top" secondItem="x67-is-dD9" secondAttribute="top" id="CQA-vn-08S"/>
+                            <constraint firstItem="mh9-Dl-xZh" firstAttribute="top" secondItem="RtX-c1-Ifb" secondAttribute="bottom" constant="8" id="IzT-AP-55a"/>
+                            <constraint firstAttribute="bottom" secondItem="RtX-c1-Ifb" secondAttribute="bottom" constant="44" id="cEH-Ab-rSZ"/>
+                            <constraint firstItem="RtX-c1-Ifb" firstAttribute="width" secondItem="x67-is-dD9" secondAttribute="width" multiplier="1.01156" id="fuW-7G-4fa"/>
+                            <constraint firstItem="mh9-Dl-xZh" firstAttribute="centerX" secondItem="RtX-c1-Ifb" secondAttribute="centerX" id="mkP-Qj-tCP"/>
+                            <constraint firstItem="RtX-c1-Ifb" firstAttribute="centerX" secondItem="x67-is-dD9" secondAttribute="centerX" id="rMI-l7-Uj4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="x67-is-dD9" firstAttribute="leading" secondItem="WAh-dx-uuQ" secondAttribute="trailing" constant="19" id="8vf-TQ-pAb"/>
+                    <constraint firstItem="WAh-dx-uuQ" firstAttribute="leading" secondItem="uyt-dp-jcN" secondAttribute="leading" constant="12" id="ArG-p2-cMu"/>
+                    <constraint firstAttribute="trailing" secondItem="WAh-dx-uuQ" secondAttribute="trailing" constant="197" id="CYt-zw-xnD"/>
+                    <constraint firstAttribute="bottom" secondItem="WAh-dx-uuQ" secondAttribute="bottom" constant="12" id="HiG-ll-f0w"/>
+                    <constraint firstItem="x67-is-dD9" firstAttribute="top" secondItem="uyt-dp-jcN" secondAttribute="top" constant="12" id="dDu-83-ysB"/>
+                    <constraint firstAttribute="trailing" secondItem="x67-is-dD9" secondAttribute="trailing" constant="12" id="h7U-03-Fk5"/>
+                    <constraint firstAttribute="bottom" secondItem="x67-is-dD9" secondAttribute="bottom" constant="12" id="kPV-eA-Ap4"/>
+                    <constraint firstItem="WAh-dx-uuQ" firstAttribute="top" secondItem="uyt-dp-jcN" secondAttribute="top" constant="12" id="rc8-Mo-TUQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="img1" destination="e6h-V5-kro" id="QEf-vf-18Q"/>
+                <outlet property="img2" destination="RtX-c1-Ifb" id="l1V-Aa-kVC"/>
+                <outlet property="label1" destination="9fk-Yg-F04" id="Ys0-kd-A4I"/>
+                <outlet property="label2" destination="mh9-Dl-xZh" id="lpz-2K-kIn"/>
+            </connections>
+            <point key="canvasLocation" x="187.68115942028987" y="186.49553571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="boook1" width="175" height="250"/>
+    </resources>
+</document>
