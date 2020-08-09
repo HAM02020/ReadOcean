@@ -10,12 +10,24 @@ import UIKit
 
 class YDt2ViewController: YDBaseViewController {
 
+    lazy var communityView = CommunityView.communityView()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        view.addSubview(communityView)
     }
-    
+    override func awakeFromNib() {
+        
+    }
+    override func viewDidLayoutSubviews() {
+        communityView.bg.backgroundColor = UIColor.red
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar
+    }
+
 
     /*
     // MARK: - Navigation

@@ -10,12 +10,15 @@ import UIKit
 
 class YDt3ViewController: YDBaseViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
-    
+    override func awakeFromNib() {
+        
+    }
 
     /*
     // MARK: - Navigation
