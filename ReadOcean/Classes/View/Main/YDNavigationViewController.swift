@@ -59,9 +59,9 @@ class YDNavigationViewController: UINavigationController {
 //        ], animated: false)
         //定制右按钮
 
-        let but = WBTittleButton(title: "书香弟弟")
-        let but_item = UIBarButtonItem(customView: but)
-        navigationItem.titleView = but
+//        let but = WBTittleButton(title: "书香弟弟")
+//        let but_item = UIBarButtonItem(customView: but)
+//        navigationItem.titleView = but
             
 
     }

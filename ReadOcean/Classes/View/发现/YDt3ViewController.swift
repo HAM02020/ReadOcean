@@ -13,8 +13,9 @@ class YDt3ViewController: YDBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        let btn = WBTittleButton(title: "按钮", image: UIImage(named: "t5"))
+        btn.center = view.center
+        view.addSubview(btn)
     }
     override func awakeFromNib() {
         

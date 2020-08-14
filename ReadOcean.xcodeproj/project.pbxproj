@@ -16,7 +16,7 @@
 		014488FC24BE121400B61DDB /* YDNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 014488FB24BE121400B61DDB /* YDNavigationBar.xib */; };
 		014488FE24BF4BE300B61DDB /* WBTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014488FD24BF4BE300B61DDB /* WBTitleButton.swift */; };
 		01508D9E2478D0C1000AA9E9 /* YDMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508D9D2478D0C1000AA9E9 /* YDMainViewController.swift */; };
-		01508DA02478FDF1000AA9E9 /* YDBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508D9F2478FDF1000AA9E9 /* YDBaseViewController.swift */; };
+		01508DA02478FDF1000AA9E9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508D9F2478FDF1000AA9E9 /* BaseViewController.swift */; };
 		01508DA42478FEA1000AA9E9 /* YDt2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508DA32478FEA1000AA9E9 /* YDt2ViewController.swift */; };
 		01508DA62478FEAE000AA9E9 /* YDt3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508DA52478FEAE000AA9E9 /* YDt3ViewController.swift */; };
 		01508DA82478FEB8000AA9E9 /* YDt4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508DA72478FEB8000AA9E9 /* YDt4ViewController.swift */; };
@@ -24,15 +24,19 @@
 		01508DAC247AA237000AA9E9 /* YDNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508DAB247AA237000AA9E9 /* YDNavigationViewController.swift */; };
 		01508DAF247AA413000AA9E9 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508DAE247AA413000AA9E9 /* UIColor+Extensions.swift */; };
 		01508DB8247BB7E1000AA9E9 /* YDt1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508DB6247BB7E1000AA9E9 /* YDt1ViewController.swift */; };
+		017962CC24E3D75500C26419 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017962CB24E3D75500C26419 /* Global.swift */; };
+		017962CE24E3DD3800C26419 /* YDBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017962CD24E3DD3800C26419 /* YDBookCollectionViewCell.swift */; };
+		017962D024E5969500C26419 /* BaseCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017962CF24E5969500C26419 /* BaseCollectionReusableView.swift */; };
+		017962D324E596FE00C26419 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017962D224E596FE00C26419 /* BaseCollectionViewCell.swift */; };
+		017962D624E598B600C26419 /* YDBookCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017962D524E598B600C26419 /* YDBookCollectionHeaderView.swift */; };
+		017962D824E598D200C26419 /* YDBookCollectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017962D724E598D200C26419 /* YDBookCollectionFooterView.swift */; };
+		017962DA24E59CAB00C26419 /* HomeNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017962D924E59CAB00C26419 /* HomeNavView.swift */; };
 		017F664524E033FE00686F32 /* CommunityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 017F664424E033FE00686F32 /* CommunityView.xib */; };
 		017F664724E041A700686F32 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017F664624E041A700686F32 /* HomeView.swift */; };
-		017F664924E041B000686F32 /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 017F664824E041B000686F32 /* HomeView.xib */; };
 		01A83453249366D1002D2327 /* YDNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A83452249366D1002D2327 /* YDNetworkManager.swift */; };
 		01A8345524936881002D2327 /* YDBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A8345424936881002D2327 /* YDBookViewModel.swift */; };
 		01A83457249369CD002D2327 /* YDBooksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A83456249369CD002D2327 /* YDBooksListViewModel.swift */; };
 		01A834592493A5B2002D2327 /* UIImageView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A834582493A5B2002D2327 /* UIImageView + Extensions.swift */; };
-		01C143E324932F11006ECD2C /* YDBooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C143E224932F11006ECD2C /* YDBooksTableViewCell.swift */; };
-		01C143E524932F1D006ECD2C /* YDBooksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01C143E424932F1D006ECD2C /* YDBooksTableViewCell.xib */; };
 		01C143EB249363B5006ECD2C /* YDBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C143EA249363B5006ECD2C /* YDBook.swift */; };
 		01DD80A624E030AE00ACA5F0 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD80A524E030AE00ACA5F0 /* CommunityView.swift */; };
 		A9315993D1C6519FF959FB78 /* Pods_ReadOcean.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7B46C8AB20EB21263119A9 /* Pods_ReadOcean.framework */; };
@@ -50,7 +54,7 @@
 		014488FB24BE121400B61DDB /* YDNavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDNavigationBar.xib; sourceTree = "<group>"; };
 		014488FD24BF4BE300B61DDB /* WBTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBTitleButton.swift; sourceTree = "<group>"; };
 		01508D9D2478D0C1000AA9E9 /* YDMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDMainViewController.swift; sourceTree = "<group>"; };
-		01508D9F2478FDF1000AA9E9 /* YDBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBaseViewController.swift; sourceTree = "<group>"; };
+		01508D9F2478FDF1000AA9E9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		01508DA32478FEA1000AA9E9 /* YDt2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt2ViewController.swift; sourceTree = "<group>"; };
 		01508DA52478FEAE000AA9E9 /* YDt3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt3ViewController.swift; sourceTree = "<group>"; };
 		01508DA72478FEB8000AA9E9 /* YDt4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt4ViewController.swift; sourceTree = "<group>"; };
@@ -58,15 +62,19 @@
 		01508DAB247AA237000AA9E9 /* YDNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDNavigationViewController.swift; sourceTree = "<group>"; };
 		01508DAE247AA413000AA9E9 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		01508DB6247BB7E1000AA9E9 /* YDt1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt1ViewController.swift; sourceTree = "<group>"; };
+		017962CB24E3D75500C26419 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		017962CD24E3DD3800C26419 /* YDBookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBookCollectionViewCell.swift; sourceTree = "<group>"; };
+		017962CF24E5969500C26419 /* BaseCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionReusableView.swift; sourceTree = "<group>"; };
+		017962D224E596FE00C26419 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		017962D524E598B600C26419 /* YDBookCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBookCollectionHeaderView.swift; sourceTree = "<group>"; };
+		017962D724E598D200C26419 /* YDBookCollectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBookCollectionFooterView.swift; sourceTree = "<group>"; };
+		017962D924E59CAB00C26419 /* HomeNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavView.swift; sourceTree = "<group>"; };
 		017F664424E033FE00686F32 /* CommunityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityView.xib; sourceTree = "<group>"; };
 		017F664624E041A700686F32 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		017F664824E041B000686F32 /* HomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
 		01A83452249366D1002D2327 /* YDNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDNetworkManager.swift; sourceTree = "<group>"; };
 		01A8345424936881002D2327 /* YDBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBookViewModel.swift; sourceTree = "<group>"; };
 		01A83456249369CD002D2327 /* YDBooksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBooksListViewModel.swift; sourceTree = "<group>"; };
 		01A834582493A5B2002D2327 /* UIImageView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extensions.swift"; sourceTree = "<group>"; };
-		01C143E224932F11006ECD2C /* YDBooksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBooksTableViewCell.swift; sourceTree = "<group>"; };
-		01C143E424932F1D006ECD2C /* YDBooksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDBooksTableViewCell.xib; sourceTree = "<group>"; };
 		01C143EA249363B5006ECD2C /* YDBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBook.swift; sourceTree = "<group>"; };
 		01DD80A524E030AE00ACA5F0 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		C585E163256E88B98A684169 /* Pods-ReadOcean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadOcean.debug.xcconfig"; path = "Target Support Files/Pods-ReadOcean/Pods-ReadOcean.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,7 +138,6 @@
 		01508D932478CDCB000AA9E9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				01508D9F2478FDF1000AA9E9 /* YDBaseViewController.swift */,
 				01508D9C2478CF7E000AA9E9 /* Main */,
 				01508D972478CE3C000AA9E9 /* 书香门第 */,
 				01508D9B2478CE5D000AA9E9 /* 作品社区 */,
@@ -153,6 +160,7 @@
 		01508D952478CDF0000AA9E9 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				017962CA24E3D72F00C26419 /* common */,
 				01A83451249366B1002D2327 /* Network */,
 				01508DAD247AA3F0000AA9E9 /* Extensions */,
 				014488F924BE0CF700B61DDB /* CustomNavigationBar.swift */,
@@ -171,13 +179,12 @@
 		01508D972478CE3C000AA9E9 /* 书香门第 */ = {
 			isa = PBXGroup;
 			children = (
+				017962D924E59CAB00C26419 /* HomeNavView.swift */,
 				01508DB6247BB7E1000AA9E9 /* YDt1ViewController.swift */,
 				012CEFE62492013D00FEB8D2 /* YDSearchController.swift */,
-				01C143E224932F11006ECD2C /* YDBooksTableViewCell.swift */,
-				01C143E424932F1D006ECD2C /* YDBooksTableViewCell.xib */,
 				014488FD24BF4BE300B61DDB /* WBTitleButton.swift */,
 				017F664624E041A700686F32 /* HomeView.swift */,
-				017F664824E041B000686F32 /* HomeView.xib */,
+				017962D424E5987100C26419 /* CollectionView */,
 			);
 			path = "书香门第";
 			sourceTree = "<group>";
@@ -219,6 +226,7 @@
 		01508D9C2478CF7E000AA9E9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				017962D124E596D600C26419 /* BaseView */,
 				01508D9D2478D0C1000AA9E9 /* YDMainViewController.swift */,
 				01508DAB247AA237000AA9E9 /* YDNavigationViewController.swift */,
 				014488FB24BE121400B61DDB /* YDNavigationBar.xib */,
@@ -234,6 +242,34 @@
 				014488F724BE0BBF00B61DDB /* UINavigationBar+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		017962CA24E3D72F00C26419 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				017962CB24E3D75500C26419 /* Global.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		017962D124E596D600C26419 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				017962CF24E5969500C26419 /* BaseCollectionReusableView.swift */,
+				01508D9F2478FDF1000AA9E9 /* BaseViewController.swift */,
+				017962D224E596FE00C26419 /* BaseCollectionViewCell.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		017962D424E5987100C26419 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				017962CD24E3DD3800C26419 /* YDBookCollectionViewCell.swift */,
+				017962D524E598B600C26419 /* YDBookCollectionHeaderView.swift */,
+				017962D724E598D200C26419 /* YDBookCollectionFooterView.swift */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		01A83451249366B1002D2327 /* Network */ = {
@@ -324,10 +360,8 @@
 			files = (
 				013BD86E24752ADF00AABEA2 /* LaunchScreen.storyboard in Resources */,
 				017F664524E033FE00686F32 /* CommunityView.xib in Resources */,
-				01C143E524932F1D006ECD2C /* YDBooksTableViewCell.xib in Resources */,
 				014488FC24BE121400B61DDB /* YDNavigationBar.xib in Resources */,
 				013BD86B24752ADF00AABEA2 /* Assets.xcassets in Resources */,
-				017F664924E041B000686F32 /* HomeView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,23 +414,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				017962CE24E3DD3800C26419 /* YDBookCollectionViewCell.swift in Sources */,
+				017962DA24E59CAB00C26419 /* HomeNavView.swift in Sources */,
 				01508DB8247BB7E1000AA9E9 /* YDt1ViewController.swift in Sources */,
 				014488FE24BF4BE300B61DDB /* WBTitleButton.swift in Sources */,
 				01508DAA2478FEC3000AA9E9 /* YDt5ViewController.swift in Sources */,
 				01508DAF247AA413000AA9E9 /* UIColor+Extensions.swift in Sources */,
 				01508DA42478FEA1000AA9E9 /* YDt2ViewController.swift in Sources */,
+				017962D024E5969500C26419 /* BaseCollectionReusableView.swift in Sources */,
 				017F664724E041A700686F32 /* HomeView.swift in Sources */,
-				01C143E324932F11006ECD2C /* YDBooksTableViewCell.swift in Sources */,
+				017962CC24E3D75500C26419 /* Global.swift in Sources */,
 				01508DA62478FEAE000AA9E9 /* YDt3ViewController.swift in Sources */,
+				017962D324E596FE00C26419 /* BaseCollectionViewCell.swift in Sources */,
 				01C143EB249363B5006ECD2C /* YDBook.swift in Sources */,
 				01A83453249366D1002D2327 /* YDNetworkManager.swift in Sources */,
 				01A83457249369CD002D2327 /* YDBooksListViewModel.swift in Sources */,
 				012CEFE72492013D00FEB8D2 /* YDSearchController.swift in Sources */,
 				01A8345524936881002D2327 /* YDBookViewModel.swift in Sources */,
-				01508DA02478FDF1000AA9E9 /* YDBaseViewController.swift in Sources */,
+				017962D624E598B600C26419 /* YDBookCollectionHeaderView.swift in Sources */,
+				01508DA02478FDF1000AA9E9 /* BaseViewController.swift in Sources */,
 				01508DA82478FEB8000AA9E9 /* YDt4ViewController.swift in Sources */,
 				01DD80A624E030AE00ACA5F0 /* CommunityView.swift in Sources */,
 				013BD86224752ADD00AABEA2 /* AppDelegate.swift in Sources */,
+				017962D824E598D200C26419 /* YDBookCollectionFooterView.swift in Sources */,
 				014488F824BE0BBF00B61DDB /* UINavigationBar+Extensions.swift in Sources */,
 				014488FA24BE0CF700B61DDB /* CustomNavigationBar.swift in Sources */,
 				01A834592493A5B2002D2327 /* UIImageView + Extensions.swift in Sources */,

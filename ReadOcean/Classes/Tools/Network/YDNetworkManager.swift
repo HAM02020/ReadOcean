@@ -60,9 +60,9 @@ class YDNetworkManager : AFHTTPSessionManager{
            }
            
            if method == .GET {
-               get(URLString, parameters: parameters, progress: nil, success: success, failure: failure)
+            get(URLString, parameters: parameters, headers: nil, progress: nil, success: success, failure: failure)
            }else {
-               post(URLString, parameters: parameters, progress: nil, success: success, failure: failure)
+            post(URLString, parameters: parameters, headers: nil, progress: nil, success: success, failure: failure)
            }
     
        }
