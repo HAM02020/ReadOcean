@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YDt2ViewController: YDBaseViewController {
+class YDt2ViewController: BaseViewController {
 
     lazy var communityView = CommunityView.communityView()
 

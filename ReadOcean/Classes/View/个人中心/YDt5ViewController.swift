@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YDt5ViewController: YDBaseViewController {
+class YDt5ViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

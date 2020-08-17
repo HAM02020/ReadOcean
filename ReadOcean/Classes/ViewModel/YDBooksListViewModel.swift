@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import HandyJSON
 
 class YDBooksListViewModel{
     
@@ -62,6 +63,8 @@ class YDBooksListViewModel{
             ] as [String : AnyObject]
         
         YDNetworkManager.shared().request(URLString: url, parameters: params) { (json, isSuccess) in
+            
+            
             
             guard
                 let data = json?["data"] as? [String:AnyObject],

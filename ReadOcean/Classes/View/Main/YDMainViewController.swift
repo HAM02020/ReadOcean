@@ -73,22 +73,27 @@ extension YDMainViewController{
             let clsName = dict["clsName"] as? String,
             let title = dict["title"] as? String,
             let imgName = dict["imgName"] as? String,
-            let cls = NSClassFromString("\(Bundle.main.infoDictionary?["CFBundleName"] ?? "").\(clsName)") as? YDBaseViewController.Type
+            let cls = NSClassFromString("\(Bundle.main.infoDictionary?["CFBundleName"] ?? "").\(clsName)") as? BaseViewController.Type
             else {
                 return UIViewController()
         }
         let vc = cls.init()
         vc.title = title
         
+        UITabBar.appearance().backgroundColor = UIColor.white
+        
         //设置tabbar的标题颜色 和字体
-        vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(hexString: "#706EDB")], for: .highlighted)
+        vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(hexString: "#23c993")], for: .highlighted)
+        UITabBar.appearance().tintColor = UIColor(hexString: "23c993")
         //字体 默认为12 号
-        vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.darkGray,NSAttributedString.Key.font:UIFont.systemFont(ofSize: 14)], for: [])
+        vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.darkGray,NSAttributedString.Key.font:UIFont.systemFont(ofSize: 10)], for: [])
+        //字往上移动
+        vc.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -5)
         //3. 设置图像
         
         vc.tabBarItem.image = UIImage(named: "\(imgName)")
         vc.tabBarItem.selectedImage = UIImage(named: "\(imgName)_hl")?.withRenderingMode(.alwaysOriginal)
-        vc.tabBarItem.animation = TLFumeAnimation()
+        
         let nav = YDNavigationViewController(rootViewController: vc)
         return nav
 

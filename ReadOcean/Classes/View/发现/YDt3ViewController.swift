@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YDt3ViewController: YDBaseViewController {
+class YDt3ViewController: BaseViewController {
 
     
     override func viewDidLoad() {

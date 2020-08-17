@@ -7,13 +7,13 @@ target 'ReadOcean' do
 pod "AFNetworking"
 pod "SDWebImage"
 pod "YYModel"
-pod "SVProgressHUD"
-pod "pop"
-pod "FMDB"
+
 pod 'TLAnimationTabBar', '~> 1.0.3'
 pod 'SnapKitExtend'
 pod 'Reusable'
 pod 'MJRefresh'
 pod 'MBProgressHUD'
+pod 'Moya'
+pod 'HandyJSON'
 
 end

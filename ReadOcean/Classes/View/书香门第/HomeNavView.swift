@@ -8,9 +8,11 @@
 
 import UIKit
 
-class HomeNavView: UIView {
+typealias NavBtnClickEventBlock = ()->Void
 
-    
+class HomeNavView: UIView {
+    //搜索按钮点击 回调
+    private var searchBtnClickClosure : NavBtnClickEventBlock?
     
     private lazy var titleLabel:UILabel = {
         let txt = UILabel(frame: CGRect.zero)
@@ -30,18 +32,23 @@ class HomeNavView: UIView {
         return stackV
     }()
     private lazy var categoryBtn:WBTittleButton = {
-       let btn = WBTittleButton(title: "分类", image: UIImage(named: "t3"))
+        let img = UIImage(named: "fenlei")?.reSizeImage(reSize: CGSize(width: 15, height: 15))
+       let btn = WBTittleButton(title: "分类", image: img)
+        
         return btn
     }()
     private lazy var searchBtn:WBTittleButton = {
-       let btn = WBTittleButton(title: "搜索", image: UIImage(named: "t3"))
+        let img = UIImage(named: "sousuo")?.reSizeImage(reSize: CGSize(width: 15, height: 15))
+       let btn = WBTittleButton(title: "搜索", image: img)
+        btn.addTarget(self, action: #selector(searchBtnClick), for: .touchUpInside)
         return btn
     }()
     private lazy var moreBtn:WBTittleButton = {
-       let btn = WBTittleButton(title: "更多", image: UIImage(named: "t3"))
+        let img = UIImage(named: "gengduo")?.reSizeImage(reSize: CGSize(width: 15, height: 15))
+       let btn = WBTittleButton(title: "更多", image: img)
         return btn
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -184,5 +191,19 @@ class HomeNavView: UIView {
             make.width.equalTo(screenWidth/3)
             make.height.equalTo(30)
         }
+    }
+}
+
+extension HomeNavView{
+    
+    
+    func searchBtnClickClosure(_ closure:NavBtnClickEventBlock?){
+        searchBtnClickClosure = closure
+    }
+    
+    @objc func searchBtnClick(){
+        guard let closure = searchBtnClickClosure
+            else { return }
+        closure()
     }
 }

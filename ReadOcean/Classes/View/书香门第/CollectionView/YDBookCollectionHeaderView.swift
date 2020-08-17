@@ -9,6 +9,7 @@
 import UIKit
 
 class YDBookCollectionHeaderView : BaseCollectionReusableView{
+
     
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
@@ -17,12 +18,28 @@ class YDBookCollectionHeaderView : BaseCollectionReusableView{
         titleLabel.text = "推荐书籍"
         return titleLabel
     }()
+    private lazy var loginView:UIView = {
+       let v = UIView()
+        v.backgroundColor = UIColor.white
+        v.layer.cornerRadius = 5
+        v.layer.borderColor = UIColor.clear.cgColor
+        v.layer.borderWidth = 0.5
+        
+        v.layer.shadowColor = UIColor.darkGray.cgColor
+        v.layer.shadowOffset = CGSize(width: 0, height: 5)
+        v.layer.shadowOpacity = 0.4
+        v.layer.shadowRadius = 5
+        return v
+    }()
     override func setupLayout() {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(5)
-            make.centerY.height.equalToSuperview()
+            make.left.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-10)
             make.width.equalTo(200)
         }
+
     }
+   
+    
 }

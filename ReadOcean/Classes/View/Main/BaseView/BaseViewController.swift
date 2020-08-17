@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YDBaseViewController: UIViewController {
+class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +33,20 @@ class YDBaseViewController: UIViewController {
 
     func configNavigationBar() {
         guard let navi = navigationController else { return }
-        if navi.visibleViewController == self {
-            //navi.barStyle(.theme)
-            //navi.disablePopGesture = false
-            navi.setNavigationBarHidden(false, animated: true)
-            if navi.viewControllers.count > 1 {
-//                navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(named: ""),style: .plain,target: self,action: #selector(pressBack))
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+            if navi.visibleViewController == self {
+                //navi.barStyle(.theme)
+                //navi.disablePopGesture = false
+                navi.navigationBar.tintColor = .black
+                navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+                
+                if navi.viewControllers.count > 1{
+                
+//                navigationItem.backBarButtonItem = UIBarButtonItem(image:UIImage(named: "back")?.withRenderingMode(.alwaysOriginal),style: .plain,target: self,action: #selector(pressBack))
+                
+                
+                }else{
+                    navigationController?.setNavigationBarHidden(true, animated: false)
             }
         }
     }
@@ -48,9 +56,9 @@ class YDBaseViewController: UIViewController {
     }
 }
 
-extension YDBaseViewController {
+extension BaseViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
+        return .darkContent
     }
 }

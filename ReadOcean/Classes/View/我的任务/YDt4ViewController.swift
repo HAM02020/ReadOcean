@@ -9,7 +9,7 @@
 
 import UIKit
 
-class YDt4ViewController: YDBaseViewController {
+class YDt4ViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 import UIKit
 import AFNetworking
-
+import MBProgressHUD
 enum HTTPMethod {
     case GET
     case POST
@@ -39,11 +39,16 @@ class YDNetworkManager : AFHTTPSessionManager{
        ///   - parameters: 参数字典
        ///   - completion: 完成回调[json(字典/数组),是否成功]
        func request(method:HTTPMethod = .GET,URLString:String,parameters:[String:AnyObject],completion:@escaping( _ json:AnyObject?,_ isSuccess:Bool)->()) {
-       
-           
+        
+            guard let vc = topVC else {
+                return
+            }
+            MBProgressHUD.hide(for: vc.view, animated: false)
+            MBProgressHUD.showAdded(to: vc.view, animated: true)
            // 成功回调
            let success = {(task:URLSessionDataTask,json:Any?)->() in
-               completion(json as AnyObject?,true)
+                MBProgressHUD.hide(for: vc.view, animated: true)
+                completion(json as AnyObject?,true)
            }
            
            //失败回调

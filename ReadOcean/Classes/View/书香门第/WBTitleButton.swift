@@ -79,9 +79,9 @@ class WBTittleButton: UIButton {
             //setImage(UIImage(named: "blue"), for: .selected)
         }
         //设置字体和颜色
-        titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        titleLabel?.font = UIFont.boldSystemFont(ofSize: 10)
         setTitleColor(UIColor.darkGray, for: [])
-        imagePosition(style: .top, spacing: 0)
+        imagePosition(style: .top, spacing: 5)
         
         sizeToFit()
         
@@ -100,7 +100,6 @@ class WBTittleButton: UIButton {
             let imageView = imageView else {
                 return
         }
-        print("调整标题按钮布局")
 //        titleLabel.frame = CGRect(x: 0, y: 0, width: titleLabel.bounds.width, height: bounds.height)
 //        imageView.frame = CGRect(x: titleLabel.bounds.width, y: 0, width: imageView.bounds.width, height: bounds.height)
         //也可以这么写
