@@ -41,7 +41,7 @@
 		01A8345524936881002D2327 /* YDBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A8345424936881002D2327 /* YDBookViewModel.swift */; };
 		01A83457249369CD002D2327 /* YDBooksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A83456249369CD002D2327 /* YDBooksListViewModel.swift */; };
 		01A834592493A5B2002D2327 /* UIImageView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A834582493A5B2002D2327 /* UIImageView + Extensions.swift */; };
-		01C143EB249363B5006ECD2C /* YDBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C143EA249363B5006ECD2C /* YDBook.swift */; };
+		01C143EB249363B5006ECD2C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C143EA249363B5006ECD2C /* Model.swift */; };
 		01DD80A624E030AE00ACA5F0 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD80A524E030AE00ACA5F0 /* CommunityView.swift */; };
 		A9315993D1C6519FF959FB78 /* Pods_ReadOcean.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7B46C8AB20EB21263119A9 /* Pods_ReadOcean.framework */; };
 /* End PBXBuildFile section */
@@ -83,7 +83,7 @@
 		01A8345424936881002D2327 /* YDBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBookViewModel.swift; sourceTree = "<group>"; };
 		01A83456249369CD002D2327 /* YDBooksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBooksListViewModel.swift; sourceTree = "<group>"; };
 		01A834582493A5B2002D2327 /* UIImageView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extensions.swift"; sourceTree = "<group>"; };
-		01C143EA249363B5006ECD2C /* YDBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBook.swift; sourceTree = "<group>"; };
+		01C143EA249363B5006ECD2C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		01DD80A524E030AE00ACA5F0 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		C585E163256E88B98A684169 /* Pods-ReadOcean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadOcean.debug.xcconfig"; path = "Target Support Files/Pods-ReadOcean/Pods-ReadOcean.debug.xcconfig"; sourceTree = "<group>"; };
 		C63B3FAB73B4545615C5E725 /* Pods-ReadOcean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadOcean.release.xcconfig"; path = "Target Support Files/Pods-ReadOcean/Pods-ReadOcean.release.xcconfig"; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 		01508D962478CDF8000AA9E9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				01C143EA249363B5006ECD2C /* YDBook.swift */,
+				01C143EA249363B5006ECD2C /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -438,7 +438,7 @@
 				017962CC24E3D75500C26419 /* Global.swift in Sources */,
 				01508DA62478FEAE000AA9E9 /* YDt3ViewController.swift in Sources */,
 				017962D324E596FE00C26419 /* BaseCollectionViewCell.swift in Sources */,
-				01C143EB249363B5006ECD2C /* YDBook.swift in Sources */,
+				01C143EB249363B5006ECD2C /* Model.swift in Sources */,
 				01A83453249366D1002D2327 /* YDNetworkManager.swift in Sources */,
 				01A83457249369CD002D2327 /* YDBooksListViewModel.swift in Sources */,
 				0197120A24E9738000C57717 /* UINavigationController+Extensions.swift in Sources */,

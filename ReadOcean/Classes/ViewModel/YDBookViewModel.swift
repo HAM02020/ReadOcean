@@ -10,10 +10,10 @@ import UIKit
 
 class YDBookViewModel{
     
-    @objc var book:YDBook
+    var book:Book
     
     
-    init(model:YDBook) {
+    init(model:Book) {
         self.book = model
     }
 }

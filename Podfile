@@ -6,7 +6,6 @@ target 'ReadOcean' do
 
 pod "AFNetworking"
 pod "SDWebImage"
-pod "YYModel"
 
 pod 'TLAnimationTabBar', '~> 1.0.3'
 pod 'SnapKitExtend'

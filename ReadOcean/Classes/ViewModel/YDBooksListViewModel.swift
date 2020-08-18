@@ -28,14 +28,13 @@ class YDBooksListViewModel{
             let params = ["bookId":id] as [String : AnyObject]
             YDNetworkManager.shared().request(URLString: url, parameters: params) { (json, isSuccess) in
 
-                //print(json ?? "")
                 guard
-                    let data = json?["data"] as? [String:AnyObject],
-                    let model = YDBook.yy_model(with: data) else{
+                    let json = json as? [String:Any],
+                    let result = ReturnData<Book>.deserialize(from: json),
+                    let model = result.data
+                    else{
                     return
                 }
-                //print(data)
-                print(model)
                 array.append(YDBookViewModel(model: model))
   
             }
