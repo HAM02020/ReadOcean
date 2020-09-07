@@ -16,5 +16,6 @@ pod 'Moya'
 pod 'HandyJSON'
 pod 'HMSegmentedControl'
 pod 'Then'
+pod 'Kingfisher'
 
 end

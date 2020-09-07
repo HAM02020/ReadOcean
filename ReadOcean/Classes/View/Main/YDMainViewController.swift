@@ -9,6 +9,8 @@
 import UIKit
 import TLAnimationTabBar
 
+
+
 class YDMainViewController: UITabBarController {
 
     override func viewDidLoad() {
@@ -78,17 +80,19 @@ extension YDMainViewController{
             else {
                 return UIViewController()
         }
-        let vc : UIViewController
-        if title == "我的任务"{
-            vc = YDt4ViewController(
-                titles: ["教师任务","完成任务","逾期任务"],
-                vcs: [TeacherTaskVC(),FinishedTaskVC(),OverdueTaskVC()],
-                segmentStyle: .navgationBarSegment)
-
-        }else{
-            vc = cls.init()
-        }
-        
+//        let vc : UIViewController
+//        if title == "我的任务"{
+//            vc = YDt4ViewController(
+//                titles: ["教师任务","完成任务","逾期任务"],
+//                vcs: [TeacherTaskVC(),FinishedTaskVC(),OverdueTaskVC()],
+//                segmentStyle: .navgationBarSegment)
+////
+//
+//
+//        }else{
+//            vc = cls.init()
+//        }
+        let vc = cls.init()
         vc.title = title
         
         UITabBar.appearance().backgroundColor = UIColor.white

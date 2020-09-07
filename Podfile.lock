@@ -17,6 +17,9 @@ PODS:
   - Alamofire (5.2.2)
   - HandyJSON (5.0.2)
   - HMSegmentedControl (1.5.6)
+  - Kingfisher (5.15.0):
+    - Kingfisher/Core (= 5.15.0)
+  - Kingfisher/Core (5.15.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.5.0)
   - Moya (14.0.0):
@@ -41,6 +44,7 @@ DEPENDENCIES:
   - AFNetworking
   - HandyJSON
   - HMSegmentedControl
+  - Kingfisher
   - MBProgressHUD
   - MJRefresh
   - Moya
@@ -56,6 +60,7 @@ SPEC REPOS:
     - Alamofire
     - HandyJSON
     - HMSegmentedControl
+    - Kingfisher
     - MBProgressHUD
     - MJRefresh
     - Moya
@@ -71,6 +76,7 @@ SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   HMSegmentedControl: 34c1f54d822d8308e7b24f5d901ec674dfa31352
+  Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
@@ -81,6 +87,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   TLAnimationTabBar: 4a0fa41975d9aa8e424606471ee701ea8d8b0428
 
-PODFILE CHECKSUM: 76b3f5d5a2a027bd88c2acefe6d57c9c82f9866c
+PODFILE CHECKSUM: bde10d1c12bad28fa74a42fe7b007cf521aea9b8
 
 COCOAPODS: 1.9.1

@@ -21,12 +21,7 @@ class YDt1ViewController : BaseViewController {
         super.viewWillAppear(animated)
         
     }
-    //使用nib
-//    class func homeView() -> HomeView{
-//        let nib = UINib(nibName: "HomeView", bundle: nil)
-//        let v = nib.instantiate(withOwner: nil, options: nil)[0] as! HomeView
-//        return v
-//    }
+
     private lazy var navView : HomeNavView = {
         let nav = HomeNavView()
         nav.searchBtnClickClosure {
@@ -44,14 +39,6 @@ class YDt1ViewController : BaseViewController {
     private lazy var v1:UIView = {
         let v = UIView()
         v.backgroundColor = UIColor.clear
-//        v.layer.backgroundColor = UIColor.init(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0).cgColor
-//        v.layer.shadowColor = UIColor.init(red: 135/255.0, green: 142/255.0, blue: 154/255.0, alpha: 0.3).cgColor
-//        v.layer.shadowOffset = CGSize(width: 0, height: 2)
-//        v.layer.shadowOpacity = 1
-//        v.layer.shadowRadius = 2
-//        v.layer.cornerRadius = 6
-//        v.layer.borderWidth = 1.0
-//        v.layer.borderColor = UIColor.darkGray.cgColor
         
         return v
         
@@ -239,7 +226,7 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
     //cell的视图
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: YDBookCollectionViewCell.self)
-        if indexPath.item < listViewModel.booksList.count ?? 0{
+        if indexPath.item < listViewModel.booksList.count {
             cell.viewModel = listViewModel.booksList[indexPath.item]
         }
         
@@ -247,13 +234,12 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
     }
     //行数
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        //let rows = Double(listViewModel?.booksList.count ?? 1) / 3.0
         return 1
     }
     //一个section里有几个cell
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //返回9本书
-        return listViewModel.booksList.count ?? 1
+        return listViewModel.booksList.count
     }
     //cell的长宽
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
