@@ -14,5 +14,7 @@ pod 'MJRefresh'
 pod 'MBProgressHUD'
 pod 'Moya'
 pod 'HandyJSON'
+pod 'HMSegmentedControl'
+pod 'Then'
 
 end

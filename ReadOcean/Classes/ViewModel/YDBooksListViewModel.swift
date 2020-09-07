@@ -23,10 +23,13 @@ class YDBooksListViewModel{
             let url = hostAddress + "/mobileBook/infoBook"
             var array = [YDBookViewModel]()
             
+            let group = DispatchGroup()
             
             for id in iDlist{
+                group.enter()
+                
             let params = ["bookId":id] as [String : AnyObject]
-            YDNetworkManager.shared().request(URLString: url, parameters: params) { (json, isSuccess) in
+            YDNetworkManager.shared.request(URLString: url, parameters: params) { (json, isSuccess) in
 
                 guard
                     let json = json as? [String:Any],
@@ -35,17 +38,23 @@ class YDBooksListViewModel{
                     else{
                     return
                 }
+                
                 array.append(YDBookViewModel(model: model))
-  
+                group.leave()
             }
 
             }
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2) {
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2) {
+//                print(array)
+//                self.booksList += array
+//                completion(true)
+//            }
+            // 监听调度组情况
+            group.notify(queue: DispatchQueue.main) {
                 print(array)
                 self.booksList += array
                 completion(true)
             }
-            
             
             
             
@@ -61,7 +70,7 @@ class YDBooksListViewModel{
                       "page":page ,
             ] as [String : AnyObject]
         
-        YDNetworkManager.shared().request(URLString: url, parameters: params) { (json, isSuccess) in
+        YDNetworkManager.shared.request(URLString: url, parameters: params) { (json, isSuccess) in
             
             
             

@@ -14,11 +14,10 @@ enum HTTPMethod {
     case POST
 }
 
-let hostAddress = "https://59.38.32.42"
-
 class YDNetworkManager : AFHTTPSessionManager{
     
-    static let shared = { ()-> YDNetworkManager in
+    //static let shared = { ()-> YDNetworkManager in可以这么写 用闭包
+    static let shared : YDNetworkManager = {
         let instance = YDNetworkManager()
         //是否允许无效证书
         instance.securityPolicy.allowInvalidCertificates = true
@@ -31,7 +30,7 @@ class YDNetworkManager : AFHTTPSessionManager{
         instance.responseSerializer.acceptableContentTypes?.insert("application/json;charset=UTF-8")
         instance.requestSerializer.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
         return instance
-    }
+    }()
     /// 使用一个函数封装 GET POST
        /// - Parameters:
        ///   - method: GET/POST

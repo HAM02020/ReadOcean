@@ -170,7 +170,9 @@ class YDt1ViewController : BaseViewController {
         
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.left.right.top.equalToSuperview()
+            guard let tabbarHeight = self.tabBarController?.tabBar.frame.height else{return}
+            make.bottom.equalToSuperview().offset(-tabbarHeight)
         }
         
         view.addSubview(v1)
@@ -295,7 +297,7 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
         if scrollView == collectionView {
             v1.snp.updateConstraints{ $0.top.equalToSuperview().offset(min(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))) }
         }
-        }
+    }
     
     
 }

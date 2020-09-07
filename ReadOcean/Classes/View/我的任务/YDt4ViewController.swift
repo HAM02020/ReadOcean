@@ -9,23 +9,36 @@
 
 import UIKit
 
-class YDt4ViewController: BaseViewController {
+class YDt4ViewController: SegmentMainController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
     }
-    */
+
+    override func configNavigationBar() {
+        super.configNavigationBar()
+        
+        
+    }
+    override func setupLayout() {
+        super.setupLayout()
+        segment.backgroundColor = UIColor(hexString: "0ae6b0")
+
+        let v = UIView()
+        v.backgroundColor = UIColor(hexString: "0ae6b0")
+        view.addSubview(v)
+        v.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.bottom.equalTo(segment.snp.top)
+            make.left.right.equalToSuperview()
+        }
+    }
+    
+    
 
 }

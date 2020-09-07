@@ -31,10 +31,10 @@ extension UINavigationController {
         switch style {
         case .theme:
             navigationBar.barStyle = .black
-            navigationBar.setBackgroundImage(UIImage(named: "nav_bg"), for: .default)
+            navigationBar.setBackgroundImage(UIImage(named: "background"), for: .default)
             navigationBar.shadowImage = UIImage()
             navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black,
-                                                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)]
+                                                 NSAttributedString.Key.font: UIFont.monospacedSystemFont(ofSize: 20, weight: .heavy)]
 
         case .clear:
             navigationBar.barStyle = .black

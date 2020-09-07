@@ -21,6 +21,7 @@ class YDBookCollectionViewCell: BaseCollectionViewCell {
         titleLabel.textColor = UIColor.black
         titleLabel.font = UIFont.systemFont(ofSize: 14)
         titleLabel.text = "Swift编程从入门到入土"
+        titleLabel.numberOfLines = 0
         return titleLabel
     }()
     

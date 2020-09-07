@@ -43,6 +43,7 @@ extension YDMainViewController{
         //把各控制器（View）加入主控制器中
         var arrayM = [UIViewController]()
         for dict in array {
+            
             arrayM.append(initController(dict:dict))
         }
         viewControllers = arrayM
@@ -77,7 +78,17 @@ extension YDMainViewController{
             else {
                 return UIViewController()
         }
-        let vc = cls.init()
+        let vc : UIViewController
+        if title == "我的任务"{
+            vc = YDt4ViewController(
+                titles: ["教师任务","完成任务","逾期任务"],
+                vcs: [TeacherTaskVC(),FinishedTaskVC(),OverdueTaskVC()],
+                segmentStyle: .navgationBarSegment)
+
+        }else{
+            vc = cls.init()
+        }
+        
         vc.title = title
         
         UITabBar.appearance().backgroundColor = UIColor.white
