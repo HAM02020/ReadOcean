@@ -12,19 +12,27 @@ import UIKit
 import SnapKit
 import TLAnimationTabBar
 
+public var tabbarHeight:CGFloat?
+
 class YDt3ViewController : BaseViewController {
     
     private lazy var listViewModel = YDBooksListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         loadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
     }
-
+    
+    var style: UIStatusBarStyle = .lightContent
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return self.style
+    }
     private lazy var navView : DiscoverNavView = {
         let nav = DiscoverNavView()
         
@@ -32,24 +40,27 @@ class YDt3ViewController : BaseViewController {
     }()
 
     private lazy var bannerView: LLCycleScrollView = {
-            let cycleScrollView = LLCycleScrollView()
+        let cycleScrollView = LLCycleScrollView()
         cycleScrollView.backgroundColor = UIColor.systemBackground
-            cycleScrollView.autoScrollTimeInterval = 6
-            cycleScrollView.placeHolderImage = UIImage(named: "normal_placeholder_h")
-            cycleScrollView.coverImage = UIImage(named: "normal_placeholder_h")
-            cycleScrollView.pageControlBottom = 20
-            cycleScrollView.titleBackgroundColor = UIColor.clear
-            cycleScrollView.customPageControlStyle = .image
-            cycleScrollView.pageControlPosition = .left
-    //        cycleScrollView.pageControlActiveImage = UIImage(named: "emojiCommunity")
-            cycleScrollView.pageControlInActiveImage = UIImage(named: "finishobj")
+        cycleScrollView.autoScrollTimeInterval = 6
+        cycleScrollView.placeHolderImage = UIImage(named: "normal_placeholder_h")
+        cycleScrollView.coverImage = UIImage(named: "normal_placeholder_h")
+        cycleScrollView.pageControlBottom = 20
+        cycleScrollView.titleBackgroundColor = UIColor.clear
+        cycleScrollView.customPageControlStyle = .image
+        cycleScrollView.pageControlPosition = .left
+//        cycleScrollView.pageControlActiveImage = UIImage(named: "emojiCommunity")
+        cycleScrollView.pageControlInActiveImage = UIImage(named: "pagecontrol")
 
-            // 点击 item 回调
-            cycleScrollView.lldidSelectItemAtIndex = didSelectBanner(index:)
+        // 点击 item 回调
+        cycleScrollView.lldidSelectItemAtIndex = didSelectBanner(index:)
+    
+        cycleScrollView.bg_imagePaths = ["banner-1","banner-2"]
+        cycleScrollView.imagePaths = ["banner-1","banner-2"]
+    
         
-            cycleScrollView.bg_imagePaths = ["banner-1","banner-2"]
-            cycleScrollView.imagePaths = ["banner-1","banner-2"]
-            return cycleScrollView
+    
+        return cycleScrollView
         }()
     
     private func didSelectBanner(index: NSInteger) {
@@ -136,11 +147,12 @@ class YDt3ViewController : BaseViewController {
     
     override func setupLayout(){
         
+        tabbarHeight = self.tabBarController?.tabBar.frame.height
+        
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
-            guard let tabbarHeight = self.tabBarController?.tabBar.frame.height else{return}
-            make.bottom.equalToSuperview().offset(-tabbarHeight)
+            make.bottom.equalToSuperview().offset(-tabbarHeight!)
         }
         
         view.addSubview(bannerView)
@@ -221,10 +233,13 @@ extension YDt3ViewController:UICollectionViewDelegate,UICollectionViewDataSource
     //使头部视图滚动
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         navView.value = scrollView.contentOffset.y
-        print("contentoffset.y = \(scrollView.contentOffset.y)")
-        print("contentInset.top = \(scrollView.contentInset.top)")
-        print("和 = \(scrollView.contentOffset.y + scrollView.contentInset.top)\n")
-        //setNeedsStatusBarAppearanceUpdate()
+        if scrollView.contentOffset.y >= -200 {
+            self.style = .default
+
+        } else {
+            self.style = .lightContent
+        }
+        setNeedsStatusBarAppearanceUpdate()
         
         if scrollView == collectionView {
             bannerView.snp.updateConstraints{ $0.top.equalToSuperview().offset(min(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))) }

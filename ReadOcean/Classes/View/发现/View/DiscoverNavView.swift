@@ -18,14 +18,14 @@ class DiscoverNavView: UIView {
     
     private lazy var msgBtn: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "sep_Message_White"), for: .normal)
+        btn.setImage(UIImage(named: "oceanworld_white"), for: .normal)
         return btn
     }()
 
     private lazy var searchBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "classify_search_btn"), for: .normal)
-        btn.setTitle(" 镇魂街", for: .normal)
+        btn.setTitle(" 安徒生童话", for: .normal)
         btn.setTitleColor(.white, for: .normal)
         btn.titleLabel?.font = .systemFont(ofSize: 13)
         btn.titleLabel?.textAlignment = .left
@@ -42,36 +42,24 @@ class DiscoverNavView: UIView {
         return stackV
     }()
 
-    private lazy var topBtn: UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage(named: "home_1_default"), for: .normal)
-        btn.setTitle("排行", for: .normal)
+    private lazy var rankBtn: WBTittleButton = {
+        let btn = WBTittleButton(title: "排行榜", image: UIImage(named: "rank_white"))
         btn.setTitleColor(.white, for: .normal)
-        btn.titleLabel?.font = .systemFont(ofSize: 14)
         return btn
     }()
-    private lazy var VIPBtn: UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage(named: "home_2_default"), for: .normal)
-        btn.setTitle("VIP", for: .normal)
+    private lazy var weClassBtn: WBTittleButton = {
+        let btn = WBTittleButton(title: "名师微课", image: UIImage(named: "weclass_white"))
         btn.setTitleColor(.white, for: .normal)
-        btn.titleLabel?.font = .systemFont(ofSize: 14)
         return btn
     }()
-    private lazy var subscibeBtn: UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage(named: "home_3_default"), for: .normal)
-        btn.setTitle("订阅", for: .normal)
+    private lazy var storyBtn: WBTittleButton = {
+        let btn = WBTittleButton(title: "故事新编", image: UIImage(named: "story_white"))
         btn.setTitleColor(.white, for: .normal)
-        btn.titleLabel?.font = .systemFont(ofSize: 14)
         return btn
     }()
-    private lazy var classifyBtn: UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage(named: "home_4_default"), for: .normal)
-        btn.setTitle("分类", for: .normal)
+    private lazy var parentBtn: WBTittleButton = {
+        let btn = WBTittleButton(title: "家长阅读", image: UIImage(named: "parent_white"))
         btn.setTitleColor(.white, for: .normal)
-        btn.titleLabel?.font = .systemFont(ofSize: 14)
         return btn
     }()
 
@@ -89,7 +77,6 @@ class DiscoverNavView: UIView {
     public var value: CGFloat? {
         didSet {
             self.layoutIfNeeded()
-            print("didset nav 的 value")
             if let value = value {
 //                print("didSet:", value)
                 if defaultValue == 0 {
@@ -124,44 +111,44 @@ class DiscoverNavView: UIView {
 
                     if changeValue > 100 {
                         searchBtn.backgroundColor = UIColor.init(red: 236/255, green: 236/255, blue: 236/255, alpha: changeValue/100)
-                        msgBtn.setImage(UIImage(named: "sep_Message_Bubble"), for: .normal)
+                        msgBtn.setImage(UIImage(named: "oceanworld"), for: .normal)
                     } else {
-                        msgBtn.setImage(UIImage(named: "sep_Message_White"), for: .normal)
+                        msgBtn.setImage(UIImage(named: "oceanworld_white"), for: .normal)
                         searchBtn.backgroundColor = .init(red: 1, green: 1, blue: 1, alpha: 0.5)
                     }
                     
                     if changeValue <= 30 {
-                        topBtn.setTitle("排行", for: .normal)
-                        VIPBtn.setTitle("VIP", for: .normal)
-                        subscibeBtn.setTitle("订阅", for: .normal)
-                        classifyBtn.setTitle("分类", for: .normal)
+                        rankBtn.setTitle("排行榜", for: .normal)
+                        weClassBtn.setTitle("名师微课", for: .normal)
+                        storyBtn.setTitle("故事新编", for: .normal)
+                        parentBtn.setTitle("家长阅读", for: .normal)
                         
-                        topBtn.setImage(UIImage(named: "home_1_default"), for: .normal)
-                        VIPBtn.setImage(UIImage(named: "home_2_default"), for: .normal)
-                        subscibeBtn.setImage(UIImage(named: "home_3_default"), for: .normal)
-                        classifyBtn.setImage(UIImage(named: "home_4_default"), for: .normal)
+                        rankBtn.setImage(UIImage(named: "rank_white"), for: .normal)
+                        weClassBtn.setImage(UIImage(named: "weclass_white"), for: .normal)
+                        storyBtn.setImage(UIImage(named: "story_white"), for: .normal)
+                        parentBtn.setImage(UIImage(named: "parent_white"), for: .normal)
 
                     } else {
-                        topBtn.setTitle("", for: .normal)
-                        VIPBtn.setTitle("", for: .normal)
-                        subscibeBtn.setTitle("", for: .normal)
-                        classifyBtn.setTitle("", for: .normal)
+                        rankBtn.setTitle("", for: .normal)
+                        weClassBtn.setTitle("", for: .normal)
+                        storyBtn.setTitle("", for: .normal)
+                        parentBtn.setTitle("", for: .normal)
                         
-                        topBtn.setImage(UIImage(named: "home_1"), for: .normal)
-                        VIPBtn.setImage(UIImage(named: "home_2"), for: .normal)
-                        subscibeBtn.setImage(UIImage(named: "home_3"), for: .normal)
-                        classifyBtn.setImage(UIImage(named: "home_4"), for: .normal)
+                        rankBtn.setImage(UIImage(named: "rank"), for: .normal)
+                        weClassBtn.setImage(UIImage(named: "weclass"), for: .normal)
+                        storyBtn.setImage(UIImage(named: "story"), for: .normal)
+                        parentBtn.setImage(UIImage(named: "parent"), for: .normal)
                     }
                     
                     
                     if changeValue >= 0 && changeValue <= 90.0 {
                         stackView.snp.updateConstraints { (make) in
-                            make.top.equalTo(searchBtn.snp_bottom).offset(10 - changeValue/2)
+                            make.top.equalTo(searchBtn.snp.bottom).offset(10 - changeValue/2)
                             make.width.equalTo(screenWidth - 40 - changeValue)
                         }
                     } else if changeValue >= 0 && changeValue <= MaxValue {
                         stackView.snp.updateConstraints { (make) in
-                            make.top.equalTo(searchBtn.snp_bottom).offset(10 - (90/2))
+                            make.top.equalTo(searchBtn.snp.bottom).offset(18 - (90/2))
                             make.width.equalTo(screenWidth - 40 - changeValue)
                         }
                     }
@@ -207,9 +194,10 @@ class DiscoverNavView: UIView {
     func setupLayout() {
         addSubview(msgBtn)
         msgBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(44)
+            make.top.equalTo(38)
             make.left.equalTo(20)
-            make.width.height.equalTo(25)
+            make.width.height.equalTo(35)
+            
         }
         
         addSubview(searchBtn)
@@ -223,15 +211,15 @@ class DiscoverNavView: UIView {
 
         addSubview(stackView)
         stackView.snp.makeConstraints { (make) in
-            make.top.equalTo(searchBtn.snp_bottom).offset(10)
-            make.right.equalTo(-20)
+            make.top.equalTo(searchBtn.snp.bottom).offset(10)
+            make.right.equalTo(-30)
             make.height.equalTo(35)
             make.width.equalTo(screenWidth - 40)
         }
-        stackView.addArrangedSubview(topBtn)
-        stackView.addArrangedSubview(VIPBtn)
-        stackView.addArrangedSubview(subscibeBtn)
-        stackView.addArrangedSubview(classifyBtn)
+        stackView.addArrangedSubview(rankBtn)
+        stackView.addArrangedSubview(weClassBtn)
+        stackView.addArrangedSubview(storyBtn)
+        stackView.addArrangedSubview(parentBtn)
         
     }
 }

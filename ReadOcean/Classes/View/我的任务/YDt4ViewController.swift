@@ -60,7 +60,8 @@ class YDt4ViewController: BaseViewController {
         view.addSubview(pageView)
         pageView.snp.makeConstraints { (make) in
             
-            make.top.left.right.bottom.equalToSuperview()
+            make.top.left.right.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-tabbarHeight!)
         }
         view.addSubview(titleView)
         titleView.snp.makeConstraints { (make) in

@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "rank.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "rank.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

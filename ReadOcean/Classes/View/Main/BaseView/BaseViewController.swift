@@ -14,7 +14,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.clear
-        
+
         if #available(iOS 11.0, *) {
             UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
         } else {
@@ -62,3 +62,4 @@ extension BaseViewController {
         return .darkContent
     }
 }
+

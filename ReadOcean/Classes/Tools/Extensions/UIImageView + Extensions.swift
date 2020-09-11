@@ -20,7 +20,7 @@ extension UIImageView {
             image = placeholderImage
             return
         }
-        print("url setImage =  \(url)")
+        //print("url setImage =  \(url)")
         
         sd_setImage(with: url, placeholderImage: placeholderImage, options: [], progress: nil) {
             [weak self](image, _, _, _) in

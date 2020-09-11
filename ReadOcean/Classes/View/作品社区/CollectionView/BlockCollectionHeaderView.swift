@@ -54,7 +54,7 @@ class BlockCollectionHeaderView: BaseCollectionReusableView {
     
     // 继承父类方法 布局
     override func setupLayout() {
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = UIColor(hexString: "f2f2f2")
         
         addSubview(iconView)
         iconView.snp.makeConstraints { make in

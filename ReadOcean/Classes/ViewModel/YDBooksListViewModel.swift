@@ -28,37 +28,28 @@ class YDBooksListViewModel{
             for id in iDlist{
                 group.enter()
                 
-            let params = ["bookId":id] as [String : AnyObject]
-            YDNetworkManager.shared.request(URLString: url, parameters: params) { (json, isSuccess) in
+                let params = ["bookId":id] as [String : AnyObject]
+                YDNetworkManager.shared.request(URLString: url, parameters: params) { (json, isSuccess) in
 
-                guard
-                    let json = json as? [String:Any],
-                    let result = ReturnData<Book>.deserialize(from: json),
-                    let model = result.data
-                    else{
-                    return
+                    guard
+                        let json = json as? [String:Any],
+                        let result = ReturnData<Book>.deserialize(from: json),
+                        let model = result.data
+                        else{
+                        return
+                    }
+                    
+                    array.append(YDBookViewModel(model: model))
+                    group.leave()
                 }
-                
-                array.append(YDBookViewModel(model: model))
-                group.leave()
-            }
 
             }
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2) {
-//                print(array)
-//                self.booksList += array
-//                completion(true)
-//            }
-            // 监听调度组情况
             group.notify(queue: DispatchQueue.main) {
                 print(array)
                 self.booksList += array
                 completion(true)
             }
-            
-            
-            
-            
+        
             
         }
         

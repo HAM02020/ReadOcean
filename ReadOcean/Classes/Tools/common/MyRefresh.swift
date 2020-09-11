@@ -19,6 +19,7 @@ extension UIScrollView {
         get { return mj_footer! }
         set { mj_footer = newValue }
     }
+    
 }
 
 class URefreshHeader: MJRefreshGifHeader {

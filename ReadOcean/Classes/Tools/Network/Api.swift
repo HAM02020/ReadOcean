@@ -9,6 +9,13 @@ public let hostAddress = "https://59.38.32.42"
 public let userId : String = "F2F9105E-B6F8-C2A2-279A-A9DF84701F57"
 public let userType : String = "user_type_student"
 enum RequestType{
+    
+    //书香门第
+    case getBooks
+    case infoBook
+    //作品社区
+    case getBlocks
+    
     //我的任务
     case myTask
     case taskDetail
@@ -24,27 +31,40 @@ class Api {
             url = url + "/mobileTask/myTask"
             params["userId"] = userId as AnyObject
             params["userType"] = userType as AnyObject
-            //合并字典
-            if let parameters = parameters{
-                for e in parameters{
-                    params[e.key] = parameters[e.key]
-                }
-            }
-            
             
         case .taskDetail:
             url = url + "/mobileTask/taskDetail"
             params["userId"] = userId as AnyObject
             params["userType"] = userType as AnyObject
             //params["taskId"] = "taskId" as AnyObject
-            if let parameters = parameters{
-                for e in parameters{
-                    params[e.key] = parameters[e.key]
-                }
-            }
-        
-        
+
+        case .getBlocks:
+            url = url + "/mobileForum/getBlocks"
+            params["category"] = "category_shige" as AnyObject
+            params["pageNum"] = 1 as AnyObject
+        case .getBooks:
+            url = url + "/mobileBook/getBooks"
+            params["category"] = "category_shige" as AnyObject
+            params["pageNum"] = 1 as AnyObject
+        case .infoBook:
+            url = url + "/mobileBook/infoBook"
+            params["bookId"] = "" as AnyObject
         }
+        
+        params = complieParams(params,parameters)
+        
         YDNetworkManager.shared.request(URLString: url, parameters: params) { (json, _) in completion(json)}
+        
+    }
+    
+    private static func complieParams(_ p1:[String:AnyObject],_ p2:[String:AnyObject]?)->[String:AnyObject]{
+        var temp = p1
+        if let p2 = p2{
+            for e in p2{
+                temp[e.key] = p2[e.key]
+            }
+            return temp
+        }
+        return p1
     }
 }

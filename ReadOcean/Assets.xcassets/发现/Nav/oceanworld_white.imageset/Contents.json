@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "oceanworld_white.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "oceanworld_white.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

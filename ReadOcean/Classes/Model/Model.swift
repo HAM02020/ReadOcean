@@ -34,6 +34,17 @@ struct Block:HandyJSON {
     var title:String?
     var id:String?
 }
+struct MyBlock {
+    var img:String?
+    //讨论
+    var postNum:Int?
+    //点赞
+    var likeNum:Int?
+    var title:String?
+    var id:String?
+    var author:String?
+    var introduction:String?
+}
 struct Task:HandyJSON{
     
     var id:String?

@@ -15,8 +15,8 @@ class YDMainViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -49,6 +49,8 @@ extension YDMainViewController{
             arrayM.append(initController(dict:dict))
         }
         viewControllers = arrayM
+        //默认显示发现页
+        selectedIndex = 2
     }
     
     //FIXME:通过文件（网络文件或本地文件）方式获取配置array

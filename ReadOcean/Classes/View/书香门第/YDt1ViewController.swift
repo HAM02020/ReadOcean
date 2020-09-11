@@ -36,10 +36,22 @@ class YDt1ViewController : BaseViewController {
         return nav
     }()
     
-    private lazy var v1:UIView = {
+    private lazy var headerView:UIView = {
         let v = UIView()
         v.backgroundColor = UIColor.clear
+        v.addSubview(background_img)
+        background_img.snp.makeConstraints { (make) in
+            make.left.top.right.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-50)
+        }
         
+        v.addSubview(rect)
+        rect.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview().offset(-10)
+            make.centerX.equalTo(v.snp.centerX)
+            make.width.equalTo(screenWidth-30)
+            make.height.equalTo(64)
+        }
         return v
         
     }()
@@ -93,6 +105,27 @@ class YDt1ViewController : BaseViewController {
         v.layer.shadowOffset = CGSize(width: 0, height: 5)
         v.layer.shadowOpacity = 0.4
         v.layer.shadowRadius = 5
+        
+        v.addSubview(img_avatar)
+        img_avatar.snp.makeConstraints { (make) in
+
+            make.left.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview()
+        }
+        
+        v.addSubview(loginLabel)
+        loginLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(v.snp.centerY).offset(-5)
+            make.left.equalTo(img_avatar.snp.right).offset(10)
+        }
+        
+        v.addSubview(loginBtn)
+        loginBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(loginLabel.snp.bottom).offset(10)
+            make.left.equalTo(loginLabel.snp.left)
+            make.height.equalTo(20)
+            make.width.equalTo(70)
+        }
         return v
     }()
     
@@ -158,50 +191,15 @@ class YDt1ViewController : BaseViewController {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
-            guard let tabbarHeight = self.tabBarController?.tabBar.frame.height else{return}
-            make.bottom.equalToSuperview().offset(-tabbarHeight)
+            make.bottom.equalToSuperview().offset(-(tabbarHeight ?? 0))
         }
         
-        view.addSubview(v1)
-        v1.snp.makeConstraints { (make) in
+        view.addSubview(headerView)
+        headerView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
             make.height.equalTo(screenHeight/4)
         }
         
-        v1.addSubview(background_img)
-        background_img.snp.makeConstraints { (make) in
-            make.left.top.right.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-50)
-        }
-        
-        v1.addSubview(rect)
-        rect.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview().offset(-10)
-            make.centerX.equalTo(v1.snp.centerX)
-            make.width.equalTo(screenWidth-30)
-            make.height.equalTo(64)
-        }
-        
-        rect.addSubview(img_avatar)
-        img_avatar.snp.makeConstraints { (make) in
-
-            make.left.equalToSuperview().offset(10)
-            make.centerY.equalToSuperview()
-        }
-        
-        rect.addSubview(loginLabel)
-        loginLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(rect.snp.centerY).offset(-5)
-            make.left.equalTo(img_avatar.snp.right).offset(10)
-        }
-        
-        rect.addSubview(loginBtn)
-        loginBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(loginLabel.snp.bottom).offset(10)
-            make.left.equalTo(loginLabel.snp.left)
-            make.height.equalTo(20)
-            make.width.equalTo(70)
-        }
         
         view.addSubview(navView)
         navView.snp.makeConstraints { (make) in
@@ -281,7 +279,7 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
         //setNeedsStatusBarAppearanceUpdate()
         
         if scrollView == collectionView {
-            v1.snp.updateConstraints{ $0.top.equalToSuperview().offset(min(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))) }
+            headerView.snp.updateConstraints{ $0.top.equalToSuperview().offset(min(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))) }
         }
     }
     
