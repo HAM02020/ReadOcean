@@ -23,7 +23,16 @@ class BlocksListViewModel{
         
         getBlocks(isPullup: isPullup, completion: {[weak self] (isSuccess) in
             self?.getMyBlocks(isPullup: isPullup) {[weak self] (isSuccess) in
-                self?.pageNum += 1
+                
+                
+                if isPullup{
+                    self?.pageNum += 1
+                }else{
+                    self?.pageNum = 1
+                }
+                
+
+                
                 
                 completion(true)
             }
@@ -119,7 +128,8 @@ class BlocksListViewModel{
                         continue
                     }
                     var myBlock = MyBlock()
-                    myBlock.id = block.id
+                    myBlock.blockId = block.id
+                    myBlock.bookId = book.id
                     myBlock.title = block.title
                     myBlock.img = book.picUrl
                     myBlock.author = book.author

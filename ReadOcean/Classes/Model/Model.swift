@@ -41,7 +41,8 @@ struct MyBlock {
     //点赞
     var likeNum:Int?
     var title:String?
-    var id:String?
+    var blockId:String?
+    var bookId:String?
     var author:String?
     var introduction:String?
 }

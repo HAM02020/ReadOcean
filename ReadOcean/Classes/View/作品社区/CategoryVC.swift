@@ -8,9 +8,34 @@
 
 import UIKit
 import MJRefresh
+
+enum MyRreshState {
+    case isRefreshing
+    case didRefresh
+    case shouldRefresh
+    case shouldEndRefresh
+}
+
 class CategoryVC : BaseViewController {
 
     var listViewModel = BlocksListViewModel()
+    
+    var refreshState:MyRreshState?{
+        didSet{
+            switch refreshState {
+                
+            case .shouldRefresh:
+                loadData(isPullup: true)
+            case .shouldEndRefresh:
+                self.tableView.myHead.endRefreshing()
+                self.tableView.mj_footer?.endRefreshing()
+                self.tableView.reloadData()
+                print("刷新次数 = \(refreshCount)")
+            default:
+                break
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,12 +43,9 @@ class CategoryVC : BaseViewController {
         // Do any additional setup after loading the view.
         
         view.backgroundColor = UIColor(hexString: "f2f2f2")
-        loadData(isPullup: false)
+        loadData(isPullup: true)
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        loadData(isPullup: false)
-    }
+
     
     class func build(_ category:String)->CategoryVC{
         let vc = CategoryVC()
@@ -65,20 +87,31 @@ class CategoryVC : BaseViewController {
     override func setupLayout() {
         
         
+        
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(40)
             make.left.right.bottom.equalToSuperview()
         }
     }
+    
+    
+    var refreshCount = 0
+    
     @objc func loadData(isPullup:Bool){
-        
+        refreshState = .isRefreshing
         listViewModel.loadBlocks(isPullup:isPullup,completion: {[weak self] _ in
-
-            self?.tableView.myHead.endRefreshing()
-            self?.tableView.mj_footer?.endRefreshing()
-
-            self?.tableView.reloadData()
+            self?.refreshCount += 1
+            self?.refreshState = .didRefresh
+            
+            
+            if self?.listViewModel.myBlockList.count ?? 0 < 3 && self?.refreshState == .didRefresh {
+                self?.refreshState = .shouldRefresh
+            }else{
+                self?.refreshState = .shouldEndRefresh
+            }
+            
+            
         })
         
         

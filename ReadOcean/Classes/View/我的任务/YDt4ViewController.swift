@@ -22,7 +22,7 @@ class YDt4ViewController: BaseViewController {
         let config = GXSegmentTitleView.Configuration()
         config.positionStyle = .bottom
         config.indicatorStyle = .dynamic
-        config.indicatorFixedWidth = 30.0
+        config.indicatorFixedWidth = 60.0
         config.indicatorFixedHeight = 2.0
         config.indicatorAdditionWidthMargin = 5.0
         config.indicatorAdditionHeightMargin = 2.0
