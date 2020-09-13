@@ -64,6 +64,7 @@
 		01A8345524936881002D2327 /* YDBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A8345424936881002D2327 /* YDBookViewModel.swift */; };
 		01A83457249369CD002D2327 /* YDBooksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A83456249369CD002D2327 /* YDBooksListViewModel.swift */; };
 		01A834592493A5B2002D2327 /* UIImageView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A834582493A5B2002D2327 /* UIImageView + Extensions.swift */; };
+		01B02890250E4F2700FD4896 /* DemoPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B0288F250E4F2700FD4896 /* DemoPickerVC.swift */; };
 		01C143EB249363B5006ECD2C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C143EA249363B5006ECD2C /* Model.swift */; };
 		01C14698250666170072586A /* YDt4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C14697250666170072586A /* YDt4ViewController.swift */; };
 		01C146AB250668EA0072586A /* GXSegmentTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C146A7250668EA0072586A /* GXSegmentTitleView.swift */; };
@@ -72,6 +73,20 @@
 		01C146AE250668EA0072586A /* GXSegmentView+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C146AA250668EA0072586A /* GXSegmentView+Configuration.swift */; };
 		01C146B125068B290072586A /* DiscoverNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C146B025068B290072586A /* DiscoverNavView.swift */; };
 		01E755A3250B6B1B0038E782 /* BlocksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E755A2250B6B1B0038E782 /* BlocksListViewModel.swift */; };
+		01E755B9250CBB070038E782 /* Sync+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E755B8250CBB070038E782 /* Sync+Extensions.swift */; };
+		01E755C5250DBA070038E782 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E755C4250DBA070038E782 /* LoginVC.swift */; };
+		01E755DF250E00DA0038E782 /* GXAnimationPushABDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E755C8250E00DA0038E782 /* GXAnimationPushABDelegate.m */; };
+		01E755E0250E00DA0038E782 /* GXAnimationCubeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E755CA250E00DA0038E782 /* GXAnimationCubeDelegate.m */; };
+		01E755E1250E00DA0038E782 /* GXAnimationPushDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E755CC250E00DA0038E782 /* GXAnimationPushDelegate.m */; };
+		01E755E2250E00DA0038E782 /* GXAnimationPushELDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E755CF250E00DA0038E782 /* GXAnimationPushELDelegate.m */; };
+		01E755E3250E00DA0038E782 /* UIViewController+GXTransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E755D0250E00DA0038E782 /* UIViewController+GXTransitionDelegate.m */; };
+		01E755E4250E00DA0038E782 /* GXAnimationSectorDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E755D1250E00DA0038E782 /* GXAnimationSectorDelegate.m */; };
+		01E755E5250E00DA0038E782 /* GXAnimationErectDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E755D3250E00DA0038E782 /* GXAnimationErectDelegate.m */; };
+		01E755E6250E00DA0038E782 /* GXAnimationSystemDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E755D5250E00DA0038E782 /* GXAnimationSystemDelegate.m */; };
+		01E755E7250E00DA0038E782 /* GXAnimationOglFlipDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E755D7250E00DA0038E782 /* GXAnimationOglFlipDelegate.m */; };
+		01E755E8250E00DA0038E782 /* GXAnimationPushATDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E755D9250E00DA0038E782 /* GXAnimationPushATDelegate.m */; };
+		01E755E9250E00DA0038E782 /* GXAnimationPushALDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E755DD250E00DA0038E782 /* GXAnimationPushALDelegate.m */; };
+		01E755EA250E00DA0038E782 /* GXAnimationBaseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E755DE250E00DA0038E782 /* GXAnimationBaseDelegate.m */; };
 		A9315993D1C6519FF959FB78 /* Pods_ReadOcean.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7B46C8AB20EB21263119A9 /* Pods_ReadOcean.framework */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +150,7 @@
 		01A8345424936881002D2327 /* YDBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBookViewModel.swift; sourceTree = "<group>"; };
 		01A83456249369CD002D2327 /* YDBooksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBooksListViewModel.swift; sourceTree = "<group>"; };
 		01A834582493A5B2002D2327 /* UIImageView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extensions.swift"; sourceTree = "<group>"; };
+		01B0288F250E4F2700FD4896 /* DemoPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPickerVC.swift; sourceTree = "<group>"; };
 		01C143EA249363B5006ECD2C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		01C14697250666170072586A /* YDt4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt4ViewController.swift; sourceTree = "<group>"; };
 		01C146A7250668EA0072586A /* GXSegmentTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXSegmentTitleView.swift; sourceTree = "<group>"; };
@@ -143,6 +159,32 @@
 		01C146AA250668EA0072586A /* GXSegmentView+Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GXSegmentView+Configuration.swift"; sourceTree = "<group>"; };
 		01C146B025068B290072586A /* DiscoverNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverNavView.swift; sourceTree = "<group>"; };
 		01E755A2250B6B1B0038E782 /* BlocksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocksListViewModel.swift; sourceTree = "<group>"; };
+		01E755B8250CBB070038E782 /* Sync+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Extensions.swift"; sourceTree = "<group>"; };
+		01E755C4250DBA070038E782 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		01E755C7250E00DA0038E782 /* GXAnimationSystemDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXAnimationSystemDelegate.h; sourceTree = "<group>"; };
+		01E755C8250E00DA0038E782 /* GXAnimationPushABDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXAnimationPushABDelegate.m; sourceTree = "<group>"; };
+		01E755C9250E00DA0038E782 /* GXAnimationErectDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXAnimationErectDelegate.h; sourceTree = "<group>"; };
+		01E755CA250E00DA0038E782 /* GXAnimationCubeDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXAnimationCubeDelegate.m; sourceTree = "<group>"; };
+		01E755CB250E00DA0038E782 /* GXAnimationOglFlipDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXAnimationOglFlipDelegate.h; sourceTree = "<group>"; };
+		01E755CC250E00DA0038E782 /* GXAnimationPushDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXAnimationPushDelegate.m; sourceTree = "<group>"; };
+		01E755CD250E00DA0038E782 /* GXAnimationBaseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXAnimationBaseDelegate.h; sourceTree = "<group>"; };
+		01E755CE250E00DA0038E782 /* GXAnimationPushALDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXAnimationPushALDelegate.h; sourceTree = "<group>"; };
+		01E755CF250E00DA0038E782 /* GXAnimationPushELDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXAnimationPushELDelegate.m; sourceTree = "<group>"; };
+		01E755D0250E00DA0038E782 /* UIViewController+GXTransitionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+GXTransitionDelegate.m"; sourceTree = "<group>"; };
+		01E755D1250E00DA0038E782 /* GXAnimationSectorDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXAnimationSectorDelegate.m; sourceTree = "<group>"; };
+		01E755D2250E00DA0038E782 /* GXAnimationPushATDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXAnimationPushATDelegate.h; sourceTree = "<group>"; };
+		01E755D3250E00DA0038E782 /* GXAnimationErectDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXAnimationErectDelegate.m; sourceTree = "<group>"; };
+		01E755D4250E00DA0038E782 /* GXAnimationPushABDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXAnimationPushABDelegate.h; sourceTree = "<group>"; };
+		01E755D5250E00DA0038E782 /* GXAnimationSystemDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXAnimationSystemDelegate.m; sourceTree = "<group>"; };
+		01E755D6250E00DA0038E782 /* GXAnimationPushDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXAnimationPushDelegate.h; sourceTree = "<group>"; };
+		01E755D7250E00DA0038E782 /* GXAnimationOglFlipDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXAnimationOglFlipDelegate.m; sourceTree = "<group>"; };
+		01E755D8250E00DA0038E782 /* GXAnimationCubeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXAnimationCubeDelegate.h; sourceTree = "<group>"; };
+		01E755D9250E00DA0038E782 /* GXAnimationPushATDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXAnimationPushATDelegate.m; sourceTree = "<group>"; };
+		01E755DA250E00DA0038E782 /* GXAnimationSectorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXAnimationSectorDelegate.h; sourceTree = "<group>"; };
+		01E755DB250E00DA0038E782 /* GXAnimationPushELDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXAnimationPushELDelegate.h; sourceTree = "<group>"; };
+		01E755DC250E00DA0038E782 /* UIViewController+GXTransitionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+GXTransitionDelegate.h"; sourceTree = "<group>"; };
+		01E755DD250E00DA0038E782 /* GXAnimationPushALDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXAnimationPushALDelegate.m; sourceTree = "<group>"; };
+		01E755DE250E00DA0038E782 /* GXAnimationBaseDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXAnimationBaseDelegate.m; sourceTree = "<group>"; };
 		C585E163256E88B98A684169 /* Pods-ReadOcean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadOcean.debug.xcconfig"; path = "Target Support Files/Pods-ReadOcean/Pods-ReadOcean.debug.xcconfig"; sourceTree = "<group>"; };
 		C63B3FAB73B4545615C5E725 /* Pods-ReadOcean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadOcean.release.xcconfig"; path = "Target Support Files/Pods-ReadOcean/Pods-ReadOcean.release.xcconfig"; sourceTree = "<group>"; };
 		EB7B46C8AB20EB21263119A9 /* Pods_ReadOcean.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadOcean.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				017962E124E91B5700C26419 /* YDDemoViewController.swift */,
+				01B0288F250E4F2700FD4896 /* DemoPickerVC.swift */,
 			);
 			path = DemoViewController;
 			sourceTree = "<group>";
@@ -349,6 +392,7 @@
 			children = (
 				01079D5C2509C98B00593D34 /* TableView */,
 				01508DA92478FEC3000AA9E9 /* YDt5ViewController.swift */,
+				01E755C4250DBA070038E782 /* LoginVC.swift */,
 			);
 			path = "个人中心";
 			sourceTree = "<group>";
@@ -407,6 +451,7 @@
 				017962DD24E815BC00C26419 /* UIImage+Extensions.swift */,
 				0197120924E9738000C57717 /* UINavigationController+Extensions.swift */,
 				012D85BF24FE439F008B2063 /* NSArray+Extensions.swift */,
+				01E755B8250CBB070038E782 /* Sync+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -422,6 +467,7 @@
 		017962CA24E3D72F00C26419 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				01E755C6250E00DA0038E782 /* GXTransition */,
 				014488FD24BF4BE300B61DDB /* WBTitleButton.swift */,
 				01C146A6250668EA0072586A /* GXSegmentPageView */,
 				013EC19125060C1A00BC8891 /* LLCycleScrollView */,
@@ -490,6 +536,37 @@
 				01C146B025068B290072586A /* DiscoverNavView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		01E755C6250E00DA0038E782 /* GXTransition */ = {
+			isa = PBXGroup;
+			children = (
+				01E755C7250E00DA0038E782 /* GXAnimationSystemDelegate.h */,
+				01E755C8250E00DA0038E782 /* GXAnimationPushABDelegate.m */,
+				01E755C9250E00DA0038E782 /* GXAnimationErectDelegate.h */,
+				01E755CA250E00DA0038E782 /* GXAnimationCubeDelegate.m */,
+				01E755CB250E00DA0038E782 /* GXAnimationOglFlipDelegate.h */,
+				01E755CC250E00DA0038E782 /* GXAnimationPushDelegate.m */,
+				01E755CD250E00DA0038E782 /* GXAnimationBaseDelegate.h */,
+				01E755CE250E00DA0038E782 /* GXAnimationPushALDelegate.h */,
+				01E755CF250E00DA0038E782 /* GXAnimationPushELDelegate.m */,
+				01E755D0250E00DA0038E782 /* UIViewController+GXTransitionDelegate.m */,
+				01E755D1250E00DA0038E782 /* GXAnimationSectorDelegate.m */,
+				01E755D2250E00DA0038E782 /* GXAnimationPushATDelegate.h */,
+				01E755D3250E00DA0038E782 /* GXAnimationErectDelegate.m */,
+				01E755D4250E00DA0038E782 /* GXAnimationPushABDelegate.h */,
+				01E755D5250E00DA0038E782 /* GXAnimationSystemDelegate.m */,
+				01E755D6250E00DA0038E782 /* GXAnimationPushDelegate.h */,
+				01E755D7250E00DA0038E782 /* GXAnimationOglFlipDelegate.m */,
+				01E755D8250E00DA0038E782 /* GXAnimationCubeDelegate.h */,
+				01E755D9250E00DA0038E782 /* GXAnimationPushATDelegate.m */,
+				01E755DA250E00DA0038E782 /* GXAnimationSectorDelegate.h */,
+				01E755DB250E00DA0038E782 /* GXAnimationPushELDelegate.h */,
+				01E755DC250E00DA0038E782 /* UIViewController+GXTransitionDelegate.h */,
+				01E755DD250E00DA0038E782 /* GXAnimationPushALDelegate.m */,
+				01E755DE250E00DA0038E782 /* GXAnimationBaseDelegate.m */,
+			);
+			path = GXTransition;
 			sourceTree = "<group>";
 		};
 		B8124B933267B4F5C40ACE20 /* Pods */ = {
@@ -627,20 +704,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01E755C5250DBA070038E782 /* LoginVC.swift in Sources */,
 				017962CE24E3DD3800C26419 /* YDBookCollectionViewCell.swift in Sources */,
+				01E755DF250E00DA0038E782 /* GXAnimationPushABDelegate.m in Sources */,
 				012D85B424FCEE9E008B2063 /* FinishedTaskVC.swift in Sources */,
+				01E755E4250E00DA0038E782 /* GXAnimationSectorDelegate.m in Sources */,
 				012D85C024FE439F008B2063 /* NSArray+Extensions.swift in Sources */,
 				013EC1A325060C1A00BC8891 /* LLSnakePageControl.swift in Sources */,
+				01E755E6250E00DA0038E782 /* GXAnimationSystemDelegate.m in Sources */,
 				017962DA24E59CAB00C26419 /* HomeNavView.swift in Sources */,
+				01E755E7250E00DA0038E782 /* GXAnimationOglFlipDelegate.m in Sources */,
 				013EC1A025060C1A00BC8891 /* LLViewExtensions.swift in Sources */,
 				01C146AE250668EA0072586A /* GXSegmentView+Configuration.swift in Sources */,
+				01E755E5250E00DA0038E782 /* GXAnimationErectDelegate.m in Sources */,
 				012D85AC24FCEAE8008B2063 /* SegmentMainController.swift in Sources */,
 				012D85B824FD4112008B2063 /* TaskTableViewCell.swift in Sources */,
+				01B02890250E4F2700FD4896 /* DemoPickerVC.swift in Sources */,
 				014488FE24BF4BE300B61DDB /* WBTitleButton.swift in Sources */,
 				01508DAA2478FEC3000AA9E9 /* YDt5ViewController.swift in Sources */,
+				01E755E0250E00DA0038E782 /* GXAnimationCubeDelegate.m in Sources */,
 				01508DAF247AA413000AA9E9 /* UIColor+Extensions.swift in Sources */,
 				01508DA42478FEA1000AA9E9 /* YDt2ViewController_old.swift in Sources */,
 				017962D024E5969500C26419 /* BaseCollectionReusableView.swift in Sources */,
+				01E755E3250E00DA0038E782 /* UIViewController+GXTransitionDelegate.m in Sources */,
 				01C146AB250668EA0072586A /* GXSegmentTitleView.swift in Sources */,
 				017F664724E041A700686F32 /* YDt1ViewController.swift in Sources */,
 				017962CC24E3D75500C26419 /* Global.swift in Sources */,
@@ -655,18 +741,23 @@
 				01079D63250A424200593D34 /* YDt2ViewController.swift in Sources */,
 				01C143EB249363B5006ECD2C /* Model.swift in Sources */,
 				01A83453249366D1002D2327 /* YDNetworkManager.swift in Sources */,
+				01E755E9250E00DA0038E782 /* GXAnimationPushALDelegate.m in Sources */,
 				01A83457249369CD002D2327 /* YDBooksListViewModel.swift in Sources */,
 				0197120A24E9738000C57717 /* UINavigationController+Extensions.swift in Sources */,
+				01E755EA250E00DA0038E782 /* GXAnimationBaseDelegate.m in Sources */,
 				013EC1A525060C1A00BC8891 /* LLFilledPageControl.swift in Sources */,
 				01079D67250A605D00593D34 /* BlockTableViewCell.swift in Sources */,
 				017962DC24E68D7700C26419 /* MyRefresh.swift in Sources */,
 				01A8345524936881002D2327 /* YDBookViewModel.swift in Sources */,
+				01E755E1250E00DA0038E782 /* GXAnimationPushDelegate.m in Sources */,
 				01E755A3250B6B1B0038E782 /* BlocksListViewModel.swift in Sources */,
 				0194777B24ED90CF00C80158 /* CommunityNavView.swift in Sources */,
+				01E755E8250E00DA0038E782 /* GXAnimationPushATDelegate.m in Sources */,
 				01079D5E2509C9BE00593D34 /* ProflieTableViewCell.swift in Sources */,
 				017962D624E598B600C26419 /* YDBookCollectionHeaderView.swift in Sources */,
 				01C146B125068B290072586A /* DiscoverNavView.swift in Sources */,
 				01508DA02478FDF1000AA9E9 /* BaseViewController.swift in Sources */,
+				01E755B9250CBB070038E782 /* Sync+Extensions.swift in Sources */,
 				01C14698250666170072586A /* YDt4ViewController.swift in Sources */,
 				0194777924ED829D00C80158 /* CornerTopHeader.swift in Sources */,
 				013BD86224752ADD00AABEA2 /* AppDelegate.swift in Sources */,
@@ -675,6 +766,7 @@
 				014488FA24BE0CF700B61DDB /* CustomNavigationBar.swift in Sources */,
 				01079D65250A496B00593D34 /* CategoryVC.swift in Sources */,
 				012D85BA24FD4199008B2063 /* BaseTableViewCell.swift in Sources */,
+				01E755E2250E00DA0038E782 /* GXAnimationPushELDelegate.m in Sources */,
 				012D85BC24FD65EE008B2063 /* TeacherTaskVC.swift in Sources */,
 				01C146AD250668EA0072586A /* GXSegmentPageView.swift in Sources */,
 				01A834592493A5B2002D2327 /* UIImageView + Extensions.swift in Sources */,

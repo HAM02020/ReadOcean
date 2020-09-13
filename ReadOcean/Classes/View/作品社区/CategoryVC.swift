@@ -99,20 +99,25 @@ class CategoryVC : BaseViewController {
     var refreshCount = 0
     
     @objc func loadData(isPullup:Bool){
-        refreshState = .isRefreshing
-        listViewModel.loadBlocks(isPullup:isPullup,completion: {[weak self] _ in
-            self?.refreshCount += 1
-            self?.refreshState = .didRefresh
-            
-            
-            if self?.listViewModel.myBlockList.count ?? 0 < 3 && self?.refreshState == .didRefresh {
-                self?.refreshState = .shouldRefresh
-            }else{
-                self?.refreshState = .shouldEndRefresh
-            }
-            
-            
-        })
+        self.synchronized {[weak self] () -> () in
+            refreshState = .isRefreshing
+            listViewModel.loadBlocks(isPullup:isPullup,completion: {[weak self] _ in
+                self?.refreshCount += 1
+                self?.refreshState = .didRefresh
+
+                if self?.listViewModel.myBlockList.count ?? 0 < 3 && self?.refreshState == .didRefresh && self!.refreshCount < 4 {
+                    self?.refreshState = .shouldRefresh
+                }else{
+                    self?.refreshState = .shouldEndRefresh
+                    self?.refreshCount = 0
+                }
+                
+                
+                
+                
+            })
+        }
+        
         
         
         

@@ -26,9 +26,8 @@ class YDt1ViewController : BaseViewController {
         let nav = HomeNavView()
         nav.searchBtnClickClosure {
             print("搜索click")
-            let vc = YDDemoViewController()
-            vc.view.backgroundColor = UIColor.orange
-            vc.hidesBottomBarWhenPushed = true
+            let vc = DemoPickerVC()
+            
             
             //self.navigationController?.hidesBarsOnSwipe = false
             self.navigationController?.pushViewController(vc, animated: true)
@@ -91,6 +90,7 @@ class YDt1ViewController : BaseViewController {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .heavy)
         btn.layer.cornerRadius = 10
         btn.backgroundColor = UIColor(hexString: "5ad3b3")
+        btn.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
         return btn
     }()
     

@@ -54,9 +54,14 @@ class YDt3ViewController : BaseViewController {
 
         // 点击 item 回调
         cycleScrollView.lldidSelectItemAtIndex = didSelectBanner(index:)
-    
-        cycleScrollView.bg_imagePaths = ["banner-1","banner-2"]
-        cycleScrollView.imagePaths = ["banner-1","banner-2"]
+        var bannerpics:[String] = []
+        var bgPics:[String] = []
+        for i in 1...5{
+            bannerpics.append("b\(i)")
+            bgPics.append("normal_placeholder_h")
+        }
+        cycleScrollView.bg_imagePaths = bannerpics
+        cycleScrollView.imagePaths = bgPics
     
         
     

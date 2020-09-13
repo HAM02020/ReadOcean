@@ -37,6 +37,8 @@ class BlockTableViewCell:BaseTableViewCell{
         author.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabel.snp.left)
             make.top.equalTo(titleLabel.snp.bottom)
+            make.width.equalTo(screenWidth-15*2-100-15*2)
+            make.height.equalTo(10)
         }
         v.addSubview(post)
         post.snp.makeConstraints { (make) in
@@ -112,6 +114,7 @@ class BlockTableViewCell:BaseTableViewCell{
         txt.textColor = UIColor(hexString: "bfbfbf")
         txt.textAlignment = .left
         txt.numberOfLines = 0
+        txt.lineBreakMode = .byTruncatingTail
         return txt
     }()
     private lazy var post: UITextView = {
@@ -129,6 +132,7 @@ class BlockTableViewCell:BaseTableViewCell{
         txt.contentOffset = CGPoint (x: 0, y: 8)
         txt.isEditable = false
         txt.isScrollEnabled = false
+        
         return txt
     }()
     private lazy var like: UITextView = {

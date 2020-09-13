@@ -22,6 +22,11 @@ class BaseViewController: UIViewController {
         }
         setupLayout()
 
+        //注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess), name: NSNotification.Name(YDUserLoginSuccessNotification), object: nil)
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,12 +59,36 @@ class BaseViewController: UIViewController {
     @objc func pressBack() {
         navigationController?.popViewController(animated: true)
     }
+    @objc func loginSuccess(n:Notification) {
+        print("登陆成功\(n)")
+        //更新UI
+        //在访问view的getter 时 如果 view == nil 会调用loadview -> viewdidLoad
+//        navigationItem.leftBarButtonItem = nil
+//        navigationItem.rightBarButtonItem = nil
+        
+        viewDidLoad()
+        
+        //注销通知 避免通知被重复注册
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func loginAction(){
+        //发送通知
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: YDUserShouldLoginNotification), object: nil)
+    }
 }
 
 extension BaseViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .darkContent
+    }
+    
+    func synchronized<T>(_ action: () -> T) -> T {
+        objc_sync_enter(self)
+        let result = action()
+        objc_sync_exit(self)
+        return result
     }
 }
 

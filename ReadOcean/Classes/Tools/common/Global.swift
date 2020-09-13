@@ -35,3 +35,13 @@ private func _topVC(_ vc: UIViewController?) -> UIViewController? {
         return vc
     }
 }
+//MARK: 全局通知定义
+
+let YDUserShouldLoginNotification = "YDUserShouldLoginNotification"
+
+//用户登陆成功通知
+let YDUserLoginSuccessNotification = "YDUserLoginSuccessNotification"
+
+//MARK: 全局颜色定义
+let bgColor_light = "0ae6b0"
+let bgColor_heavy = "23c993"

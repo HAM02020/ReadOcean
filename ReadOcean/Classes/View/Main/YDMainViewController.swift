@@ -17,19 +17,48 @@ class YDMainViewController: UITabBarController {
         super.viewDidLoad()
         setupUI()
         
-        // Do any additional setup after loading the view.
+        
+        // 注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(userLogin), name: NSNotification.Name(rawValue: YDUserShouldLoginNotification), object: nil)
+
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    deinit {
+        //注销通知
+        NotificationCenter.default.removeObserver(self)
     }
-    */
+    @objc private func userLogin(n:Notification) {
+        print("用户登陆通知\(n)")
+        
+        var when = DispatchTime.now()
+        
+        //如果有值 判断 提示用户重新登陆
+        if n.object != nil {
+            //渐变样式
+//            SVProgressHUD.setDefaultMaskType(.gradient)
+//
+//            SVProgressHUD.showInfo(withStatus: "用户登陆已经超时，需要重新登陆")
+            
+            when = DispatchTime.now() + 2
+
+        }
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            //SVProgressHUD.setDefaultMaskType(.clear)
+            //展现登陆控制器
+            
+        }
+        let nav = UINavigationController(rootViewController: LoginVC())
+        nav.modalPresentationStyle = .fullScreen
+        self.modalPresentationStyle = .fullScreen
+        
+        //self.modalTransitionStyle = .partialCurl
+        //nav.modalTransitionStyle = .partialCurl
+
+        self.present(nav, animated: true, completion: nil)
+        
+        
+    }
+    
 
 }
 

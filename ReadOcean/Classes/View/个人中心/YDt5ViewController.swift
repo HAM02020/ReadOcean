@@ -64,6 +64,11 @@ class YDt5ViewController : BaseViewController {
     private lazy var headerView:UIView = {
         let rectHeight = 64
         let v = UIView()
+        //点击手势
+        let tap = UITapGestureRecognizer(target:self, action:#selector(loginAction))
+        v.isUserInteractionEnabled = true
+        v.addGestureRecognizer(tap)
+        
         v.backgroundColor = UIColor.clear
         v.addSubview(background_img)
         background_img.snp.makeConstraints { (make) in
