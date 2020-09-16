@@ -101,7 +101,7 @@ class CategoryVC : BaseViewController {
     @objc func loadData(isPullup:Bool){
         self.synchronized {[weak self] () -> () in
             refreshState = .isRefreshing
-            listViewModel.loadBlocks(isPullup:isPullup,completion: {[weak self] _ in
+            listViewModel.loadBlocks(isPullup:isPullup,completion: {[weak self] in
                 self?.refreshCount += 1
                 self?.refreshState = .didRefresh
 

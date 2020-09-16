@@ -19,7 +19,6 @@ class YDDemoViewController: BaseViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image:UIImage(named: "blue"),style: .plain,target: self,action: #selector(showNext))
         
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

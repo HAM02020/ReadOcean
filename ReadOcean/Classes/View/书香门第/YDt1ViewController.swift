@@ -1,17 +1,18 @@
 //
-//  HomeView.swift
+//  YDt1ViewController.swift
 //  ReadOcean
 //
-//  Created by ruruzi on 2020/8/9.
+//  Created by ruruzi on 2020/9/16.
 //  Copyright © 2020 HAM02020. All rights reserved.
 //
 
 import UIKit
 import SnapKit
 import TLAnimationTabBar
+
 class YDt1ViewController : BaseViewController {
     
-    private lazy var listViewModel = YDBooksListViewModel()
+    private lazy var listViewModel = BooksListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,8 +134,8 @@ class YDt1ViewController : BaseViewController {
         let layout = UICollectionViewFlowLayout.init()
         //layout.itemSize = CGSize(width: 100 , height: 50)
         //行列间距
-        layout.minimumLineSpacing=10;
-        layout.minimumInteritemSpacing=5
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 15
         
         //layout.footerReferenceSize = CGSize(width: screenWidth, height: 50)
         //layout.headerReferenceSize = CGSize(width: screenWidth, height: 50)
@@ -149,9 +150,9 @@ class YDt1ViewController : BaseViewController {
         collectionView.scrollIndicatorInsets = collectionView.contentInset
         // 注册cell
         collectionView.register(cellType: YDBookCollectionViewCell.self)
-        //collectionView.register(cellType: BoardCollectionViewCell.self)
+        collectionView.register(cellType: BookDetailCollectionViewCell.self)
         //注册头部 尾部
-        collectionView.register(supplementaryViewType: YDBookCollectionHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
+        collectionView.register(supplementaryViewType: BookCollectionHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
         collectionView.register(supplementaryViewType: YDBookCollectionFooterView.self, ofKind: UICollectionView.elementKindSectionFooter)
         // 刷新控件
         collectionView.myHead = URefreshHeader {
@@ -180,9 +181,9 @@ class YDt1ViewController : BaseViewController {
     
 
     @objc func loadData(){
-        listViewModel.loadBooks { (isSuccess) in
-            self.collectionView.myHead.endRefreshing()
-            self.collectionView.reloadData()
+        listViewModel.getBooks {[weak self] in
+            self?.collectionView.myHead.endRefreshing()
+            self?.collectionView.reloadData()
         }
     }
     
@@ -223,32 +224,73 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
 
     //cell的视图
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: YDBookCollectionViewCell.self)
-        if indexPath.item < listViewModel.booksList.count {
-            cell.viewModel = listViewModel.booksList[indexPath.item]
-        }
         
+        let key = listViewModel.categoriesParams[indexPath.section]
+        
+        switch indexPath.section {
+        case 2,4,7:
+            if(indexPath.item != 0){
+                break
+            }
+            let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: BookDetailCollectionViewCell.self)
+            cell.viewModel = listViewModel.dataDict[key]![indexPath.item]
+            return cell
+        default:
+            break
+        }
+        let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: YDBookCollectionViewCell.self)
+        cell.viewModel = listViewModel.dataDict[key]![indexPath.item]
         return cell
+        
+        
     }
     //行数
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return listViewModel.dataDict.count
     }
     //一个section里有几个cell
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let key = listViewModel.categoriesParams[section]
+        let listViewModelCount = listViewModel.dataDict[key]!.count
+        let count = listViewModelCount > listViewModel.maxCellNum ? listViewModel.maxCellNum : listViewModelCount
+        
+        switch section {
+        case 0:
+            return 3
         //返回9本书
-        return listViewModel.booksList.count
+        case 2,4,7:
+            return listViewModelCount < 9 ? listViewModelCount : 9
+        default:
+            break
+        }
+        
+        return count
     }
     //cell的长宽
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = floor(Double(screenWidth - 60.0) / 3.0)
-        return CGSize(width: width, height: width * 1.75)
+        var width = floor(Double(screenWidth - 15*3 - 10*2) / 4.0)
+        var height = width * 2
+        
+        switch indexPath.section {
+        case 0:
+            width = floor(Double(screenWidth - 15*3 - 10*2) / 3.0)
+            height = width * 1.75
+        case 2,4,7:
+            if(indexPath.item == 0){
+                height = width*1.5
+                width = Double(screenWidth - 20)
+                
+            }
+        default:
+            break
+        }
+        return CGSize(width: width, height: height)
     }
     // 头尾视图
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath, viewType: YDBookCollectionHeaderView.self)
-
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath, viewType: BookCollectionHeaderView.self)
+            headerView.titleLabel.text = listViewModel.categoryName[indexPath.section]
             
             return headerView
         } else {

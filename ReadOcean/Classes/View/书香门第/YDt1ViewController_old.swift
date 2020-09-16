@@ -1,97 +1,133 @@
 //
-//  YDt3ViewController.swift
+//  HomeView.swift
 //  ReadOcean
 //
-//  Created by ruruzi on 2020/5/23.
+//  Created by ruruzi on 2020/8/9.
 //  Copyright © 2020 HAM02020. All rights reserved.
 //
-
-
 
 import UIKit
 import SnapKit
 import TLAnimationTabBar
-
-public var tabbarHeight:CGFloat?
-
-class YDt3ViewController : BaseViewController {
+class YDt1ViewControllerOld : BaseViewController {
     
     private lazy var listViewModel = YDBooksListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
     }
-    
-    var style: UIStatusBarStyle = .lightContent
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return self.style
-    }
-    private lazy var navView : DiscoverNavView = {
-        let nav = DiscoverNavView()
-        
+
+    private lazy var navView : HomeNavView = {
+        let nav = HomeNavView()
+        nav.searchBtnClickClosure {
+            print("搜索click")
+            let vc = DemoPickerVC()
+            
+            
+            //self.navigationController?.hidesBarsOnSwipe = false
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         return nav
     }()
-
-    private lazy var bannerView: LLCycleScrollView = {
-        let cycleScrollView = LLCycleScrollView()
-        cycleScrollView.backgroundColor = UIColor.systemBackground
-        cycleScrollView.autoScrollTimeInterval = 6
-        cycleScrollView.placeHolderImage = UIImage(named: "normal_placeholder_h")
-        cycleScrollView.coverImage = UIImage(named: "normal_placeholder_h")
-        cycleScrollView.pageControlBottom = 20
-        cycleScrollView.titleBackgroundColor = UIColor.clear
-        cycleScrollView.customPageControlStyle = .image
-        cycleScrollView.pageControlPosition = .left
-//        cycleScrollView.pageControlActiveImage = UIImage(named: "emojiCommunity")
-        cycleScrollView.pageControlInActiveImage = UIImage(named: "pagecontrol")
-
-        // 点击 item 回调
-        cycleScrollView.lldidSelectItemAtIndex = didSelectBanner(index:)
-        var bannerpics:[String] = []
-        var bgPics:[String] = []
-        for i in 1...3{
-            bannerpics.append("b\(i)")
-            bgPics.append("normal_placeholder_h")
-        }
-        cycleScrollView.bg_imagePaths = bannerpics
-        cycleScrollView.imagePaths = bgPics
     
+    private lazy var headerView:UIView = {
+        let v = UIView()
+        v.backgroundColor = UIColor.clear
+        v.addSubview(background_img)
+        background_img.snp.makeConstraints { (make) in
+            make.left.top.right.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-50)
+        }
         
-    
-        return cycleScrollView
-        }()
-    
-    private func didSelectBanner(index: NSInteger) {
-            print("轮播图被点击了...")
-//            if galleryItems.count <= 0 { return }
-//            let item = galleryItems[index]
-//            if item.linkType == 3 {
-//                guard let comicId = item.ext?.first?.val else {
-//                    return
-//                }
-//
-//                let storyboard = UIStoryboard(name: "ComicIntroVC", bundle: nil)
-//                let cimicIntroVC = storyboard.instantiateViewController(withIdentifier: "ComicIntroVC") as! ComicIntroVC
-//                cimicIntroVC.comicId = Int(comicId)
-//                navigationController?.pushViewController(cimicIntroVC, animated: true)
-//
-//            } else {
-//    //            guard let url = item.ext?.compactMap({
-//    //                return $0.key == "url" ? $0.val : nil
-//    //            }).joined() else {
-//    //                return
-//    //            }
-//    //            let vc = WebViewController(url: url)
-//    //            navigationController?.pushViewController(vc, animated: true)
-//            }
+        v.addSubview(rect)
+        rect.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview().offset(-10)
+            make.centerX.equalTo(v.snp.centerX)
+            make.width.equalTo(screenWidth-30)
+            make.height.equalTo(64)
         }
+        return v
+        
+    }()
+    
+    private lazy var background_img:UIImageView = {
+        let v = UIImageView(image: UIImage(named: "background"))
+        return v
+    }()
+    
+    private lazy var img_avatar:UIImageView = {
+        var img = UIImage(named: "img_boy")
+        img = img?.reSizeImage(reSize: CGSize(width: 50, height: 50))
+        
+        let imgView = UIImageView(image: img)
+        imgView.backgroundColor = UIColor(hexString: "f2f2f2")
+        
+        imgView.layer.cornerRadius = imgView.bounds.width/2
+        imgView.layer.borderColor = UIColor.clear.cgColor
+        imgView.layer.borderWidth = 0.5
+        imgView.layer.masksToBounds = true
+        return imgView
+    }()
+    
+    private lazy var loginLabel : UILabel = {
+       let txt = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 15))
+        txt.text = "登陆后发现精彩内容,阅读最新书籍，成为读书之星"
+        txt.font = .systemFont(ofSize: 10)
+        txt.textColor = UIColor.darkGray
+        txt.textAlignment = .left
+        txt.numberOfLines = 0
+        return txt
+    }()
+    
+    private lazy var loginBtn : UIButton = {
+       let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 15))
+        btn.setTitle("立即登陆", for: [])
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .heavy)
+        btn.layer.cornerRadius = 10
+        btn.backgroundColor = UIColor(hexString: "5ad3b3")
+        btn.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
+        return btn
+    }()
+    
+    private lazy var rect:UIView = {
+       let v = UIView()
+        v.backgroundColor = UIColor.white
+        v.layer.cornerRadius = 5
+        v.layer.borderColor = UIColor.clear.cgColor
+        v.layer.borderWidth = 0.5
+        
+        v.layer.shadowColor = UIColor.darkGray.cgColor
+        v.layer.shadowOffset = CGSize(width: 0, height: 5)
+        v.layer.shadowOpacity = 0.4
+        v.layer.shadowRadius = 5
+        
+        v.addSubview(img_avatar)
+        img_avatar.snp.makeConstraints { (make) in
+
+            make.left.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview()
+        }
+        
+        v.addSubview(loginLabel)
+        loginLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(v.snp.centerY).offset(-5)
+            make.left.equalTo(img_avatar.snp.right).offset(10)
+        }
+        
+        v.addSubview(loginBtn)
+        loginBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(loginLabel.snp.bottom).offset(10)
+            make.left.equalTo(loginLabel.snp.left)
+            make.height.equalTo(20)
+            make.width.equalTo(70)
+        }
+        return v
+    }()
     
     private lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
@@ -108,7 +144,7 @@ class YDt3ViewController : BaseViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.alwaysBounceVertical = true
-        collectionView.contentInset = UIEdgeInsets(top: screenHeight/2, left: 0, bottom: 0, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: screenHeight/4.0 - 30, left: 0, bottom: 0, right: 0)
         //滚动条位置
         collectionView.scrollIndicatorInsets = collectionView.contentInset
         // 注册cell
@@ -152,29 +188,28 @@ class YDt3ViewController : BaseViewController {
     
     override func setupLayout(){
         
-        tabbarHeight = self.tabBarController?.tabBar.frame.height
-        
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-tabbarHeight!)
+            make.bottom.equalToSuperview().offset(-(tabbarHeight ?? 0))
         }
         
-        view.addSubview(bannerView)
-        bannerView.snp.makeConstraints{ make in
+        view.addSubview(headerView)
+        headerView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(collectionView.contentInset.top)
+            make.height.equalTo(screenHeight/4)
         }
-         
+        
+        
         view.addSubview(navView)
         navView.snp.makeConstraints { (make) in
             make.left.top.right.equalToSuperview()
-            make.height.equalTo(120)
+            make.height.equalTo(88)
         }
     }
 }
 
-extension YDt3ViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+extension YDt1ViewControllerOld:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     
     //背景颜色
@@ -238,19 +273,15 @@ extension YDt3ViewController:UICollectionViewDelegate,UICollectionViewDataSource
     //使头部视图滚动
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         navView.value = scrollView.contentOffset.y
-        if scrollView.contentOffset.y >= -200 {
-            self.style = .default
-
-        } else {
-            self.style = .lightContent
-        }
-        setNeedsStatusBarAppearanceUpdate()
+        print("contentoffset.y = \(scrollView.contentOffset.y)")
+        print("contentInset.top = \(scrollView.contentInset.top)")
+        print("和 = \(scrollView.contentOffset.y + scrollView.contentInset.top)\n")
+        //setNeedsStatusBarAppearanceUpdate()
         
         if scrollView == collectionView {
-            bannerView.snp.updateConstraints{ $0.top.equalToSuperview().offset(min(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))) }
+            headerView.snp.updateConstraints{ $0.top.equalToSuperview().offset(min(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))) }
         }
     }
     
     
 }
-

@@ -17,12 +17,12 @@ class BlocksListViewModel{
     lazy var bookList:[Book] = []
     lazy var myBlockList:[MyBlock] = []
     
-    func loadBlocks(isPullup:Bool,completion:@escaping(_ isSuccess:Bool)->()){
+    func loadBlocks(isPullup:Bool,completion:@escaping()->Void){
 
 
         
-        getBlocks(isPullup: isPullup, completion: {[weak self] (isSuccess) in
-            self?.getMyBlocks(isPullup: isPullup) {[weak self] (isSuccess) in
+        getBlocks(isPullup: isPullup, completion: {[weak self] in
+            self?.getMyBlocks(isPullup: isPullup) {[weak self] in
                 
                 
                 if isPullup{
@@ -34,7 +34,7 @@ class BlocksListViewModel{
 
                 
                 
-                completion(true)
+                completion()
             }
         })
 
@@ -43,37 +43,27 @@ class BlocksListViewModel{
                     
     }
     
-    func getBlocks(isPullup:Bool,completion:@escaping(_ isSuccess:Bool)->()){
-        Api.request(requestType: .getBlocks, parameters: ["category":category,"pageNum":pageNum] as [String:AnyObject]) {[weak self] (json,_) in
+    func getBlocks(isPullup:Bool,completion:@escaping()->Void){
+        
+        ApiProvider.requestDataList(.getBlocks(category: category, pageNum: pageNum), model: Block.self) {[weak self] (modelList) in
             
-            
-
-            guard
-                let json = json as? [String:Any],
-                let result = ReturnWithDataList<Block>.deserialize(from: json),
-                let dataList = result.dataList
-            else { return }
+            guard let modelList = modelList else { return }
             
             if(isPullup){
-                self?.blockList = self!.blockList + dataList
+                self?.blockList = self!.blockList + modelList
             }else{
-                self?.blockList = dataList
+                self?.blockList = modelList
             }
             
-            completion(true)
+            completion()
         }
     }
     
-    func getBooks(isPullup:Bool,completion:@escaping(_ isSuccess:Bool)->()){
+    func getBooks(isPullup:Bool,completion:@escaping()->Void){
         
-        
-        Api.request(requestType: .getBooks, parameters: ["category":category,"pageNum":pageNum] as [String:AnyObject]) {[weak self] (json,_) in
-        
-            guard
-                let json = json as? [String:Any],
-                let result = ReturnWithDataList<Book>.deserialize(from: json),
-                let dataList = result.dataList
-            else { return }
+        ApiProvider.requestDataList(.getBooks(category: category, pageNum: pageNum), model: Book.self) {[weak self] (dataList) in
+            
+            guard let dataList = dataList else{return}
             
             let group = DispatchGroup()
             
@@ -97,7 +87,7 @@ class BlocksListViewModel{
                 }else{
                     self?.bookList = list
                 }
-                completion(true)
+                completion()
             }
         }
 
@@ -105,20 +95,18 @@ class BlocksListViewModel{
     }
     func getbookById(bookId:String,completion:@escaping(_ book:Book)->()){
         
-        Api.request(requestType:.infoBook, parameters: ["bookId":bookId] as [String:AnyObject]) { (json,_) in
-            guard
-                let json = json as? [String:Any],
-                let result = ReturnData<Book>.deserialize(from: json),
-                let model = result.data
-            else{return}
+        ApiProvider.requestData(.infoBook(bookId: bookId), model: Book.self) {(model) in
+            
+            guard let model = model else{return}
             
             completion(model)
             
         }
     }
-    func getMyBlocks(isPullup:Bool,completion:@escaping(_ isSuccess:Bool)->()){
-        getBooks(isPullup: isPullup,completion: {[weak self] (isSuccess) in
-
+    func getMyBlocks(isPullup:Bool,completion:@escaping()->Void){
+        
+        getBooks(isPullup: isPullup) {[weak self] in
+            
             var list : [MyBlock] = []
             
             for book in self!.bookList{
@@ -153,8 +141,11 @@ class BlocksListViewModel{
                 
                 self?.myBlockList = list
             }
-            completion(true)
-        })
+            completion()
+        }
+        
+        
+        
     }
     
     

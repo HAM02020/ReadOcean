@@ -1,8 +1,8 @@
 //
-//  BlockCollectionHeaderView.swift
+//  YDBookCollectionHeaderView.swift
 //  ReadOcean
 //
-//  Created by ruruzi on 2020/8/18.
+//  Created by ruruzi on 2020/8/13.
 //  Copyright © 2020 HAM02020. All rights reserved.
 //
 
@@ -16,15 +16,19 @@ typealias Completion = ()->Void
 //    func comicCollectionHeaderView(_ comicCHead: BlockCollectionHeaderView, moreAction button: UIButton)
 //}
 
-class BlockCollectionHeaderView: BaseCollectionReusableView {
+class BookCollectionHeaderView: BaseCollectionReusableView {
     
+    let picNames = ["hot","new","add"]
+    let random = Int(arc4random() % 3)
     // 代理声明 弱引用
     //weak var delegate: ComicCollecHeaderViewDelegate?
     // 回调声明 相当于 OC中的Block
     private var moreActionClosure: Completion?
     
     lazy var iconView: UIImageView = {
-        return UIImageView()
+        let img = UIImage(named: picNames[random])
+        let imgV = UIImageView(image: img)
+        return imgV
     }()
     
     lazy var titleLabel: UILabel = {
@@ -54,7 +58,7 @@ class BlockCollectionHeaderView: BaseCollectionReusableView {
     
     // 继承父类方法 布局
     override func setupLayout() {
-        self.backgroundColor = UIColor(hexString: "f2f2f2")
+        
         
         addSubview(iconView)
         iconView.snp.makeConstraints { make in
@@ -73,7 +77,7 @@ class BlockCollectionHeaderView: BaseCollectionReusableView {
         addSubview(moreButton)
         moreButton.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-10)
-            make.top.equalToSuperview().offset(10)
+            make.centerY.equalTo(iconView)
             make.width.equalTo(30)
             make.height.equalTo(20)
         }

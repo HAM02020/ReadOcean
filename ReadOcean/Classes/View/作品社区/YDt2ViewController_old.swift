@@ -65,7 +65,7 @@ class YDt2ViewControllerOld: BaseViewController {
         //collectionView.register(cellType: BoardCollectionViewCell.self)
         //注册头部 尾部
         //collectionView.register(supplementaryViewType: CornerTopHeader.self, ofKind: UICollectionView.elementKindSectionHeader)
-        collectionView.register(supplementaryViewType: BlockCollectionHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
+        collectionView.register(supplementaryViewType: BookCollectionHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
         //collectionView.register(supplementaryViewType: YDBookCollectionFooterView.self, ofKind: UICollectionView.elementKindSectionFooter)
         // 刷新控件
         collectionView.myHead = URefreshHeader {
@@ -113,7 +113,7 @@ extension YDt2ViewControllerOld{
         //调度组
         let group = DispatchGroup()
         
-        let url = hostAddress + "/mobileForum/getBlocks"
+        let url = HOST_ADDRESS + "/mobileForum/getBlocks"
         
         
         for category in categoriesParams{
@@ -196,7 +196,7 @@ extension YDt2ViewControllerOld:UICollectionViewDelegate,UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath, viewType: BlockCollectionHeaderView.self)
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath, viewType: BookCollectionHeaderView.self)
             if indexPath.section == 0{
                 headerView.layer.cornerRadius = headerView.bounds.width/15
             }

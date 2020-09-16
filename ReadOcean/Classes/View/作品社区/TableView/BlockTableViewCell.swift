@@ -198,7 +198,7 @@ class BlockTableViewCell:BaseTableViewCell{
     
     override func setupLayout() {
         backgroundColor = UIColor.clear
-        addSubview(view)
+        contentView.addSubview(view)
         view.snp.makeConstraints { (make) in
             make.top.equalToSuperview().inset(30)
             make.left.right.bottom.equalToSuperview().inset(15)

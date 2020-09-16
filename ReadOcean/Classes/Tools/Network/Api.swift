@@ -5,12 +5,7 @@
 //  Created by ruruzi on 2020/9/1.
 //  Copyright © 2020 HAM02020. All rights reserved.
 //
-import Alamofire
 
-
-public let hostAddress = "https://59.38.32.42"
-public let userId : String = "F2F9105E-B6F8-C2A2-279A-A9DF84701F57"
-public let userType : String = "user_type_student"
 enum RequestType{
     
     //书香门第
@@ -30,18 +25,17 @@ class Api {
     class func request(_ method:HTTPMethod = .GET, requestType:RequestType,parameters:[String:AnyObject]?,completion:@escaping(_ json:AnyObject?,_ isSuccess:Bool)->()){
         var url  = ""
         var params:[String:AnyObject] = [:]
-        var headers:[String:String] = [:]
         switch requestType {
         //我的任务
         case .myTask:
             url = "/mobileTask/myTask"
-            params["userId"] = userId as AnyObject
-            params["userType"] = userType as AnyObject
+            params["userId"] = USER_ID as AnyObject
+            params["userType"] = USER_TYPE as AnyObject
             
         case .taskDetail:
             url = "/mobileTask/taskDetail"
-            params["userId"] = userId as AnyObject
-            params["userType"] = userType as AnyObject
+            params["userId"] = USER_ID as AnyObject
+            params["userType"] = USER_TYPE as AnyObject
             //params["taskId"] = "taskId" as AnyObject
 
         case .getBlocks:
@@ -58,24 +52,16 @@ class Api {
         case .login:
             url = "/mobileUser/login"
             params["schoolId"] = 1000000 as AnyObject
-            params["userType"] = userType as AnyObject
+            params["userType"] = USER_TYPE as AnyObject
             params["lat"] = 1 as AnyObject
             params["lng"] = 1 as AnyObject
         }
         
-        url = hostAddress + url
+        url = HOST_ADDRESS + url
         params = complieParams(params,parameters)
         
-//        YDNetworkManager.shared.request(method: method, URLString: url, parameters: params) { (json, isSuccess) in completion(json,isSuccess)}
-        AF.request(url, method: .get, parameters: params, headers: .default).validate().responseData{ (response) in
-            switch response.result{
-            case .success(_):
-                
-                break
-            case .failure(_):
-                break
-            }
-        }
+        YDNetworkManager.shared.request(method: method, URLString: url, parameters: params) { (json, isSuccess) in completion(json,isSuccess)}
+        
 
         
     }

@@ -18,9 +18,11 @@ class YDBooksListViewModel{
     
     
     func loadBooks(completion:@escaping(_ isSuccess:Bool)->()){
+        
+        
         loadBookIds { (iDlist, isSuccess) in
             
-            let url = hostAddress + "/mobileBook/infoBook"
+            let url = HOST_ADDRESS + "/mobileBook/infoBook"
             var array = [YDBookViewModel]()
             
             let group = DispatchGroup()
@@ -56,7 +58,7 @@ class YDBooksListViewModel{
     }
 
     func loadBookIds(page:Int = 1,completion:@escaping(_ idList:[String],_ isSuccess:Bool)->()){
-        let url = hostAddress + "/mobileBook/index"
+        let url = HOST_ADDRESS + "/mobileBook/index"
         let params = ["userId":"F2F9105E-B6F8-C2A2-279A-A9DF84701F57",
                       "page":page ,
             ] as [String : AnyObject]
