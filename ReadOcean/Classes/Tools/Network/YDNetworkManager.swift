@@ -9,6 +9,8 @@
 import UIKit
 import AFNetworking
 import MBProgressHUD
+import Alamofire
+
 enum HTTPMethod {
     case GET
     case POST
@@ -24,6 +26,7 @@ class YDNetworkManager : AFHTTPSessionManager{
         //是否校验域名
         instance.securityPolicy.validatesDomainName = false
    
+        
         
 //        instance.requestSerializer = AFJSONRequestSerializer.init()
 //        instance.responseSerializer = AFJSONResponseSerializer.init()
@@ -52,7 +55,9 @@ class YDNetworkManager : AFHTTPSessionManager{
            
            //失败回调
            let failure = {(task:URLSessionDataTask?,error:Error)->() in
-               
+            
+               MBProgressHUD.hide(for: vc.view, animated: true)
+            
                //针对403 token过期 做处理
                if (task?.response as? HTTPURLResponse)?.statusCode == 403 {
                    print("403")

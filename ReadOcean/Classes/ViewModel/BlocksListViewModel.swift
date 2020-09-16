@@ -44,7 +44,7 @@ class BlocksListViewModel{
     }
     
     func getBlocks(isPullup:Bool,completion:@escaping(_ isSuccess:Bool)->()){
-        Api.request(.getBlocks, parameters: ["category":category,"pageNum":pageNum] as [String:AnyObject]) {[weak self] (json) in
+        Api.request(requestType: .getBlocks, parameters: ["category":category,"pageNum":pageNum] as [String:AnyObject]) {[weak self] (json,_) in
             
             
 
@@ -67,7 +67,7 @@ class BlocksListViewModel{
     func getBooks(isPullup:Bool,completion:@escaping(_ isSuccess:Bool)->()){
         
         
-        Api.request(.getBooks, parameters: ["category":category,"pageNum":pageNum] as [String:AnyObject]) {[weak self] (json) in
+        Api.request(requestType: .getBooks, parameters: ["category":category,"pageNum":pageNum] as [String:AnyObject]) {[weak self] (json,_) in
         
             guard
                 let json = json as? [String:Any],
@@ -105,7 +105,7 @@ class BlocksListViewModel{
     }
     func getbookById(bookId:String,completion:@escaping(_ book:Book)->()){
         
-        Api.request(.infoBook, parameters: ["bookId":bookId] as [String:AnyObject]) { (json) in
+        Api.request(requestType:.infoBook, parameters: ["bookId":bookId] as [String:AnyObject]) { (json,_) in
             guard
                 let json = json as? [String:Any],
                 let result = ReturnData<Book>.deserialize(from: json),

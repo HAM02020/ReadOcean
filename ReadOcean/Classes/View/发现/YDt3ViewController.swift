@@ -56,7 +56,7 @@ class YDt3ViewController : BaseViewController {
         cycleScrollView.lldidSelectItemAtIndex = didSelectBanner(index:)
         var bannerpics:[String] = []
         var bgPics:[String] = []
-        for i in 1...5{
+        for i in 1...3{
             bannerpics.append("b\(i)")
             bgPics.append("normal_placeholder_h")
         }

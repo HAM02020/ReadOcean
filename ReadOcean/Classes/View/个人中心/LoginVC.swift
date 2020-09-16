@@ -18,9 +18,21 @@ class LoginVC:BaseViewController{
         edgeGes.edges = .left
         view.addGestureRecognizer(edgeGes)
     }
-    
+    //MARK:OBJC Functions
     @objc func back(){
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func loginBtnClick(){
+        let userName = userNameField.text
+        let password = passwordField.text
+        var params:[String:AnyObject] = [:]
+        params["userName"] = userName as AnyObject
+        params["password"] = password as AnyObject
+        Api.request(.POST,requestType: .login, parameters: params) { (json,isSuccess) in
+            print(json)
+        }
+        
     }
     
     private lazy var dissmissBtn:UIButton = {
@@ -113,13 +125,14 @@ class LoginVC:BaseViewController{
 //    }()
     
     
-    private lazy var userName:UITextField = {
+    private lazy var userNameField:UITextField = {
         let tf = UITextField()
         tf.placeholder = "用户名"
         tf.textColor = UIColor.darkGray
+        
         return tf
     }()
-    private lazy var password:UITextField = {
+    private lazy var passwordField:UITextField = {
         let tf = UITextField()
         tf.placeholder = "请输入密码"
         tf.textColor = UIColor.darkGray
@@ -154,12 +167,12 @@ class LoginVC:BaseViewController{
         
         //stackV.backgroundColor = UIColor.white
         
-        stackV.addArrangedSubview(userName)
-        stackV.addArrangedSubview(password)
-        userName.snp.makeConstraints { (make) in
+        stackV.addArrangedSubview(userNameField)
+        stackV.addArrangedSubview(passwordField)
+        userNameField.snp.makeConstraints { (make) in
             make.width.equalTo(stackV.snp.width)
         }
-        password.snp.makeConstraints { (make) in
+        passwordField.snp.makeConstraints { (make) in
             make.width.equalTo(stackV.snp.width)
         }
         let line1 = UILabel()
@@ -186,6 +199,8 @@ class LoginVC:BaseViewController{
         btn.layer.shadowOffset = CGSize(width: 1, height: 1)
         btn.layer.shadowOpacity = 0.3
         btn.layer.shadowRadius = 5
+        
+        btn.addTarget(self, action: #selector(loginBtnClick), for: .touchUpInside)
         return btn
     }()
     private lazy var registerBtn : UIButton = {

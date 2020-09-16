@@ -13,7 +13,7 @@ class OverdueTaskVC : BaseTaskVC {
     }
     
     override func loadData(){
-        Api.request(.myTask, parameters: ["type":"overdue" as AnyObject]) { (json) in
+        Api.request(requestType:.myTask, parameters: ["type":"overdue" as AnyObject]) { (json,_) in
             
             self.tableView.myHead.endRefreshing()
             

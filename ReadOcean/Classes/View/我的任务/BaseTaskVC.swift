@@ -44,7 +44,7 @@ class BaseTaskVC : BaseViewController {
         }
     }
     func loadData(){
-        Api.request(.myTask, parameters: nil) { (json) in
+        Api.request(requestType: .myTask ,parameters: nil) { (json,isSuccess) in
             self.tableView.myHead.endRefreshing()
             
             guard

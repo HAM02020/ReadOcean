@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HandyJSON
 
 class YDDemoViewController: BaseViewController {
 
@@ -17,6 +18,8 @@ class YDDemoViewController: BaseViewController {
         view.backgroundColor = UIColor.white
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image:UIImage(named: "blue"),style: .plain,target: self,action: #selector(showNext))
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

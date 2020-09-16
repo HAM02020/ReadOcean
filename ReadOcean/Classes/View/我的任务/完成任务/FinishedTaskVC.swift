@@ -9,7 +9,7 @@ import UIKit
 class FinishedTaskVC : BaseTaskVC {
 
     override func loadData(){
-        Api.request(.myTask, parameters: nil) { (json) in
+        Api.request(requestType:.myTask, parameters: nil) { (json,_) in
             
             self.tableView.myHead.endRefreshing()
             
