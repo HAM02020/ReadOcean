@@ -105,7 +105,7 @@ class BookDetailCollectionViewCell:BaseCollectionViewCell{
         return txt
     }()
     
-    var viewModel:Book?{
+     var viewModel:Book?{
         didSet{
             
             guard

@@ -19,7 +19,6 @@ class YDt5ViewController : BaseViewController {
                   [PModel("feedback_darkblue","意见反馈")]
                 ] as [[PModel]]
     
-    private lazy var listViewModel = YDBooksListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

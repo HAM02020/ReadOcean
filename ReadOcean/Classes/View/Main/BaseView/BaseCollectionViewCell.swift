@@ -8,7 +8,7 @@
 
 import UIKit
 import Reusable
-
+import HandyJSON
 class BaseCollectionViewCell: UICollectionViewCell, Reusable {
     
     override init(frame: CGRect) {
@@ -22,4 +22,5 @@ class BaseCollectionViewCell: UICollectionViewCell, Reusable {
 
     open func setupLayout() {}
 
+    open func updateLayout(){}
 }

@@ -10,13 +10,13 @@
 
 import UIKit
 import SnapKit
-import TLAnimationTabBar
+
 
 public var tabbarHeight:CGFloat?
 
 class YDt3ViewController : BaseViewController {
     
-    private lazy var listViewModel = YDBooksListViewModel()
+    private lazy var listViewModel = BooksListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,10 +144,10 @@ class YDt3ViewController : BaseViewController {
     
 
     @objc func loadData(){
-        listViewModel.loadBooks { (isSuccess) in
-            self.collectionView.myHead.endRefreshing()
-            self.collectionView.reloadData()
-        }
+//        listViewModel.loadBooks { (isSuccess) in
+//            self.collectionView.myHead.endRefreshing()
+//            self.collectionView.reloadData()
+//        }
     }
     
     override func setupLayout(){
@@ -189,9 +189,6 @@ extension YDt3ViewController:UICollectionViewDelegate,UICollectionViewDataSource
     //cell的视图
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: YDBookCollectionViewCell.self)
-        if indexPath.item < listViewModel.booksList.count {
-            //cell.viewModel = listViewModel.booksList[indexPath.item]
-        }
         
         return cell
     }
@@ -202,7 +199,7 @@ extension YDt3ViewController:UICollectionViewDelegate,UICollectionViewDataSource
     //一个section里有几个cell
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //返回9本书
-        return listViewModel.booksList.count
+        return 9
     }
     //cell的长宽
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

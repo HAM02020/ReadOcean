@@ -29,9 +29,9 @@ class LoginVC:BaseViewController{
         var params:[String:AnyObject] = [:]
         params["userName"] = userName as AnyObject
         params["password"] = password as AnyObject
-        Api.request(.POST,requestType: .login, parameters: params) { (json,isSuccess) in
-            print(json)
-        }
+//        Api.request(.POST,requestType: .login, parameters: params) { (json,isSuccess) in
+//            print(json)
+//        }
         
     }
     

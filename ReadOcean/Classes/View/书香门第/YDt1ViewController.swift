@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-import TLAnimationTabBar
+
 
 class YDt1ViewController : BaseViewController {
     
@@ -151,6 +151,7 @@ class YDt1ViewController : BaseViewController {
         // 注册cell
         collectionView.register(cellType: YDBookCollectionViewCell.self)
         collectionView.register(cellType: BookDetailCollectionViewCell.self)
+        
         //注册头部 尾部
         collectionView.register(supplementaryViewType: BookCollectionHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
         collectionView.register(supplementaryViewType: YDBookCollectionFooterView.self, ofKind: UICollectionView.elementKindSectionFooter)
@@ -227,7 +228,11 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
         
         let key = listViewModel.categoriesParams[indexPath.section]
         
+
+        
         switch indexPath.section {
+        case 0:
+            break
         case 2,4,7:
             if(indexPath.item != 0){
                 break
@@ -240,6 +245,7 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
         }
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: YDBookCollectionViewCell.self)
         cell.viewModel = listViewModel.dataDict[key]![indexPath.item]
+        cell.updatePicHeight(indexPath.section)
         return cell
         
         
@@ -268,13 +274,13 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
     }
     //cell的长宽
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var width = floor(Double(screenWidth - 15*3 - 10*2) / 4.0)
-        var height = width * 2
+        var width = cellWidth_4
+        var height = cellHeight_4
         
         switch indexPath.section {
         case 0:
-            width = floor(Double(screenWidth - 15*3 - 10*2) / 3.0)
-            height = width * 1.75
+            width = cellWidth_3
+            height = cellHeight_3
         case 2,4,7:
             if(indexPath.item == 0){
                 height = width*1.5

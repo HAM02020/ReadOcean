@@ -45,7 +45,7 @@ class BlocksListViewModel{
     
     func getBlocks(isPullup:Bool,completion:@escaping()->Void){
         
-        ApiProvider.requestDataList(.getBlocks(category: category, pageNum: pageNum), model: Block.self) {[weak self] (modelList) in
+        networkManager.requestDataList(.getBlocks(category: category, pageNum: pageNum), model: Block.self) {[weak self] (modelList) in
             
             guard let modelList = modelList else { return }
             
@@ -61,7 +61,7 @@ class BlocksListViewModel{
     
     func getBooks(isPullup:Bool,completion:@escaping()->Void){
         
-        ApiProvider.requestDataList(.getBooks(category: category, pageNum: pageNum), model: Book.self) {[weak self] (dataList) in
+        networkManager.requestDataList(.getBooks(category: category, pageNum: pageNum), model: Book.self) {[weak self] (dataList) in
             
             guard let dataList = dataList else{return}
             
@@ -95,7 +95,7 @@ class BlocksListViewModel{
     }
     func getbookById(bookId:String,completion:@escaping(_ book:Book)->()){
         
-        ApiProvider.requestData(.infoBook(bookId: bookId), model: Book.self) {(model) in
+        networkManager.requestData(.infoBook(bookId: bookId), model: Book.self) {(model) in
             
             guard let model = model else{return}
             

@@ -4,18 +4,16 @@ target 'ReadOcean' do
   use_frameworks!
   inhibit_all_warnings!
 
-pod "AFNetworking"
 pod "SDWebImage"
-
-pod 'TLAnimationTabBar', '~> 1.0.3'
 pod 'SnapKitExtend'
 pod 'Reusable'
 pod 'MJRefresh'
 pod 'MBProgressHUD'
 pod 'Moya'
 pod 'HandyJSON'
-pod 'HMSegmentedControl'
-pod 'Then'
+pod 'ShadowView'
 pod 'Kingfisher'
+pod 'SwiftyJSON'
+pod 'ColorCube'
 
 end
