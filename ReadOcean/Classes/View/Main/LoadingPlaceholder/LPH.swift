@@ -9,6 +9,7 @@
 import Foundation
 
 class LPH {
+    //11
     private static let main:LoadingPlaceholderView = {
         let loadingCover = LoadingPlaceholderView()
         loadingCover.gradientColor = .white
