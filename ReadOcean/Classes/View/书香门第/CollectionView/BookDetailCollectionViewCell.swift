@@ -10,11 +10,11 @@ import UIKit
 class BookDetailCollectionViewCell:BaseCollectionViewCell{
     
     let bgColors = ["e5ebfa","ffede8","f2f4de","e5f8ed"]
-    let random = Int(arc4random() % 4)
     
+
     private lazy var view:UIView = {
         let v = UIView()
-        
+        let random = Int(arc4random() % 4)
         v.backgroundColor = UIColor(hexString: bgColors[random])
         v.layer.cornerRadius = 5
 //        v.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -128,11 +128,22 @@ class BookDetailCollectionViewCell:BaseCollectionViewCell{
     
     
     override func setupLayout() {
+
         backgroundColor = UIColor.clear
         contentView.addSubview(view)
         view.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(20)
             make.left.right.bottom.equalToSuperview()
+        }
+    }
+    func updateTableViewCell(){
+        //view.backgroundColor = UIColor.white
+        view.snp.updateConstraints { (make) in
+            make.edges.equalToSuperview()
+            
+        }
+        cover.snp.updateConstraints { (make) in
+            make.top.equalToSuperview()
         }
     }
 }

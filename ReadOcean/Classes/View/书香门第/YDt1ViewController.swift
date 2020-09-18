@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 
+let YDBookCollectionViewNormalCell = "BookCollectionViewNormalCell"
+
 
 class YDt1ViewController : BaseViewController {
     
@@ -16,7 +18,7 @@ class YDt1ViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
+        loadData(true)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,12 +44,12 @@ class YDt1ViewController : BaseViewController {
         v.addSubview(background_img)
         background_img.snp.makeConstraints { (make) in
             make.left.top.right.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-50)
+            make.bottom.equalToSuperview().offset(-32)
         }
         
         v.addSubview(rect)
         rect.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview()
             make.centerX.equalTo(v.snp.centerX)
             make.width.equalTo(screenWidth-30)
             make.height.equalTo(64)
@@ -134,7 +136,7 @@ class YDt1ViewController : BaseViewController {
         let layout = UICollectionViewFlowLayout.init()
         //layout.itemSize = CGSize(width: 100 , height: 50)
         //行列间距
-        layout.minimumLineSpacing = 10
+        layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 15
         
         //layout.footerReferenceSize = CGSize(width: screenWidth, height: 50)
@@ -145,12 +147,13 @@ class YDt1ViewController : BaseViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.alwaysBounceVertical = true
-        collectionView.contentInset = UIEdgeInsets(top: screenHeight/4.0 - 30, left: 0, bottom: 0, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: screenHeight/4.0, left: 0, bottom: 0, right: 0)
         //滚动条位置
         collectionView.scrollIndicatorInsets = collectionView.contentInset
         // 注册cell
         collectionView.register(cellType: YDBookCollectionViewCell.self)
         collectionView.register(cellType: BookDetailCollectionViewCell.self)
+        collectionView.register(UINib(nibName: "BookCollectionViewNormalCell", bundle: nil), forCellWithReuseIdentifier: YDBookCollectionViewNormalCell)
         
         //注册头部 尾部
         collectionView.register(supplementaryViewType: BookCollectionHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
@@ -169,22 +172,25 @@ class YDt1ViewController : BaseViewController {
     }()
     
     
-    
-    var value:CGFloat?{
-        didSet{
-            if let value = value{
-                print("value didset")
-            }
-            
-        }
-    }
-    
-    
 
-    @objc func loadData(){
+    
+    
+    
+    
+    @objc func loadData(_ isFirstLoad:Bool = false){
+    
+        if isFirstLoad{
+            LPH.cover(self.view, animated: false)
+        }else{
+            ProgressHUD.show()
+        }
+        
+        
         listViewModel.getBooks {[weak self] in
             self?.collectionView.myHead.endRefreshing()
             self?.collectionView.reloadData()
+            LPH.uncover()
+            ProgressHUD.showSucceed()
         }
     }
     
@@ -199,7 +205,7 @@ class YDt1ViewController : BaseViewController {
         view.addSubview(headerView)
         headerView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(screenHeight/4)
+            make.height.equalTo(collectionView.contentInset.top)
         }
         
         
@@ -233,16 +239,23 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
         switch indexPath.section {
         case 0:
             break
-        case 2,4,7:
+        case 4:
+            let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: BookDetailCollectionViewCell.self)
+            cell.viewModel = listViewModel.dataDict[key]![indexPath.item]
+            cell.updateTableViewCell()
+            return cell
+        case 2,7:
             if(indexPath.item != 0){
                 break
             }
             let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: BookDetailCollectionViewCell.self)
             cell.viewModel = listViewModel.dataDict[key]![indexPath.item]
             return cell
+
         default:
             break
         }
+        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YDBookCollectionViewNormalCell, for: indexPath) as! BookCollectionViewCell
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: YDBookCollectionViewCell.self)
         cell.viewModel = listViewModel.dataDict[key]![indexPath.item]
         cell.updatePicHeight(indexPath.section)
@@ -261,10 +274,12 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
         let count = listViewModelCount > listViewModel.maxCellNum ? listViewModel.maxCellNum : listViewModelCount
         
         switch section {
-        case 0:
-            return 3
+//        case 0:
+//            return 3
+        case 4:
+            return listViewModelCount
         //返回9本书
-        case 2,4,7:
+        case 2,7:
             return listViewModelCount < 9 ? listViewModelCount : 9
         default:
             break
@@ -278,14 +293,17 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
         var height = cellHeight_4
         
         switch indexPath.section {
-        case 0:
-            width = cellWidth_3
-            height = cellHeight_3
-        case 2,4,7:
+//        case 0:
+//            width = cellWidth_3
+//            height = cellHeight_3
+        case 4:
+            width = Double(screenWidth) - cellEdgeMargin*2
+            height = picHeight_4
+        case 2,7:
             if(indexPath.item == 0){
-                height = width*1.5
+                height = picHeight_4
                 width = Double(screenWidth - 20)
-                
+
             }
         default:
             break
@@ -307,9 +325,9 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
 
     // 头部高度
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == 0{
-            return CGSize(width: screenWidth, height: 80)
-        }
+//        if section == 0{
+//            return CGSize(width: screenWidth, height: 80)
+//        }
         return CGSize(width: screenWidth, height: 50)
     }
 

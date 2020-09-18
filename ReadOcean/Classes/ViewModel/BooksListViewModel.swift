@@ -13,7 +13,21 @@ class BooksListViewModel{
     let categoriesParams = ["category_shige","category_kexue","category_manhua","category_tonghua","category_shenhua","category_lishi","category_shuxue","category_xiaoshuo","category_mingzhu","category_mingren"]
     let maxCellNum = 8
     
-    lazy var dataDict = [String:[Book]]()
+    var dataDict = [String:[Book]]()
+    
+    init() {
+        //为了loadingCover 添加假数据
+        var bookList = [Book]()
+        for _ in 0..<8{
+            bookList.append(Book())
+        }
+        self.dataDict["category_shige"] = bookList
+        self.dataDict["category_kexue"] = bookList
+        self.dataDict["category_manhua"] = bookList
+    }
+    
+    
+    
     
     func getBooks(completion:@escaping()->Void){
         //调度组

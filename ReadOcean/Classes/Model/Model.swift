@@ -46,6 +46,13 @@ struct MyBlock {
     var author:String?
     var introduction:String?
 }
+
+enum TaskType{
+    case none(_ rawValue:String = "")
+    case done(_ rawValue:String = "done")
+    case pending(_ rawValue:String = "pending")
+    case overdue(_ rawValue:String = "overdue")
+}
 struct Task:HandyJSON{
     
     var id:String?

@@ -30,6 +30,8 @@ class CategoryVC : BaseViewController {
                 self.tableView.myHead.endRefreshing()
                 self.tableView.mj_footer?.endRefreshing()
                 self.tableView.reloadData()
+                LPH.uncover()
+                //ProgressHUD.showSucceed()
                 print("刷新次数 = \(refreshCount)")
             default:
                 break
@@ -43,7 +45,7 @@ class CategoryVC : BaseViewController {
         // Do any additional setup after loading the view.
         
         view.backgroundColor = UIColor(hexString: "f2f2f2")
-        loadData(isPullup: true)
+        loadData(isFirstLoad:true,isPullup: true)
     }
 
     
@@ -98,10 +100,17 @@ class CategoryVC : BaseViewController {
     
     var refreshCount = 0
     
-    @objc func loadData(isPullup:Bool){
+    @objc func loadData(isFirstLoad:Bool=false,isPullup:Bool){
+        
         self.synchronized {[weak self] () -> () in
+            if isFirstLoad{
+                LPH.cover(self!.view,animated: false)
+            }else{
+                //ProgressHUD.show()
+            }
+            
             refreshState = .isRefreshing
-            listViewModel.loadBlocks(isPullup:isPullup,completion: {[weak self] in
+            listViewModel.loadMyBlocks(isFirstLoad:isFirstLoad,isPullup:isPullup,completion: {[weak self] in
                 self?.refreshCount += 1
                 self?.refreshState = .didRefresh
 

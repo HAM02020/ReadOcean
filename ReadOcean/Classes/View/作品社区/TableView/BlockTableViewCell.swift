@@ -31,12 +31,12 @@ class BlockTableViewCell:BaseTableViewCell{
             make.top.equalToSuperview().offset(15)
             make.left.equalTo(cover.snp.right).offset(15)
             make.width.equalTo(screenWidth-15*2-100-15*2)
-            make.height.equalTo(30)
+            make.height.equalTo(20)
         }
         v.addSubview(author)
         author.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabel.snp.left)
-            make.top.equalTo(titleLabel.snp.bottom)
+            make.top.equalTo(titleLabel.snp.bottom).offset(5)
             make.width.equalTo(screenWidth-15*2-100-15*2)
             make.height.equalTo(10)
         }

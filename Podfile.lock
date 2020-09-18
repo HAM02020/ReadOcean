@@ -4,7 +4,6 @@ PODS:
   - Kingfisher (5.15.0):
     - Kingfisher/Core (= 5.15.0)
   - Kingfisher/Core (5.15.0)
-  - MBProgressHUD (1.2.0)
   - MJRefresh (3.5.0)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
@@ -18,22 +17,17 @@ PODS:
   - SDWebImage (5.8.4):
     - SDWebImage/Core (= 5.8.4)
   - SDWebImage/Core (5.8.4)
-  - ShadowView (1.4.3)
   - SnapKit (5.0.1)
-  - SnapKitExtend (1.0.7):
-    - SnapKit
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - HandyJSON
   - Kingfisher
-  - MBProgressHUD
   - MJRefresh
   - Moya
   - Reusable
   - SDWebImage
-  - ShadowView
-  - SnapKitExtend
+  - SnapKit
   - SwiftyJSON
 
 SPEC REPOS:
@@ -41,30 +35,24 @@ SPEC REPOS:
     - Alamofire
     - HandyJSON
     - Kingfisher
-    - MBProgressHUD
     - MJRefresh
     - Moya
     - Reusable
     - SDWebImage
-    - ShadowView
     - SnapKit
-    - SnapKitExtend
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
-  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
-  ShadowView: d2d92fd2706b3f6a182be2147149db0b1cf7700d
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 2683ba2e60c3ed650685b145f2a417ab599ec1a9
+PODFILE CHECKSUM: 0f7f5d62e23457b903dc05b90e6d907772d87284
 
 COCOAPODS: 1.9.1

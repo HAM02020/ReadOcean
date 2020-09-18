@@ -43,6 +43,16 @@
 		017877292513325A00A25F4D /* Image+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017877282513325A00A25F4D /* Image+Shadow.swift */; };
 		017877322513529A00A25F4D /* CCLocalMaximum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0178772D2513529A00A25F4D /* CCLocalMaximum.m */; };
 		017877332513529A00A25F4D /* CCColorCube.m in Sources */ = {isa = PBXBuildFile; fileRef = 0178772E2513529A00A25F4D /* CCColorCube.m */; };
+		0178773A25147D3F00A25F4D /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178773925147D3F00A25F4D /* UserAccount.swift */; };
+		017877642514A90900A25F4D /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017877632514A90900A25F4D /* ProgressHUD.swift */; };
+		0178776D2514B39500A25F4D /* UIBezierPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017877692514B39400A25F4D /* UIBezierPath+.swift */; };
+		0178776E2514B39500A25F4D /* LoadingPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178776A2514B39400A25F4D /* LoadingPlaceholderView.swift */; };
+		0178776F2514B39500A25F4D /* Coverable+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178776B2514B39400A25F4D /* Coverable+UIKit.swift */; };
+		017877702514B39500A25F4D /* Coverable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178776C2514B39400A25F4D /* Coverable.swift */; };
+		017877722514B8AC00A25F4D /* BookCollectionViewNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 017877712514B8AC00A25F4D /* BookCollectionViewNormalCell.xib */; };
+		017877742514BD8200A25F4D /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017877732514BD8200A25F4D /* BookCollectionViewCell.swift */; };
+		017877772514DB0500A25F4D /* LPH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017877762514DB0500A25F4D /* LPH.swift */; };
+		0178777A25150C2E00A25F4D /* MGShadowImageVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178777925150C2E00A25F4D /* MGShadowImageVIew.swift */; };
 		017962CC24E3D75500C26419 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017962CB24E3D75500C26419 /* Global.swift */; };
 		017962CE24E3DD3800C26419 /* YDBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017962CD24E3DD3800C26419 /* YDBookCollectionViewCell.swift */; };
 		017962D024E5969500C26419 /* BaseCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017962CF24E5969500C26419 /* BaseCollectionReusableView.swift */; };
@@ -130,6 +140,16 @@
 		0178772E2513529A00A25F4D /* CCColorCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCColorCube.m; sourceTree = "<group>"; };
 		0178772F2513529A00A25F4D /* CCLocalMaximum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLocalMaximum.h; sourceTree = "<group>"; };
 		017877312513529A00A25F4D /* ro-bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ro-bridge.h"; sourceTree = "<group>"; };
+		0178773925147D3F00A25F4D /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		017877632514A90900A25F4D /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		017877692514B39400A25F4D /* UIBezierPath+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+.swift"; sourceTree = "<group>"; };
+		0178776A2514B39400A25F4D /* LoadingPlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingPlaceholderView.swift; sourceTree = "<group>"; };
+		0178776B2514B39400A25F4D /* Coverable+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Coverable+UIKit.swift"; sourceTree = "<group>"; };
+		0178776C2514B39400A25F4D /* Coverable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coverable.swift; sourceTree = "<group>"; };
+		017877712514B8AC00A25F4D /* BookCollectionViewNormalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCollectionViewNormalCell.xib; sourceTree = "<group>"; };
+		017877732514BD8200A25F4D /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
+		017877762514DB0500A25F4D /* LPH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPH.swift; sourceTree = "<group>"; };
+		0178777925150C2E00A25F4D /* MGShadowImageVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGShadowImageVIew.swift; sourceTree = "<group>"; };
 		017962CB24E3D75500C26419 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		017962CD24E3DD3800C26419 /* YDBookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBookCollectionViewCell.swift; sourceTree = "<group>"; };
 		017962CF24E5969500C26419 /* BaseCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -380,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				01C143EA249363B5006ECD2C /* Model.swift */,
+				0178773925147D3F00A25F4D /* UserAccount.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -441,6 +462,7 @@
 		01508D9C2478CF7E000AA9E9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				017877752514DADD00A25F4D /* LoadingPlaceholder */,
 				017962D124E596D600C26419 /* BaseView */,
 				01508D9D2478D0C1000AA9E9 /* YDMainViewController.swift */,
 				01508DAB247AA237000AA9E9 /* YDNavigationViewController.swift */,
@@ -481,9 +503,47 @@
 			path = ColorCube;
 			sourceTree = "<group>";
 		};
+		017877622514A8FB00A25F4D /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				017877632514A90900A25F4D /* ProgressHUD.swift */,
+			);
+			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
+		017877682514B39400A25F4D /* LoadingPlaceholderView */ = {
+			isa = PBXGroup;
+			children = (
+				017877692514B39400A25F4D /* UIBezierPath+.swift */,
+				0178776A2514B39400A25F4D /* LoadingPlaceholderView.swift */,
+				0178776B2514B39400A25F4D /* Coverable+UIKit.swift */,
+				0178776C2514B39400A25F4D /* Coverable.swift */,
+			);
+			path = LoadingPlaceholderView;
+			sourceTree = "<group>";
+		};
+		017877752514DADD00A25F4D /* LoadingPlaceholder */ = {
+			isa = PBXGroup;
+			children = (
+				017877762514DB0500A25F4D /* LPH.swift */,
+			);
+			path = LoadingPlaceholder;
+			sourceTree = "<group>";
+		};
+		0178777825150C0D00A25F4D /* MGShadowImageVIew */ = {
+			isa = PBXGroup;
+			children = (
+				0178777925150C2E00A25F4D /* MGShadowImageVIew.swift */,
+			);
+			path = MGShadowImageVIew;
+			sourceTree = "<group>";
+		};
 		017962CA24E3D72F00C26419 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				0178777825150C0D00A25F4D /* MGShadowImageVIew */,
+				017877682514B39400A25F4D /* LoadingPlaceholderView */,
+				017877622514A8FB00A25F4D /* ProgressHUD */,
 				01213CDA25132B520096A91A /* Shawdow */,
 				013EC19125060C1A00BC8891 /* LLCycleScrollView */,
 				01C146A6250668EA0072586A /* GXSegmentPageView */,
@@ -513,6 +573,8 @@
 				017962D524E598B600C26419 /* BookCollectionHeaderView.swift */,
 				017962D724E598D200C26419 /* YDBookCollectionFooterView.swift */,
 				01CA62F125120887006522AE /* BookDetailCollectionViewCell.swift */,
+				017877712514B8AC00A25F4D /* BookCollectionViewNormalCell.xib */,
+				017877732514BD8200A25F4D /* BookCollectionViewCell.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -655,6 +717,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				017877722514B8AC00A25F4D /* BookCollectionViewNormalCell.xib in Resources */,
 				013EC19E25060C1A00BC8891 /* LICENSE in Resources */,
 				013BD86E24752ADF00AABEA2 /* LaunchScreen.storyboard in Resources */,
 				013EC19F25060C1A00BC8891 /* README.md in Resources */,
@@ -720,18 +783,22 @@
 				01E755E4250E00DA0038E782 /* GXAnimationSectorDelegate.m in Sources */,
 				012D85C024FE439F008B2063 /* NSArray+Extensions.swift in Sources */,
 				013EC1A325060C1A00BC8891 /* LLSnakePageControl.swift in Sources */,
+				017877642514A90900A25F4D /* ProgressHUD.swift in Sources */,
 				01E755E6250E00DA0038E782 /* GXAnimationSystemDelegate.m in Sources */,
 				017962DA24E59CAB00C26419 /* HomeNavView.swift in Sources */,
 				01E755E7250E00DA0038E782 /* GXAnimationOglFlipDelegate.m in Sources */,
 				013EC1A025060C1A00BC8891 /* LLViewExtensions.swift in Sources */,
 				01C146AE250668EA0072586A /* GXSegmentView+Configuration.swift in Sources */,
 				01E755E5250E00DA0038E782 /* GXAnimationErectDelegate.m in Sources */,
+				017877772514DB0500A25F4D /* LPH.swift in Sources */,
+				0178776F2514B39500A25F4D /* Coverable+UIKit.swift in Sources */,
 				012D85B824FD4112008B2063 /* TaskTableViewCell.swift in Sources */,
 				01B02890250E4F2700FD4896 /* DemoPickerVC.swift in Sources */,
 				014488FE24BF4BE300B61DDB /* WBTitleButton.swift in Sources */,
 				01508DAA2478FEC3000AA9E9 /* YDt5ViewController.swift in Sources */,
 				017877322513529A00A25F4D /* CCLocalMaximum.m in Sources */,
 				01E755E0250E00DA0038E782 /* GXAnimationCubeDelegate.m in Sources */,
+				0178773A25147D3F00A25F4D /* UserAccount.swift in Sources */,
 				01508DAF247AA413000AA9E9 /* UIColor+Extensions.swift in Sources */,
 				017962D024E5969500C26419 /* BaseCollectionReusableView.swift in Sources */,
 				01E755E3250E00DA0038E782 /* UIViewController+GXTransitionDelegate.m in Sources */,
@@ -739,6 +806,7 @@
 				017962CC24E3D75500C26419 /* Global.swift in Sources */,
 				01CA62F225120888006522AE /* BookDetailCollectionViewCell.swift in Sources */,
 				013EC1A625060C1A00BC8891 /* LLImagePageControl.swift in Sources */,
+				0178776E2514B39500A25F4D /* LoadingPlaceholderView.swift in Sources */,
 				01508DA62478FEAE000AA9E9 /* YDt3ViewController.swift in Sources */,
 				013EC1A125060C1A00BC8891 /* LLPillPageControl.swift in Sources */,
 				017962D324E596FE00C26419 /* BaseCollectionViewCell.swift in Sources */,
@@ -749,7 +817,9 @@
 				01A83453249366D1002D2327 /* YDNetworkManager.swift in Sources */,
 				01E755E9250E00DA0038E782 /* GXAnimationPushALDelegate.m in Sources */,
 				0197120A24E9738000C57717 /* UINavigationController+Extensions.swift in Sources */,
+				0178777A25150C2E00A25F4D /* MGShadowImageVIew.swift in Sources */,
 				01E755EA250E00DA0038E782 /* GXAnimationBaseDelegate.m in Sources */,
+				0178776D2514B39500A25F4D /* UIBezierPath+.swift in Sources */,
 				013EC1A525060C1A00BC8891 /* LLFilledPageControl.swift in Sources */,
 				01079D67250A605D00593D34 /* BlockTableViewCell.swift in Sources */,
 				017962DC24E68D7700C26419 /* MyRefresh.swift in Sources */,
@@ -768,10 +838,12 @@
 				017962D824E598D200C26419 /* YDBookCollectionFooterView.swift in Sources */,
 				014488F824BE0BBF00B61DDB /* UINavigationBar+Extensions.swift in Sources */,
 				014488FA24BE0CF700B61DDB /* CustomNavigationBar.swift in Sources */,
+				017877702514B39500A25F4D /* Coverable.swift in Sources */,
 				017877292513325A00A25F4D /* Image+Shadow.swift in Sources */,
 				01079D65250A496B00593D34 /* CategoryVC.swift in Sources */,
 				01CA62F02511F709006522AE /* YDt1ViewController.swift in Sources */,
 				012D85BA24FD4199008B2063 /* BaseTableViewCell.swift in Sources */,
+				017877742514BD8200A25F4D /* BookCollectionViewCell.swift in Sources */,
 				01CA62EE2511F407006522AE /* BooksListViewModel.swift in Sources */,
 				01E755E2250E00DA0038E782 /* GXAnimationPushELDelegate.m in Sources */,
 				012D85BC24FD65EE008B2063 /* TeacherTaskVC.swift in Sources */,

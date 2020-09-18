@@ -11,8 +11,7 @@ import SwiftyJSON
 
 //public let HOSTADDRESS = "https://59.38.32.42"
 public let HOST_ADDRESS = "https://ro.bnuz.edu.cn"
-public let USER_ID : String = "F2F9105E-B6F8-C2A2-279A-A9DF84701F57"
-public var USER_TYPE : String = "user_type_student"
+
 
 
 let networkManager = MoyaProvider<Api>(requestClosure: timeoutClosure)
@@ -36,10 +35,10 @@ enum Api{
     case getBlocks(category:String?,pageNum:Int? = 1)
     
     //我的任务
-    case myTask(userId:String,userType:String = USER_TYPE)
-    case taskDetail(taskId:String,userId:String = USER_ID,userType:String = USER_TYPE)
+    case myTask(user:UserAccount = UserAccount.main,taskType:TaskType = .none())
+    case taskDetail(taskId:String,user:UserAccount = UserAccount.main)
     
-    case login(schoolId:Int = 1000000,userType:String = USER_TYPE,lat:Int = 1,lng:Int = 1,userName:String,password:String)
+    case login(user:UserAccount = UserAccount.main,lat:Int = 1,lng:Int = 1,userName:String,password:String)
 }
 
 extension Api:TargetType{
@@ -89,18 +88,28 @@ extension Api:TargetType{
             parmeters["pageNum"] = pageNum
         case .infoBook(let bookId):
             parmeters["bookId"] = bookId
-        case .myTask(let userId,let userType):
-            parmeters["userId"] = userId
-            parmeters["userType"] = userType
-        case .taskDetail(let taskId,let userId,let userType):
+        case .myTask(let user,let taskType):
+            parmeters["userId"] = user.userId
+            parmeters["userType"] = user.userType
+            switch taskType {
+            case .done(let rawValue):
+                parmeters["type"] = rawValue
+            case .pending(let rawValue):
+                parmeters["type"] = rawValue
+            case .overdue(let rawValue):
+                parmeters["type"] = rawValue
+            case .none(_):
+                break
+            }
+        case .taskDetail(let taskId,let user):
             parmeters["taskId"] = taskId
-            parmeters["userId"] = userId
-            parmeters["userType"] = userType
-        case .login(let schoolId,let userType,let lat,let lng,let userName,let password):
+            parmeters["userId"] = user.userId
+            parmeters["userType"] = user.userType
+        case .login(let user,let lat,let lng,let userName,let password):
             parmeters["userName"] = userName
             parmeters["password"] = password
-            parmeters["schoolId"] = schoolId
-            parmeters["userType"] = userType
+            parmeters["schoolId"] = user.schoolId
+            parmeters["userType"] = user.userType
             parmeters["lat"] = lat
             parmeters["lng"] = lng
             

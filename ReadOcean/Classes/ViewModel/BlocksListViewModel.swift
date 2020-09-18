@@ -16,13 +16,17 @@ class BlocksListViewModel{
     lazy var blockList:[Block] = []
     lazy var bookList:[Book] = []
     lazy var myBlockList:[MyBlock] = []
-    
-    func loadBlocks(isPullup:Bool,completion:@escaping()->Void){
+    init() {
+        for _ in 1...4{
+            myBlockList.append(MyBlock())
+        }
+    }
+    func loadMyBlocks(isFirstLoad:Bool = false,isPullup:Bool,completion:@escaping()->Void){
 
 
         
         getBlocks(isPullup: isPullup, completion: {[weak self] in
-            self?.getMyBlocks(isPullup: isPullup) {[weak self] in
+            self?.getMyBlocks(isFirstLoad:isFirstLoad,isPullup: isPullup) {[weak self] in
                 
                 
                 if isPullup{
@@ -103,7 +107,7 @@ class BlocksListViewModel{
             
         }
     }
-    func getMyBlocks(isPullup:Bool,completion:@escaping()->Void){
+    func getMyBlocks(isFirstLoad:Bool = false,isPullup:Bool,completion:@escaping()->Void){
         
         getBooks(isPullup: isPullup) {[weak self] in
             
@@ -126,6 +130,7 @@ class BlocksListViewModel{
                     myBlock.introduction = book.introduction
                     list.append(myBlock)
                     
+                    
                     self?.bookList.removeAll { (item) -> Bool in
                         return item.name == book.name
                     }
@@ -134,6 +139,9 @@ class BlocksListViewModel{
                     }
                 }
                 
+            }
+            if isFirstLoad{
+                self?.myBlockList.removeAll()
             }
             if(isPullup){
                 self?.myBlockList = self!.myBlockList  + list
