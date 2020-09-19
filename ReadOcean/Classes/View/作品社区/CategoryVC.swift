@@ -65,8 +65,8 @@ class CategoryVC : BaseViewController {
         t.register(cellType: BlockTableViewCell.self)
         //去除分割线
         t.separatorStyle = .none
-        //MARK:解决reloadData 闪动的问题
-        t.estimatedRowHeight = 200
+        //MARK:解决reloadData上拉 闪动的问题
+        t.estimatedRowHeight = 180
         t.estimatedSectionHeaderHeight = 0
         t.estimatedSectionFooterHeight = 0
         
@@ -150,7 +150,7 @@ extension CategoryVC : UITableViewDelegate,UITableViewDataSource{
     }
     //cell高度
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 180
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 

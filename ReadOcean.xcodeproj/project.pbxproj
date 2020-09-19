@@ -71,15 +71,15 @@
 		01B02890250E4F2700FD4896 /* DemoPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B0288F250E4F2700FD4896 /* DemoPickerVC.swift */; };
 		01C143EB249363B5006ECD2C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C143EA249363B5006ECD2C /* Model.swift */; };
 		01C14698250666170072586A /* YDt4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C14697250666170072586A /* YDt4ViewController.swift */; };
-		01C146AB250668EA0072586A /* GXSegmentTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C146A7250668EA0072586A /* GXSegmentTitleView.swift */; };
-		01C146AC250668EA0072586A /* GXSegmentTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C146A8250668EA0072586A /* GXSegmentTitleCell.swift */; };
-		01C146AD250668EA0072586A /* GXSegmentPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C146A9250668EA0072586A /* GXSegmentPageView.swift */; };
-		01C146AE250668EA0072586A /* GXSegmentView+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C146AA250668EA0072586A /* GXSegmentView+Configuration.swift */; };
 		01C146B125068B290072586A /* DiscoverNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C146B025068B290072586A /* DiscoverNavView.swift */; };
 		01CA62E72511BA82006522AE /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CA62E62511BA82006522AE /* Api.swift */; };
 		01CA62EE2511F407006522AE /* BooksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CA62ED2511F407006522AE /* BooksListViewModel.swift */; };
 		01CA62F02511F709006522AE /* YDt1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CA62EF2511F709006522AE /* YDt1ViewController.swift */; };
 		01CA62F225120888006522AE /* BookDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CA62F125120887006522AE /* BookDetailCollectionViewCell.swift */; };
+		01D5685D25158CF200E3248D /* GXSegmentTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5685925158CF200E3248D /* GXSegmentTitleView.swift */; };
+		01D5685E25158CF200E3248D /* GXSegmentTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5685A25158CF200E3248D /* GXSegmentTitleCell.swift */; };
+		01D5685F25158CF200E3248D /* GXSegmentPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5685B25158CF200E3248D /* GXSegmentPageView.swift */; };
+		01D5686025158CF200E3248D /* GXSegmentView+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5685C25158CF200E3248D /* GXSegmentView+Configuration.swift */; };
 		01E755A3250B6B1B0038E782 /* BlocksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E755A2250B6B1B0038E782 /* BlocksListViewModel.swift */; };
 		01E755B9250CBB070038E782 /* Sync+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E755B8250CBB070038E782 /* Sync+Extensions.swift */; };
 		01E755C5250DBA070038E782 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E755C4250DBA070038E782 /* LoginVC.swift */; };
@@ -168,15 +168,15 @@
 		01B0288F250E4F2700FD4896 /* DemoPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPickerVC.swift; sourceTree = "<group>"; };
 		01C143EA249363B5006ECD2C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		01C14697250666170072586A /* YDt4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt4ViewController.swift; sourceTree = "<group>"; };
-		01C146A7250668EA0072586A /* GXSegmentTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXSegmentTitleView.swift; sourceTree = "<group>"; };
-		01C146A8250668EA0072586A /* GXSegmentTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXSegmentTitleCell.swift; sourceTree = "<group>"; };
-		01C146A9250668EA0072586A /* GXSegmentPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXSegmentPageView.swift; sourceTree = "<group>"; };
-		01C146AA250668EA0072586A /* GXSegmentView+Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GXSegmentView+Configuration.swift"; sourceTree = "<group>"; };
 		01C146B025068B290072586A /* DiscoverNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverNavView.swift; sourceTree = "<group>"; };
 		01CA62E62511BA82006522AE /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		01CA62ED2511F407006522AE /* BooksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListViewModel.swift; sourceTree = "<group>"; };
 		01CA62EF2511F709006522AE /* YDt1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt1ViewController.swift; sourceTree = "<group>"; };
 		01CA62F125120887006522AE /* BookDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		01D5685925158CF200E3248D /* GXSegmentTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXSegmentTitleView.swift; sourceTree = "<group>"; };
+		01D5685A25158CF200E3248D /* GXSegmentTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXSegmentTitleCell.swift; sourceTree = "<group>"; };
+		01D5685B25158CF200E3248D /* GXSegmentPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXSegmentPageView.swift; sourceTree = "<group>"; };
+		01D5685C25158CF200E3248D /* GXSegmentView+Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GXSegmentView+Configuration.swift"; sourceTree = "<group>"; };
 		01E755A2250B6B1B0038E782 /* BlocksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocksListViewModel.swift; sourceTree = "<group>"; };
 		01E755B8250CBB070038E782 /* Sync+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Extensions.swift"; sourceTree = "<group>"; };
 		01E755C4250DBA070038E782 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -236,14 +236,6 @@
 				01079D66250A605D00593D34 /* BlockTableViewCell.swift */,
 			);
 			path = TableView;
-			sourceTree = "<group>";
-		};
-		01213CDA25132B520096A91A /* Shawdow */ = {
-			isa = PBXGroup;
-			children = (
-				017877282513325A00A25F4D /* Image+Shadow.swift */,
-			);
-			path = Shawdow;
 			sourceTree = "<group>";
 		};
 		012D85AE24FCED29008B2063 /* 教师任务 */ = {
@@ -534,6 +526,7 @@
 			isa = PBXGroup;
 			children = (
 				0178777925150C2E00A25F4D /* MGShadowImageVIew.swift */,
+				017877282513325A00A25F4D /* Image+Shadow.swift */,
 			);
 			path = MGShadowImageVIew;
 			sourceTree = "<group>";
@@ -541,12 +534,11 @@
 		017962CA24E3D72F00C26419 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				01D5685825158CF200E3248D /* GXSegmentPageView */,
 				0178777825150C0D00A25F4D /* MGShadowImageVIew */,
 				017877682514B39400A25F4D /* LoadingPlaceholderView */,
 				017877622514A8FB00A25F4D /* ProgressHUD */,
-				01213CDA25132B520096A91A /* Shawdow */,
 				013EC19125060C1A00BC8891 /* LLCycleScrollView */,
-				01C146A6250668EA0072586A /* GXSegmentPageView */,
 				01E755C6250E00DA0038E782 /* GXTransition */,
 				014488FD24BF4BE300B61DDB /* WBTitleButton.swift */,
 				017962CB24E3D75500C26419 /* Global.swift */,
@@ -588,24 +580,23 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		01C146A6250668EA0072586A /* GXSegmentPageView */ = {
-			isa = PBXGroup;
-			children = (
-				01C146A7250668EA0072586A /* GXSegmentTitleView.swift */,
-				01C146A8250668EA0072586A /* GXSegmentTitleCell.swift */,
-				01C146A9250668EA0072586A /* GXSegmentPageView.swift */,
-				01C146AA250668EA0072586A /* GXSegmentView+Configuration.swift */,
-			);
-			name = GXSegmentPageView;
-			path = ../../../../../Learning/GXSegmentPageView/GXSegmentPageView;
-			sourceTree = "<group>";
-		};
 		01C146AF25068B030072586A /* View */ = {
 			isa = PBXGroup;
 			children = (
 				01C146B025068B290072586A /* DiscoverNavView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		01D5685825158CF200E3248D /* GXSegmentPageView */ = {
+			isa = PBXGroup;
+			children = (
+				01D5685925158CF200E3248D /* GXSegmentTitleView.swift */,
+				01D5685A25158CF200E3248D /* GXSegmentTitleCell.swift */,
+				01D5685B25158CF200E3248D /* GXSegmentPageView.swift */,
+				01D5685C25158CF200E3248D /* GXSegmentView+Configuration.swift */,
+			);
+			path = GXSegmentPageView;
 			sourceTree = "<group>";
 		};
 		01E755C6250E00DA0038E782 /* GXTransition */ = {
@@ -788,7 +779,6 @@
 				017962DA24E59CAB00C26419 /* HomeNavView.swift in Sources */,
 				01E755E7250E00DA0038E782 /* GXAnimationOglFlipDelegate.m in Sources */,
 				013EC1A025060C1A00BC8891 /* LLViewExtensions.swift in Sources */,
-				01C146AE250668EA0072586A /* GXSegmentView+Configuration.swift in Sources */,
 				01E755E5250E00DA0038E782 /* GXAnimationErectDelegate.m in Sources */,
 				017877772514DB0500A25F4D /* LPH.swift in Sources */,
 				0178776F2514B39500A25F4D /* Coverable+UIKit.swift in Sources */,
@@ -802,11 +792,13 @@
 				01508DAF247AA413000AA9E9 /* UIColor+Extensions.swift in Sources */,
 				017962D024E5969500C26419 /* BaseCollectionReusableView.swift in Sources */,
 				01E755E3250E00DA0038E782 /* UIViewController+GXTransitionDelegate.m in Sources */,
-				01C146AB250668EA0072586A /* GXSegmentTitleView.swift in Sources */,
+				01D5686025158CF200E3248D /* GXSegmentView+Configuration.swift in Sources */,
+				01D5685F25158CF200E3248D /* GXSegmentPageView.swift in Sources */,
 				017962CC24E3D75500C26419 /* Global.swift in Sources */,
 				01CA62F225120888006522AE /* BookDetailCollectionViewCell.swift in Sources */,
 				013EC1A625060C1A00BC8891 /* LLImagePageControl.swift in Sources */,
 				0178776E2514B39500A25F4D /* LoadingPlaceholderView.swift in Sources */,
+				01D5685D25158CF200E3248D /* GXSegmentTitleView.swift in Sources */,
 				01508DA62478FEAE000AA9E9 /* YDt3ViewController.swift in Sources */,
 				013EC1A125060C1A00BC8891 /* LLPillPageControl.swift in Sources */,
 				017962D324E596FE00C26419 /* BaseCollectionViewCell.swift in Sources */,
@@ -815,6 +807,7 @@
 				01079D63250A424200593D34 /* YDt2ViewController.swift in Sources */,
 				01C143EB249363B5006ECD2C /* Model.swift in Sources */,
 				01A83453249366D1002D2327 /* YDNetworkManager.swift in Sources */,
+				01D5685E25158CF200E3248D /* GXSegmentTitleCell.swift in Sources */,
 				01E755E9250E00DA0038E782 /* GXAnimationPushALDelegate.m in Sources */,
 				0197120A24E9738000C57717 /* UINavigationController+Extensions.swift in Sources */,
 				0178777A25150C2E00A25F4D /* MGShadowImageVIew.swift in Sources */,
@@ -847,7 +840,6 @@
 				01CA62EE2511F407006522AE /* BooksListViewModel.swift in Sources */,
 				01E755E2250E00DA0038E782 /* GXAnimationPushELDelegate.m in Sources */,
 				012D85BC24FD65EE008B2063 /* TeacherTaskVC.swift in Sources */,
-				01C146AD250668EA0072586A /* GXSegmentPageView.swift in Sources */,
 				01A834592493A5B2002D2327 /* UIImageView + Extensions.swift in Sources */,
 				012D85B224FCEE90008B2063 /* BaseTaskVC.swift in Sources */,
 				017962E224E91B5700C26419 /* YDDemoViewController.swift in Sources */,
@@ -856,7 +848,6 @@
 				01079D60250A012A00593D34 /* PModel.swift in Sources */,
 				01508DAC247AA237000AA9E9 /* YDNavigationViewController.swift in Sources */,
 				013EC1A225060C1A00BC8891 /* LLCycleScrollView.swift in Sources */,
-				01C146AC250668EA0072586A /* GXSegmentTitleCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

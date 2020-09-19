@@ -15,6 +15,7 @@ class LPH {
         loadingCover.gradientColor = .white
         loadingCover.backgroundColor = .white
         loadingCover.fadeAnimationDuration = TimeInterval(0.5)
+        //LoadingPlaceholderView.GradientiConfiguration() .animationDuration = TimeInterval(0.5)
         return loadingCover
     }()
     static func cover(_ viewToCover: UIView, animated: Bool = false){

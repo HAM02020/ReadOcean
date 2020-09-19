@@ -51,11 +51,7 @@ class YDBookCollectionViewCell: BaseCollectionViewCell {
         didSet{
             titleLabel.text = viewModel?.name
             authorLabel.text = viewModel?.author
-            //iconView.mg_setImage(urlString: viewModel?.picUrl, placeholderImage: UIImage(named: "placeholder"))
-            shadowView.imageView.sd_setImage(with: URL(string: viewModel?.picUrl ?? ""), placeholderImage: UIImage(named: "placeholder"), options: []) {[weak self] (img, _, _, _) in
-                //self?.shadowView.layer.shadowColor = img?.mostColor.cgColor
-                self?.shadowView.layer.shadowColor = img?.myMostColor.cgColor
-            }
+            shadowView.mg_setImage(urlString: viewModel?.picUrl, placeholderImage: nil)
             
         }
     }

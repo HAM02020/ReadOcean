@@ -43,7 +43,7 @@ class MGShadowImageVIew:UIView{
     }
     
     lazy var imageView: UIImageView = {
-        let iconView = UIImageView(image: UIImage(named: "placeholder"))
+        let iconView = UIImageView()
         iconView.contentMode = .scaleAspectFill
         iconView.clipsToBounds = false
         
@@ -84,4 +84,25 @@ class MGShadowImageVIew:UIView{
         
         
     }
+    
+    func mg_setImage(urlString:String?,placeholderImage : UIImage?) {
+            
+            //处理url
+            guard let urlString = urlString,
+            let url = URL(string: urlString) else {
+                //  设置占位图像
+                imageView.image = placeholderImage
+                return
+            }
+            //print("url setImage =  \(url)")
+            
+            imageView.sd_setImage(with: url, placeholderImage: placeholderImage, options: [], progress: nil) {
+                [weak self](image, _, _, _) in
+                
+                DispatchQueue.main.async {
+                    self?.layer.shadowColor = self?.imageView.image?.myMostColor.cgColor
+                }
+                
+            }
+        }
 }
