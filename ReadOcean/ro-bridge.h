@@ -22,4 +22,5 @@ FOUNDATION_EXPORT const unsigned char ColorCubeVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <ColorCube/PublicHeader.h>
 
-#import "ColorCube/CCColorCube.h"
+#import "ReadOcean/Classes/Tools/common/ColorCube/CCColorCube.h"
+
