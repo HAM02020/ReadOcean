@@ -12,15 +12,8 @@
 
 
 #endif /* Weibo_Bridge_h */
-#import <Foundation/Foundation.h>
+//DomimantColor
+#include <stdint.h>
+extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
 
-//! Project version number for ColorCube.
-FOUNDATION_EXPORT double ColorCubeVersionNumber;
-
-//! Project version string for ColorCube.
-FOUNDATION_EXPORT const unsigned char ColorCubeVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <ColorCube/PublicHeader.h>
-
-#import "ReadOcean/Classes/Tools/common/ColorCube/CCColorCube.h"
 

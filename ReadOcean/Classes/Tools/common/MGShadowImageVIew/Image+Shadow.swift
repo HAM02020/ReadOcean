@@ -13,17 +13,17 @@ extension UIImage {
     
     
     var myMostColor:UIColor{
-        let cube = CCColorCube()
-        //let imgColors = cube.extractBrightColors(from: self, avoid: UIColor.white, count: 100)
-        let imgColors = cube.extractColors(from: self, flags: CCFlags(CCAvoidWhite.rawValue), count: 4)
-        guard let colors = imgColors
-        else {return UIColor()}
-        
+//        let cube = CCColorCube()
+//        //let imgColors = cube.extractBrightColors(from: self, avoid: UIColor.white, count: 100)
+//        let imgColors = cube.extractColors(from: self, flags: CCFlags(CCAvoidWhite.rawValue), count: 4)
+//        guard let colors = imgColors else {return UIColor()}
+        let colors = self.dominantColors()
+
         var r : CGFloat = 0
         var g : CGFloat = 0
         var b : CGFloat = 0
         var a : CGFloat = 0
-        
+
         for color in colors{
             r += color.r
             g += color.g
@@ -34,7 +34,9 @@ extension UIImage {
         g = g/CGFloat(colors.count)
         b = b/CGFloat(colors.count)
         a = a/CGFloat(colors.count)
-        return UIColor(displayP3Red: r*0.9, green: g, blue: b, alpha: a)
+        return UIColor(displayP3Red: r, green: g, blue: b, alpha: a)
+        
+        
     }
     
     

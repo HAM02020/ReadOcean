@@ -11,7 +11,7 @@ import UIKit
 class BlockTableViewCell:BaseTableViewCell{
     
     private let coverWidth : CGFloat = 100.0
-    private let coverHeight : CGFloat = 140.0
+    private let coverHeight : CGFloat = 135.0
     
     private lazy var view:UIView = {
         let v = UIView()

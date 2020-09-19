@@ -78,8 +78,13 @@
 		01D5685E25158CF200E3248D /* GXSegmentTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5685A25158CF200E3248D /* GXSegmentTitleCell.swift */; };
 		01D5685F25158CF200E3248D /* GXSegmentPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5685B25158CF200E3248D /* GXSegmentPageView.swift */; };
 		01D5686025158CF200E3248D /* GXSegmentView+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5685C25158CF200E3248D /* GXSegmentView+Configuration.swift */; };
-		01D56867251598EE00E3248D /* CCColorCube.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D56864251598EE00E3248D /* CCColorCube.m */; };
-		01D56868251598EE00E3248D /* CCLocalMaximum.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D56865251598EE00E3248D /* CCLocalMaximum.m */; };
+		01D5687325159E0B00E3248D /* PlatformExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5686A25159E0A00E3248D /* PlatformExtensions.swift */; };
+		01D5687425159E0B00E3248D /* KMeans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5686B25159E0A00E3248D /* KMeans.swift */; };
+		01D5687525159E0B00E3248D /* ColorSpaceConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5686C25159E0A00E3248D /* ColorSpaceConversion.swift */; };
+		01D5687625159E0B00E3248D /* ColorDifference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5686E25159E0A00E3248D /* ColorDifference.swift */; };
+		01D5687725159E0B00E3248D /* INVector3SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5686F25159E0A00E3248D /* INVector3SwiftExtensions.swift */; };
+		01D5687825159E0B00E3248D /* DominantColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5687025159E0A00E3248D /* DominantColors.swift */; };
+		01D5687A25159E0B00E3248D /* Memoization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5687225159E0A00E3248D /* Memoization.swift */; };
 		01E755A3250B6B1B0038E782 /* BlocksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E755A2250B6B1B0038E782 /* BlocksListViewModel.swift */; };
 		01E755B9250CBB070038E782 /* Sync+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E755B8250CBB070038E782 /* Sync+Extensions.swift */; };
 		01E755C5250DBA070038E782 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E755C4250DBA070038E782 /* LoginVC.swift */; };
@@ -173,10 +178,14 @@
 		01D5685A25158CF200E3248D /* GXSegmentTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXSegmentTitleCell.swift; sourceTree = "<group>"; };
 		01D5685B25158CF200E3248D /* GXSegmentPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXSegmentPageView.swift; sourceTree = "<group>"; };
 		01D5685C25158CF200E3248D /* GXSegmentView+Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GXSegmentView+Configuration.swift"; sourceTree = "<group>"; };
-		01D56863251598EE00E3248D /* CCColorCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCColorCube.h; path = ReadOcean/Classes/Tools/common/ColorCube/CCColorCube.h; sourceTree = SOURCE_ROOT; };
-		01D56864251598EE00E3248D /* CCColorCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCColorCube.m; sourceTree = "<group>"; };
-		01D56865251598EE00E3248D /* CCLocalMaximum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLocalMaximum.m; sourceTree = "<group>"; };
-		01D56866251598EE00E3248D /* CCLocalMaximum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLocalMaximum.h; sourceTree = "<group>"; };
+		01D5686A25159E0A00E3248D /* PlatformExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformExtensions.swift; sourceTree = "<group>"; };
+		01D5686B25159E0A00E3248D /* KMeans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMeans.swift; sourceTree = "<group>"; };
+		01D5686C25159E0A00E3248D /* ColorSpaceConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSpaceConversion.swift; sourceTree = "<group>"; };
+		01D5686D25159E0A00E3248D /* DominantColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DominantColor.h; sourceTree = "<group>"; };
+		01D5686E25159E0A00E3248D /* ColorDifference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorDifference.swift; sourceTree = "<group>"; };
+		01D5686F25159E0A00E3248D /* INVector3SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVector3SwiftExtensions.swift; sourceTree = "<group>"; };
+		01D5687025159E0A00E3248D /* DominantColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DominantColors.swift; sourceTree = "<group>"; };
+		01D5687225159E0A00E3248D /* Memoization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memoization.swift; sourceTree = "<group>"; };
 		01E755A2250B6B1B0038E782 /* BlocksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocksListViewModel.swift; sourceTree = "<group>"; };
 		01E755B8250CBB070038E782 /* Sync+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Extensions.swift"; sourceTree = "<group>"; };
 		01E755C4250DBA070038E782 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -522,7 +531,7 @@
 		017962CA24E3D72F00C26419 /* common */ = {
 			isa = PBXGroup;
 			children = (
-				01D56862251598D800E3248D /* ColorCube */,
+				01D5686925159DE700E3248D /* DominantColor */,
 				01D5685825158CF200E3248D /* GXSegmentPageView */,
 				0178777825150C0D00A25F4D /* MGShadowImageVIew */,
 				017877682514B39400A25F4D /* LoadingPlaceholderView */,
@@ -588,15 +597,19 @@
 			path = GXSegmentPageView;
 			sourceTree = "<group>";
 		};
-		01D56862251598D800E3248D /* ColorCube */ = {
+		01D5686925159DE700E3248D /* DominantColor */ = {
 			isa = PBXGroup;
 			children = (
-				01D56863251598EE00E3248D /* CCColorCube.h */,
-				01D56864251598EE00E3248D /* CCColorCube.m */,
-				01D56866251598EE00E3248D /* CCLocalMaximum.h */,
-				01D56865251598EE00E3248D /* CCLocalMaximum.m */,
+				01D5686E25159E0A00E3248D /* ColorDifference.swift */,
+				01D5686C25159E0A00E3248D /* ColorSpaceConversion.swift */,
+				01D5686D25159E0A00E3248D /* DominantColor.h */,
+				01D5687025159E0A00E3248D /* DominantColors.swift */,
+				01D5686F25159E0A00E3248D /* INVector3SwiftExtensions.swift */,
+				01D5686B25159E0A00E3248D /* KMeans.swift */,
+				01D5687225159E0A00E3248D /* Memoization.swift */,
+				01D5686A25159E0A00E3248D /* PlatformExtensions.swift */,
 			);
-			path = ColorCube;
+			path = DominantColor;
 			sourceTree = "<group>";
 		};
 		01E755C6250E00DA0038E782 /* GXTransition */ = {
@@ -781,6 +794,7 @@
 				013EC1A025060C1A00BC8891 /* LLViewExtensions.swift in Sources */,
 				01E755E5250E00DA0038E782 /* GXAnimationErectDelegate.m in Sources */,
 				017877772514DB0500A25F4D /* LPH.swift in Sources */,
+				01D5687A25159E0B00E3248D /* Memoization.swift in Sources */,
 				0178776F2514B39500A25F4D /* Coverable+UIKit.swift in Sources */,
 				012D85B824FD4112008B2063 /* TaskTableViewCell.swift in Sources */,
 				01B02890250E4F2700FD4896 /* DemoPickerVC.swift in Sources */,
@@ -794,6 +808,7 @@
 				01D5686025158CF200E3248D /* GXSegmentView+Configuration.swift in Sources */,
 				01D5685F25158CF200E3248D /* GXSegmentPageView.swift in Sources */,
 				017962CC24E3D75500C26419 /* Global.swift in Sources */,
+				01D5687625159E0B00E3248D /* ColorDifference.swift in Sources */,
 				01CA62F225120888006522AE /* BookDetailCollectionViewCell.swift in Sources */,
 				013EC1A625060C1A00BC8891 /* LLImagePageControl.swift in Sources */,
 				0178776E2514B39500A25F4D /* LoadingPlaceholderView.swift in Sources */,
@@ -810,10 +825,11 @@
 				01E755E9250E00DA0038E782 /* GXAnimationPushALDelegate.m in Sources */,
 				0197120A24E9738000C57717 /* UINavigationController+Extensions.swift in Sources */,
 				0178777A25150C2E00A25F4D /* MGShadowImageVIew.swift in Sources */,
-				01D56868251598EE00E3248D /* CCLocalMaximum.m in Sources */,
 				01E755EA250E00DA0038E782 /* GXAnimationBaseDelegate.m in Sources */,
 				0178776D2514B39500A25F4D /* UIBezierPath+.swift in Sources */,
 				013EC1A525060C1A00BC8891 /* LLFilledPageControl.swift in Sources */,
+				01D5687725159E0B00E3248D /* INVector3SwiftExtensions.swift in Sources */,
+				01D5687325159E0B00E3248D /* PlatformExtensions.swift in Sources */,
 				01079D67250A605D00593D34 /* BlockTableViewCell.swift in Sources */,
 				017962DC24E68D7700C26419 /* MyRefresh.swift in Sources */,
 				01E755E1250E00DA0038E782 /* GXAnimationPushDelegate.m in Sources */,
@@ -828,7 +844,9 @@
 				01C14698250666170072586A /* YDt4ViewController.swift in Sources */,
 				013BD86224752ADD00AABEA2 /* AppDelegate.swift in Sources */,
 				017962D824E598D200C26419 /* YDBookCollectionFooterView.swift in Sources */,
+				01D5687525159E0B00E3248D /* ColorSpaceConversion.swift in Sources */,
 				014488F824BE0BBF00B61DDB /* UINavigationBar+Extensions.swift in Sources */,
+				01D5687825159E0B00E3248D /* DominantColors.swift in Sources */,
 				014488FA24BE0CF700B61DDB /* CustomNavigationBar.swift in Sources */,
 				017877702514B39500A25F4D /* Coverable.swift in Sources */,
 				017877292513325A00A25F4D /* Image+Shadow.swift in Sources */,
@@ -839,7 +857,7 @@
 				01CA62EE2511F407006522AE /* BooksListViewModel.swift in Sources */,
 				01E755E2250E00DA0038E782 /* GXAnimationPushELDelegate.m in Sources */,
 				012D85BC24FD65EE008B2063 /* TeacherTaskVC.swift in Sources */,
-				01D56867251598EE00E3248D /* CCColorCube.m in Sources */,
+				01D5687425159E0B00E3248D /* KMeans.swift in Sources */,
 				01A834592493A5B2002D2327 /* UIImageView + Extensions.swift in Sources */,
 				012D85B224FCEE90008B2063 /* BaseTaskVC.swift in Sources */,
 				017962E224E91B5700C26419 /* YDDemoViewController.swift in Sources */,

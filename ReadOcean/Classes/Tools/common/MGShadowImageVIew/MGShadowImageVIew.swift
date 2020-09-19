@@ -10,7 +10,7 @@ import UIKit
 
 class MGShadowImageVIew:UIView{
     
-    let shadowDeep = 2.0
+    let shadowDeep = 4.0
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -26,7 +26,7 @@ class MGShadowImageVIew:UIView{
     
     override init(frame: CGRect) {
         super.init(frame:frame)
-        self.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        self.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height+CGFloat(shadowDeep))
         imageView.frame = frame
         
         
@@ -69,11 +69,11 @@ class MGShadowImageVIew:UIView{
         // 阴影的厚度
         let size: CGFloat = CGFloat(shadowDeep)
         // 阴影在下方的距离
-        let distance: CGFloat = 0
+        let distance: CGFloat = -1
         let rect = CGRect(
             x: shadowView.frame.width/2 - CGFloat(shadowView.bounds.width-20)/2,
             y: shadowView.frame.height + distance,
-            width: CGFloat(shadowView.bounds.width-20),//iconView.frame.width + size * 2,
+            width: CGFloat(shadowView.bounds.width*0.8),//iconView.frame.width + size * 2,
             height: size
         )
         shadowView.layer.shadowColor = UIColor.black.cgColor
