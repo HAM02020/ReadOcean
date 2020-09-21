@@ -92,54 +92,52 @@ class YDt3ViewController : BaseViewController {
 //    //            navigationController?.pushViewController(vc, animated: true)
 //            }
         }
-    
-    private lazy var collectionView : UICollectionView = {
-        let layout = UICollectionViewFlowLayout.init()
-        //layout.itemSize = CGSize(width: 100 , height: 50)
-        //行列间距
-        layout.minimumLineSpacing=10;
-        layout.minimumInteritemSpacing=5
+    private lazy var contentView:UIView = {
+        let v = UIView()
         
-        //layout.footerReferenceSize = CGSize(width: screenWidth, height: 50)
-        //layout.headerReferenceSize = CGSize(width: screenWidth, height: 50)
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        let sv = UIScrollView()
+        sv.backgroundColor = UIColor.red
+        sv.showsHorizontalScrollIndicator = true
+        sv.contentSize = CGSize(width: 1000, height: 100)
         
-        collectionView.backgroundColor = UIColor(hexString: "ffffff")
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.alwaysBounceVertical = true
-        collectionView.contentInset = UIEdgeInsets(top: screenHeight/2, left: 0, bottom: 0, right: 0)
+        v.addSubview(sv)
+        sv.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(screenHeight/2)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(100)
+        }
+        return v
+    }()
+    private lazy var scrollView : UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.delegate = self
+        //scrollView.contentInset = UIEdgeInsets(top: screenHeight/2, left: 0, bottom: 0, right: 0)
         //滚动条位置
-        collectionView.scrollIndicatorInsets = collectionView.contentInset
-        // 注册cell
-        collectionView.register(cellType: YDBookCollectionViewCell.self)
-        //collectionView.register(cellType: BoardCollectionViewCell.self)
-        //注册头部 尾部
-        collectionView.register(supplementaryViewType: BookCollectionHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
-        collectionView.register(supplementaryViewType: YDBookCollectionFooterView.self, ofKind: UICollectionView.elementKindSectionFooter)
-        // 刷新控件
-        collectionView.myHead = URefreshHeader {
-            
-            self.loadData()
-            
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
+        scrollView.alwaysBounceVertical = true
+        scrollView.showsVerticalScrollIndicator = false
+        
+
+
+       
+       
+
+        
+        scrollView.addSubview(contentView)
+        
+        contentView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo(screenHeight*2)
         }
         
-        collectionView.myFoot = URefreshDiscoverFooter()
-        //collectionView.myempty = UEmptyView(verticalOffset: -(collectionView.contentInset.top)) { self.setupLoadData() }
         
-        return collectionView
+        
+        return scrollView
     }()
     
     
-    
-    var value:CGFloat?{
-        didSet{
-            if let value = value{
-                print("value didset")
-            }
-            
-        }
-    }
+
     
     
 
@@ -154,8 +152,8 @@ class YDt3ViewController : BaseViewController {
         
         tabbarHeight = self.tabBarController?.tabBar.frame.height
         
-        view.addSubview(collectionView)
-        collectionView.snp.makeConstraints { (make) in
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
             make.bottom.equalToSuperview().offset(-tabbarHeight!)
         }
@@ -163,7 +161,7 @@ class YDt3ViewController : BaseViewController {
         view.addSubview(bannerView)
         bannerView.snp.makeConstraints{ make in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(collectionView.contentInset.top)
+            make.height.equalTo(screenHeight/2)
         }
          
         view.addSubview(navView)
@@ -174,67 +172,15 @@ class YDt3ViewController : BaseViewController {
     }
 }
 
-extension YDt3ViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
-    
-    
-    //背景颜色
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, backgroundColorForSectionAt section: Int) -> UIColor {
-        return UIColor.white
-    }
-    //边距？
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    }
-
-    //cell的视图
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: YDBookCollectionViewCell.self)
-        
-        return cell
-    }
-    //行数
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    //一个section里有几个cell
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //返回9本书
-        return 9
-    }
-    //cell的长宽
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = floor(Double(screenWidth - 60.0) / 3.0)
-        return CGSize(width: width, height: width * 1.75)
-    }
-    // 头尾视图
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionHeader {
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath, viewType: BookCollectionHeaderView.self)
-
-            
-            return headerView
-        } else {
-            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, for: indexPath, viewType: YDBookCollectionFooterView.self)
-            return footerView
-        }
-    }
-
-    // 头部高度
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == 0{
-            return CGSize(width: screenWidth, height: 80)
-        }
-        return CGSize(width: screenWidth, height: 50)
-    }
-
-    // 尾部高度
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: screenWidth, height: 10)
-    }
+extension YDt3ViewController:UIScrollViewDelegate{
     
     //使头部视图滚动
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         navView.value = scrollView.contentOffset.y
+        print("contentoffset.y = \(scrollView.contentOffset.y)")
+        print("contentInset.top = \(scrollView.contentInset.top)")
+        print("contentSize = \(scrollView.contentSize)")
+        print("和 = \(scrollView.contentOffset.y + scrollView.contentInset.top)\n")
         if scrollView.contentOffset.y >= -200 {
             self.style = .default
 
@@ -243,7 +189,7 @@ extension YDt3ViewController:UICollectionViewDelegate,UICollectionViewDataSource
         }
         setNeedsStatusBarAppearanceUpdate()
         
-        if scrollView == collectionView {
+        if scrollView == self.scrollView {
             bannerView.snp.updateConstraints{ $0.top.equalToSuperview().offset(min(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))) }
         }
     }

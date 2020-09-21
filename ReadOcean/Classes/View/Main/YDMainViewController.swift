@@ -41,7 +41,10 @@ class YDMainViewController: UITabBarController {
         //UIAlertAction的第二个参数是 按钮的样式(取消(粗体显示),消极(红色显示),正常)3种样式.
         //第三个参数是一个函数类型的参数. 表示点击按钮之后的调用的方法.
 
-        alertViewController.addAction(UIAlertAction(title: "退出登陆", style: .destructive, handler: nil))
+        alertViewController.addAction(UIAlertAction(title: "退出登陆", style: .destructive, handler: { action in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: YDUserLogoutSuccessNotification), object: nil)
+            
+        }))
         //显示对话框
         self.present(alertViewController, animated: true, completion: nil)
     }

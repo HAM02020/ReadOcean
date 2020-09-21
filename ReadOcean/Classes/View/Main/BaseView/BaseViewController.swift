@@ -25,6 +25,8 @@ class BaseViewController: UIViewController {
 
         //注册通知
         NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess), name: NSNotification.Name(YDUserLoginSuccessNotification), object: nil)
+        //注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(logoutSuccess(n:)), name: NSNotification.Name(YDUserLogoutSuccessNotification), object: nil)
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -89,8 +91,9 @@ class BaseViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc func logoutSucess(n:Notification){
-        
+    @objc func logoutSuccess(n:Notification){
+        shardAccount.token = nil
+        viewDidLoad()
     }
     
     

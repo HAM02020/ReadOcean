@@ -17,6 +17,7 @@ var userLogon:Bool{
     get{
         return shardAccount.token != nil
     }
+
 }
 class UserAccount:HandyJSON{
     

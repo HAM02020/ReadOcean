@@ -43,10 +43,30 @@ class YDt5ViewController : BaseViewController {
             userPointsLabel.text = userPoints
             let rankTitleLabel = rankTitleLabelView.arrangedSubviews[1] as! UILabel
             rankTitleLabel.text = rankTitle
-            logoutBtn.isHidden = false
+            
+            //移除登陆点击手势
+            headerView.removeGestureRecognizer(LoginTap)
+        }
+        else{
+            resetData()
         }
 
     }
+    
+    private func resetData(){
+        nameLabel.text = "点我登陆"
+        schoolLabel.text = "登陆阅读更精彩"
+        levelTextView.text = "Lv0"
+        
+        let userPointsLabel = scoreLabelView.arrangedSubviews[1] as! UILabel
+        userPointsLabel.text = "0"
+        let rankTitleLabel = rankTitleLabelView.arrangedSubviews[1] as! UILabel
+        rankTitleLabel.text = "白丁"
+        
+        let img = UIImage(named: "img_boy")?.reSizeImage(reSize: CGSize(width: avatarWidth, height: avatarWidth))
+        img_avatar.image = img
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -83,14 +103,18 @@ class YDt5ViewController : BaseViewController {
         }
         return nav
     }()
+    //登陆点击手势
+    private lazy var LoginTap = UITapGestureRecognizer(target:self, action:#selector(loginAction))
+    //FIXME:个人中心点击手势
+    //private lazy var userInfoTap = UITapGestureRecognizer(target:self, action:#selector(loginAction))
     
     private lazy var headerView:UIView = {
         let rectHeight = 64
         let v = UIView()
         //点击手势
-        let tap = UITapGestureRecognizer(target:self, action:#selector(loginAction))
+        
         v.isUserInteractionEnabled = true
-        v.addGestureRecognizer(tap)
+        v.addGestureRecognizer(LoginTap)
         
         v.backgroundColor = UIColor.clear
         v.addSubview(background_img)
@@ -121,12 +145,7 @@ class YDt5ViewController : BaseViewController {
             make.left.equalTo(nameLabel.snp.right).offset(10)
             
         }
-        v.addSubview(logoutBtn)
-        logoutBtn.isHidden = true
-        logoutBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(nameLabel.snp.top)
-            make.right.equalToSuperview().inset(10)
-        }
+
         v.addSubview(schoolLabel)
         schoolLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(img_avatar.snp.centerY).offset(15)
@@ -187,9 +206,10 @@ class YDt5ViewController : BaseViewController {
     }()
     
     private lazy var logoutBtn:WBTittleButton = {
-        let btn = WBTittleButton(title: "退出登陆", image: UIImage())
+        let btn = WBTittleButton(title: "退出登陆", image: UIImage(named: "logout"))
+        btn.titleLabel?.font = UIFont.monospacedSystemFont(ofSize: 16, weight: .semibold)
         btn.imagePosition(style: .left, spacing: 5)
-        
+        btn.addTarget(self, action: #selector(logoutAction), for: .touchUpInside)
         return btn
     }()
     
@@ -227,6 +247,7 @@ class YDt5ViewController : BaseViewController {
         //使文字垂直居中
         txt.contentOffset = CGPoint (x: 0, y: 8)
         
+        txt.isUserInteractionEnabled = false
         
         return txt
     }()

@@ -28,12 +28,24 @@ class YDt1ViewController : BaseViewController {
             loginBtn.setTitle("退出登陆", for: .normal)
             loginBtn.removeTarget(self, action: #selector(loginAction), for: .touchUpInside)
             loginBtn.addTarget(self, action: #selector(logoutAction), for: .touchUpInside)
+        }else{
+            resetData()
         }
         loadData(true)
+        
     }
+    
+    private func resetData(){
+        loginLabel.text = "登陆后发现精彩内容,阅读最新书籍，成为读书之星"
+        loginBtn.setTitle("立即登陆", for: .normal)
+        let img = UIImage(named: "img_boy")?.reSizeImage(reSize: CGSize(width: 50, height: 50))
+        img_avatar.image = img
+    }
+    
     override func logoutAction() {
         super.logoutAction()
         loginBtn.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
