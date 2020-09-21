@@ -11,6 +11,7 @@ import UIKit
 
 
 
+
 class YDMainViewController: UITabBarController {
 
     override func viewDidLoad() {
@@ -20,12 +21,29 @@ class YDMainViewController: UITabBarController {
         
         // 注册通知
         NotificationCenter.default.addObserver(self, selector: #selector(userLogin), name: NSNotification.Name(rawValue: YDUserShouldLoginNotification), object: nil)
+        //注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(userLogout), name: NSNotification.Name(YDUserShouldLogoutNotification), object: nil)
 
     }
     
     deinit {
         //注销通知
         NotificationCenter.default.removeObserver(self)
+    }
+    @objc private func userLogout(n:Notification){
+        print("用户退出登陆通知\(n)")
+        //第一个参数是标题,第二个参数是消息内容,第三个参数就是上2张图中的样式,随便选一个.
+        let alertViewController = UIAlertController(title: "退出后不会删除任何历史数据，下次登陆依然可以使用本账号。", message: nil, preferredStyle: .actionSheet)
+
+        //如果没有调用addAction方法, 对话框也是会显示的.但是没有可以点击的按钮.
+        alertViewController.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { action in print("onAction") }))
+
+        //UIAlertAction的第二个参数是 按钮的样式(取消(粗体显示),消极(红色显示),正常)3种样式.
+        //第三个参数是一个函数类型的参数. 表示点击按钮之后的调用的方法.
+
+        alertViewController.addAction(UIAlertAction(title: "退出登陆", style: .destructive, handler: nil))
+        //显示对话框
+        self.present(alertViewController, animated: true, completion: nil)
     }
     @objc private func userLogin(n:Notification) {
         print("用户登陆通知\(n)")

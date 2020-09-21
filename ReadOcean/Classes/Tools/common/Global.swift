@@ -38,9 +38,12 @@ private func _topVC(_ vc: UIViewController?) -> UIViewController? {
 //MARK: 全局通知定义
 
 let YDUserShouldLoginNotification = "YDUserShouldLoginNotification"
-
 //用户登陆成功通知
 let YDUserLoginSuccessNotification = "YDUserLoginSuccessNotification"
+//用户退出登陆通知
+let YDUserShouldLogoutNotification = "YDUserShouldLogoutNotification"
+//用户退出登陆成功通知
+let YDUserLogoutSuccessNotification = "YDUserLogoutSuccessNotification"
 
 //MARK: 全局颜色定义
 let bgColor_light = "0ae6b0"

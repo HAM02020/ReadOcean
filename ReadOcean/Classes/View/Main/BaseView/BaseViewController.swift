@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class BaseViewController: UIViewController {
 
@@ -59,22 +60,47 @@ class BaseViewController: UIViewController {
     @objc func pressBack() {
         navigationController?.popViewController(animated: true)
     }
+    
     @objc func loginSuccess(n:Notification) {
         print("登陆成功\(n)")
-        //更新UI
-        //在访问view的getter 时 如果 view == nil 会调用loadview -> viewdidLoad
-//        navigationItem.leftBarButtonItem = nil
-//        navigationItem.rightBarButtonItem = nil
         
-        viewDidLoad()
+        networkManager.request(.userInfo()) {[weak self] (result) in
+            switch result{
+            case .success(let response):
+                guard
+                    let json = JSON(response.data).dictionaryObject,
+                    var userInfo = UserInfo.deserialize(from: json),
+                    var url = userInfo.avatar else{return}
+                
+                if !url.hasPrefix("http"){
+                    url = "https://ro.bnuz.edu.cn/user/big/"+url
+                    userInfo.avatar = url
+                }
+                shardAccount.userInfo = userInfo
+                self?.viewDidLoad()
+            case .failure(_):
+                break
+            }
+            
+        }
+        
         
         //注销通知 避免通知被重复注册
         NotificationCenter.default.removeObserver(self)
     }
     
+    @objc func logoutSucess(n:Notification){
+        
+    }
+    
+    
     @objc func loginAction(){
         //发送通知
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: YDUserShouldLoginNotification), object: nil)
+    }
+    @objc func logoutAction(){
+        //发送通知
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: YDUserShouldLogoutNotification), object: nil)
     }
 }
 

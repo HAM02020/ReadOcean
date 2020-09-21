@@ -8,6 +8,22 @@
 
 import HandyJSON
 
+struct UserInfo:HandyJSON{
+    var gender:String?//": "女",
+    var idCard:String?//": "123123",
+    var schoolType:String?//": "1",
+    var className : String?//": "广东班",
+    var availablePoints:Int?//": 210,
+    var avatar : String?//": "http://ro.bnuz.edu.cn/user/default/img_girl.png",
+    var rankTitle:String?//": "儒生",
+    var userName:String?//": "学生甲",
+    var classId:String?//": "40d7c708-ca49-409f-8419-91287efaea36",
+    var userPoints:String?//": "500",
+    var grade:String?//": "二年级",
+    var schoolId:String?//": "1000000",
+    var rank:String?//": "2",
+    var schoolName:String?//": "阅读海洋小学"
+}
 
 struct Book : HandyJSON {
     var id:String?

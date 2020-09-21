@@ -32,7 +32,7 @@ class MGShadowImageVIew:UIView{
         
     }
     open func updateSV(frame:CGRect){
-        self.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        self.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height+CGFloat((shadowDeep)))
         imageView.frame = frame
         settingRoundCorner(imageView)
         settingShadow(self)

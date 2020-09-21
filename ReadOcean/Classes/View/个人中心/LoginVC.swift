@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class LoginVC:BaseViewController{
     
@@ -24,14 +25,33 @@ class LoginVC:BaseViewController{
     }
     
     @objc func loginBtnClick(){
-        let userName = userNameField.text
-        let password = passwordField.text
-        var params:[String:AnyObject] = [:]
-        params["userName"] = userName as AnyObject
-        params["password"] = password as AnyObject
-//        Api.request(.POST,requestType: .login, parameters: params) { (json,isSuccess) in
-//            print(json)
-//        }
+        guard
+            let userName = userNameField.text,
+            let password = passwordField.text else {return}
+        networkManager.request(.login(userName: userName, password: password)) {[weak self] (result) in
+            switch result {
+            case .success(let response):
+                
+                guard
+                    let json = JSON(response.data).dictionaryObject,
+                    let token = json["token"] ,
+                    let userId = json["userId"]
+                    else {
+                        //登陆失败
+                        ProgressHUD.showError("登陆失败，用户名或密码错误", image: nil, interaction: true)
+                        return
+                }
+                shardAccount.userId = userId as! String
+                shardAccount.token = token as? String
+                //登陆成功通知
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: YDUserLoginSuccessNotification), object: nil)
+                ProgressHUD.showSucceed()
+                self?.back()
+                
+            case .failure(_):
+                break
+            }
+        }
         
     }
     
@@ -306,12 +326,12 @@ class LoginVC:BaseViewController{
         view.addSubview(threeLoginLabel)
         threeLoginLabel.snp.makeConstraints { (make) in
             make.centerX.equalTo(view.snp.centerX)
-            make.bottom.equalToSuperview().offset(-150)
+            make.bottom.equalToSuperview().offset(-80)
         }
         view.addSubview(wechatLogoView)
             wechatLogoView.snp.makeConstraints { (make) in
                 make.centerX.equalTo(view.snp.centerX)
-                make.top.equalTo(threeLoginLabel.snp.bottom).offset(20)
+                make.top.equalTo(threeLoginLabel.snp.bottom).offset(10)
                 make.width.height.equalTo(40)
             }
 

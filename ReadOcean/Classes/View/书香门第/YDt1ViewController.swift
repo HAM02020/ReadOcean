@@ -18,7 +18,22 @@ class YDt1ViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if userLogon{
+            img_avatar.sd_setImage(with: URL(string: (shardAccount.userInfo?.avatar)!), placeholderImage: nil, options: [], progress: nil) {[weak self] (image, _, _, _) in
+                self?.img_avatar.image = image?.reSizeImage(reSize: CGSize(width: 50, height: 50))
+            }
+            
+            guard let userName = shardAccount.userInfo?.userName else {return}
+            loginLabel.text = "欢迎：\(userName)!"
+            loginBtn.setTitle("退出登陆", for: .normal)
+            loginBtn.removeTarget(self, action: #selector(loginAction), for: .touchUpInside)
+            loginBtn.addTarget(self, action: #selector(logoutAction), for: .touchUpInside)
+        }
         loadData(true)
+    }
+    override func logoutAction() {
+        super.logoutAction()
+        loginBtn.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -94,6 +109,7 @@ class YDt1ViewController : BaseViewController {
         btn.layer.cornerRadius = 10
         btn.backgroundColor = UIColor(hexString: "5ad3b3")
         btn.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
+        
         return btn
     }()
     

@@ -35,10 +35,11 @@ enum Api{
     case getBlocks(category:String?,pageNum:Int? = 1)
     
     //我的任务
-    case myTask(user:UserAccount = UserAccount.main,taskType:TaskType = .none())
-    case taskDetail(taskId:String,user:UserAccount = UserAccount.main)
+    case myTask(user:UserAccount = shardAccount,taskType:TaskType = .none())
+    case taskDetail(taskId:String,user:UserAccount = shardAccount)
     
-    case login(user:UserAccount = UserAccount.main,lat:Int = 1,lng:Int = 1,userName:String,password:String)
+    case login(userName:String,password:String)
+    case userInfo(user:UserAccount = shardAccount)
 }
 
 extension Api:TargetType{
@@ -61,12 +62,14 @@ extension Api:TargetType{
             return "mobileTask/taskDetail"
         case .login:
             return "mobileUser/login"
+        case .userInfo:
+            return "mobileUser/userInfo"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getBlocks,.getBooks,.infoBook,.myTask,.taskDetail:
+        case .getBlocks,.getBooks,.infoBook,.myTask,.taskDetail,.userInfo:
             return .get
         case .login:
             return .post
@@ -105,14 +108,18 @@ extension Api:TargetType{
             parmeters["taskId"] = taskId
             parmeters["userId"] = user.userId
             parmeters["userType"] = user.userType
-        case .login(let user,let lat,let lng,let userName,let password):
+        case .login(let userName,let password):
+            let user = shardAccount
             parmeters["userName"] = userName
             parmeters["password"] = password
             parmeters["schoolId"] = user.schoolId
             parmeters["userType"] = user.userType
-            parmeters["lat"] = lat
-            parmeters["lng"] = lng
+            parmeters["lat"] = user.lat
+            parmeters["lng"] = user.lng
             
+        case .userInfo(let user):
+            parmeters["userId"] = user.userId
+            parmeters["userType"] = user.userType
         }
         return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
     }

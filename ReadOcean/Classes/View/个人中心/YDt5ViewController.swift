@@ -18,10 +18,34 @@ class YDt5ViewController : BaseViewController {
                   [PModel("question_red","我的问答"),PModel("community_blue","我的论坛")],
                   [PModel("feedback_darkblue","意见反馈")]
                 ] as [[PModel]]
-    
+    let avatarWidth = screenHeight*0.1
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if userLogon{
+            img_avatar.sd_setImage(with: URL(string: (shardAccount.userInfo?.avatar)!), placeholderImage: nil, options: [], progress: nil) {[weak self] (image, _, _, _) in
+                self?.img_avatar.image = image?.reSizeImage(reSize: CGSize(width: screenHeight*0.1, height: screenHeight*0.1))
+            }
+            
+            guard
+                let userInfo = shardAccount.userInfo,
+                let userName = userInfo.userName,
+                let schoolName = userInfo.schoolName,
+                let userPoints = userInfo.userPoints,
+                let rankTitle = userInfo.rankTitle,
+                let rank = userInfo.rank
+                else {return}
+            nameLabel.text = userName
+            schoolLabel.text = schoolName
+            levelTextView.text = "Lv\(rank)"
+            
+            let userPointsLabel = scoreLabelView.arrangedSubviews[1] as! UILabel
+            userPointsLabel.text = userPoints
+            let rankTitleLabel = rankTitleLabelView.arrangedSubviews[1] as! UILabel
+            rankTitleLabel.text = rankTitle
+            logoutBtn.isHidden = false
+        }
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -97,7 +121,12 @@ class YDt5ViewController : BaseViewController {
             make.left.equalTo(nameLabel.snp.right).offset(10)
             
         }
-        
+        v.addSubview(logoutBtn)
+        logoutBtn.isHidden = true
+        logoutBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(nameLabel.snp.top)
+            make.right.equalToSuperview().inset(10)
+        }
         v.addSubview(schoolLabel)
         schoolLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(img_avatar.snp.centerY).offset(15)
@@ -123,9 +152,9 @@ class YDt5ViewController : BaseViewController {
     }()
     
     private lazy var img_avatar:UIImageView = {
-        let w = screenHeight*0.1
+        
         var img = UIImage(named: "img_boy")
-        img = img?.reSizeImage(reSize: CGSize(width: w, height: w))
+        img = img?.reSizeImage(reSize: CGSize(width: avatarWidth, height: avatarWidth))
         
         let imgView = UIImageView(image: img)
         imgView.backgroundColor = UIColor(hexString: "f2f2f2")
@@ -265,16 +294,7 @@ class YDt5ViewController : BaseViewController {
     
     
     
-    
-    
-    var value:CGFloat?{
-        didSet{
-            if let value = value{
-                print("value didset")
-            }
-            
-        }
-    }
+
 
     
     override func setupLayout(){

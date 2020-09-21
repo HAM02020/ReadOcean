@@ -10,7 +10,7 @@ class FinishedTaskVC : BaseTaskVC {
 
     override func loadData(){
         ProgressHUD.show()
-        networkManager.requestDataList(.myTask(user: UserAccount.main, taskType: .none()), model: Task.self) {[weak self] (dataList) in
+        networkManager.requestDataList(.myTask(user: shardAccount, taskType: .none()), model: Task.self) {[weak self] (dataList) in
 
             self?.tableView.myHead.endRefreshing()
             guard let dataList = dataList else {ProgressHUD.showFailed();return}
