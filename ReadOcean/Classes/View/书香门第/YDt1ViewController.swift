@@ -31,6 +31,7 @@ class YDt1ViewController : BaseViewController {
         }else{
             resetData()
         }
+        
         loadData(true)
         
     }

@@ -119,14 +119,19 @@ class DiscoverNavView: UIView {
                     
                     if changeValue <= 30 {
                         rankBtn.setTitle("排行榜", for: .normal)
+                        
                         weClassBtn.setTitle("名师微课", for: .normal)
                         storyBtn.setTitle("故事新编", for: .normal)
                         parentBtn.setTitle("家长阅读", for: .normal)
                         
                         rankBtn.setImage(UIImage(named: "rank_white"), for: .normal)
+                        rankBtn.imagePosition(style: .top, spacing: 5)
                         weClassBtn.setImage(UIImage(named: "weclass_white"), for: .normal)
+                        weClassBtn.imagePosition(style: .top, spacing: 5)
                         storyBtn.setImage(UIImage(named: "story_white"), for: .normal)
+                        storyBtn.imagePosition(style: .top, spacing: 5)
                         parentBtn.setImage(UIImage(named: "parent_white"), for: .normal)
+                        parentBtn.imagePosition(style: .top, spacing: 5)
 
                     } else {
                         rankBtn.setTitle("", for: .normal)
@@ -135,9 +140,13 @@ class DiscoverNavView: UIView {
                         parentBtn.setTitle("", for: .normal)
                         
                         rankBtn.setImage(UIImage(named: "rank"), for: .normal)
+                        rankBtn.imagePosition(style: .none, spacing: 0)
                         weClassBtn.setImage(UIImage(named: "weclass"), for: .normal)
+                        weClassBtn.imagePosition(style: .none, spacing: 0)
                         storyBtn.setImage(UIImage(named: "story"), for: .normal)
+                        storyBtn.imagePosition(style: .none, spacing: 0)
                         parentBtn.setImage(UIImage(named: "parent"), for: .normal)
+                        parentBtn.imagePosition(style: .none, spacing: 0)
                     }
                     
                     
@@ -148,7 +157,7 @@ class DiscoverNavView: UIView {
                         }
                     } else if changeValue >= 0 && changeValue <= MaxValue {
                         stackView.snp.updateConstraints { (make) in
-                            make.top.equalTo(searchBtn.snp.bottom).offset(18 - (90/2))
+                            make.top.equalTo(searchBtn.snp.bottom).offset(10 - (90/2))
                             make.width.equalTo(screenWidth - 40 - changeValue)
                         }
                     }

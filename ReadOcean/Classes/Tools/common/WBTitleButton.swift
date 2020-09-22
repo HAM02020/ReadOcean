@@ -9,6 +9,7 @@
 import UIKit
 //MARK: -定义button相对label的位置
 enum RGButtonImagePosition {
+        case none
         case top          //图片在上，文字在下，垂直居中对齐
         case bottom       //图片在下，文字在上，垂直居中对齐
         case left         //图片在左，文字在右，水平居中对齐
@@ -38,6 +39,9 @@ class WBTittleButton: UIButton {
             
             //根据style和space得到imageEdgeInsets和labelEdgeInsets的值
             switch style {
+            case .none:
+                imageEdgeInsets = UIEdgeInsets.zero
+                labelEdgeInsets = UIEdgeInsets.zero
             case .top:
                 //上 左 下 右
                 imageEdgeInsets = UIEdgeInsets(top: -labelHeight-spacing/2, left: 0, bottom: 0, right: -labelWidth)

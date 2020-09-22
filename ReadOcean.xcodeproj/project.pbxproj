@@ -85,6 +85,11 @@
 		01D5687725159E0B00E3248D /* INVector3SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5686F25159E0A00E3248D /* INVector3SwiftExtensions.swift */; };
 		01D5687825159E0B00E3248D /* DominantColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5687025159E0A00E3248D /* DominantColors.swift */; };
 		01D5687A25159E0B00E3248D /* Memoization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5687225159E0A00E3248D /* Memoization.swift */; };
+		01D5687C2518C80B00E3248D /* BooksTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5687B2518C80B00E3248D /* BooksTableView.swift */; };
+		01D5687E2518E31600E3248D /* DiscoverBooksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01D5687D2518E31600E3248D /* DiscoverBooksTableViewCell.xib */; };
+		01D568802518FCB200E3248D /* DiscoverBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01D5687F2518FCB200E3248D /* DiscoverBookCollectionViewCell.xib */; };
+		01D568822518FE9F00E3248D /* DiscoverBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D568812518FE9F00E3248D /* DiscoverBookCollectionViewCell.swift */; };
+		01D56884251903DA00E3248D /* DiscoverBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D56883251903DA00E3248D /* DiscoverBookTableViewCell.swift */; };
 		01E755A3250B6B1B0038E782 /* BlocksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E755A2250B6B1B0038E782 /* BlocksListViewModel.swift */; };
 		01E755B9250CBB070038E782 /* Sync+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E755B8250CBB070038E782 /* Sync+Extensions.swift */; };
 		01E755C5250DBA070038E782 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E755C4250DBA070038E782 /* LoginVC.swift */; };
@@ -186,6 +191,11 @@
 		01D5686F25159E0A00E3248D /* INVector3SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INVector3SwiftExtensions.swift; sourceTree = "<group>"; };
 		01D5687025159E0A00E3248D /* DominantColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DominantColors.swift; sourceTree = "<group>"; };
 		01D5687225159E0A00E3248D /* Memoization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memoization.swift; sourceTree = "<group>"; };
+		01D5687B2518C80B00E3248D /* BooksTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableView.swift; sourceTree = "<group>"; };
+		01D5687D2518E31600E3248D /* DiscoverBooksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverBooksTableViewCell.xib; sourceTree = "<group>"; };
+		01D5687F2518FCB200E3248D /* DiscoverBookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverBookCollectionViewCell.xib; sourceTree = "<group>"; };
+		01D568812518FE9F00E3248D /* DiscoverBookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverBookCollectionViewCell.swift; sourceTree = "<group>"; };
+		01D56883251903DA00E3248D /* DiscoverBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverBookTableViewCell.swift; sourceTree = "<group>"; };
 		01E755A2250B6B1B0038E782 /* BlocksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocksListViewModel.swift; sourceTree = "<group>"; };
 		01E755B8250CBB070038E782 /* Sync+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Extensions.swift"; sourceTree = "<group>"; };
 		01E755C4250DBA070038E782 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -582,6 +592,11 @@
 			isa = PBXGroup;
 			children = (
 				01C146B025068B290072586A /* DiscoverNavView.swift */,
+				01D5687B2518C80B00E3248D /* BooksTableView.swift */,
+				01D5687D2518E31600E3248D /* DiscoverBooksTableViewCell.xib */,
+				01D5687F2518FCB200E3248D /* DiscoverBookCollectionViewCell.xib */,
+				01D568812518FE9F00E3248D /* DiscoverBookCollectionViewCell.swift */,
+				01D56883251903DA00E3248D /* DiscoverBookTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -721,9 +736,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01D5687E2518E31600E3248D /* DiscoverBooksTableViewCell.xib in Resources */,
 				017877722514B8AC00A25F4D /* BookCollectionViewNormalCell.xib in Resources */,
 				013EC19E25060C1A00BC8891 /* LICENSE in Resources */,
 				013BD86E24752ADF00AABEA2 /* LaunchScreen.storyboard in Resources */,
+				01D568802518FCB200E3248D /* DiscoverBookCollectionViewCell.xib in Resources */,
 				013EC19F25060C1A00BC8891 /* README.md in Resources */,
 				013EC1A725060C1A00BC8891 /* LLCycleScrollView.bundle in Resources */,
 				017962E024E9004D00C26419 /* Assets.xcassets in Resources */,
@@ -779,9 +796,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01D5687C2518C80B00E3248D /* BooksTableView.swift in Sources */,
 				01E755C5250DBA070038E782 /* LoginVC.swift in Sources */,
 				01CA62E72511BA82006522AE /* Api.swift in Sources */,
 				017962CE24E3DD3800C26419 /* YDBookCollectionViewCell.swift in Sources */,
+				01D568822518FE9F00E3248D /* DiscoverBookCollectionViewCell.swift in Sources */,
 				01E755DF250E00DA0038E782 /* GXAnimationPushABDelegate.m in Sources */,
 				012D85B424FCEE9E008B2063 /* FinishedTaskVC.swift in Sources */,
 				01E755E4250E00DA0038E782 /* GXAnimationSectorDelegate.m in Sources */,
@@ -792,6 +811,7 @@
 				017962DA24E59CAB00C26419 /* HomeNavView.swift in Sources */,
 				01E755E7250E00DA0038E782 /* GXAnimationOglFlipDelegate.m in Sources */,
 				013EC1A025060C1A00BC8891 /* LLViewExtensions.swift in Sources */,
+				01D56884251903DA00E3248D /* DiscoverBookTableViewCell.swift in Sources */,
 				01E755E5250E00DA0038E782 /* GXAnimationErectDelegate.m in Sources */,
 				017877772514DB0500A25F4D /* LPH.swift in Sources */,
 				01D5687A25159E0B00E3248D /* Memoization.swift in Sources */,

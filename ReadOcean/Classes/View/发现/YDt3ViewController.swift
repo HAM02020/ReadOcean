@@ -16,7 +16,7 @@ public var tabbarHeight:CGFloat?
 
 class YDt3ViewController : BaseViewController {
     
-    private lazy var listViewModel = BooksListViewModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,43 +70,29 @@ class YDt3ViewController : BaseViewController {
     
     private func didSelectBanner(index: NSInteger) {
             print("轮播图被点击了...")
-//            if galleryItems.count <= 0 { return }
-//            let item = galleryItems[index]
-//            if item.linkType == 3 {
-//                guard let comicId = item.ext?.first?.val else {
-//                    return
-//                }
-//
-//                let storyboard = UIStoryboard(name: "ComicIntroVC", bundle: nil)
-//                let cimicIntroVC = storyboard.instantiateViewController(withIdentifier: "ComicIntroVC") as! ComicIntroVC
-//                cimicIntroVC.comicId = Int(comicId)
-//                navigationController?.pushViewController(cimicIntroVC, animated: true)
-//
-//            } else {
-//    //            guard let url = item.ext?.compactMap({
-//    //                return $0.key == "url" ? $0.val : nil
-//    //            }).joined() else {
-//    //                return
-//    //            }
-//    //            let vc = WebViewController(url: url)
-//    //            navigationController?.pushViewController(vc, animated: true)
-//            }
+
         }
+    
+    private lazy var booksTableView = BooksTableView(frame: CGRect.zero)
+    
     private lazy var contentView:UIView = {
-        let v = UIView()
+        let contentView = UIView()
+        //contentView.backgroundColor = UIColor(hexString: "f2f2f2")
         
-        let sv = UIScrollView()
-        sv.backgroundColor = UIColor.red
-        sv.showsHorizontalScrollIndicator = true
-        sv.contentSize = CGSize(width: 1000, height: 100)
         
-        v.addSubview(sv)
-        sv.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(screenHeight/2)
-            make.left.right.equalToSuperview()
-            make.height.equalTo(100)
+        contentView.addSubview(booksTableView)
+        booksTableView.snp.makeConstraints { (make) in
+            //transform之前宽高对调
+            let height:CGFloat = 300
+            make.height.equalTo(screenWidth)
+            make.width.equalTo(height)
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.centerY.equalTo(screenHeight/2+height/2)
         }
-        return v
+        booksTableView.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi/2))
+        
+        
+        return contentView
     }()
     private lazy var scrollView : UIScrollView = {
         let scrollView = UIScrollView()
@@ -116,12 +102,6 @@ class YDt3ViewController : BaseViewController {
         scrollView.scrollIndicatorInsets = scrollView.contentInset
         scrollView.alwaysBounceVertical = true
         scrollView.showsVerticalScrollIndicator = false
-        
-
-
-       
-       
-
         
         scrollView.addSubview(contentView)
         
