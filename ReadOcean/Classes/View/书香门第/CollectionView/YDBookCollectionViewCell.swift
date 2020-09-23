@@ -11,8 +11,8 @@ let cellMargin = 15.0
 let cellEdgeMargin = 10.0
 
 let cellWidth_4 = (Double(screenWidth) - cellMargin*3.0 - cellEdgeMargin*2.0)/4
-let cellHeight_4 = cellWidth_4*2
-let picHeight_4 = cellWidth_4*1.5
+let cellHeight_4 = cellWidth_4*1.9
+let picHeight_4 = cellWidth_4*1.45
 
 let cellWidth_3 = (Double(screenWidth) - cellMargin*2.0 - cellEdgeMargin*2.0)/3
 let cellHeight_3 = cellWidth_3*2
@@ -23,8 +23,8 @@ let picHeight_3 = cellWidth_3*1.5
 class YDBookCollectionViewCell: BaseCollectionViewCell {
     
     
-    private lazy var shadowView: MGShadowImageVIew = {
-        let v = MGShadowImageVIew(frame: CGRect(x: 0, y: 0, width: cellWidth_4, height: picHeight_4+3))  
+    private lazy var shadowView: MGRoundCornerShadowImageView = {
+        let v = MGRoundCornerShadowImageView(frame: CGRect(x: 0, y: 0, width: cellWidth_4, height: picHeight_4))
         return v
     }()
    
@@ -76,12 +76,12 @@ class YDBookCollectionViewCell: BaseCollectionViewCell {
         contentView.addSubview(shadowView)
         shadowView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(picHeight_4)
+            make.height.equalTo(picHeight_4+5)
             //make.height.equalTo(cellHeight_4)
         }
         titleLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.top.equalTo(shadowView.snp.bottom).offset(5)
+            make.top.equalTo(shadowView.snp.bottom).offset(10)
             make.height.equalTo(10)
         }
         authorLabel.snp.makeConstraints { (make) in
@@ -128,11 +128,10 @@ class YDBookCollectionViewCell: BaseCollectionViewCell {
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
         }
         
-        shadowView.updateSV(frame: CGRect(x: 0, y: 0, width: cellWidth, height: picHeight))
+        
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.shadowView.imageView.image = nil
     }
 }

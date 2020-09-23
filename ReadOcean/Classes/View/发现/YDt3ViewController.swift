@@ -14,10 +14,22 @@ import SnapKit
 
 public var tabbarHeight:CGFloat?
 
+let DiscoverTableViewCellType = "DiscoverTableViewCellType"
+
 class YDt3ViewController : BaseViewController {
     
-    
-    
+    private lazy var listViewModel = BooksListViewModel()
+    private var bannerpics:[String] = []
+    private var currentMostColor = UIColor.white
+    var shouldChangeNavColor:Bool = true{
+        didSet{
+            if shouldChangeNavColor{
+                navView.backgroundColor = currentMostColor
+            }else{
+                navView.backgroundColor = UIColor.white
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,7 +47,9 @@ class YDt3ViewController : BaseViewController {
     }
     private lazy var navView : DiscoverNavView = {
         let nav = DiscoverNavView()
-        
+        let img = UIImage(named: bannerpics[0])
+        nav.backgroundColor = img?.myMostColor
+        nav.layer.shadowColor = img?.myMostColor.cgColor
         return nav
     }()
 
@@ -54,7 +68,9 @@ class YDt3ViewController : BaseViewController {
 
         // 点击 item 回调
         cycleScrollView.lldidSelectItemAtIndex = didSelectBanner(index:)
-        var bannerpics:[String] = []
+        cycleScrollView.delegate = self
+        
+        
         var bgPics:[String] = []
         for i in 1...3{
             bannerpics.append("b\(i)")
@@ -73,23 +89,64 @@ class YDt3ViewController : BaseViewController {
 
         }
     
-    private lazy var booksTableView = BooksTableView(frame: CGRect.zero)
+    private lazy var tableView : UITableView = {
+        let t = UITableView()
+        t.automaticallyAdjustsScrollIndicatorInsets = false
+        t.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        t.delegate = self
+        t.dataSource = self
+        //transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi/2))
+        t.backgroundColor = UIColor.yellow
+        t.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        t.separatorStyle = .none
+        
+        t.register(UINib(nibName: "DiscoverBooksTableViewCell", bundle: nil), forCellReuseIdentifier: DiscoverTableViewCellType)
+        return t
+    }()
+    
+    @objc func loadData(){
+        
+        ProgressHUD.show()
+
+        listViewModel.getBooks {[weak self] in
+            self?.tableView.reloadData()
+            ProgressHUD.showSucceed()
+        }
+        
+    }
+    
+    private lazy var titleLabel1:UILabel = {
+        let txt = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        txt.text = "书香门第"
+        txt.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        txt.textColor = UIColor.black
+        txt.numberOfLines = 1
+        return txt
+    }()
     
     private lazy var contentView:UIView = {
         let contentView = UIView()
         //contentView.backgroundColor = UIColor(hexString: "f2f2f2")
         
+        contentView.addSubview(titleLabel1)
+        titleLabel1.snp.makeConstraints { (make) in
+            make.top.equalTo(screenHeight/2+10)
+            make.left.equalToSuperview().inset(10)
+            make.height.equalTo(50)
+        }
+        contentView.addSubview(tableView)
         
-        contentView.addSubview(booksTableView)
-        booksTableView.snp.makeConstraints { (make) in
+        tableView.snp.makeConstraints { (make) in
             //transform之前宽高对调
-            let height:CGFloat = 300
+            let height:CGFloat = 330
             make.height.equalTo(screenWidth)
             make.width.equalTo(height)
             make.centerX.equalTo(contentView.snp.centerX)
-            make.centerY.equalTo(screenHeight/2+height/2)
+            make.centerY.equalTo(screenHeight/2+height/2+titleLabel1.bounds.height)
+            //make.top.equalTo(titleLabel1.snp.bottom)
         }
-        booksTableView.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi/2))
+        tableView.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi/2))
         
         
         return contentView
@@ -116,17 +173,7 @@ class YDt3ViewController : BaseViewController {
         return scrollView
     }()
     
-    
 
-    
-    
-
-    @objc func loadData(){
-//        listViewModel.loadBooks { (isSuccess) in
-//            self.collectionView.myHead.endRefreshing()
-//            self.collectionView.reloadData()
-//        }
-    }
     
     override func setupLayout(){
         
@@ -140,8 +187,9 @@ class YDt3ViewController : BaseViewController {
         
         view.addSubview(bannerView)
         bannerView.snp.makeConstraints{ make in
-            make.top.left.right.equalToSuperview()
-            make.height.equalTo(screenHeight/2)
+            make.top.equalToSuperview().offset(120)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(screenHeight/4)
         }
          
         view.addSubview(navView)
@@ -152,28 +200,75 @@ class YDt3ViewController : BaseViewController {
     }
 }
 
-extension YDt3ViewController:UIScrollViewDelegate{
+extension YDt3ViewController:UITableViewDelegate,UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listViewModel.dataDict.count
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 320
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: DiscoverTableViewCellType, for: indexPath) as! DiscoverBookTableViewCell
+        cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
+        let key = listViewModel.categoriesParams[indexPath.row]
+        cell.listViewModel = listViewModel.dataDict[key]!
+        return cell
+    }
+    
     
     //使头部视图滚动
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        navView.value = scrollView.contentOffset.y
+        
         print("contentoffset.y = \(scrollView.contentOffset.y)")
         print("contentInset.top = \(scrollView.contentInset.top)")
         print("contentSize = \(scrollView.contentSize)")
         print("和 = \(scrollView.contentOffset.y + scrollView.contentInset.top)\n")
-        if scrollView.contentOffset.y >= -200 {
-            self.style = .default
-
-        } else {
-            self.style = .lightContent
-        }
-        setNeedsStatusBarAppearanceUpdate()
+        
+        
         
         if scrollView == self.scrollView {
-            bannerView.snp.updateConstraints{ $0.top.equalToSuperview().offset(min(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))) }
+            if scrollView.contentOffset.y > 0{
+                navView.layer.shadowPath = UIBezierPath(rect: CGRect.zero).cgPath
+                shouldChangeNavColor = false
+            }else{
+                navView.layer.shadowPath = UIBezierPath(rect: CGRect(x: -10, y: 10, width: screenWidth+10*2, height: 120)).cgPath
+                shouldChangeNavColor = true
+                
+            }
+            
+            if scrollView.contentOffset.y >= 200 {
+                self.style = .darkContent
+
+            } else {
+                self.style = .lightContent
+            }
+            setNeedsStatusBarAppearanceUpdate()
+            navView.value = scrollView.contentOffset.y
+            bannerView.snp.updateConstraints{ $0.top.equalToSuperview().offset(120+min(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))) }
         }
     }
     
     
 }
 
+extension YDt3ViewController:LLCycleScrollViewDelegate{
+    func cycleScrollView(_ cycleScrollView: LLCycleScrollView, didSelectItemIndex index: NSInteger) {
+        
+    }
+    func cycleScrollView(_ cycleScrollView: LLCycleScrollView, scrollTo index: NSInteger) {
+        print("scrollTo \(index)")
+        let img = UIImage(named: bannerpics[index])
+        self.currentMostColor = img!.myMostColor
+        if shouldChangeNavColor{
+            navView.backgroundColor = currentMostColor
+            navView.layer.shadowColor = currentMostColor.cgColor
+        }
+        
+    }
+    
+}

@@ -10,11 +10,9 @@ import UIKit
 
 class DiscoverBookCollectionViewCell:UICollectionViewCell{
     
-    @IBOutlet weak var cover: UIImageView!{
-        didSet{
-            cover.layer.cornerRadius = 5
-        }
-    }
+    
+    @IBOutlet weak var cover: MGRoundCornerShadowImageView!
+    
     @IBOutlet weak var rank: UIImageView!{
         didSet{
             rank.layer.cornerRadius = 5
@@ -28,12 +26,25 @@ class DiscoverBookCollectionViewCell:UICollectionViewCell{
         
           
     }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        //异步绘制 离屏渲染
+        self.layer.drawsAsynchronously = true
+        
+        //栅格化
+        //必须指定分辨率 不然h很模糊
+        self.layer.shouldRasterize = true
+        //分辨率
+        self.layer.rasterizationScale = UIScreen.main.scale
+    }
     
     var viewModel:Book?{
         didSet{
             title.text = viewModel?.name
             author.text = viewModel?.author
-            cover.mg_setImage(urlString: viewModel?.picUrl, placeholderImage: nil)
+            guard let picUrl = viewModel?.picUrl else{return}
+            cover.mg_setImage(urlString: picUrl, placeholderImage: UIImage(named: "placeholder"))
+            //cover.imageView.image = UIImage(named: "placeholder")
         }
     }
     

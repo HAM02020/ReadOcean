@@ -27,8 +27,10 @@ class BlockTableViewCell:BaseTableViewCell{
             make.top.equalToSuperview().offset(-30)
             make.left.equalToSuperview().inset(10)
             make.width.equalTo(coverWidth)
-            make.height.equalTo(coverHeight)
+            make.height.equalTo(coverHeight+5)
         }
+        //coverView.fixLayer(x: 10, y: -25)
+        
         v.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(15)
@@ -69,9 +71,8 @@ class BlockTableViewCell:BaseTableViewCell{
         return v
     }()
     
-    private lazy var coverView: MGShadowImageVIew = {
-        let v = MGShadowImageVIew(frame: CGRect(x: 0, y: 0, width: coverWidth, height: coverHeight))
-
+    private lazy var coverView: MGRoundCornerShadowImageView = {
+        let v = MGRoundCornerShadowImageView(frame: CGRect(x: 0, y: 0, width: coverWidth, height: coverHeight))
         return v
     }()
     private lazy var titleLabel : UILabel = {

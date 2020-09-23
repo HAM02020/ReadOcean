@@ -9,7 +9,12 @@
 import UIKit
 
 class DiscoverNavView: UIView {
+    
+    
+    
     private let MaxValue: CGFloat = (screenWidth - 20)/2
+    
+
     
     private lazy var whiteView: UIView = {
         let v = UIView()
@@ -72,7 +77,7 @@ class DiscoverNavView: UIView {
     }
     
     private var defaultValue: CGFloat = 0
-    private var selfDefaultHeight: CGFloat = 0
+    private var selfDefaultHeight: CGFloat = 120
 
     public var value: CGFloat? {
         didSet {
@@ -95,6 +100,7 @@ class DiscoverNavView: UIView {
                         self.snp.updateConstraints { (make) in
                             make.height.equalTo(selfDefaultHeight - changeValue/3)
                         }
+                        
                     }
 
                     if changeValue > MaxValue {
@@ -164,7 +170,7 @@ class DiscoverNavView: UIView {
 
                     if value > defaultValue {
                         // 往上推
-                        self.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: changeValue/100)
+                        //self.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: changeValue/100)
                         
                         if changeValue <= MaxValue {
                             searchBtn.snp.updateConstraints({ (make) in
@@ -174,7 +180,7 @@ class DiscoverNavView: UIView {
                     }
                     if value <= defaultValue {
                         // 往下推
-                        self.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: changeValue/100)
+                        //self.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: changeValue/100)
                         
                         var width: CGFloat = searchBtn.frame.size.width + changeValue
                         if changeValue <= 0 {
@@ -195,12 +201,24 @@ class DiscoverNavView: UIView {
         super.init(frame: frame)
         setupLayout()
     }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func setupLayout() {
+        layer.shadowPath = UIBezierPath(rect: CGRect(x: -10, y: 10, width: screenWidth+10*2, height: 120)).cgPath
+        layer.shadowOffset = CGSize(width: 0, height: 20)
+        layer.shadowRadius = 5
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 1
+        layer.masksToBounds = false
+        
         addSubview(msgBtn)
         msgBtn.snp.makeConstraints { (make) in
             make.top.equalTo(38)

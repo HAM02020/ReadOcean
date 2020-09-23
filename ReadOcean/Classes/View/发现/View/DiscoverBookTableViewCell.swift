@@ -19,26 +19,22 @@ class DiscoverBookTableViewCell: UITableViewCell {
     
     @IBOutlet weak var view: UIView!{
         didSet{
-//            view.layer.cornerRadius = 10
-//
-//
-//            //view.layer.shadowRadius = 10
-//            view.layer.shadowOffset = CGSize(width: 0, height: 1)
-//            view.layer.shadowOpacity = 0.2
-//            view.layer.shadowColor = UIColor.black.cgColor
-//            view.layer.masksToBounds = false
+            view.layer.masksToBounds = true
+            view.layer.cornerRadius = 5
+
+            //制作阴影
             let subLayer = CALayer()
-            //let fixframe = view.frame
-            //let newFrame = CGRect(x: fixframe.minX-(375-UIScreen.main.bounds.size.width)/2, y: fixframe.minY, width: fixframe.width, height: fixframe.height) // 修正偏差
-            subLayer.frame = view.frame
-            subLayer.cornerRadius = 50
+            let fixframe = view.frame
+            let newFrame = CGRect(x: fixframe.minX, y: fixframe.minY, width: fixframe.height, height: fixframe.width) // 修正偏差
+            subLayer.frame = newFrame
+            subLayer.cornerRadius = view.layer.cornerRadius
             subLayer.backgroundColor = UIColor.white.cgColor
-            subLayer.masksToBounds = true
+            subLayer.masksToBounds = false
             subLayer.shadowColor = UIColor.black.cgColor // 阴影颜色
             subLayer.shadowOffset = CGSize(width: 0, height: 0) // 阴影偏移,width:向右偏移3，height:向下偏移2，默认(0, -3),这个跟shadowRadius配合使用
             subLayer.shadowOpacity = 0.2 //阴影透明度
             subLayer.shadowRadius = 5;//阴影半径，默认3
-
+            //view.layer.addSublayer(subLayer)
             view.superview?.layer.insertSublayer(subLayer, below: view.layer)
         }
     }
@@ -60,6 +56,16 @@ class DiscoverBookTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        //异步绘制 离屏渲染
+        self.layer.drawsAsynchronously = true
+        //栅格化
+        //必须指定分辨率 不然h很模糊
+        self.layer.shouldRasterize = true
+        //分辨率
+        self.layer.rasterizationScale = UIScreen.main.scale
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
