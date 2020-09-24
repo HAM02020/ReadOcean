@@ -55,7 +55,7 @@ class BookDetailCollectionViewCell:BaseCollectionViewCell{
         return v
     }()
 
-    private lazy var cover: UIImageView = {
+    lazy var cover: UIImageView = {
         let img = UIImage(named: "placeholder")
         let iconView = UIImageView(image: img )
         iconView.contentMode = .scaleAspectFill
@@ -119,7 +119,7 @@ class BookDetailCollectionViewCell:BaseCollectionViewCell{
                 return
             }
             
-            cover.mg_setImage(urlString: imgUrl , placeholderImage: UIImage(named: "placeholder"))
+            //cover.mg_setImage(urlString: imgUrl , placeholderImage: UIImage(named: "placeholder"))
             titleLabel.text = title
             author.text = "作者 "+authorName
             introductionView.text = introduction

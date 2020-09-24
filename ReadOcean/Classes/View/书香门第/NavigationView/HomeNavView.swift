@@ -66,7 +66,6 @@ class HomeNavView: UIView {
     public var value: CGFloat? {
             didSet {
                 self.layoutIfNeeded()
-                print("didset nav 的 value")
                 if let value = value {
     //                print("didSet:", value)
                     if defaultValue == 0 {

@@ -22,15 +22,15 @@ extension UIImageView {
         }
         //print("url setImage =  \(url)")
         
-        sd_setImage(with: url, placeholderImage: placeholderImage, options: [], progress: nil) {
-            [weak self](image, _, _, _) in
-                
-//            完成回调 判断是否是头像 设置圆形
-//            if isAvatar {
-//                self?.image = image?.mg_avatarImage(size: self?.bounds.size)
-//            }
-            
-            
+        kf.setImage(with: url, placeholder: placeholderImage, options: nil, progressBlock: nil) {[weak self] (result) in
+            switch result {
+            case .success(let data):
+                break
+            case .failure(_):
+                break
+            }
         }
+        
+        
     }
 }

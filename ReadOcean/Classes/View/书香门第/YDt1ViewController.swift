@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 let YDBookCollectionViewNormalCell = "BookCollectionViewNormalCell"
 
@@ -15,6 +16,15 @@ let YDBookCollectionViewNormalCell = "BookCollectionViewNormalCell"
 class YDt1ViewController : BaseViewController {
     
     private lazy var listViewModel = BooksListViewModel()
+    
+//    var shouldLoadImg = true{
+//        didSet{
+//            if shouldLoadImg{
+//                //reloadData()
+//            }
+//
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -197,13 +207,30 @@ class YDt1ViewController : BaseViewController {
         collectionView.myFoot = URefreshDiscoverFooter()
         //collectionView.myempty = UEmptyView(verticalOffset: -(collectionView.contentInset.top)) { self.setupLoadData() }
         
+        //优化
+        collectionView.layer.isOpaque = true
+        collectionView.layer.drawsAsynchronously = true
+        //栅格化
+        //必须指定分辨率 不然h很模糊
+        collectionView.layer.shouldRasterize = true
+        //分辨率
+        collectionView.layer.rasterizationScale = UIScreen.main.scale
+        
+        //collectionView.isPrefetchingEnabled = true
+        //collectionView.prefetchDataSource = self
+        
         return collectionView
     }()
     
     
 
     
-    
+    @objc func reloadData(){
+        //造成闪烁的原因，主要是 CALayer 存在隐式动画，只要在调用 reloadData() 刷新操作时，关闭隐式动画就可以避免了
+        CATransaction.setDisableActions(true)
+        self.collectionView.reloadData()
+        CATransaction.commit()
+    }
     
     
     @objc func loadData(_ isFirstLoad:Bool = false){
@@ -216,8 +243,47 @@ class YDt1ViewController : BaseViewController {
         
         
         listViewModel.getBooks {[weak self] in
+            //进行图片缓存
+            for key in self!.listViewModel.categoriesParams{
+                
+                let bookList = self!.listViewModel.dataDict[key]!
+                
+                for i in 0..<bookList.count{
+                    
+                    guard let urlStr = self!.listViewModel.dataDict[key]![i].picUrl,
+                          let url = URL(string: urlStr) else{return}
+                    
+                    KingfisherManager.shared.retrieveImage(with: url , options: nil, progressBlock: nil, downloadTaskUpdated: nil) {[weak self] (result) in
+                        
+                        switch result{
+                        
+                        case .success(let data):
+                            
+                            if self!.listViewModel.dataDict[key]![i].image == nil{
+                                
+                                self!.listViewModel.dataDict[key]![i].image = data.image
+                                
+                                data.image.mgMostColor { (mostColor) in
+                                    
+                                    if self!.listViewModel.dataDict[key]![i].mostColor == nil{
+                                        
+                                        self!.listViewModel.dataDict[key]![i].mostColor = mostColor
+                                    }
+                                    
+                                }
+                                
+                            }
+                            
+                            
+                        case .failure(_):
+                            break
+                        }
+                    }
+                }
+            }
+            
             self?.collectionView.myHead.endRefreshing()
-            self?.collectionView.reloadData()
+            self?.reloadData()
             LPH.uncover()
             ProgressHUD.showSucceed()
         }
@@ -260,38 +326,55 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
 
     //cell的视图
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        print("cellForItemAt section = \(indexPath.section)")
         let key = listViewModel.categoriesParams[indexPath.section]
-        
+        let book = listViewModel.dataDict[key]![indexPath.item]
 
         
         switch indexPath.section {
-        case 0:
-            break
-        case 4:
-            let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: BookDetailCollectionViewCell.self)
-            cell.viewModel = listViewModel.dataDict[key]![indexPath.item]
-            cell.updateTableViewCell()
-            return cell
-        case 2,7:
-            if(indexPath.item != 0){
-                break
+        case 2,4,7:
+            if(indexPath.item == 0||indexPath.section == 4){
+                let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: BookDetailCollectionViewCell.self)
+                cell.updateTableViewCell()
+                cell.viewModel = book
+                
+                return cell
             }
-            let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: BookDetailCollectionViewCell.self)
-            cell.viewModel = listViewModel.dataDict[key]![indexPath.item]
-            return cell
 
         default:
             break
         }
         //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YDBookCollectionViewNormalCell, for: indexPath) as! BookCollectionViewCell
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: YDBookCollectionViewCell.self)
-        cell.viewModel = listViewModel.dataDict[key]![indexPath.item]
-        cell.updatePicHeight(indexPath.section)
+        cell.viewModel = book
         return cell
         
         
     }
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        print("willDisplayCell section = \(indexPath.section)")
+//
+//        switch indexPath.section {
+//
+//        case 2,4,7:
+//            if(indexPath.item == 0||indexPath.section == 4){
+//                //let cell = (cell as! BookDetailCollectionViewCell)
+//                
+//                return
+//            }
+//        default:
+//            break
+//        }
+//        let cell = (cell as! YDBookCollectionViewCell)
+//        if cell.isImageReady{
+//            DispatchQueue.main.async {
+//                cell.shadowView.layer.shadowColor = cell.coverImg.image?.myMostColor.cgColor
+//            }
+//            
+//        }
+//
+//    }
+    
     //行数
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return listViewModel.dataDict.count
@@ -367,14 +450,84 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
     
     //使头部视图滚动
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        navView.value = scrollView.contentOffset.y
-        print("contentoffset.y = \(scrollView.contentOffset.y)")
-        print("contentInset.top = \(scrollView.contentInset.top)")
-        print("和 = \(scrollView.contentOffset.y + scrollView.contentInset.top)\n")
-        //setNeedsStatusBarAppearanceUpdate()
+    
         
         if scrollView == collectionView {
+            navView.value = scrollView.contentOffset.y
             headerView.snp.updateConstraints{ $0.top.equalToSuperview().offset(min(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))) }
+        }
+    }
+    // MARK: 优化
+    
+    
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        if scrollView == collectionView{
+//
+//        }
+//        print("scrollViewDidEndDecelerating")
+//        //进行图片加载
+//        shouldLoadImg = true
+//    }
+//    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+//        print("scrollViewWillBeginDecelerating")
+//        shouldLoadImg = false
+//    }
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        if !decelerate{
+//            print("scrollViewDidEndDragging")
+//            //进行图片加载
+//            shouldLoadImg = false
+//        }else{
+////            print("!!!!!!!!!!!!scrollViewDidEndDragging")
+////            //不进行图片加载/只加载滑动范围内的cell
+////            shouldLoadImg = false
+//                //scrollViewWillBeginDecelerating
+//        }
+//
+//    }
+////    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+////        print("scrollViewWillEndDragging")
+////    }
+//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        print("scrollViewWillBeginDragging")
+//        shouldLoadImg = true
+//    }
+    
+    
+   
+
+    
+}
+extension YDt1ViewController:UICollectionViewDataSourcePrefetching{
+    
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths{
+            print("prefetch section = \(indexPath.section) item = \(indexPath.item)")
+            let key = listViewModel.categoriesParams[indexPath.section]
+            
+            guard let urlStr = listViewModel.dataDict[key]![indexPath.item].picUrl,
+                  let url = URL(string: urlStr)
+                  else {return}
+            KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil, downloadTaskUpdated: nil) {[weak self] (result) in
+                switch result{
+                case .success(let data):
+                    if self?.listViewModel.dataDict[key]![indexPath.item].image == nil{
+                        self?.listViewModel.dataDict[key]![indexPath.item].image = data.image
+                        data.image.mgMostColor { (mostColor) in
+                            self?.listViewModel.dataDict[key]![indexPath.item].mostColor = mostColor
+                        }
+                        
+                    }
+                    
+                    
+                case .failure(_):
+                    break
+                }
+            }
+            
         }
     }
     

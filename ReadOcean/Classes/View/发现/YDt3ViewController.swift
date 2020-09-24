@@ -19,17 +19,10 @@ let DiscoverTableViewCellType = "DiscoverTableViewCellType"
 class YDt3ViewController : BaseViewController {
     
     private lazy var listViewModel = BooksListViewModel()
-    private var bannerpics:[String] = []
-    private var currentMostColor = UIColor.white
-    var shouldChangeNavColor:Bool = true{
-        didSet{
-            if shouldChangeNavColor{
-                navView.backgroundColor = currentMostColor
-            }else{
-                navView.backgroundColor = UIColor.white
-            }
-        }
-    }
+    private var bannerpics:[String] = ["b1","b2","b3"]
+
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,9 +40,7 @@ class YDt3ViewController : BaseViewController {
     }
     private lazy var navView : DiscoverNavView = {
         let nav = DiscoverNavView()
-        let img = UIImage(named: bannerpics[0])
-        nav.backgroundColor = img?.myMostColor
-        nav.layer.shadowColor = img?.myMostColor.cgColor
+
         return nav
     }()
 
@@ -61,33 +52,34 @@ class YDt3ViewController : BaseViewController {
         cycleScrollView.coverImage = UIImage(named: "normal_placeholder_h")
         cycleScrollView.pageControlBottom = 20
         cycleScrollView.titleBackgroundColor = UIColor.clear
-        cycleScrollView.customPageControlStyle = .image
-        cycleScrollView.pageControlPosition = .left
+        cycleScrollView.customPageControlStyle = .system
+
+        cycleScrollView.pageControlPosition = .right
 //        cycleScrollView.pageControlActiveImage = UIImage(named: "emojiCommunity")
-        cycleScrollView.pageControlInActiveImage = UIImage(named: "pagecontrol")
+        //cycleScrollView.pageControlInActiveImage = UIImage(named: "pagecontrol")
 
         // 点击 item 回调
         cycleScrollView.lldidSelectItemAtIndex = didSelectBanner(index:)
-        cycleScrollView.delegate = self
         
-        
-        var bgPics:[String] = []
-        for i in 1...3{
-            bannerpics.append("b\(i)")
-            bgPics.append("normal_placeholder_h")
-        }
+
+
         cycleScrollView.bg_imagePaths = bannerpics
-        cycleScrollView.imagePaths = bgPics
-    
-        
-    
+        cycleScrollView.imagePaths = bannerpics
+
+
+
         return cycleScrollView
         }()
+
     
-    private func didSelectBanner(index: NSInteger) {
+    private func didSelectBanner(index: Int) {
             print("轮播图被点击了...")
 
-        }
+    }
+    private func didScrollBanner(currentIndex: Int) {
+            print("轮播图滚动了...")
+
+    }
     
     private lazy var tableView : UITableView = {
         let t = UITableView()
@@ -100,6 +92,12 @@ class YDt3ViewController : BaseViewController {
         t.backgroundColor = UIColor.yellow
         t.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         t.separatorStyle = .none
+        
+        //优化
+        t.rowHeight = 320
+        t.estimatedRowHeight = 320
+        
+        
         
         t.register(UINib(nibName: "DiscoverBooksTableViewCell", bundle: nil), forCellReuseIdentifier: DiscoverTableViewCellType)
         return t
@@ -187,9 +185,9 @@ class YDt3ViewController : BaseViewController {
         
         view.addSubview(bannerView)
         bannerView.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(120)
-            make.left.right.equalToSuperview()
-            make.height.equalTo(screenHeight/4)
+
+            make.top.left.right.equalToSuperview()
+            make.height.equalTo(screenHeight/2)
         }
          
         view.addSubview(navView)
@@ -208,18 +206,18 @@ extension YDt3ViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listViewModel.dataDict.count
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 320
-    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DiscoverTableViewCellType, for: indexPath) as! DiscoverBookTableViewCell
         cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
-        let key = listViewModel.categoriesParams[indexPath.row]
-        cell.listViewModel = listViewModel.dataDict[key]!
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let key = listViewModel.categoriesParams[indexPath.row]
+        let cell = (cell as! DiscoverBookTableViewCell)
+        cell.listViewModel = listViewModel.dataDict[key]!
+        
+    }
     
     //使头部视图滚动
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -232,14 +230,6 @@ extension YDt3ViewController:UITableViewDelegate,UITableViewDataSource{
         
         
         if scrollView == self.scrollView {
-            if scrollView.contentOffset.y > 0{
-                navView.layer.shadowPath = UIBezierPath(rect: CGRect.zero).cgPath
-                shouldChangeNavColor = false
-            }else{
-                navView.layer.shadowPath = UIBezierPath(rect: CGRect(x: -10, y: 10, width: screenWidth+10*2, height: 120)).cgPath
-                shouldChangeNavColor = true
-                
-            }
             
             if scrollView.contentOffset.y >= 200 {
                 self.style = .darkContent
@@ -249,26 +239,11 @@ extension YDt3ViewController:UITableViewDelegate,UITableViewDataSource{
             }
             setNeedsStatusBarAppearanceUpdate()
             navView.value = scrollView.contentOffset.y
-            bannerView.snp.updateConstraints{ $0.top.equalToSuperview().offset(120+min(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))) }
+            bannerView.snp.updateConstraints{ $0.top.equalToSuperview().offset(min(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))) }
         }
     }
     
     
 }
 
-extension YDt3ViewController:LLCycleScrollViewDelegate{
-    func cycleScrollView(_ cycleScrollView: LLCycleScrollView, didSelectItemIndex index: NSInteger) {
-        
-    }
-    func cycleScrollView(_ cycleScrollView: LLCycleScrollView, scrollTo index: NSInteger) {
-        print("scrollTo \(index)")
-        let img = UIImage(named: bannerpics[index])
-        self.currentMostColor = img!.myMostColor
-        if shouldChangeNavColor{
-            navView.backgroundColor = currentMostColor
-            navView.layer.shadowColor = currentMostColor.cgColor
-        }
-        
-    }
-    
-}
+

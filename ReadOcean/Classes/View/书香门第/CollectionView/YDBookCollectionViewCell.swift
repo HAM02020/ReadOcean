@@ -12,7 +12,7 @@ let cellEdgeMargin = 10.0
 
 let cellWidth_4 = (Double(screenWidth) - cellMargin*3.0 - cellEdgeMargin*2.0)/4
 let cellHeight_4 = cellWidth_4*1.9
-let picHeight_4 = cellWidth_4*1.45
+let picHeight_4 = cellWidth_4*1.35
 
 let cellWidth_3 = (Double(screenWidth) - cellMargin*2.0 - cellEdgeMargin*2.0)/3
 let cellHeight_3 = cellWidth_3*2
@@ -23,8 +23,51 @@ let picHeight_3 = cellWidth_3*1.5
 class YDBookCollectionViewCell: BaseCollectionViewCell {
     
     
-    private lazy var shadowView: MGRoundCornerShadowImageView = {
-        let v = MGRoundCornerShadowImageView(frame: CGRect(x: 0, y: 0, width: cellWidth_4, height: picHeight_4))
+//    lazy var cover: MGRoundCornerShadowImageView = {
+//        let v = MGRoundCornerShadowImageView(frame: CGRect(x: 0, y: 0, width: cellWidth_4, height: picHeight_4))
+//        return v
+//    }()
+    
+    lazy var shadowView:UIView = {
+        let v = UIView(frame:coverImg.frame)
+        
+        let shadowWidth:CGFloat = 5
+        let newFrame = CGRect(
+            x: v.frame.minX + v.frame.width*0.1,
+            y: v.frame.minY + v.frame.height,
+            width: v.frame.width*0.8,
+            height: shadowWidth)
+        let path = UIBezierPath(rect: newFrame)
+//        path.move(to: CGPoint(x: 0, y: v.frame.height))
+//        path.addLine(to: CGPoint(x: v.frame.width, y: v.frame.height))
+        
+        v.layer.shadowPath = path.cgPath
+        v.layer.shadowRadius = 5
+        v.layer.shadowOpacity = 1
+        v.layer.shadowColor = UIColor.black.cgColor
+        v.layer.shadowOffset = CGSize.zero
+        
+        
+        
+        
+        v.addSubview(coverImg)
+        coverImg.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        
+        return v
+    }()
+    lazy var coverImg:UIImageView = {
+        let v = UIImageView(frame: CGRect(x: 0, y: 0, width: cellWidth_4, height: picHeight_4))
+        
+        v.contentMode = .scaleAspectFill
+        v.layer.cornerRadius = 5
+        v.layer.masksToBounds = true
+        
+        let img = UIImage(named: "placeholder")
+        v.image = img
+        
         return v
     }()
    
@@ -51,10 +94,35 @@ class YDBookCollectionViewCell: BaseCollectionViewCell {
         didSet{
             titleLabel.text = viewModel?.name
             authorLabel.text = viewModel?.author
-            shadowView.mg_setImage(urlString: viewModel?.picUrl, placeholderImage: nil)
-            
+            if viewModel?.image != nil{
+                coverImg.image = viewModel?.image
+                shadowView.layer.shadowColor = viewModel?.mostColor?.cgColor
+            }else{
+
+                guard let urlStr = viewModel?.picUrl,
+                      let url = URL(string: urlStr) else{return}
+                coverImg.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil) {[weak self] (result) in
+                    switch result {
+                    case .success(let data):
+                        data.image.mgMostColor { (mostColor) in
+                            self?.shadowView.layer.shadowColor = mostColor.cgColor
+                        }
+                        
+                    case .failure(_):
+                        break
+                    }
+                }
+
+                
+            }
+
         }
     }
+//    var shouldLoadImg:Bool = true{
+//        didSet{
+//            cover.mg_setImage(urlString: viewModel?.picUrl, placeholderImage: UIImage(named: "placeholder"))
+//        }
+//    }
     
     
     override func setupLayout(){
@@ -68,6 +136,8 @@ class YDBookCollectionViewCell: BaseCollectionViewCell {
         self.layer.shouldRasterize = true
         //分辨率
         self.layer.rasterizationScale = UIScreen.main.scale
+        //优化
+        self.layer.isOpaque = true
         
         contentView.addSubview(authorLabel)
         
@@ -76,17 +146,17 @@ class YDBookCollectionViewCell: BaseCollectionViewCell {
         contentView.addSubview(shadowView)
         shadowView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(picHeight_4+5)
+            make.height.equalTo(picHeight_4)
             //make.height.equalTo(cellHeight_4)
         }
         titleLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(shadowView.snp.bottom).offset(10)
-            make.height.equalTo(10)
+            make.height.equalTo(15)
         }
         authorLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
-            make.height.equalTo(10)
+            make.height.equalTo(15)
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
         }
         
@@ -133,5 +203,6 @@ class YDBookCollectionViewCell: BaseCollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        //coverImg.image = nil
     }
 }

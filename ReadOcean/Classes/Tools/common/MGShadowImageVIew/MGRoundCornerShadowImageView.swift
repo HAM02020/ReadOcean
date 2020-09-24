@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 
 /// 阴影样式
 enum ShadowType {
@@ -20,6 +20,13 @@ enum ShadowType {
 class MGRoundCornerShadowImageView: UIImageView {
 
     let subLayer = CALayer()
+    
+    override var image: UIImage?{
+        didSet{
+            guard let image = image else {return}
+            subLayer.shadowColor = image.myMostColor.cgColor
+        }
+    }
     
     var shadowType:ShadowType = .bottomCurve
     
@@ -36,7 +43,6 @@ class MGRoundCornerShadowImageView: UIImageView {
     convenience init(frame:CGRect,shadowType:ShadowType = .bottomCurve){
         self.init(frame:frame)
         self.shadowType = shadowType
-        config()
     }
     
     override private init(frame: CGRect) {
@@ -56,6 +62,16 @@ extension MGRoundCornerShadowImageView{
     
     func config(){
         self.contentMode = .scaleAspectFill
+
+        //异步绘制 离屏渲染
+        self.layer.drawsAsynchronously = true
+        
+        //栅格化
+        self.layer.shouldRasterize = true
+        //分辨率
+        self.layer.rasterizationScale = UIScreen.main.scale
+        //优化
+        self.layer.isOpaque = true
     }
     
     /// 修正layer
@@ -74,8 +90,8 @@ extension MGRoundCornerShadowImageView{
         let newFrame = CGRect(x: fixframe.minX, y: fixframe.minY, width: fixframe.width, height: fixframe.height)
         // 修正偏差
         subLayer.frame = newFrame
-        settingRoundCorner()
-        settingShadow()
+        //settingRoundCorner()
+        //settingShadow()
         self.superview?.layer.insertSublayer(subLayer, below: self.layer)
 
     }
@@ -156,20 +172,48 @@ extension MGRoundCornerShadowImageView{
         }
         //print("url setImage =  \(url)")
         
-    self.sd_setImage(with: url, placeholderImage: placeholderImage, options: [], progress: nil) {
-            [weak self](image, _, _, _) in
-            
-            DispatchQueue.main.async {
-                self?.subLayer.shadowColor = image?.myMostColor.cgColor
+//    self.sd_setImage(with: url, placeholderImage: placeholderImage, options: [], progress: nil) {
+//            [weak self](image, _, _, _) in
+//
+//            DispatchQueue.main.async {
+//                self?.subLayer.shadowColor = image?.myMostColor.cgColor
+//            }
+//
+//        }
+        self.kf.setImage(with: url, placeholder: placeholderImage, options: nil, progressBlock: nil) {[weak self] (result) in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self?.subLayer.shadowColor = data.image.myMostColor.cgColor
+                }
+            case .failure(_):
+                break
             }
-            
         }
+//        KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil, downloadTaskUpdated: nil) {[weak self] (result) in
+//            switch result{
+//            case .success(let data):
+//
+//                DispatchQueue.main.async {
+//                    self?.image = data.image
+//                    self?.subLayer.shadowColor = data.image.myMostColor.cgColor
+//                }
+//            case .failure(_):
+//                break
+//            }
+//        }
     }
     
 }
 
 extension UIImage {
     
+    open func mgMostColor(completion:@escaping(_ mostColor:UIColor)->Void){
+        DispatchQueue.main.async {
+            let color = self.myMostColor
+            completion(color)
+        }
+    }
     
     var myMostColor:UIColor{
 //        let cube = CCColorCube()

@@ -66,6 +66,7 @@ class DiscoverBookTableViewCell: UITableViewCell {
         self.layer.shouldRasterize = true
         //分辨率
         self.layer.rasterizationScale = UIScreen.main.scale
+        self.isOpaque = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -84,11 +85,11 @@ extension DiscoverBookTableViewCell:UICollectionViewDelegate,UICollectionViewDat
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverBookCollectionViewCellType, for: indexPath) as! DiscoverBookCollectionViewCell
-        
-        cell.viewModel = listViewModel[indexPath.item]
-        return cell
+
+        return collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverBookCollectionViewCellType, for: indexPath) as! DiscoverBookCollectionViewCell
     }
-    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        (cell as! DiscoverBookCollectionViewCell).viewModel = listViewModel[indexPath.item]
+    }
     
 }
