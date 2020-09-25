@@ -123,6 +123,28 @@ class BookDetailCollectionViewCell:BaseCollectionViewCell{
             titleLabel.text = title
             author.text = "作者 "+authorName
             introductionView.text = introduction
+            //设置图片
+//            if viewModel.image != nil{
+//                coverImg.image = viewModel?.image
+//                shadowView.layer.shadowColor = viewModel?.mostColor?.cgColor
+//            }else{
+//
+//                guard let urlStr = viewModel?.picUrl,
+//                      let url = URL(string: urlStr) else{return}
+//                coverImg.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil) {[weak self] (result) in
+//                    switch result {
+//                    case .success(let data):
+//                        data.image.mgMostColor { (mostColor) in
+//                            self?.shadowView.layer.shadowColor = mostColor.cgColor
+//                        }
+//                        
+//                    case .failure(_):
+//                        break
+//                    }
+//                }
+//
+//                
+//            }
         }
     }
     

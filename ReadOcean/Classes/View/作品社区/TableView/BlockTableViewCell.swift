@@ -71,8 +71,8 @@ class BlockTableViewCell:BaseTableViewCell{
         return v
     }()
     
-    private lazy var coverView: MGRoundCornerShadowImageView = {
-        let v = MGRoundCornerShadowImageView(frame: CGRect(x: 0, y: 0, width: coverWidth, height: coverHeight))
+    private lazy var coverView: MGImageView = {
+        let v = MGImageView(frame: CGRect(x: 0, y: 0, width: coverWidth, height: coverHeight))
         return v
     }()
     private lazy var titleLabel : UILabel = {

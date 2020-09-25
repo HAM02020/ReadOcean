@@ -36,7 +36,7 @@
 		014488FE24BF4BE300B61DDB /* WBTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014488FD24BF4BE300B61DDB /* WBTitleButton.swift */; };
 		01508D9E2478D0C1000AA9E9 /* YDMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508D9D2478D0C1000AA9E9 /* YDMainViewController.swift */; };
 		01508DA02478FDF1000AA9E9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508D9F2478FDF1000AA9E9 /* BaseViewController.swift */; };
-		01508DA62478FEAE000AA9E9 /* YDt3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508DA52478FEAE000AA9E9 /* YDt3ViewController.swift */; };
+		01508DA62478FEAE000AA9E9 /* YDt3ViewController_old.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508DA52478FEAE000AA9E9 /* YDt3ViewController_old.swift */; };
 		01508DAA2478FEC3000AA9E9 /* YDt5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508DA92478FEC3000AA9E9 /* YDt5ViewController.swift */; };
 		01508DAC247AA237000AA9E9 /* YDNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508DAB247AA237000AA9E9 /* YDNavigationViewController.swift */; };
 		01508DAF247AA413000AA9E9 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508DAE247AA413000AA9E9 /* UIColor+Extensions.swift */; };
@@ -101,6 +101,9 @@
 		01E755E8250E00DA0038E782 /* GXAnimationPushATDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E755D9250E00DA0038E782 /* GXAnimationPushATDelegate.m */; };
 		01E755E9250E00DA0038E782 /* GXAnimationPushALDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E755DD250E00DA0038E782 /* GXAnimationPushALDelegate.m */; };
 		01E755EA250E00DA0038E782 /* GXAnimationBaseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E755DE250E00DA0038E782 /* GXAnimationBaseDelegate.m */; };
+		01EC897A251D848B0038C39B /* MGImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC8979251D848B0038C39B /* MGImageView.swift */; };
+		01EC897F251DC73C0038C39B /* DiscoverBooksTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC897E251DC73C0038C39B /* DiscoverBooksTableView.swift */; };
+		01EC8983251E26090038C39B /* YDt3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC8982251E26090038C39B /* YDt3ViewController.swift */; };
 		A9315993D1C6519FF959FB78 /* Pods_ReadOcean.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7B46C8AB20EB21263119A9 /* Pods_ReadOcean.framework */; };
 /* End PBXBuildFile section */
 
@@ -136,7 +139,7 @@
 		014488FD24BF4BE300B61DDB /* WBTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBTitleButton.swift; sourceTree = "<group>"; };
 		01508D9D2478D0C1000AA9E9 /* YDMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDMainViewController.swift; sourceTree = "<group>"; };
 		01508D9F2478FDF1000AA9E9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		01508DA52478FEAE000AA9E9 /* YDt3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt3ViewController.swift; sourceTree = "<group>"; };
+		01508DA52478FEAE000AA9E9 /* YDt3ViewController_old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt3ViewController_old.swift; sourceTree = "<group>"; };
 		01508DA92478FEC3000AA9E9 /* YDt5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt5ViewController.swift; sourceTree = "<group>"; };
 		01508DAB247AA237000AA9E9 /* YDNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDNavigationViewController.swift; sourceTree = "<group>"; };
 		01508DAE247AA413000AA9E9 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -215,6 +218,9 @@
 		01E755DC250E00DA0038E782 /* UIViewController+GXTransitionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+GXTransitionDelegate.h"; sourceTree = "<group>"; };
 		01E755DD250E00DA0038E782 /* GXAnimationPushALDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXAnimationPushALDelegate.m; sourceTree = "<group>"; };
 		01E755DE250E00DA0038E782 /* GXAnimationBaseDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXAnimationBaseDelegate.m; sourceTree = "<group>"; };
+		01EC8979251D848B0038C39B /* MGImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGImageView.swift; sourceTree = "<group>"; };
+		01EC897E251DC73C0038C39B /* DiscoverBooksTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverBooksTableView.swift; sourceTree = "<group>"; };
+		01EC8982251E26090038C39B /* YDt3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt3ViewController.swift; sourceTree = "<group>"; };
 		C585E163256E88B98A684169 /* Pods-ReadOcean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadOcean.debug.xcconfig"; path = "Target Support Files/Pods-ReadOcean/Pods-ReadOcean.debug.xcconfig"; sourceTree = "<group>"; };
 		C63B3FAB73B4545615C5E725 /* Pods-ReadOcean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadOcean.release.xcconfig"; path = "Target Support Files/Pods-ReadOcean/Pods-ReadOcean.release.xcconfig"; sourceTree = "<group>"; };
 		EB7B46C8AB20EB21263119A9 /* Pods_ReadOcean.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadOcean.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -444,8 +450,11 @@
 		01508D9A2478CE57000AA9E9 /* 发现 */ = {
 			isa = PBXGroup;
 			children = (
-				01C146AF25068B030072586A /* View */,
-				01508DA52478FEAE000AA9E9 /* YDt3ViewController.swift */,
+				01EC897C251DC6E80038C39B /* NavigationView */,
+				01C146AF25068B030072586A /* CollectionView */,
+				01EC897D251DC7050038C39B /* TableView */,
+				01508DA52478FEAE000AA9E9 /* YDt3ViewController_old.swift */,
+				01EC8982251E26090038C39B /* YDt3ViewController.swift */,
 			);
 			path = "发现";
 			sourceTree = "<group>";
@@ -525,6 +534,7 @@
 			isa = PBXGroup;
 			children = (
 				01890B08251B0C530063CC24 /* MGRoundCornerShadowImageView.swift */,
+				01EC8979251D848B0038C39B /* MGImageView.swift */,
 			);
 			path = MGShadowImageVIew;
 			sourceTree = "<group>";
@@ -577,16 +587,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		01C146AF25068B030072586A /* View */ = {
+		01C146AF25068B030072586A /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				01C146B025068B290072586A /* DiscoverNavView.swift */,
-				01D5687D2518E31600E3248D /* DiscoverBooksTableViewCell.xib */,
 				01D5687F2518FCB200E3248D /* DiscoverBookCollectionViewCell.xib */,
 				01D568812518FE9F00E3248D /* DiscoverBookCollectionViewCell.swift */,
-				01D56883251903DA00E3248D /* DiscoverBookTableViewCell.swift */,
 			);
-			path = View;
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		01D5685825158CF200E3248D /* GXSegmentPageView */ = {
@@ -644,6 +651,24 @@
 				01E755DE250E00DA0038E782 /* GXAnimationBaseDelegate.m */,
 			);
 			path = GXTransition;
+			sourceTree = "<group>";
+		};
+		01EC897C251DC6E80038C39B /* NavigationView */ = {
+			isa = PBXGroup;
+			children = (
+				01C146B025068B290072586A /* DiscoverNavView.swift */,
+			);
+			path = NavigationView;
+			sourceTree = "<group>";
+		};
+		01EC897D251DC7050038C39B /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				01D5687D2518E31600E3248D /* DiscoverBooksTableViewCell.xib */,
+				01D56883251903DA00E3248D /* DiscoverBookTableViewCell.swift */,
+				01EC897E251DC73C0038C39B /* DiscoverBooksTableView.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		B8124B933267B4F5C40ACE20 /* Pods */ = {
@@ -809,6 +834,7 @@
 				01508DAA2478FEC3000AA9E9 /* YDt5ViewController.swift in Sources */,
 				01E755E0250E00DA0038E782 /* GXAnimationCubeDelegate.m in Sources */,
 				0178773A25147D3F00A25F4D /* UserAccount.swift in Sources */,
+				01EC897F251DC73C0038C39B /* DiscoverBooksTableView.swift in Sources */,
 				01508DAF247AA413000AA9E9 /* UIColor+Extensions.swift in Sources */,
 				017962D024E5969500C26419 /* BaseCollectionReusableView.swift in Sources */,
 				01E755E3250E00DA0038E782 /* UIViewController+GXTransitionDelegate.m in Sources */,
@@ -820,7 +846,7 @@
 				013EC1A625060C1A00BC8891 /* LLImagePageControl.swift in Sources */,
 				0178776E2514B39500A25F4D /* LoadingPlaceholderView.swift in Sources */,
 				01D5685D25158CF200E3248D /* GXSegmentTitleView.swift in Sources */,
-				01508DA62478FEAE000AA9E9 /* YDt3ViewController.swift in Sources */,
+				01508DA62478FEAE000AA9E9 /* YDt3ViewController_old.swift in Sources */,
 				013EC1A125060C1A00BC8891 /* LLPillPageControl.swift in Sources */,
 				017962D324E596FE00C26419 /* BaseCollectionViewCell.swift in Sources */,
 				012D85B624FCEED3008B2063 /* OverdueTaskVC.swift in Sources */,
@@ -829,6 +855,7 @@
 				01C143EB249363B5006ECD2C /* Model.swift in Sources */,
 				01A83453249366D1002D2327 /* YDNetworkManager.swift in Sources */,
 				01D5685E25158CF200E3248D /* GXSegmentTitleCell.swift in Sources */,
+				01EC897A251D848B0038C39B /* MGImageView.swift in Sources */,
 				01E755E9250E00DA0038E782 /* GXAnimationPushALDelegate.m in Sources */,
 				0197120A24E9738000C57717 /* UINavigationController+Extensions.swift in Sources */,
 				01E755EA250E00DA0038E782 /* GXAnimationBaseDelegate.m in Sources */,
@@ -855,6 +882,7 @@
 				01D5687825159E0B00E3248D /* DominantColors.swift in Sources */,
 				014488FA24BE0CF700B61DDB /* CustomNavigationBar.swift in Sources */,
 				017877702514B39500A25F4D /* Coverable.swift in Sources */,
+				01EC8983251E26090038C39B /* YDt3ViewController.swift in Sources */,
 				01079D65250A496B00593D34 /* CategoryVC.swift in Sources */,
 				01CA62F02511F709006522AE /* YDt1ViewController.swift in Sources */,
 				012D85BA24FD4199008B2063 /* BaseTableViewCell.swift in Sources */,

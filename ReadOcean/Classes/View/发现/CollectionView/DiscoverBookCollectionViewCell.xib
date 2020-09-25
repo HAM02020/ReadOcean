@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,12 +33,6 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NhK-oF-yWj" customClass="MGRoundCornerShadowImageView" customModule="ReadOcean" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="70"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="50" id="F2h-94-erK"/>
-                        </constraints>
-                    </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sVw-g7-Gsu">
                         <rect key="frame" x="0.0" y="0.0" width="30" height="20"/>
                         <constraints>
@@ -45,30 +40,42 @@
                             <constraint firstAttribute="width" constant="30" id="bj3-xv-YkU"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8u-5y-Ydd" customClass="MGImageView" customModule="ReadOcean" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="67"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="BIQ-FO-hhW"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="NhK-oF-yWj" secondAttribute="bottom" constant="5" id="0Kk-Vt-Q7Y"/>
                     <constraint firstItem="83k-sR-cxc" firstAttribute="top" secondItem="oq6-d6-grF" secondAttribute="top" constant="5" id="2Bw-b6-nNe"/>
+                    <constraint firstItem="P8u-5y-Ydd" firstAttribute="top" secondItem="oq6-d6-grF" secondAttribute="top" id="303-Jt-BBI"/>
+                    <constraint firstItem="83k-sR-cxc" firstAttribute="leading" secondItem="P8u-5y-Ydd" secondAttribute="trailing" constant="5" id="5QY-9e-jUX"/>
                     <constraint firstAttribute="trailing" secondItem="83k-sR-cxc" secondAttribute="trailing" constant="2" id="AWk-Te-VZn"/>
                     <constraint firstItem="sVw-g7-Gsu" firstAttribute="leading" secondItem="oq6-d6-grF" secondAttribute="leading" id="BFG-GN-Grb"/>
-                    <constraint firstItem="NhK-oF-yWj" firstAttribute="top" secondItem="oq6-d6-grF" secondAttribute="top" id="GNQ-nA-z25"/>
+                    <constraint firstAttribute="bottom" secondItem="P8u-5y-Ydd" secondAttribute="bottom" constant="8" id="Tm0-tT-OAb"/>
+                    <constraint firstItem="P8u-5y-Ydd" firstAttribute="leading" secondItem="oq6-d6-grF" secondAttribute="leading" id="ZNg-WN-0uB"/>
                     <constraint firstItem="r9C-GO-zkx" firstAttribute="top" secondItem="83k-sR-cxc" secondAttribute="bottom" constant="5" id="cfc-Kv-tuU"/>
                     <constraint firstItem="sVw-g7-Gsu" firstAttribute="top" secondItem="oq6-d6-grF" secondAttribute="top" id="gGl-oA-gEg"/>
-                    <constraint firstItem="NhK-oF-yWj" firstAttribute="leading" secondItem="oq6-d6-grF" secondAttribute="leading" id="p5y-q8-hXL"/>
                     <constraint firstAttribute="trailing" secondItem="r9C-GO-zkx" secondAttribute="trailing" constant="2" id="raT-4T-223"/>
                     <constraint firstItem="r9C-GO-zkx" firstAttribute="leading" secondItem="83k-sR-cxc" secondAttribute="leading" id="x8h-KT-L56"/>
-                    <constraint firstItem="83k-sR-cxc" firstAttribute="leading" secondItem="NhK-oF-yWj" secondAttribute="trailing" constant="5" id="ylK-ol-RGu"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="177" height="107.5"/>
             <connections>
                 <outlet property="author" destination="r9C-GO-zkx" id="cPO-pa-qrp"/>
                 <outlet property="contentView" destination="oq6-d6-grF" id="wxP-9C-zEX"/>
-                <outlet property="cover" destination="NhK-oF-yWj" id="gAP-dU-Kxz"/>
+                <outlet property="cover" destination="P8u-5y-Ydd" id="s4L-aU-G5v"/>
                 <outlet property="rank" destination="sVw-g7-Gsu" id="76j-bI-Uza"/>
                 <outlet property="title" destination="83k-sR-cxc" id="C1k-sH-jzN"/>
             </connections>
             <point key="canvasLocation" x="4.3478260869565224" y="31.808035714285712"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

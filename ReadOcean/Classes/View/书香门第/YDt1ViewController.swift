@@ -12,19 +12,14 @@ import Kingfisher
 
 let YDBookCollectionViewNormalCell = "BookCollectionViewNormalCell"
 
+//书籍数据列表
+var listViewModel = BooksListViewModel()
 
 class YDt1ViewController : BaseViewController {
     
-    private lazy var listViewModel = BooksListViewModel()
     
-//    var shouldLoadImg = true{
-//        didSet{
-//            if shouldLoadImg{
-//                //reloadData()
-//            }
-//
-//        }
-//    }
+    
+    let bgColor:UIColor = UIColor(hexString: "fefefe")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,7 +101,7 @@ class YDt1ViewController : BaseViewController {
         img = img?.reSizeImage(reSize: CGSize(width: 50, height: 50))
         
         let imgView = UIImageView(image: img)
-        imgView.backgroundColor = UIColor(hexString: "f2f2f2")
+        imgView.backgroundColor = UIColor(hexString: "f1f1f1")
         
         imgView.layer.cornerRadius = imgView.bounds.width/2
         imgView.layer.borderColor = UIColor.clear.cgColor
@@ -182,7 +177,7 @@ class YDt1ViewController : BaseViewController {
         //layout.headerReferenceSize = CGSize(width: screenWidth, height: 50)
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         
-        collectionView.backgroundColor = UIColor(hexString: "ffffff")
+        collectionView.backgroundColor = bgColor
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.alwaysBounceVertical = true
@@ -244,13 +239,13 @@ class YDt1ViewController : BaseViewController {
         
         listViewModel.getBooks {[weak self] in
             //进行图片缓存
-            for key in self!.listViewModel.categoriesParams{
+            for key in listViewModel.categoriesParams{
                 
-                let bookList = self!.listViewModel.dataDict[key]!
+                let bookList = listViewModel.dataDict[key]!
                 
                 for i in 0..<bookList.count{
                     
-                    guard let urlStr = self!.listViewModel.dataDict[key]![i].picUrl,
+                    guard let urlStr = listViewModel.dataDict[key]![i].picUrl,
                           let url = URL(string: urlStr) else{return}
                     
                     KingfisherManager.shared.retrieveImage(with: url , options: nil, progressBlock: nil, downloadTaskUpdated: nil) {[weak self] (result) in
@@ -259,15 +254,17 @@ class YDt1ViewController : BaseViewController {
                         
                         case .success(let data):
                             
-                            if self!.listViewModel.dataDict[key]![i].image == nil{
+                            if listViewModel.dataDict[key]![i].image == nil{
                                 
-                                self!.listViewModel.dataDict[key]![i].image = data.image
+                                listViewModel.dataDict[key]![i].image = data.image
                                 
                                 data.image.mgMostColor { (mostColor) in
                                     
-                                    if self!.listViewModel.dataDict[key]![i].mostColor == nil{
+                                    if listViewModel.dataDict[key]![i].mostColor == nil{
+                                        DispatchQueue.main.async {
+                                            listViewModel.dataDict[key]![i].mostColor = mostColor
+                                        }
                                         
-                                        self!.listViewModel.dataDict[key]![i].mostColor = mostColor
                                     }
                                     
                                 }
@@ -316,9 +313,9 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
     
     
     //背景颜色
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, backgroundColorForSectionAt section: Int) -> UIColor {
-        return UIColor.white
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, backgroundColorForSectionAt section: Int) -> UIColor {
+//        return UIColor.black//UIColor(hexString: "f2f2f2")
+//    }
     //边距？
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -427,10 +424,11 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
         if kind == UICollectionView.elementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath, viewType: BookCollectionHeaderView.self)
             headerView.titleLabel.text = listViewModel.categoryName[indexPath.section]
-            
+            headerView.backgroundColor = bgColor
             return headerView
         } else {
             let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, for: indexPath, viewType: YDBookCollectionFooterView.self)
+            footerView.backgroundColor = bgColor
             return footerView
         }
     }
@@ -514,10 +512,10 @@ extension YDt1ViewController:UICollectionViewDataSourcePrefetching{
             KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil, downloadTaskUpdated: nil) {[weak self] (result) in
                 switch result{
                 case .success(let data):
-                    if self?.listViewModel.dataDict[key]![indexPath.item].image == nil{
-                        self?.listViewModel.dataDict[key]![indexPath.item].image = data.image
+                    if listViewModel.dataDict[key]![indexPath.item].image == nil{
+                        listViewModel.dataDict[key]![indexPath.item].image = data.image
                         data.image.mgMostColor { (mostColor) in
-                            self?.listViewModel.dataDict[key]![indexPath.item].mostColor = mostColor
+                            listViewModel.dataDict[key]![indexPath.item].mostColor = mostColor
                         }
                         
                     }

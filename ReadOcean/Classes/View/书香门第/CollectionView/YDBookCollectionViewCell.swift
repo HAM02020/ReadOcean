@@ -28,51 +28,12 @@ class YDBookCollectionViewCell: BaseCollectionViewCell {
 //        return v
 //    }()
     
-    lazy var shadowView:UIView = {
-        let v = UIView(frame:coverImg.frame)
-        
-        let shadowWidth:CGFloat = 5
-        let newFrame = CGRect(
-            x: v.frame.minX + v.frame.width*0.1,
-            y: v.frame.minY + v.frame.height,
-            width: v.frame.width*0.8,
-            height: shadowWidth)
-        let path = UIBezierPath(rect: newFrame)
-//        path.move(to: CGPoint(x: 0, y: v.frame.height))
-//        path.addLine(to: CGPoint(x: v.frame.width, y: v.frame.height))
-        
-        v.layer.shadowPath = path.cgPath
-        v.layer.shadowRadius = 5
-        v.layer.shadowOpacity = 1
-        v.layer.shadowColor = UIColor.black.cgColor
-        v.layer.shadowOffset = CGSize.zero
-        
-        
-        
-        
-        v.addSubview(coverImg)
-        coverImg.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
-        
+    lazy var shadowView:MGImageView = {
+        let v = MGImageView(frame: CGRect(x: 0, y: 0, width: cellWidth_4, height: picHeight_4))
         return v
     }()
-    lazy var coverImg:UIImageView = {
-        let v = UIImageView(frame: CGRect(x: 0, y: 0, width: cellWidth_4, height: picHeight_4))
-        
-        v.contentMode = .scaleAspectFill
-        v.layer.cornerRadius = 5
-        v.layer.masksToBounds = true
-        
-        let img = UIImage(named: "placeholder")
-        v.image = img
-        
-        return v
-    }()
-   
-    
-    
+
+
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textColor = UIColor.black
@@ -95,13 +56,13 @@ class YDBookCollectionViewCell: BaseCollectionViewCell {
             titleLabel.text = viewModel?.name
             authorLabel.text = viewModel?.author
             if viewModel?.image != nil{
-                coverImg.image = viewModel?.image
+                shadowView.imageView.image = viewModel?.image
                 shadowView.layer.shadowColor = viewModel?.mostColor?.cgColor
             }else{
 
                 guard let urlStr = viewModel?.picUrl,
                       let url = URL(string: urlStr) else{return}
-                coverImg.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil) {[weak self] (result) in
+                shadowView.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil) {[weak self] (result) in
                     switch result {
                     case .success(let data):
                         data.image.mgMostColor { (mostColor) in

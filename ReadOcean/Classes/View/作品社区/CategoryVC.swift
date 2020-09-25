@@ -9,35 +9,13 @@
 import UIKit
 import MJRefresh
 
-enum MyRreshState {
-    case isRefreshing
-    case didRefresh
-    case shouldRefresh
-    case shouldEndRefresh
-}
+
 
 class CategoryVC : BaseViewController {
 
     var listViewModel = BlocksListViewModel()
     
-    var refreshState:MyRreshState?{
-        didSet{
-            switch refreshState {
-                
-            case .shouldRefresh:
-                loadData(isPullup: true)
-            case .shouldEndRefresh:
-                self.tableView.myHead.endRefreshing()
-                self.tableView.mj_footer?.endRefreshing()
-                self.tableView.reloadData()
-                LPH.uncover()
-                //ProgressHUD.showSucceed()
-                print("刷新次数 = \(refreshCount)")
-            default:
-                break
-            }
-        }
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,33 +80,17 @@ class CategoryVC : BaseViewController {
     
     @objc func loadData(isFirstLoad:Bool=false,isPullup:Bool){
         
-        self.synchronized {[weak self] () -> () in
-            if isFirstLoad{
-                LPH.cover(self!.view,animated: false)
-            }else{
-                //ProgressHUD.show()
-            }
-            
-            refreshState = .isRefreshing
-            listViewModel.loadMyBlocks(isFirstLoad:isFirstLoad,isPullup:isPullup,completion: {[weak self] in
-                self?.refreshCount += 1
-                self?.refreshState = .didRefresh
 
-                if self?.listViewModel.myBlockList.count ?? 0 < 3 && self?.refreshState == .didRefresh && self!.refreshCount < 4 {
-                    self?.refreshState = .shouldRefresh
-                }else{
-                    self?.refreshState = .shouldEndRefresh
-                    self?.refreshCount = 0
-                }
-                
-                
-                
-                
-            })
+        if isFirstLoad{
+            LPH.cover(self.view,animated: false)
+        }else{
+            //ProgressHUD.show()
         }
-        
-        
-        
+        listViewModel.loadData(isFirstLoad: isFirstLoad, isPullup: isPullup) {[weak self] in
+            self?.tableView.reloadData()
+            self?.tableView.myHead.endRefreshing()
+            LPH.uncover()
+        }
         
     }
 }

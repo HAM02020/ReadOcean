@@ -26,7 +26,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每日更新" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxx-2E-Jvd">
-                                <rect key="frame" x="15" y="35.5" width="49.5" height="14.5"/>
+                                <rect key="frame" x="15" y="30.5" width="49.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -50,7 +50,7 @@
                                 </collectionViewFlowLayout>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="诗歌排行榜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lE6-f1-Tu8">
-                                <rect key="frame" x="15" y="16.5" width="71.5" height="17"/>
+                                <rect key="frame" x="15" y="11.5" width="71.5" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                             <constraint firstItem="gK8-3u-tej" firstAttribute="leading" secondItem="7zR-1S-eeq" secondAttribute="leading" id="bfv-4f-JzP"/>
                             <constraint firstAttribute="trailing" secondItem="gK8-3u-tej" secondAttribute="trailing" id="dFa-ii-URp"/>
                             <constraint firstItem="CGI-mn-rXZ" firstAttribute="centerY" secondItem="gK8-3u-tej" secondAttribute="centerY" id="jst-xn-ord"/>
-                            <constraint firstItem="lE6-f1-Tu8" firstAttribute="centerY" secondItem="gK8-3u-tej" secondAttribute="centerY" id="ktp-hR-aTo"/>
+                            <constraint firstItem="lE6-f1-Tu8" firstAttribute="centerY" secondItem="gK8-3u-tej" secondAttribute="centerY" constant="-5" id="ktp-hR-aTo"/>
                         </constraints>
                     </view>
                 </subviews>

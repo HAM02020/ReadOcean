@@ -8,8 +8,18 @@
 
 import UIKit
 
+enum MyRreshState {
+    case isRefreshing
+    case didRefresh
+    case shouldRefresh
+    case shouldEndRefresh
+}
+
 class BlocksListViewModel{
     
+
+    
+    var refreshCount = 0
     var pageNum = 1
     var totalpage = 1
     var category = ""
@@ -21,6 +31,35 @@ class BlocksListViewModel{
             myBlockList.append(MyBlock())
         }
     }
+    
+    var shouldComplete = false
+    
+    func loadData(isFirstLoad:Bool=false,isPullup:Bool,completion:@escaping()->Void){
+        let myQueue = DispatchQueue(label: "myQueue")
+        let group = DispatchGroup()
+
+        myQueue.async {
+            for _ in 0..<5 {
+                group.enter()
+                self.loadMyBlocks(isFirstLoad:isFirstLoad,isPullup:isPullup,completion: {[weak self] in
+                    
+                    self?.refreshCount += 1
+                    group.leave()
+                })
+
+                group.wait()
+                if self.myBlockList.count >= 4 {
+                    break
+                }
+            }
+            DispatchQueue.main.async {
+                completion()
+            }
+            
+        }
+
+    }
+    
     func loadMyBlocks(isFirstLoad:Bool = false,isPullup:Bool,completion:@escaping()->Void){
 
 

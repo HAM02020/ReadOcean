@@ -10,7 +10,7 @@ import UIKit
 
 
 
-
+public var tabbarHeight:CGFloat?
 
 class YDMainViewController: UITabBarController {
 
@@ -99,8 +99,10 @@ extension YDMainViewController{
             arrayM.append(initController(dict:dict))
         }
         viewControllers = arrayM
-        //默认显示发现页
-        selectedIndex = 2
+        
+        selectedIndex = 0
+        
+        tabbarHeight = self.tabBar.frame.height
     }
     
     //FIXME:通过文件（网络文件或本地文件）方式获取配置array
