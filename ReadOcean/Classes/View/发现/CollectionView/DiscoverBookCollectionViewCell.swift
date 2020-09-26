@@ -41,29 +41,8 @@ class DiscoverBookCollectionViewCell:UICollectionViewCell{
         didSet{
             title.text = viewModel?.name
             author.text = viewModel?.author
-            
-            //设置图片
-            if viewModel?.image != nil{
-                cover.imageView.image = viewModel?.image
-                cover.layer.shadowColor = viewModel?.mostColor?.cgColor
-            }else{
+            cover.mg_setImage(urlString: viewModel?.picUrl, placeholderImage: UIImage(named: "placeholder"))
 
-                guard let urlStr = viewModel?.picUrl,
-                      let url = URL(string: urlStr) else{return}
-                cover.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil) {[weak self] (result) in
-                    switch result {
-                    case .success(let data):
-                        data.image.mgMostColor { (mostColor) in
-                            self?.cover.layer.shadowColor = mostColor.cgColor
-                        }
-                        
-                    case .failure(_):
-                        break
-                    }
-                }
-
-                
-            }
         }
     }
     

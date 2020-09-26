@@ -51,17 +51,11 @@ class CategoryVC : BaseViewController {
         
         // 刷新控件
         t.myHead = URefreshHeader {[weak self] in self?.loadData(isPullup: false)}
-        let footView = MJRefreshAutoFooter(refreshingBlock: {[weak self] in
+        
+        t.gx_footer = GXRefreshNormalFooter{ [weak self] in
             self?.loadData(isPullup: true)
-        })
+        }
 
-        t.mj_footer = footView
-        
-        
-        //t.myFoot = URefreshDiscoverFooter()
-        //下拉刷新
-        //t.refreshControl?.addTarget(self, action: #selector(loadData), for: .valueChanged)
-        
         return t
     }()
     override func setupLayout() {
@@ -86,10 +80,12 @@ class CategoryVC : BaseViewController {
         }else{
             //ProgressHUD.show()
         }
-        listViewModel.loadData(isFirstLoad: isFirstLoad, isPullup: isPullup) {[weak self] in
+        listViewModel.loadData(isFirstLoad: isFirstLoad, isPullup: isPullup) {[weak self] (noMoreData) in
             self?.tableView.reloadData()
             self?.tableView.myHead.endRefreshing()
+            self?.tableView.gx_footer?.endRefreshing(isNoMore: noMoreData)
             LPH.uncover()
+            
         }
         
     }

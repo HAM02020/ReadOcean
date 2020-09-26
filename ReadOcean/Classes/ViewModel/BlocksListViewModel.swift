@@ -19,9 +19,9 @@ class BlocksListViewModel{
     
 
     
-    var refreshCount = 0
+
     var pageNum = 1
-    var totalpage = 1
+    var noMoreData = false
     var category = ""
     lazy var blockList:[Block] = []
     lazy var bookList:[Book] = []
@@ -34,16 +34,15 @@ class BlocksListViewModel{
     
     var shouldComplete = false
     
-    func loadData(isFirstLoad:Bool=false,isPullup:Bool,completion:@escaping()->Void){
+    func loadData(isFirstLoad:Bool=false,isPullup:Bool,completion:@escaping(_ noMoreData:Bool)->Void){
         let myQueue = DispatchQueue(label: "myQueue")
         let group = DispatchGroup()
 
         myQueue.async {
             for _ in 0..<5 {
                 group.enter()
-                self.loadMyBlocks(isFirstLoad:isFirstLoad,isPullup:isPullup,completion: {[weak self] in
+                self.loadMyBlocks(isFirstLoad:isFirstLoad,isPullup:isPullup,completion: {
                     
-                    self?.refreshCount += 1
                     group.leave()
                 })
 
@@ -53,7 +52,7 @@ class BlocksListViewModel{
                 }
             }
             DispatchQueue.main.async {
-                completion()
+                completion(self.noMoreData)
             }
             
         }
@@ -62,21 +61,16 @@ class BlocksListViewModel{
     
     func loadMyBlocks(isFirstLoad:Bool = false,isPullup:Bool,completion:@escaping()->Void){
 
-
+        //当进行下拉刷新时 重置pageNum和noMoreData
+        if !isPullup {
+            pageNum = 1
+            noMoreData = false
+        }
         
         getBlocks(isPullup: isPullup, completion: {[weak self] in
             self?.getMyBlocks(isFirstLoad:isFirstLoad,isPullup: isPullup) {[weak self] in
                 
-                
-                if isPullup{
-                    self?.pageNum += 1
-                }else{
-                    self?.pageNum = 1
-                }
-                
-
-                
-                
+                self?.pageNum += 1
                 completion()
             }
         })
@@ -90,7 +84,11 @@ class BlocksListViewModel{
         
         networkManager.requestDataList(.getBlocks(category: category, pageNum: pageNum), model: Block.self) {[weak self] (modelList) in
             
-            guard let modelList = modelList else { return }
+            guard let modelList = modelList else {return}
+            
+            if modelList.count == 0{
+                self?.noMoreData = true
+            }
             
             if(isPullup){
                 self?.blockList = self!.blockList + modelList
@@ -107,6 +105,10 @@ class BlocksListViewModel{
         networkManager.requestDataList(.getBooks(category: category, pageNum: pageNum), model: Book.self) {[weak self] (dataList) in
             
             guard let dataList = dataList else{return}
+            
+            if dataList.count == 0{
+                self?.noMoreData = true
+            }
             
             let group = DispatchGroup()
             

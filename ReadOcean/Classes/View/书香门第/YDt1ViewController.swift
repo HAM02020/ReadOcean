@@ -238,46 +238,6 @@ class YDt1ViewController : BaseViewController {
         
         
         listViewModel.getBooks {[weak self] in
-            //进行图片缓存
-            for key in listViewModel.categoriesParams{
-                
-                let bookList = listViewModel.dataDict[key]!
-                
-                for i in 0..<bookList.count{
-                    
-                    guard let urlStr = listViewModel.dataDict[key]![i].picUrl,
-                          let url = URL(string: urlStr) else{return}
-                    
-                    KingfisherManager.shared.retrieveImage(with: url , options: nil, progressBlock: nil, downloadTaskUpdated: nil) {[weak self] (result) in
-                        
-                        switch result{
-                        
-                        case .success(let data):
-                            
-                            if listViewModel.dataDict[key]![i].image == nil{
-                                
-                                listViewModel.dataDict[key]![i].image = data.image
-                                
-                                data.image.mgMostColor { (mostColor) in
-                                    
-                                    if listViewModel.dataDict[key]![i].mostColor == nil{
-                                        DispatchQueue.main.async {
-                                            listViewModel.dataDict[key]![i].mostColor = mostColor
-                                        }
-                                        
-                                    }
-                                    
-                                }
-                                
-                            }
-                            
-                            
-                        case .failure(_):
-                            break
-                        }
-                    }
-                }
-            }
             
             self?.collectionView.myHead.endRefreshing()
             self?.reloadData()
@@ -455,79 +415,7 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
             headerView.snp.updateConstraints{ $0.top.equalToSuperview().offset(min(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))) }
         }
     }
-    // MARK: 优化
-    
-    
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        if scrollView == collectionView{
-//
-//        }
-//        print("scrollViewDidEndDecelerating")
-//        //进行图片加载
-//        shouldLoadImg = true
-//    }
-//    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-//        print("scrollViewWillBeginDecelerating")
-//        shouldLoadImg = false
-//    }
-//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        if !decelerate{
-//            print("scrollViewDidEndDragging")
-//            //进行图片加载
-//            shouldLoadImg = false
-//        }else{
-////            print("!!!!!!!!!!!!scrollViewDidEndDragging")
-////            //不进行图片加载/只加载滑动范围内的cell
-////            shouldLoadImg = false
-//                //scrollViewWillBeginDecelerating
-//        }
-//
-//    }
-////    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-////        print("scrollViewWillEndDragging")
-////    }
-//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        print("scrollViewWillBeginDragging")
-//        shouldLoadImg = true
-//    }
-    
-    
-   
 
     
 }
-extension YDt1ViewController:UICollectionViewDataSourcePrefetching{
-    
-    
-    
-    
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths{
-            print("prefetch section = \(indexPath.section) item = \(indexPath.item)")
-            let key = listViewModel.categoriesParams[indexPath.section]
-            
-            guard let urlStr = listViewModel.dataDict[key]![indexPath.item].picUrl,
-                  let url = URL(string: urlStr)
-                  else {return}
-            KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil, downloadTaskUpdated: nil) {[weak self] (result) in
-                switch result{
-                case .success(let data):
-                    if listViewModel.dataDict[key]![indexPath.item].image == nil{
-                        listViewModel.dataDict[key]![indexPath.item].image = data.image
-                        data.image.mgMostColor { (mostColor) in
-                            listViewModel.dataDict[key]![indexPath.item].mostColor = mostColor
-                        }
-                        
-                    }
-                    
-                    
-                case .failure(_):
-                    break
-                }
-            }
-            
-        }
-    }
-    
-    
-}
+

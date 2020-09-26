@@ -159,7 +159,7 @@ class BlockTableViewCell:BaseTableViewCell{
                 return
             }
             
-            coverView.mg_setImage(urlString: imgUrl, placeholderImage: nil)
+            coverView.mg_setImage(urlString: imgUrl, placeholderImage: UIImage(named: "placeholder"))
             titleLabel.text = title
             author.text = "作者 "+authorName
             post.text = "评论 \(postNum)"

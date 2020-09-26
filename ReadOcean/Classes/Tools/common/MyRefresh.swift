@@ -22,6 +22,13 @@ extension UIScrollView {
     
 }
 
+class MyRefreshFooter : MJRefreshAutoGifFooter{
+    override func prepare() {
+        super.prepare()
+        
+    }
+}
+
 class URefreshHeader: MJRefreshGifHeader {
     override func prepare() {
         super.prepare()
@@ -38,9 +45,19 @@ class URefreshHeader: MJRefreshGifHeader {
 
 class URefreshAutoHeader: MJRefreshHeader {}
 
-class URefreshFooter: MJRefreshBackNormalFooter {}
+class URefreshFooter: MJRefreshBackNormalFooter {
+    override func prepare() {
+        super.prepare()
+        
+    }
+}
 
-class URefreshAutoFooter: MJRefreshAutoFooter {}
+class URefreshAutoFooter: MJRefreshAutoFooter {
+    override func prepare() {
+        super.prepare()
+        
+    }
+}
 
 
 class URefreshDiscoverFooter: MJRefreshBackGifFooter {
@@ -86,7 +103,7 @@ class URefreshTipKissFooter: MJRefreshBackFooter {
     
     convenience init(with tip: String) {
         self.init()
-        refreshingBlock = { self.endRefreshing() }
+        //refreshingBlock = { self.endRefreshing() }
         tipLabel.text = tip
     }
 }

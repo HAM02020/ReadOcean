@@ -55,35 +55,10 @@ class YDBookCollectionViewCell: BaseCollectionViewCell {
         didSet{
             titleLabel.text = viewModel?.name
             authorLabel.text = viewModel?.author
-            if viewModel?.image != nil{
-                shadowView.imageView.image = viewModel?.image
-                shadowView.layer.shadowColor = viewModel?.mostColor?.cgColor
-            }else{
-
-                guard let urlStr = viewModel?.picUrl,
-                      let url = URL(string: urlStr) else{return}
-                shadowView.imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil) {[weak self] (result) in
-                    switch result {
-                    case .success(let data):
-                        data.image.mgMostColor { (mostColor) in
-                            self?.shadowView.layer.shadowColor = mostColor.cgColor
-                        }
-                        
-                    case .failure(_):
-                        break
-                    }
-                }
-
-                
-            }
+            shadowView.mg_setImage(urlString: viewModel?.picUrl, placeholderImage: UIImage(named: "placeholder"))
 
         }
     }
-//    var shouldLoadImg:Bool = true{
-//        didSet{
-//            cover.mg_setImage(urlString: viewModel?.picUrl, placeholderImage: UIImage(named: "placeholder"))
-//        }
-//    }
     
     
     override func setupLayout(){

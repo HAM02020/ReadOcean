@@ -104,6 +104,17 @@
 		01EC897A251D848B0038C39B /* MGImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC8979251D848B0038C39B /* MGImageView.swift */; };
 		01EC897F251DC73C0038C39B /* DiscoverBooksTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC897E251DC73C0038C39B /* DiscoverBooksTableView.swift */; };
 		01EC8983251E26090038C39B /* YDt3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC8982251E26090038C39B /* YDt3ViewController.swift */; };
+		01EC89D2251EE5190038C39B /* UIScrollView+GXRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC89C5251EE5190038C39B /* UIScrollView+GXRefresh.swift */; };
+		01EC89D3251EE5190038C39B /* GXRefreshCustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC89C6251EE5190038C39B /* GXRefreshCustomHeader.swift */; };
+		01EC89D4251EE5190038C39B /* GXRefreshNormalHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC89C7251EE5190038C39B /* GXRefreshNormalHeader.swift */; };
+		01EC89D5251EE5190038C39B /* GXRefreshBaseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC89C8251EE5190038C39B /* GXRefreshBaseHeader.swift */; };
+		01EC89D6251EE5190038C39B /* GXRefreshGifFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC89C9251EE5190038C39B /* GXRefreshGifFooter.swift */; };
+		01EC89D7251EE5190038C39B /* GXRefreshNormalFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC89CA251EE5190038C39B /* GXRefreshNormalFooter.swift */; };
+		01EC89D8251EE5190038C39B /* GXRefreshCustomFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC89CB251EE5190038C39B /* GXRefreshCustomFooter.swift */; };
+		01EC89D9251EE5190038C39B /* GXRefreshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC89CC251EE5190038C39B /* GXRefreshComponent.swift */; };
+		01EC89DA251EE5190038C39B /* GXRefreshIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC89CD251EE5190038C39B /* GXRefreshIndicatorView.swift */; };
+		01EC89DC251EE5190038C39B /* GXRefreshGifHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC89D0251EE5190038C39B /* GXRefreshGifHeader.swift */; };
+		01EC89DD251EE5190038C39B /* GXRefreshBaseFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC89D1251EE5190038C39B /* GXRefreshBaseFooter.swift */; };
 		A9315993D1C6519FF959FB78 /* Pods_ReadOcean.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7B46C8AB20EB21263119A9 /* Pods_ReadOcean.framework */; };
 /* End PBXBuildFile section */
 
@@ -221,6 +232,17 @@
 		01EC8979251D848B0038C39B /* MGImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGImageView.swift; sourceTree = "<group>"; };
 		01EC897E251DC73C0038C39B /* DiscoverBooksTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverBooksTableView.swift; sourceTree = "<group>"; };
 		01EC8982251E26090038C39B /* YDt3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt3ViewController.swift; sourceTree = "<group>"; };
+		01EC89C5251EE5190038C39B /* UIScrollView+GXRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+GXRefresh.swift"; sourceTree = "<group>"; };
+		01EC89C6251EE5190038C39B /* GXRefreshCustomHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXRefreshCustomHeader.swift; sourceTree = "<group>"; };
+		01EC89C7251EE5190038C39B /* GXRefreshNormalHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXRefreshNormalHeader.swift; sourceTree = "<group>"; };
+		01EC89C8251EE5190038C39B /* GXRefreshBaseHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXRefreshBaseHeader.swift; sourceTree = "<group>"; };
+		01EC89C9251EE5190038C39B /* GXRefreshGifFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXRefreshGifFooter.swift; sourceTree = "<group>"; };
+		01EC89CA251EE5190038C39B /* GXRefreshNormalFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXRefreshNormalFooter.swift; sourceTree = "<group>"; };
+		01EC89CB251EE5190038C39B /* GXRefreshCustomFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXRefreshCustomFooter.swift; sourceTree = "<group>"; };
+		01EC89CC251EE5190038C39B /* GXRefreshComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXRefreshComponent.swift; sourceTree = "<group>"; };
+		01EC89CD251EE5190038C39B /* GXRefreshIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXRefreshIndicatorView.swift; sourceTree = "<group>"; };
+		01EC89D0251EE5190038C39B /* GXRefreshGifHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXRefreshGifHeader.swift; sourceTree = "<group>"; };
+		01EC89D1251EE5190038C39B /* GXRefreshBaseFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXRefreshBaseFooter.swift; sourceTree = "<group>"; };
 		C585E163256E88B98A684169 /* Pods-ReadOcean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadOcean.debug.xcconfig"; path = "Target Support Files/Pods-ReadOcean/Pods-ReadOcean.debug.xcconfig"; sourceTree = "<group>"; };
 		C63B3FAB73B4545615C5E725 /* Pods-ReadOcean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadOcean.release.xcconfig"; path = "Target Support Files/Pods-ReadOcean/Pods-ReadOcean.release.xcconfig"; sourceTree = "<group>"; };
 		EB7B46C8AB20EB21263119A9 /* Pods_ReadOcean.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadOcean.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -542,6 +564,7 @@
 		017962CA24E3D72F00C26419 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				01EC89C4251EE5190038C39B /* GXRefresh */,
 				01D5686925159DE700E3248D /* DominantColor */,
 				01D5685825158CF200E3248D /* GXSegmentPageView */,
 				0178777825150C0D00A25F4D /* MGShadowImageVIew */,
@@ -669,6 +692,24 @@
 				01EC897E251DC73C0038C39B /* DiscoverBooksTableView.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		01EC89C4251EE5190038C39B /* GXRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				01EC89C5251EE5190038C39B /* UIScrollView+GXRefresh.swift */,
+				01EC89C6251EE5190038C39B /* GXRefreshCustomHeader.swift */,
+				01EC89C7251EE5190038C39B /* GXRefreshNormalHeader.swift */,
+				01EC89C8251EE5190038C39B /* GXRefreshBaseHeader.swift */,
+				01EC89C9251EE5190038C39B /* GXRefreshGifFooter.swift */,
+				01EC89CA251EE5190038C39B /* GXRefreshNormalFooter.swift */,
+				01EC89CB251EE5190038C39B /* GXRefreshCustomFooter.swift */,
+				01EC89CC251EE5190038C39B /* GXRefreshComponent.swift */,
+				01EC89CD251EE5190038C39B /* GXRefreshIndicatorView.swift */,
+				01EC89D0251EE5190038C39B /* GXRefreshGifHeader.swift */,
+				01EC89D1251EE5190038C39B /* GXRefreshBaseFooter.swift */,
+			);
+			path = GXRefresh;
 			sourceTree = "<group>";
 		};
 		B8124B933267B4F5C40ACE20 /* Pods */ = {
@@ -808,6 +849,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01EC89DD251EE5190038C39B /* GXRefreshBaseFooter.swift in Sources */,
 				01E755C5250DBA070038E782 /* LoginVC.swift in Sources */,
 				01CA62E72511BA82006522AE /* Api.swift in Sources */,
 				017962CE24E3DD3800C26419 /* YDBookCollectionViewCell.swift in Sources */,
@@ -820,13 +862,17 @@
 				017877642514A90900A25F4D /* ProgressHUD.swift in Sources */,
 				01E755E6250E00DA0038E782 /* GXAnimationSystemDelegate.m in Sources */,
 				017962DA24E59CAB00C26419 /* HomeNavView.swift in Sources */,
+				01EC89DC251EE5190038C39B /* GXRefreshGifHeader.swift in Sources */,
 				01E755E7250E00DA0038E782 /* GXAnimationOglFlipDelegate.m in Sources */,
 				013EC1A025060C1A00BC8891 /* LLViewExtensions.swift in Sources */,
+				01EC89D9251EE5190038C39B /* GXRefreshComponent.swift in Sources */,
 				01D56884251903DA00E3248D /* DiscoverBookTableViewCell.swift in Sources */,
 				01E755E5250E00DA0038E782 /* GXAnimationErectDelegate.m in Sources */,
 				017877772514DB0500A25F4D /* LPH.swift in Sources */,
+				01EC89D4251EE5190038C39B /* GXRefreshNormalHeader.swift in Sources */,
 				01D5687A25159E0B00E3248D /* Memoization.swift in Sources */,
 				0178776F2514B39500A25F4D /* Coverable+UIKit.swift in Sources */,
+				01EC89DA251EE5190038C39B /* GXRefreshIndicatorView.swift in Sources */,
 				01890B09251B0C530063CC24 /* MGRoundCornerShadowImageView.swift in Sources */,
 				012D85B824FD4112008B2063 /* TaskTableViewCell.swift in Sources */,
 				01B02890250E4F2700FD4896 /* DemoPickerVC.swift in Sources */,
@@ -835,11 +881,16 @@
 				01E755E0250E00DA0038E782 /* GXAnimationCubeDelegate.m in Sources */,
 				0178773A25147D3F00A25F4D /* UserAccount.swift in Sources */,
 				01EC897F251DC73C0038C39B /* DiscoverBooksTableView.swift in Sources */,
+				01EC89D7251EE5190038C39B /* GXRefreshNormalFooter.swift in Sources */,
 				01508DAF247AA413000AA9E9 /* UIColor+Extensions.swift in Sources */,
+				01EC89D3251EE5190038C39B /* GXRefreshCustomHeader.swift in Sources */,
 				017962D024E5969500C26419 /* BaseCollectionReusableView.swift in Sources */,
 				01E755E3250E00DA0038E782 /* UIViewController+GXTransitionDelegate.m in Sources */,
 				01D5686025158CF200E3248D /* GXSegmentView+Configuration.swift in Sources */,
 				01D5685F25158CF200E3248D /* GXSegmentPageView.swift in Sources */,
+				01EC89D6251EE5190038C39B /* GXRefreshGifFooter.swift in Sources */,
+				01EC89D5251EE5190038C39B /* GXRefreshBaseHeader.swift in Sources */,
+				01EC89D8251EE5190038C39B /* GXRefreshCustomFooter.swift in Sources */,
 				017962CC24E3D75500C26419 /* Global.swift in Sources */,
 				01D5687625159E0B00E3248D /* ColorDifference.swift in Sources */,
 				01CA62F225120888006522AE /* BookDetailCollectionViewCell.swift in Sources */,
@@ -867,6 +918,7 @@
 				017962DC24E68D7700C26419 /* MyRefresh.swift in Sources */,
 				01E755E1250E00DA0038E782 /* GXAnimationPushDelegate.m in Sources */,
 				01E755A3250B6B1B0038E782 /* BlocksListViewModel.swift in Sources */,
+				01EC89D2251EE5190038C39B /* UIScrollView+GXRefresh.swift in Sources */,
 				0194777B24ED90CF00C80158 /* CommunityNavView.swift in Sources */,
 				01E755E8250E00DA0038E782 /* GXAnimationPushATDelegate.m in Sources */,
 				01079D5E2509C9BE00593D34 /* ProflieTableViewCell.swift in Sources */,

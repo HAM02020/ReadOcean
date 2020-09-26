@@ -40,8 +40,6 @@ struct Book : HandyJSON {
     var category:String?
     var topicId:String?
     
-    var image:UIImage?
-    var mostColor:UIColor?
 }
 
 struct Block:HandyJSON {

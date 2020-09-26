@@ -100,9 +100,13 @@ extension MGImageView{
 extension UIImage {
     
     open func mgMostColor(completion:@escaping(_ mostColor:UIColor)->Void){
-        DispatchQueue.main.async {
+        let myQueue = DispatchQueue(label:"myQueue")
+        myQueue.async {
             let color = self.myMostColor
-            completion(color)
+            DispatchQueue.main.async {
+                completion(color)
+            }
+            
         }
     }
     
