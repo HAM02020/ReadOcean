@@ -125,6 +125,11 @@
 		01EC89FF252056480038C39B /* RAMTransitionItemAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC89F2252056480038C39B /* RAMTransitionItemAnimations.swift */; };
 		01EC8A00252056480038C39B /* RAMRotationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC89F4252056480038C39B /* RAMRotationAnimation.swift */; };
 		01EC8A01252056480038C39B /* RAMBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC89F6252056480038C39B /* RAMBounceAnimation.swift */; };
+		01EC8A102520A0CF0038C39B /* DiscoverStoryTableViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC8A0F2520A0CF0038C39B /* DiscoverStoryTableViewCollectionViewCell.swift */; };
+		01EC8A132520B1CB0038C39B /* CALayer + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC8A122520B1CB0038C39B /* CALayer + Extensions.swift */; };
+		01EC8A232520C2E90038C39B /* CDPLoopContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EC8A212520C2E90038C39B /* CDPLoopContainer.m */; };
+		01EC8A262520C42D0038C39B /* DiscoverStoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC8A252520C42D0038C39B /* DiscoverStoryDetailTableViewCell.swift */; };
+		01EC8A292520CE1E0038C39B /* DiscoverStoryDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EC8A282520CE1D0038C39B /* DiscoverStoryDetailTableViewCell.xib */; };
 		A9315993D1C6519FF959FB78 /* Pods_ReadOcean.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7B46C8AB20EB21263119A9 /* Pods_ReadOcean.framework */; };
 /* End PBXBuildFile section */
 
@@ -263,6 +268,12 @@
 		01EC89F2252056480038C39B /* RAMTransitionItemAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMTransitionItemAnimations.swift; sourceTree = "<group>"; };
 		01EC89F4252056480038C39B /* RAMRotationAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMRotationAnimation.swift; sourceTree = "<group>"; };
 		01EC89F6252056480038C39B /* RAMBounceAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMBounceAnimation.swift; sourceTree = "<group>"; };
+		01EC8A0F2520A0CF0038C39B /* DiscoverStoryTableViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverStoryTableViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		01EC8A122520B1CB0038C39B /* CALayer + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Extensions.swift"; sourceTree = "<group>"; };
+		01EC8A212520C2E90038C39B /* CDPLoopContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDPLoopContainer.m; sourceTree = "<group>"; };
+		01EC8A222520C2E90038C39B /* CDPLoopContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDPLoopContainer.h; sourceTree = "<group>"; };
+		01EC8A252520C42D0038C39B /* DiscoverStoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverStoryDetailTableViewCell.swift; sourceTree = "<group>"; };
+		01EC8A282520CE1D0038C39B /* DiscoverStoryDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverStoryDetailTableViewCell.xib; sourceTree = "<group>"; };
 		C585E163256E88B98A684169 /* Pods-ReadOcean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadOcean.debug.xcconfig"; path = "Target Support Files/Pods-ReadOcean/Pods-ReadOcean.debug.xcconfig"; sourceTree = "<group>"; };
 		C63B3FAB73B4545615C5E725 /* Pods-ReadOcean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadOcean.release.xcconfig"; path = "Target Support Files/Pods-ReadOcean/Pods-ReadOcean.release.xcconfig"; sourceTree = "<group>"; };
 		EB7B46C8AB20EB21263119A9 /* Pods_ReadOcean.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadOcean.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -492,6 +503,11 @@
 		01508D9A2478CE57000AA9E9 /* 发现 */ = {
 			isa = PBXGroup;
 			children = (
+				01EC8A0B25209F340038C39B /* 海洋世界 */,
+				01EC8A0A25209F1F0038C39B /* 排行榜 */,
+				01EC8A0925209F0B0038C39B /* 名师微课 */,
+				01EC8A0825209EFE0038C39B /* 家长阅读 */,
+				01EC8A0725209EEA0038C39B /* 故事新编 */,
 				01EC897C251DC6E80038C39B /* NavigationView */,
 				01C146AF25068B030072586A /* CollectionView */,
 				01EC897D251DC7050038C39B /* TableView */,
@@ -532,6 +548,7 @@
 				0197120924E9738000C57717 /* UINavigationController+Extensions.swift */,
 				012D85BF24FE439F008B2063 /* NSArray+Extensions.swift */,
 				01E755B8250CBB070038E782 /* Sync+Extensions.swift */,
+				01EC8A122520B1CB0038C39B /* CALayer + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -583,6 +600,7 @@
 		017962CA24E3D72F00C26419 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				01EC8A202520C2E90038C39B /* CDPLoopContainer */,
 				01EC89E2252056480038C39B /* RAMAnimatedTabBarController */,
 				01EC89C4251EE5190038C39B /* GXRefresh */,
 				01D5686925159DE700E3248D /* DominantColor */,
@@ -633,8 +651,7 @@
 		01C146AF25068B030072586A /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				01D5687F2518FCB200E3248D /* DiscoverBookCollectionViewCell.xib */,
-				01D568812518FE9F00E3248D /* DiscoverBookCollectionViewCell.swift */,
+				01EC8A0C2520A0650038C39B /* 书香门第排行榜 */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -707,9 +724,8 @@
 		01EC897D251DC7050038C39B /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				01D5687D2518E31600E3248D /* DiscoverBooksTableViewCell.xib */,
-				01D56883251903DA00E3248D /* DiscoverBookTableViewCell.swift */,
-				01EC897E251DC73C0038C39B /* DiscoverBooksHeaderTableView.swift */,
+				01EC8A0E2520A08A0038C39B /* 故事新编 */,
+				01EC8A0D2520A0760038C39B /* 书香门第排行榜 */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -822,6 +838,79 @@
 			path = BounceAnimation;
 			sourceTree = "<group>";
 		};
+		01EC8A0725209EEA0038C39B /* 故事新编 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "故事新编";
+			sourceTree = "<group>";
+		};
+		01EC8A0825209EFE0038C39B /* 家长阅读 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "家长阅读";
+			sourceTree = "<group>";
+		};
+		01EC8A0925209F0B0038C39B /* 名师微课 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "名师微课";
+			sourceTree = "<group>";
+		};
+		01EC8A0A25209F1F0038C39B /* 排行榜 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "排行榜";
+			sourceTree = "<group>";
+		};
+		01EC8A0B25209F340038C39B /* 海洋世界 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "海洋世界";
+			sourceTree = "<group>";
+		};
+		01EC8A0C2520A0650038C39B /* 书香门第排行榜 */ = {
+			isa = PBXGroup;
+			children = (
+				01D5687F2518FCB200E3248D /* DiscoverBookCollectionViewCell.xib */,
+				01D568812518FE9F00E3248D /* DiscoverBookCollectionViewCell.swift */,
+			);
+			path = "书香门第排行榜";
+			sourceTree = "<group>";
+		};
+		01EC8A0D2520A0760038C39B /* 书香门第排行榜 */ = {
+			isa = PBXGroup;
+			children = (
+				01D5687D2518E31600E3248D /* DiscoverBooksTableViewCell.xib */,
+				01D56883251903DA00E3248D /* DiscoverBookTableViewCell.swift */,
+				01EC897E251DC73C0038C39B /* DiscoverBooksHeaderTableView.swift */,
+			);
+			path = "书香门第排行榜";
+			sourceTree = "<group>";
+		};
+		01EC8A0E2520A08A0038C39B /* 故事新编 */ = {
+			isa = PBXGroup;
+			children = (
+				01EC8A0F2520A0CF0038C39B /* DiscoverStoryTableViewCollectionViewCell.swift */,
+				01EC8A252520C42D0038C39B /* DiscoverStoryDetailTableViewCell.swift */,
+				01EC8A282520CE1D0038C39B /* DiscoverStoryDetailTableViewCell.xib */,
+			);
+			path = "故事新编";
+			sourceTree = "<group>";
+		};
+		01EC8A202520C2E90038C39B /* CDPLoopContainer */ = {
+			isa = PBXGroup;
+			children = (
+				01EC8A212520C2E90038C39B /* CDPLoopContainer.m */,
+				01EC8A222520C2E90038C39B /* CDPLoopContainer.h */,
+			);
+			path = CDPLoopContainer;
+			sourceTree = "<group>";
+		};
 		B8124B933267B4F5C40ACE20 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -903,6 +992,7 @@
 				01D5687E2518E31600E3248D /* DiscoverBooksTableViewCell.xib in Resources */,
 				013EC19E25060C1A00BC8891 /* LICENSE in Resources */,
 				013BD86E24752ADF00AABEA2 /* LaunchScreen.storyboard in Resources */,
+				01EC8A292520CE1E0038C39B /* DiscoverStoryDetailTableViewCell.xib in Resources */,
 				01D568802518FCB200E3248D /* DiscoverBookCollectionViewCell.xib in Resources */,
 				013EC19F25060C1A00BC8891 /* README.md in Resources */,
 				013EC1A725060C1A00BC8891 /* LLCycleScrollView.bundle in Resources */,
@@ -981,6 +1071,7 @@
 				013EC1A025060C1A00BC8891 /* LLViewExtensions.swift in Sources */,
 				01EC89D9251EE5190038C39B /* GXRefreshComponent.swift in Sources */,
 				01D56884251903DA00E3248D /* DiscoverBookTableViewCell.swift in Sources */,
+				01EC8A262520C42D0038C39B /* DiscoverStoryDetailTableViewCell.swift in Sources */,
 				01E755E5250E00DA0038E782 /* GXAnimationErectDelegate.m in Sources */,
 				017877772514DB0500A25F4D /* LPH.swift in Sources */,
 				01EC89D4251EE5190038C39B /* GXRefreshNormalHeader.swift in Sources */,
@@ -1013,6 +1104,7 @@
 				0178776E2514B39500A25F4D /* LoadingPlaceholderView.swift in Sources */,
 				01D5685D25158CF200E3248D /* GXSegmentTitleView.swift in Sources */,
 				013EC1A125060C1A00BC8891 /* LLPillPageControl.swift in Sources */,
+				01EC8A132520B1CB0038C39B /* CALayer + Extensions.swift in Sources */,
 				017962D324E596FE00C26419 /* BaseCollectionViewCell.swift in Sources */,
 				012D85B624FCEED3008B2063 /* OverdueTaskVC.swift in Sources */,
 				01EC89F8252056480038C39B /* Collection+Extensions.swift in Sources */,
@@ -1021,6 +1113,7 @@
 				01C143EB249363B5006ECD2C /* Model.swift in Sources */,
 				01A83453249366D1002D2327 /* YDNetworkManager.swift in Sources */,
 				01D5685E25158CF200E3248D /* GXSegmentTitleCell.swift in Sources */,
+				01EC8A232520C2E90038C39B /* CDPLoopContainer.m in Sources */,
 				01EC897A251D848B0038C39B /* MGImageView.swift in Sources */,
 				01E755E9250E00DA0038E782 /* GXAnimationPushALDelegate.m in Sources */,
 				01EC89FA252056480038C39B /* RAMAnimatedTabBarController.swift in Sources */,
@@ -1042,6 +1135,7 @@
 				017962D624E598B600C26419 /* BookCollectionHeaderView.swift in Sources */,
 				01C146B125068B290072586A /* DiscoverNavView.swift in Sources */,
 				01508DA02478FDF1000AA9E9 /* BaseViewController.swift in Sources */,
+				01EC8A102520A0CF0038C39B /* DiscoverStoryTableViewCollectionViewCell.swift in Sources */,
 				01E755B9250CBB070038E782 /* Sync+Extensions.swift in Sources */,
 				01C14698250666170072586A /* YDt4ViewController.swift in Sources */,
 				013BD86224752ADD00AABEA2 /* AppDelegate.swift in Sources */,
@@ -1221,7 +1315,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "ReadOcean/ro-bridge.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
 		};
@@ -1245,7 +1339,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "ReadOcean/ro-bridge.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
 		};

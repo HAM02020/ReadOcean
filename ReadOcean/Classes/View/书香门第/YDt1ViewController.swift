@@ -283,7 +283,7 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
 
     //cell的视图
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("cellForItemAt section = \(indexPath.section)")
+        //print("cellForItemAt section = \(indexPath.section)")
         let key = listViewModel.categoriesParams[indexPath.section]
         let book = listViewModel.dataDict[key]![indexPath.item]
 

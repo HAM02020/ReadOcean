@@ -278,7 +278,7 @@ class LoginVC:BaseViewController{
         view.addSubview(lab1)
         lab1.snp.makeConstraints { (make) in
             make.centerX.equalTo(view.snp.centerX)
-            make.top.equalToSuperview().offset(100)
+            make.top.equalTo(dissmissBtn.snp.bottom)
 
         }
         view.addSubview(lab2)

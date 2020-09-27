@@ -13,6 +13,8 @@ class YDt3ViewController : BaseViewController{
     
     var blocksListViewModel = BlocksListViewModel()
     
+    var titles = ["书香门第","故事新编"]
+    
     private var bannerpics:[String] = ["b1","b2","b3"]
     
     var style: UIStatusBarStyle = .lightContent
@@ -64,7 +66,7 @@ class YDt3ViewController : BaseViewController{
         let layout = UICollectionViewFlowLayout.init()
         //layout.itemSize = CGSize(width: 100 , height: 50)
         //行列间距
-        layout.minimumLineSpacing = 20
+        layout.minimumLineSpacing = 15
         layout.minimumInteritemSpacing = 15
         
         //layout.footerReferenceSize = CGSize(width: screenWidth, height: 50)
@@ -81,6 +83,7 @@ class YDt3ViewController : BaseViewController{
         // 注册cell
         collectionView.register(cellType: YDBookCollectionViewCell.self)
         collectionView.register(cellType: DiscoverBooksHeaderTableView.self)
+        collectionView.register(cellType: DiscoverStoryTableViewCollectionViewCell.self)
         //注册头部 尾部
         collectionView.register(supplementaryViewType: BookCollectionHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
         //collectionView.register(supplementaryViewType: DiscoverBooksHeaderTableView.self, ofKind: UICollectionView.elementKindSectionHeader)
@@ -134,30 +137,51 @@ class YDt3ViewController : BaseViewController{
 extension YDt3ViewController:UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     //行数
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 10
+        return titles.count
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         1
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0{
+        switch indexPath.section {
+        case 0:
             let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: DiscoverBooksHeaderTableView.self)
             return cell
+        case 1:
+            let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: DiscoverStoryTableViewCollectionViewCell.self)
+            cell.layer.setupCornerShadow(cell.contentView)
+            return cell
+        default:
+            return UICollectionViewCell()
         }
-        let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: YDBookCollectionViewCell.self)
-        return cell
+        
+        
     }
     //Cell长宽
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var size = CGSize.zero
         
-        return CGSize(width: screenWidth, height: 330)
+        switch indexPath.section {
+        case 0:
+            size = CGSize(width: screenWidth, height: 330)
+        case 1:
+            size = CGSize(width: screenWidth - 40, height: 150)
+        default:
+            break
+        }
+        
+        return size
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader{
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath, viewType: BookCollectionHeaderView.self)
             headerView.backgroundColor = UIColor.white
-            headerView.titleLabel.text = "书香门第"
+            headerView.titleLabel.text = titles[indexPath.section]
             return headerView
         } else {
             let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, for: indexPath, viewType: YDBookCollectionFooterView.self)
@@ -169,7 +193,7 @@ extension YDt3ViewController:UICollectionViewDataSource,UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         var size = CGSize.zero
         switch section {
-        case 0:
+        case 0,1:
             size = CGSize(width: screenWidth, height: 50)
         default:
             break
@@ -178,7 +202,7 @@ extension YDt3ViewController:UICollectionViewDataSource,UICollectionViewDelegate
     }
     //尾部高度
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: screenWidth, height: 10)
+        return CGSize.zero
     }
     
     
