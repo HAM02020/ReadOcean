@@ -55,20 +55,9 @@ class BookDetailCollectionViewCell:BaseCollectionViewCell{
         return v
     }()
 
-    lazy var cover: UIImageView = {
-        let img = UIImage(named: "placeholder")
-        let iconView = UIImageView(image: img )
-        iconView.contentMode = .scaleAspectFill
-        iconView.clipsToBounds = true
-        //使阴影不被clipsToBounds影响 导致无法显示
-        //iconView.layer.masksToBounds = false
-        //使图片被切成圆角
-        iconView.layer.cornerRadius = 5
-        iconView.layer.borderColor = UIColor.clear.cgColor
-        iconView.layer.borderWidth = 0.5
- 
-        
-        return iconView
+    lazy var cover:MGImageView = {
+        let v = MGImageView(frame: CGRect(x: 0, y: 0, width: cellWidth_4, height: picHeight_4))
+        return v
     }()
     private lazy var titleLabel : UILabel = {
        let txt = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
@@ -124,27 +113,7 @@ class BookDetailCollectionViewCell:BaseCollectionViewCell{
             author.text = "作者 "+authorName
             introductionView.text = introduction
             //设置图片
-//            if viewModel.image != nil{
-//                coverImg.image = viewModel?.image
-//                shadowView.layer.shadowColor = viewModel?.mostColor?.cgColor
-//            }else{
-//
-//                guard let urlStr = viewModel?.picUrl,
-//                      let url = URL(string: urlStr) else{return}
-//                coverImg.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil) {[weak self] (result) in
-//                    switch result {
-//                    case .success(let data):
-//                        data.image.mgMostColor { (mostColor) in
-//                            self?.shadowView.layer.shadowColor = mostColor.cgColor
-//                        }
-//                        
-//                    case .failure(_):
-//                        break
-//                    }
-//                }
-//
-//                
-//            }
+            cover.mg_setImage(urlString: imgUrl, placeholderImage: UIImage(named: "placeholder"))
         }
     }
     

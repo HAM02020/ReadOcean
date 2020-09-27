@@ -25,7 +25,10 @@ class BooksListViewModel{
         self.dataDict["category_kexue"] = bookList
         self.dataDict["category_manhua"] = bookList
     }
-    
+    static let shared:BooksListViewModel = {
+        let instanse = BooksListViewModel()
+        return instanse
+    }()
     
     
     

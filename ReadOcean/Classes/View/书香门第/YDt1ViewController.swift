@@ -12,12 +12,12 @@ import Kingfisher
 
 let YDBookCollectionViewNormalCell = "BookCollectionViewNormalCell"
 
-//书籍数据列表
-var listViewModel = BooksListViewModel()
+
 
 class YDt1ViewController : BaseViewController {
     
-    
+    //书籍数据列表
+    var listViewModel = BooksListViewModel.shared
     
     let bgColor:UIColor = UIColor(hexString: "fefefe")
     
@@ -292,7 +292,7 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
         case 2,4,7:
             if(indexPath.item == 0||indexPath.section == 4){
                 let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: BookDetailCollectionViewCell.self)
-                cell.updateTableViewCell()
+                //cell.updateTableViewCell()
                 cell.viewModel = book
                 
                 return cell

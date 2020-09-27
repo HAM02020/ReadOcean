@@ -95,8 +95,6 @@ extension CategoryVC : UITableViewDelegate,UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = listViewModel.myBlockList.count
-        print("listVIewmodelCount = \(count)")
         return listViewModel.myBlockList.count
     }
     

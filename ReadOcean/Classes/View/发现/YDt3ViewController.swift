@@ -60,42 +60,43 @@ class YDt3ViewController : BaseViewController{
         return cycleScrollView
     }()
 
-    lazy var tableView : UITableView = {
-        let t = UITableView()
-        //设置代理
-        t.contentInset = UIEdgeInsets(top: screenHeight/2, left: 0, bottom: 0, right: 0)
-        t.dataSource = self
-        t.delegate = self
-        //注册cell
-        t.register(cellType: BlockTableViewCell.self)
-        //去除分割线
-        t.separatorStyle = .none
-        //MARK:解决reloadData上拉 闪动的问题
-        t.estimatedRowHeight = 180
-        t.estimatedSectionHeaderHeight = 0
-        t.estimatedSectionFooterHeight = 0
+    lazy var collectionView : UICollectionView = {
+        let layout = UICollectionViewFlowLayout.init()
+        //layout.itemSize = CGSize(width: 100 , height: 50)
+        //行列间距
+        layout.minimumLineSpacing = 20
+        layout.minimumInteritemSpacing = 15
         
+        //layout.footerReferenceSize = CGSize(width: screenWidth, height: 50)
+        //layout.headerReferenceSize = CGSize(width: screenWidth, height: 50)
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        
+        collectionView.backgroundColor = UIColor.white
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.alwaysBounceVertical = true
+        collectionView.contentInset = UIEdgeInsets(top: screenHeight/2.0, left: 0, bottom: 0, right: 0)
+        //滚动条位置
+        collectionView.scrollIndicatorInsets = collectionView.contentInset
+        // 注册cell
+        collectionView.register(cellType: YDBookCollectionViewCell.self)
+        collectionView.register(cellType: DiscoverBooksHeaderTableView.self)
+        //注册头部 尾部
+        collectionView.register(supplementaryViewType: BookCollectionHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
+        //collectionView.register(supplementaryViewType: DiscoverBooksHeaderTableView.self, ofKind: UICollectionView.elementKindSectionHeader)
+        collectionView.register(supplementaryViewType: YDBookCollectionFooterView.self, ofKind: UICollectionView.elementKindSectionFooter)
         
         // 刷新控件
-        t.myHead = URefreshHeader {[weak self] in self?.loadData()}
+        collectionView.myHead = URefreshHeader {[weak self] in self?.loadData()}
         let footView = MJRefreshAutoFooter(refreshingBlock: {[weak self] in
             self?.loadData()
         })
 
-        t.mj_footer = footView
+        collectionView.mj_footer = footView
         
-        
-        //t.myFoot = URefreshDiscoverFooter()
-        //下拉刷新
-        //t.refreshControl?.addTarget(self, action: #selector(loadData), for: .valueChanged)
-        
-        return t
+        return collectionView
     }()
     
-    private lazy var bookHorizonTableView : DiscoverBooksTableView = {
-        let t = DiscoverBooksTableView(frame: CGRect.zero)
-        return t
-    }()
     
     private func didSelectBanner(index: Int) {
             print("轮播图被点击了...")
@@ -103,22 +104,13 @@ class YDt3ViewController : BaseViewController{
     }
     
     @objc func loadData(){
-        if !listViewModel.dataDict.isEmpty{
-            return
-        }
         
-        ProgressHUD.show()
-        
-        listViewModel.getBooks {[weak self] in
-            self?.bookHorizonTableView.reloadData()
-            ProgressHUD.showSucceed()
-        }
         
     }
     
     override func setupLayout() {
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { (make) in
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
             make.bottom.equalToSuperview().offset(-tabbarHeight!)
         }
@@ -127,7 +119,7 @@ class YDt3ViewController : BaseViewController{
         bannerView.snp.makeConstraints{ make in
 
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(tableView.contentInset.top)
+            make.height.equalTo(collectionView.contentInset.top)
         }
          
         view.addSubview(navView)
@@ -139,20 +131,57 @@ class YDt3ViewController : BaseViewController{
 }
 
 
-extension YDt3ViewController:UITableViewDataSource,UITableViewDelegate{
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+extension YDt3ViewController:UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
+    //行数
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 10
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        return UITableViewCell()
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        1
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.section == 0{
+            let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: DiscoverBooksHeaderTableView.self)
+            return cell
+        }
+        let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: YDBookCollectionViewCell.self)
+        return cell
+    }
+    //Cell长宽
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: screenWidth, height: 330)
+    }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader{
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath, viewType: BookCollectionHeaderView.self)
+            headerView.backgroundColor = UIColor.white
+            headerView.titleLabel.text = "书香门第"
+            return headerView
+        } else {
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, for: indexPath, viewType: YDBookCollectionFooterView.self)
+            footerView.backgroundColor = UIColor.white
+            return footerView
+        }
+    }
+    //头部高度
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        var size = CGSize.zero
+        switch section {
+        case 0:
+            size = CGSize(width: screenWidth, height: 50)
+        default:
+            break
+        }
+        return size
+    }
+    //尾部高度
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: screenWidth, height: 10)
+    }
+    
+    
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -163,14 +192,16 @@ extension YDt3ViewController:UITableViewDataSource,UITableViewDelegate{
         print("和 = \(scrollView.contentOffset.y + scrollView.contentInset.top)\n")
         
  
-        if scrollView == self.tableView {
+        if scrollView == self.collectionView {
             
             
-            if scrollView.contentOffset.y >= 200 {
+            if scrollView.contentOffset.y >= -200 {
                 self.style = .darkContent
             } else {
                 self.style = .lightContent
             }
+            
+            
             
             setNeedsStatusBarAppearanceUpdate()
             
@@ -178,6 +209,8 @@ extension YDt3ViewController:UITableViewDataSource,UITableViewDelegate{
             
             bannerView.snp.updateConstraints{ $0.top.equalToSuperview().offset(min(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))) }
  
+           
+            
         }
 
     }

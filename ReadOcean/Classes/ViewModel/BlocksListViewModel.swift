@@ -23,9 +23,11 @@ class BlocksListViewModel{
     var pageNum = 1
     var noMoreData = false
     var category = ""
+    var loadCount = 0
     lazy var blockList:[Block] = []
     lazy var bookList:[Book] = []
     lazy var myBlockList:[MyBlock] = []
+    
     init() {
         for _ in 1...4{
             myBlockList.append(MyBlock())
@@ -38,20 +40,37 @@ class BlocksListViewModel{
         let myQueue = DispatchQueue(label: "myQueue")
         let group = DispatchGroup()
 
-        myQueue.async {
+        //当进行下拉刷新时 重置pageNum和noMoreData
+        if !isPullup {
+            pageNum = 1
+            noMoreData = false
+            myBlockList.removeAll()
+            bookList.removeAll()
+            blockList.removeAll()
+        }
+        
+        myQueue.async { [self] in
             for _ in 0..<5 {
                 group.enter()
-                self.loadMyBlocks(isFirstLoad:isFirstLoad,isPullup:isPullup,completion: {
-                    
+                self.loadMyBlocks{
+                    self.loadCount += 1
+                    self.pageNum += 1
                     group.leave()
-                })
+                }
 
                 group.wait()
-                if self.myBlockList.count >= 4 {
+
+                if self.myBlockList.count >= 4+4{
+                    print("break")
                     break
                 }
             }
             DispatchQueue.main.async {
+                if isFirstLoad {
+                    myBlockList.removeSubrange(0..<4)
+                }
+                print("loadCount = \(loadCount)")
+                print("myBlockListCount = \(myBlockList.count)")
                 completion(self.noMoreData)
             }
             
@@ -59,28 +78,24 @@ class BlocksListViewModel{
 
     }
     
-    func loadMyBlocks(isFirstLoad:Bool = false,isPullup:Bool,completion:@escaping()->Void){
+    func loadMyBlocks(isFirstLoad:Bool = false,_ completion:@escaping()->Void){
 
-        //当进行下拉刷新时 重置pageNum和noMoreData
-        if !isPullup {
-            pageNum = 1
-            noMoreData = false
-        }
         
-        getBlocks(isPullup: isPullup, completion: {[weak self] in
-            self?.getMyBlocks(isFirstLoad:isFirstLoad,isPullup: isPullup) {[weak self] in
-                
-                self?.pageNum += 1
+        
+        getBlocks{[weak self] in
+            self?.getMyBlocks(){
+                 
                 completion()
             }
-        })
+            
+        }
 
         
 
                     
     }
     
-    func getBlocks(isPullup:Bool,completion:@escaping()->Void){
+    func getBlocks(_ completion:@escaping()->Void){
         
         networkManager.requestDataList(.getBlocks(category: category, pageNum: pageNum), model: Block.self) {[weak self] (modelList) in
             
@@ -90,17 +105,15 @@ class BlocksListViewModel{
                 self?.noMoreData = true
             }
             
-            if(isPullup){
-                self?.blockList = self!.blockList + modelList
-            }else{
-                self?.blockList = modelList
-            }
+
+            self?.blockList = self!.blockList + modelList
+
             
             completion()
         }
     }
     
-    func getBooks(isPullup:Bool,completion:@escaping()->Void){
+    func getBooks(_ completion:@escaping()->Void){
         
         networkManager.requestDataList(.getBooks(category: category, pageNum: pageNum), model: Book.self) {[weak self] (dataList) in
             
@@ -127,18 +140,16 @@ class BlocksListViewModel{
                 
             }
             group.notify(queue: DispatchQueue.main) {
-                if(isPullup){
-                    self?.bookList = self!.bookList + list
-                }else{
-                    self?.bookList = list
-                }
+
+            self?.bookList = self!.bookList + list
+
                 completion()
             }
         }
 
             
     }
-    func getbookById(bookId:String,completion:@escaping(_ book:Book)->()){
+    func getbookById(bookId:String,_ completion:@escaping(_ book:Book)->()){
         
         networkManager.requestData(.infoBook(bookId: bookId), model: Book.self) {(model) in
             
@@ -148,9 +159,9 @@ class BlocksListViewModel{
             
         }
     }
-    func getMyBlocks(isFirstLoad:Bool = false,isPullup:Bool,completion:@escaping()->Void){
+    func getMyBlocks(_ completion:@escaping()->Void){
         
-        getBooks(isPullup: isPullup) {[weak self] in
+        getBooks(){[weak self] in
             
             var list : [MyBlock] = []
             
@@ -181,15 +192,7 @@ class BlocksListViewModel{
                 }
                 
             }
-            if isFirstLoad{
-                self?.myBlockList.removeAll()
-            }
-            if(isPullup){
-                self?.myBlockList = self!.myBlockList  + list
-            }else{
-                
-                self?.myBlockList = list
-            }
+            self?.myBlockList = self!.myBlockList  + list
             completion()
         }
         

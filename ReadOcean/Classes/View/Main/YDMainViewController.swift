@@ -12,7 +12,7 @@ import UIKit
 
 public var tabbarHeight:CGFloat?
 
-class YDMainViewController: UITabBarController {
+class YDMainViewController: RAMAnimatedTabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +103,7 @@ extension YDMainViewController{
         selectedIndex = 0
         
         tabbarHeight = self.tabBar.frame.height
+        self.changeSelectedColor(UIColor(hexString: "23c993"), iconSelectedColor: UIColor(hexString: "23c993"))
     }
     
     //FIXME:通过文件（网络文件或本地文件）方式获取配置array
@@ -152,16 +153,21 @@ extension YDMainViewController{
         UITabBar.appearance().backgroundColor = UIColor.white
         
         //设置tabbar的标题颜色 和字体
-        vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(hexString: "#23c993")], for: .highlighted)
-        UITabBar.appearance().tintColor = UIColor(hexString: "23c993")
+        //vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(hexString: "#23c993")], for: .highlighted)
+        //UITabBar.appearance().tintColor = UIColor(hexString: "23c993")
         //字体 默认为12 号
-        vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.darkGray,NSAttributedString.Key.font:UIFont.systemFont(ofSize: 10)], for: [])
-        //字往上移动
-        vc.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -5)
-        //3. 设置图像
+//        vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.darkGray,NSAttributedString.Key.font:UIFont.systemFont(ofSize: 10)], for: [])
+//        //字往上移动
+        //vc.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -5)
+//        //3. 设置图像
+//
+//        vc.tabBarItem.image = UIImage(named: "\(imgName)")
+//        vc.tabBarItem.selectedImage = UIImage(named: "\(imgName)_hl")?.withRenderingMode(.alwaysOriginal)
         
-        vc.tabBarItem.image = UIImage(named: "\(imgName)")
-        vc.tabBarItem.selectedImage = UIImage(named: "\(imgName)_hl")?.withRenderingMode(.alwaysOriginal)
+        let item = RAMAnimatedTabBarItem(title: title, image: UIImage(named: "\(imgName)"), selectedImage: UIImage(named: "\(imgName)_hl"))
+        item.animation = RAMBounceAnimation()
+        
+        vc.tabBarItem = item
         
         let nav = YDNavigationViewController(rootViewController: vc)
         return nav
