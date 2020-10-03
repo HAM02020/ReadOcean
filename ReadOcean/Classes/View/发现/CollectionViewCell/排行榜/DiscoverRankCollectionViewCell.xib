@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vBT-r5-Rdu" customClass="DiscoverRankCollectionViewCell" customModule="阅读海洋" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="410" height="84"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BBc-cS-OSX">
+                <rect key="frame" x="0.0" y="0.0" width="410" height="84"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0Q-VQ-8o5">
+                        <rect key="frame" x="0.0" y="0.0" width="410" height="84"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shuxiangbang" translatesAutoresizingMaskIntoConstraints="NO" id="UEa-dg-h1m">
+                                <rect key="frame" x="0.0" y="5" width="80" height="74"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="RHb-1d-vak"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="积分榜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bK6-mw-qnd">
+                                <rect key="frame" x="90" y="22" width="52" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="看看哪个同学读书最多" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hr3-hn-n3e">
+                                <rect key="frame" x="90" y="47.5" width="123" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSf-78-Wxe">
+                                <rect key="frame" x="375" y="29.5" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="GUu-nV-Mbw"/>
+                                    <constraint firstAttribute="width" constant="25" id="qjU-xs-Ptn"/>
+                                </constraints>
+                                <state key="normal" image="arrow_right"/>
+                                <connections>
+                                    <action selector="moreBtnClick:" destination="vBT-r5-Rdu" eventType="touchUpInside" id="Eh9-wp-3Zm"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="joS-nY-cUc">
+                                <rect key="frame" x="10" y="83" width="390" height="1"/>
+                                <color key="backgroundColor" red="0.95686274509803915" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="RSr-kb-RNN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UEa-dg-h1m" firstAttribute="leading" secondItem="R0Q-VQ-8o5" secondAttribute="leading" id="3pe-Yj-mXM"/>
+                            <constraint firstAttribute="trailing" secondItem="joS-nY-cUc" secondAttribute="trailing" constant="10" id="F2G-RC-92s"/>
+                            <constraint firstAttribute="bottom" secondItem="joS-nY-cUc" secondAttribute="bottom" id="OrQ-xA-LXg"/>
+                            <constraint firstItem="Hr3-hn-n3e" firstAttribute="leading" secondItem="bK6-mw-qnd" secondAttribute="leading" id="VSS-H3-Fi6"/>
+                            <constraint firstAttribute="bottom" secondItem="UEa-dg-h1m" secondAttribute="bottom" constant="5" id="ZDP-eC-afV"/>
+                            <constraint firstItem="bK6-mw-qnd" firstAttribute="centerY" secondItem="R0Q-VQ-8o5" secondAttribute="centerY" constant="-10" id="bdH-wM-ZlU"/>
+                            <constraint firstItem="bK6-mw-qnd" firstAttribute="leading" secondItem="UEa-dg-h1m" secondAttribute="trailing" constant="10" id="cTi-ji-iQ3"/>
+                            <constraint firstItem="wSf-78-Wxe" firstAttribute="centerY" secondItem="R0Q-VQ-8o5" secondAttribute="centerY" id="cb9-qq-eTG"/>
+                            <constraint firstAttribute="trailing" secondItem="wSf-78-Wxe" secondAttribute="trailing" constant="10" id="fgJ-Di-0qO"/>
+                            <constraint firstItem="joS-nY-cUc" firstAttribute="centerX" secondItem="R0Q-VQ-8o5" secondAttribute="centerX" id="h0f-1d-qBn"/>
+                            <constraint firstItem="Hr3-hn-n3e" firstAttribute="top" secondItem="bK6-mw-qnd" secondAttribute="bottom" constant="5" id="lY6-YL-dUS"/>
+                            <constraint firstItem="UEa-dg-h1m" firstAttribute="top" secondItem="R0Q-VQ-8o5" secondAttribute="top" constant="5" id="lac-po-VGi"/>
+                            <constraint firstItem="joS-nY-cUc" firstAttribute="leading" secondItem="R0Q-VQ-8o5" secondAttribute="leading" constant="10" id="w9P-0p-xLm"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="R0Q-VQ-8o5" firstAttribute="height" secondItem="BBc-cS-OSX" secondAttribute="height" id="Bm9-gZ-xBS"/>
+                    <constraint firstItem="R0Q-VQ-8o5" firstAttribute="width" secondItem="BBc-cS-OSX" secondAttribute="width" id="HDo-GT-OsF"/>
+                    <constraint firstItem="R0Q-VQ-8o5" firstAttribute="centerY" secondItem="BBc-cS-OSX" secondAttribute="centerY" id="dgD-dI-F9z"/>
+                    <constraint firstItem="R0Q-VQ-8o5" firstAttribute="centerX" secondItem="BBc-cS-OSX" secondAttribute="centerX" id="eG3-38-3Ds"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="410" height="84"/>
+            <connections>
+                <outlet property="cover" destination="UEa-dg-h1m" id="Ebw-W8-ZXD"/>
+                <outlet property="descriptLabel" destination="Hr3-hn-n3e" id="8mg-Yi-b4R"/>
+                <outlet property="line" destination="joS-nY-cUc" id="Xi5-dF-jXQ"/>
+                <outlet property="rankName" destination="bK6-mw-qnd" id="6sR-Uq-JYG"/>
+                <outlet property="view" destination="R0Q-VQ-8o5" id="k0W-kA-pA7"/>
+            </connections>
+            <point key="canvasLocation" x="491.304347826087" y="99.776785714285708"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="arrow_right" width="32" height="32"/>
+        <image name="shuxiangbang" width="156" height="116"/>
+    </resources>
+</document>

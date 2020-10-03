@@ -9,11 +9,14 @@
 import UIKit
 import MJRefresh
 
+let DiscoverRankCollectionViewCellType = "DiscoverRankCollectionViewCellType"
+
 class YDt3ViewController : BaseViewController{
     
     var blocksListViewModel = BlocksListViewModel()
     
-    var titles = ["书香门第","故事新编"]
+    var titles = ["排行榜","故事新编","书香门第"]
+    var rankTypes = ["book","point","community"]
     
     private var bannerpics:[String] = ["b1","b2","b3"]
     
@@ -51,7 +54,7 @@ class YDt3ViewController : BaseViewController{
 
         // 点击 item 回调
         cycleScrollView.lldidSelectItemAtIndex = didSelectBanner(index:)
-        
+        cycleScrollView.autoScroll = true
 
 
         cycleScrollView.bg_imagePaths = bannerpics
@@ -66,14 +69,14 @@ class YDt3ViewController : BaseViewController{
         let layout = UICollectionViewFlowLayout.init()
         //layout.itemSize = CGSize(width: 100 , height: 50)
         //行列间距
-        layout.minimumLineSpacing = 15
-        layout.minimumInteritemSpacing = 15
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
         
         //layout.footerReferenceSize = CGSize(width: screenWidth, height: 50)
         //layout.headerReferenceSize = CGSize(width: screenWidth, height: 50)
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = UIColor(hexString: "f4f5f7")
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.alwaysBounceVertical = true
@@ -84,6 +87,7 @@ class YDt3ViewController : BaseViewController{
         collectionView.register(cellType: YDBookCollectionViewCell.self)
         collectionView.register(cellType: DiscoverBooksHeaderTableView.self)
         collectionView.register(cellType: DiscoverStoryTableViewCollectionViewCell.self)
+        collectionView.register(UINib(nibName: "DiscoverRankCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: DiscoverRankCollectionViewCellType)
         //注册头部 尾部
         collectionView.register(supplementaryViewType: BookCollectionHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
         //collectionView.register(supplementaryViewType: DiscoverBooksHeaderTableView.self, ofKind: UICollectionView.elementKindSectionHeader)
@@ -140,21 +144,37 @@ extension YDt3ViewController:UICollectionViewDataSource,UICollectionViewDelegate
         return titles.count
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        switch section {
+        case 0:
+            return 3
+        default:
+            return 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        switch section {
+        case 0:
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        default:
+            break
+        }
         return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
-        case 0:
+        case 2:
             let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: DiscoverBooksHeaderTableView.self)
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: DiscoverStoryTableViewCollectionViewCell.self)
-            cell.layer.setupCornerShadow(cell.contentView)
+            
+            return cell
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverRankCollectionViewCellType, for: indexPath) as! DiscoverRankCollectionViewCell
+            cell.rankType = rankTypes[indexPath.item]
+            
             return cell
         default:
             return UICollectionViewCell()
@@ -167,10 +187,12 @@ extension YDt3ViewController:UICollectionViewDataSource,UICollectionViewDelegate
         var size = CGSize.zero
         
         switch indexPath.section {
-        case 0:
+        case 2:
             size = CGSize(width: screenWidth, height: 330)
         case 1:
             size = CGSize(width: screenWidth - 40, height: 150)
+        case 0:
+            size = CGSize(width: screenWidth - 40 , height: 80)
         default:
             break
         }
@@ -180,12 +202,12 @@ extension YDt3ViewController:UICollectionViewDataSource,UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader{
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath, viewType: BookCollectionHeaderView.self)
-            headerView.backgroundColor = UIColor.white
+            headerView.backgroundColor = UIColor(hexString: "f4f5f7")
             headerView.titleLabel.text = titles[indexPath.section]
             return headerView
         } else {
             let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, for: indexPath, viewType: YDBookCollectionFooterView.self)
-            footerView.backgroundColor = UIColor.white
+            footerView.backgroundColor = UIColor(hexString: "f4f5f7")
             return footerView
         }
     }
@@ -193,7 +215,7 @@ extension YDt3ViewController:UICollectionViewDataSource,UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         var size = CGSize.zero
         switch section {
-        case 0,1:
+        case 0,1,2:
             size = CGSize(width: screenWidth, height: 50)
         default:
             break

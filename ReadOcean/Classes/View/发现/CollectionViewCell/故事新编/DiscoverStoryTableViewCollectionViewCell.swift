@@ -13,10 +13,21 @@ let DiscoverStoryDetailTableViewCellType = "DiscoverStoryDetailTableViewCellType
 class DiscoverStoryTableViewCollectionViewCell:BaseCollectionViewCell{
     
     //private lazy var listViewModel = 
-    
+    /// 计时器
+    fileprivate var dtimer: DispatchSourceTimer?
     deinit {
-        timer?.invalidate()
+        invalidateTimer()
     }
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        layer.setupCornerShadow(self.contentView)
+
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+            }
+    
+   
     
     private lazy var icon:UIImageView = {
         let img = UIImage(named: "story")?.reSizeImage(reSize: CGSize(width: 20, height: 20))
@@ -61,7 +72,7 @@ class DiscoverStoryTableViewCollectionViewCell:BaseCollectionViewCell{
     
     private lazy var line : UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.darkGray
+        label.backgroundColor = UIColor(hexString: "f4f5f7")
         
         return label
     }()
@@ -69,7 +80,7 @@ class DiscoverStoryTableViewCollectionViewCell:BaseCollectionViewCell{
     private lazy var talkButton:WBTittleButton = {
         let img = UIImage(named: "arrow_right")?.reSizeImage(reSize: CGSize(width: 15, height: 15))
         let btn = WBTittleButton(title: "我要留言", image: img)
-        btn.tintColor = UIColor.darkGray
+        btn.tintColor = UIColor.lightGray
         btn.imagePosition(style: .right, spacing: 5)
 
         return btn
@@ -77,7 +88,35 @@ class DiscoverStoryTableViewCollectionViewCell:BaseCollectionViewCell{
     
     var index = 0
     
-    private var timer:Timer?
+    /// 添加DTimer
+    func setupTimer() {
+        
+        
+        invalidateTimer()
+        
+        let l_dtimer = DispatchSource.makeTimerSource()
+        l_dtimer.schedule(deadline: .now()+3, repeating: 3)
+        l_dtimer.setEventHandler { [weak self] in
+            DispatchQueue.main.async { [self] in
+                self?.loopView.scrollToRow(at: IndexPath(row: self!.index, section: 0), at: .top, animated: true)
+                if self!.index < 9{
+                    self?.index += 1
+                }else{
+                    self?.index = 0
+                }
+            }
+        }
+        // 继续
+        l_dtimer.resume()
+        
+        dtimer = l_dtimer
+    }
+    
+    /// 关闭倒计时
+    func invalidateTimer() {
+        dtimer?.cancel()
+        dtimer = nil
+    }
     
     @objc func updataTimer(){
 
@@ -92,7 +131,7 @@ class DiscoverStoryTableViewCollectionViewCell:BaseCollectionViewCell{
     
     override func setupLayout() {
         
-        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(updataTimer), userInfo: nil, repeats: true)
+        setupTimer()
         
         contentView.addSubview(icon)
         icon.snp.makeConstraints { (make) in

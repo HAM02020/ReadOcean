@@ -10,16 +10,23 @@ import UIKit
 
 class LPH {
     
-    private static let main:LoadingPlaceholderView = {
+    static func getPlaceHolderView()->LoadingPlaceholderView{
         let loadingCover = LoadingPlaceholderView()
         loadingCover.gradientColor = .white
         loadingCover.backgroundColor = .white
         loadingCover.fadeAnimationDuration = TimeInterval(0.5)
         //LoadingPlaceholderView.GradientiConfiguration() .animationDuration = TimeInterval(0.5)
         return loadingCover
+    }
+    private static let main:LoadingPlaceholderView = {
+        
+        return getPlaceHolderView()
     }()
     static func cover(_ viewToCover: UIView, animated: Bool = false){
+
         main.cover(viewToCover,animated: animated)
+        
+        
     }
     static func uncover(){
         main.uncover()

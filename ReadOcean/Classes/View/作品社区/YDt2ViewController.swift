@@ -30,15 +30,16 @@ class YDt2ViewController: BaseViewController {
         let config = GXSegmentTitleView.Configuration()
         config.positionStyle = .bottom
         config.indicatorStyle = .dynamic
-        config.indicatorFixedWidth = 0
+        config.indicatorFixedWidth = 20
         config.indicatorFixedHeight = 2.0
-        config.indicatorAdditionWidthMargin = 5.0
-        config.indicatorAdditionHeightMargin = 2.0
+        //config.indicatorAdditionWidthMargin = 5.0
+        //config.indicatorAdditionHeightMargin = 2.0
         
         config.isShowSeparator = true
-        config.separatorInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        config.separatorInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         
         config.titleSelectedColor = UIColor(hexString: "23c993")
+        config.titleNormalColor = UIColor.darkGray
         config.separatorColor = UIColor(hexString: "e6e6e6")
         config.indicatorColor = UIColor(hexString: "23c993")
         config.isShowBottomLine = false
@@ -47,7 +48,7 @@ class YDt2ViewController: BaseViewController {
     }()
     
     private lazy var titleView : GXSegmentTitleView = {
-        let v = GXSegmentTitleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 64), config: config, titles: ["优美诗歌","自然","绘本","童话故事","神话传奇","文史","数学","小说散文","世界名著","名人传记"])
+        let v = GXSegmentTitleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 40), config: config, titles: ["优美诗歌","自然","绘本","童话故事","神话传奇","文史","数学","小说散文","世界名著","名人传记"])
         v.delegate = self
         v.backgroundColor = UIColor.init(patternImage: UIImage(named: "f5tof2") ?? UIImage())
         return v
@@ -83,7 +84,7 @@ class YDt2ViewController: BaseViewController {
         
         view.addSubview(pageView)
         pageView.snp.makeConstraints { (make) in
-            make.top.equalTo(navView.snp.bottom)
+            make.top.equalTo(navView.snp.bottom).offset(-14)
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(-tabbarHeight!)
         }

@@ -92,7 +92,7 @@ class YDt5ViewController : BaseViewController {
     
     private lazy var navView : HomeNavView = {
         let nav = HomeNavView()
-        nav.searchBtnClickClosure {
+        nav.searchBtnClickClosure = {
             print("搜索click")
             let vc = YDDemoViewController()
             vc.view.backgroundColor = UIColor.orange

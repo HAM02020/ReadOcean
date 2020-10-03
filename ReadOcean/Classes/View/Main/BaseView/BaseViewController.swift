@@ -9,13 +9,21 @@
 import UIKit
 import SwiftyJSON
 
+
+var navHeight:CGFloat = 0
+
 class BaseViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.clear
 
+        
+        
+        
+        
         if #available(iOS 11.0, *) {
             UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
         } else {
@@ -41,7 +49,14 @@ class BaseViewController: UIViewController {
 
     func configNavigationBar() {
         guard let navi = navigationController else { return }
+        
+        guard let naviHeight = navigationController?.navigationBar.frame.height else {return}
+        navHeight = naviHeight
+        
+     
+        
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        
             if navi.visibleViewController == self {
                 //navi.barStyle(.theme)
                 //navi.disablePopGesture = false

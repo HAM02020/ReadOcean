@@ -10,7 +10,11 @@ import UIKit
 
 class DiscoverBookCollectionViewCell:UICollectionViewCell{
     
-    @IBOutlet weak var cover: MGImageView!
+    @IBOutlet weak var cover: MGImageView!{
+        didSet{
+            cover.layer.masksToBounds = false
+        }
+    }
     
     @IBOutlet weak var rank: UIImageView!{
         didSet{
@@ -35,6 +39,8 @@ class DiscoverBookCollectionViewCell:UICollectionViewCell{
         self.layer.shouldRasterize = true
         //分辨率
         self.layer.rasterizationScale = UIScreen.main.scale
+        
+        self.layer.masksToBounds = false
     }
     
     var viewModel:Book?{

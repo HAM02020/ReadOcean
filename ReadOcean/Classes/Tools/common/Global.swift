@@ -11,6 +11,7 @@ import UIKit
 let screenWidth = UIScreen.main.bounds.width
 let screenHeight = UIScreen.main.bounds.height
 
+
 var topVC: UIViewController? {
     var resultVC: UIViewController?
     resultVC = _topVC(UIApplication.shared.keyWindow?.rootViewController)
@@ -21,9 +22,22 @@ var topVC: UIViewController? {
 }
 
 var isIphoneX: Bool {
-    return UI_USER_INTERFACE_IDIOM() == .phone
-        && (max(UIScreen.main.bounds.height, UIScreen.main.bounds.width) == 812
-            || max(UIScreen.main.bounds.height, UIScreen.main.bounds.width) == 896)
+    
+    if #available(iOS 13.0, *){
+        let device = UIDevice()
+        return device.userInterfaceIdiom == .phone
+            && (max(UIScreen.main.bounds.height, UIScreen.main.bounds.width) == 812
+                || max(UIScreen.main.bounds.height, UIScreen.main.bounds.width) == 896)
+    }else{
+        return UI_USER_INTERFACE_IDIOM() == .phone
+            && (max(UIScreen.main.bounds.height, UIScreen.main.bounds.width) == 812
+                || max(UIScreen.main.bounds.height, UIScreen.main.bounds.width) == 896)
+    }
+    
+}
+
+var statusBarHeight : CGFloat {
+    return isIphoneX ? 44 : 20
 }
 
 private func _topVC(_ vc: UIViewController?) -> UIViewController? {

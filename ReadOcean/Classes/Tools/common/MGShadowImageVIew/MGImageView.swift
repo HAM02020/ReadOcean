@@ -47,10 +47,12 @@ class MGImageView:UIView{
 //        path.addLine(to: CGPoint(x: v.frame.width, y: v.frame.height))
         
         layer.shadowPath = path.cgPath
-        layer.shadowRadius = 6
+        layer.shadowRadius = frame.height*0.05 < 6 ? frame.height*0.05 : 6
         layer.shadowOpacity = 1
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize.zero
+        
+        layer.masksToBounds = false
         
         //异步绘制 离屏渲染
         layer.drawsAsynchronously = true

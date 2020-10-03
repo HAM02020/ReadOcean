@@ -10,6 +10,7 @@ import UIKit
 
 extension CALayer{
     func setupCornerShadow(_ view:UIView){
+        
         view.layer.masksToBounds = true
         view.layer.cornerRadius = 5
 
@@ -26,6 +27,16 @@ extension CALayer{
         subLayer.shadowOpacity = 0.2 //阴影透明度
         subLayer.shadowRadius = 5;//阴影半径，默认3
         //view.layer.addSublayer(subLayer)
-        view.superview?.layer.insertSublayer(subLayer, below: view.layer)
+        guard let sublayers = view.superview?.layer.sublayers else {
+            view.superview?.layer.insertSublayer(subLayer, below: view.layer)
+            return
+        }
+        for s in sublayers {
+            if s.shadowRadius == subLayer.shadowRadius {
+                return
+            }
+        }
+        view.superview?.layer.insertSublayer(subLayer, at: 0)
+        
     }
 }

@@ -12,6 +12,7 @@ import UIKit
 
 public var tabbarHeight:CGFloat?
 
+
 class YDMainViewController: RAMAnimatedTabBarController {
 
     override func viewDidLoad() {
@@ -83,11 +84,13 @@ class YDMainViewController: RAMAnimatedTabBarController {
 
 }
 
-extension YDMainViewController{
+extension YDMainViewController:UITabBarControllerDelegate{
     
     
     
     private func setupUI(){
+        
+        self.delegate = self
         
         //获取tabbar配置
         let array = getConfigure()
@@ -103,8 +106,30 @@ extension YDMainViewController{
         selectedIndex = 0
         
         tabbarHeight = self.tabBar.frame.height
+        
+        
         self.changeSelectedColor(UIColor(hexString: "23c993"), iconSelectedColor: UIColor(hexString: "23c993"))
     }
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        guard let taskVC = self.viewControllers?.filter({ (vc) -> Bool in
+            guard let vcTitle = vc.title else {return false}
+            if vcTitle.elementsEqual("我的任务") {
+                return true
+            }else{
+                return false
+            }
+            
+        }) else {return false}
+        //如果未登录时点击我的任务 弹出登陆界面
+        if viewController.isEqual(taskVC[0]) && !userLogon{
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: YDUserShouldLoginNotification), object: nil)
+            return false
+        }
+        return true
+    }
+    
+
     
     //FIXME:通过文件（网络文件或本地文件）方式获取配置array
     private func getConfigure()->([[String:Any]]){

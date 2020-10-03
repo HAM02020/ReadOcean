@@ -10,59 +10,36 @@ import UIKit
 
 class YDNavigationViewController: UINavigationController {
 
-    fileprivate lazy var customNavigationBar: CustomNavigationBar = {
-
-            let bar = CustomNavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 64))
-
-            bar.tintColor = UIColor.white
-            bar.tintAdjustmentMode = .normal
-            bar.alpha = 0
-            bar.setItems([UINavigationItem(title: "书香门第")], animated: false)
-
-            bar.backgroundColor = UIColor.clear
-            bar.barStyle = .black
-            bar.isTranslucent = true
-            bar.shadowImage = UIImage()
-            bar.setBackgroundImage(UIImage(named: "ocean"), for: UIBarMetrics.default)
-
-       
-            bar.titleTextAttributes = [
-                NSAttributedString.Key.foregroundColor: UIColor.white,
-                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)
-            ]
-
-            return bar
-        }()
+    var navHeight:CGFloat?
+    
+    var pushCount = 0
+    
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        //对登陆状态进行判断，如果没有登陆，则弹出登陆界面
+        if !userLogon && pushCount > 0 {
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: YDUserShouldLoginNotification), object: nil)
+            return
+        }
+        
+        print("pushViewController = \(viewController.title)")
+        super.pushViewController(viewController, animated: animated)
+        pushCount += 1
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        //view.addSubview(customNavigationBar)
-        //修复安全区
-        //edgesForExtendedLayout.
-        //self.additionalSafeAreaInsets.top = customNavigationBar.frame.size.height
-        // Do any additional setup after loading the view.
+        self.navHeight = navigationBar.frame.height
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         
-        //self.setNavigationBarHidden(true, animated: false)
         
-        
-        customNavigationBar.alpha = 1.0
-        //customNavigationBar.frame.size = customNavigationBar.sizeThatFits(CGSize(width: customNavigationBar.frame.size.width, height: 84))
     }
     
     private func setupUI(){
         
-//        navigationItem.setRightBarButtonItems([
-//        UIBarButtonItem(title: "按钮1", style: .plain, target: self, action: #selector(btn_click)),
-//        UIBarButtonItem(title: "按钮2", style: .plain, target: self, action: #selector(btn_click))
-//        ], animated: false)
-        //定制右按钮
-
-//        let but = WBTittleButton(title: "书香弟弟")
-//        let but_item = UIBarButtonItem(customView: but)
-//        navigationItem.titleView = but
-            
 
     }
     

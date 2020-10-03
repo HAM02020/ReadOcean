@@ -9,12 +9,23 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import SwiftyJSON
+import HandyJSON
 
 let YDBookCollectionViewNormalCell = "BookCollectionViewNormalCell"
 
 
 
 class YDt1ViewController : BaseViewController {
+    
+    func testApi(){
+        networkManager.requestModel(.bookDetail(bookId: "7f20b155-cf83-4d42-93e8-95310975afe7"), model: BookDetail.self) { (model) in
+            guard let model = model else {return}
+            print(model)
+        }
+    }
+    
+    
     
     //书籍数据列表
     var listViewModel = BooksListViewModel.shared
@@ -39,7 +50,20 @@ class YDt1ViewController : BaseViewController {
         
         loadData(true)
         
+        testApi()
+        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("t1 viewWillApper")
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("t1 viewDidAppear")
+    }
+    
+    
     
     private func resetData(){
         loginLabel.text = "登陆后发现精彩内容,阅读最新书籍，成为读书之星"
@@ -53,21 +77,27 @@ class YDt1ViewController : BaseViewController {
         loginBtn.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
+
 
     private lazy var navView : HomeNavView = {
         let nav = HomeNavView()
-        nav.searchBtnClickClosure {
+        nav.searchBtnClickClosure = {
             print("搜索click")
             let vc = DemoPickerVC()
-            
-            
-            //self.navigationController?.hidesBarsOnSwipe = false
+            self.navigationController?.hidesBarsOnSwipe = false
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        nav.categorysBtnClickClosure = {
+            print("搜索click")
+            let vc = BooksCategorysMainVC()
+            vc.title = "分类书籍"
+            self.navigationController?.hidesBarsOnSwipe = false
+            vc.hidesBottomBarWhenPushed = true
+            
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
         return nav
     }()
     
@@ -404,6 +434,14 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
     // 尾部高度
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return CGSize(width: screenWidth, height: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let bookDetailVC = BookDetailVC()
+        
+        
+        navigationController?.pushViewController(bookDetailVC, animated: true)
     }
     
     //使头部视图滚动

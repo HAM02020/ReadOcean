@@ -31,6 +31,7 @@ enum Api{
     //书香门第
     case getBooks(category:String?,pageNum:Int = 1)
     case infoBook(bookId:String)
+    case bookDetail(user:UserAccount = shardAccount,bookId:String)
     //作品社区
     case getBlocks(category:String?,pageNum:Int? = 1)
     
@@ -40,6 +41,7 @@ enum Api{
     
     case login(userName:String,password:String)
     case userInfo(user:UserAccount = shardAccount)
+    
 }
 
 extension Api:TargetType{
@@ -56,6 +58,8 @@ extension Api:TargetType{
             return "mobileBook/getBooks"
         case .infoBook:
             return "mobileBook/infoBook"
+        case .bookDetail:
+            return "mobileBook/bookDetail"
         case .myTask:
             return "mobileTask/myTask"
         case .taskDetail:
@@ -69,7 +73,7 @@ extension Api:TargetType{
     
     var method: Moya.Method {
         switch self {
-        case .getBlocks,.getBooks,.infoBook,.myTask,.taskDetail,.userInfo:
+        case .getBlocks,.getBooks,.infoBook,.bookDetail,.myTask,.taskDetail,.userInfo:
             return .get
         case .login:
             return .post
@@ -91,6 +95,11 @@ extension Api:TargetType{
             parmeters["pageNum"] = pageNum
         case .infoBook(let bookId):
             parmeters["bookId"] = bookId
+        case .bookDetail(let user,let bookId):
+            parmeters["userId"] = user.userId
+            parmeters["userType"] = user.userType
+            parmeters["bookId"] = bookId
+            parmeters["schoolId"] = user.schoolId
         case .myTask(let user,let taskType):
             parmeters["userId"] = user.userId
             parmeters["userType"] = user.userType
@@ -146,12 +155,32 @@ extension Response {
 
 extension MoyaProvider {
     @discardableResult
-    open func requestData<T: HandyJSON>(_ target: Target,
+    open func requestModel<T: HandyJSON>(_ target: Target,
                                     model: T.Type,
-                                    completion: ((_ returnData: T?) -> Void)?) -> Cancellable? {
+                                    completion:@escaping((_ returnData: T?) -> Void)) -> Cancellable? {
         
         return request(target, completion: { (result) in
-            guard let completion = completion else { return }
+            //guard let completion = completion else { return }
+            switch result {
+            case .success(let response):
+                guard
+                    let returnData = try? response.mapModel(T.self) else {completion(nil);return}
+                
+                completion(returnData)
+                
+            case .failure(_):
+                completion(nil)
+            }
+            
+        })
+    }
+    @discardableResult
+    open func requestData<T: HandyJSON>(_ target: Target,
+                                    model: T.Type,
+                                    completion:@escaping((_ returnData: T?) -> Void)) -> Cancellable? {
+        
+        return request(target, completion: { (result) in
+            //guard let completion = completion else { return }
             switch result {
             case .success(let response):
                 guard
@@ -170,10 +199,10 @@ extension MoyaProvider {
     @discardableResult
     open func requestDataList<T: HandyJSON>(_ target: Target,
                                     model: T.Type,
-                                    completion: ((_ returnDataList: [T]?) -> Void)?) -> Cancellable? {
+                                    completion: @escaping((_ returnDataList: [T]?) -> Void)) -> Cancellable? {
         
         return request(target, completion: { (result) in
-            guard let completion = completion else { return }
+            //guard let completion = completion else { return }
             switch result {
             case .success(let response):
                 guard

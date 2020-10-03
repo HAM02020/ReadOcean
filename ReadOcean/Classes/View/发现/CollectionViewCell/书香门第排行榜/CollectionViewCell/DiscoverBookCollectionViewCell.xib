@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="8jB-D7-zuO" customClass="DiscoverBookCollectionViewCell" customModule="ReadOcean" customModuleProvider="target">
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="8jB-D7-zuO" customClass="DiscoverBookCollectionViewCell" customModule="阅读海洋" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="120" height="75"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oq6-d6-grF">
@@ -40,7 +40,7 @@
                             <constraint firstAttribute="width" constant="30" id="bj3-xv-YkU"/>
                         </constraints>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8u-5y-Ydd" customClass="MGImageView" customModule="ReadOcean" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8u-5y-Ydd" customClass="MGImageView" customModule="阅读海洋" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="67"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>

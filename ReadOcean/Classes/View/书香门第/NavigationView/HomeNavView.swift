@@ -12,7 +12,11 @@ typealias NavBtnClickEventBlock = ()->Void
 
 class HomeNavView: UIView {
     //搜索按钮点击 回调
-    private var searchBtnClickClosure : NavBtnClickEventBlock?
+    var searchBtnClickClosure : NavBtnClickEventBlock?
+    //分类按钮点击 回调
+    var categorysBtnClickClosure : NavBtnClickEventBlock?
+    //更多按钮点击 回调
+    var moreBtnClickClosure : NavBtnClickEventBlock?
     
     private lazy var titleLabel:UILabel = {
         let txt = UILabel(frame: CGRect.zero)
@@ -33,14 +37,14 @@ class HomeNavView: UIView {
     }()
     private lazy var categoryBtn:WBTittleButton = {
         let img = UIImage(named: "fenlei")?.reSizeImage(reSize: CGSize(width: 15, height: 15))
-       let btn = WBTittleButton(title: "分类", image: img)
-        
+        let btn = WBTittleButton(title: "分类", image: img)
+        btn.addTarget(self, action: Selector(("buttonClick:")), for: .touchUpInside)
         return btn
     }()
     private lazy var searchBtn:WBTittleButton = {
         let img = UIImage(named: "sousuo")?.reSizeImage(reSize: CGSize(width: 15, height: 15))
        let btn = WBTittleButton(title: "搜索", image: img)
-        btn.addTarget(self, action: #selector(searchBtnClick), for: .touchUpInside)
+        btn.addTarget(self, action: Selector(("buttonClick:")), for: .touchUpInside)
         return btn
     }()
     private lazy var moreBtn:WBTittleButton = {
@@ -196,13 +200,18 @@ class HomeNavView: UIView {
 extension HomeNavView{
     
     
-    func searchBtnClickClosure(_ closure:NavBtnClickEventBlock?){
-        searchBtnClickClosure = closure
-    }
-    
-    @objc func searchBtnClick(){
-        guard let closure = searchBtnClickClosure
-            else { return }
-        closure()
+    @objc func buttonClick(_ sender:UIButton){
+        var closure:NavBtnClickEventBlock?
+        
+        switch sender{
+        case searchBtn:
+            closure = searchBtnClickClosure
+        case categoryBtn:
+            closure = categorysBtnClickClosure
+        default:
+            break
+        }
+        guard let completion = closure else { return }
+        completion()
     }
 }
