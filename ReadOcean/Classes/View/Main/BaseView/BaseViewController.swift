@@ -66,7 +66,7 @@ class BaseViewController: UIViewController {
                 if navi.viewControllers.count > 1{
                 
 //                navigationItem.backBarButtonItem = UIBarButtonItem(image:UIImage(named: "back")?.withRenderingMode(.alwaysOriginal),style: .plain,target: self,action: #selector(pressBack))
-                
+                    
                 
                 }else{
                     navigationController?.setNavigationBarHidden(true, animated: false)

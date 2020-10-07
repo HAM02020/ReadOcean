@@ -19,10 +19,7 @@ let YDBookCollectionViewNormalCell = "BookCollectionViewNormalCell"
 class YDt1ViewController : BaseViewController {
     
     func testApi(){
-        networkManager.requestModel(.bookDetail(bookId: "7f20b155-cf83-4d42-93e8-95310975afe7"), model: BookDetail.self) { (model) in
-            guard let model = model else {return}
-            print(model)
-        }
+        
     }
     
     
@@ -435,12 +432,13 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return CGSize(width: screenWidth, height: 10)
     }
-    
+    //MARK: 点击Cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let key = listViewModel.categoriesParams[indexPath.section]
         
         let bookDetailVC = BookDetailVC()
-        
-        
+        bookDetailVC.bookId = listViewModel.dataDict[key]![indexPath.item].id
+        bookDetailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(bookDetailVC, animated: true)
     }
     
