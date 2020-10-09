@@ -14,11 +14,11 @@ BNUZ微课研究中心《阅读海洋》iOS端
 
  标题|界面
 |----------------------------------------------|---------------------------------------------------|
-书香门第|![书香门第](https://upload-images.jianshu.io/upload_images/24889239-28a8b992ceae8fec.gif?imageMogr2/auto-orient/strip)
-作品社区|![作品社区](https://upload-images.jianshu.io/upload_images/24889239-eef602fa8b0c7218.gif?imageMogr2/auto-orient/strip)
-发现|![发现](https://upload-images.jianshu.io/upload_images/24889239-5c6e9bb1d03c734c.gif?imageMogr2/auto-orient/strip)
-我的任务|![我的任务](https://upload-images.jianshu.io/upload_images/24889239-3c58b3aed9c262e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-个人中心|![个人中心](https://upload-images.jianshu.io/upload_images/24889239-0bcde8de8d726bdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+书香门第    |![书香门第](https://upload-images.jianshu.io/upload_images/24889239-66e12e907e0e49fa.gif?imageMogr2/auto-orient/strip)
+作品社区    |![作品社区](https://upload-images.jianshu.io/upload_images/24889239-2670bb6bab653ee8.gif?imageMogr2/auto-orient/strip)
+发现       |![发现](https://upload-images.jianshu.io/upload_images/24889239-8748100a1967457a.gif?imageMogr2/auto-orient/strip)
+我的任务    |![我的任务](https://upload-images.jianshu.io/upload_images/24889239-3c58b3aed9c262e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+个人中心    |![个人中心](https://upload-images.jianshu.io/upload_images/24889239-0bcde8de8d726bdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
  
 ### 其它平台
 平台|地址
