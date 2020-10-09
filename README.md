@@ -1,9 +1,8 @@
+<div align=center>
+  <img width="150" height="150" src="https://upload-images.jianshu.io/upload_images/24889239-6574f44fb21b483f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+</div>
 # ReadOcean
 BNUZ微课研究中心《阅读海洋》iOS端
-
-<div align=center><img width="150" height="150" src="https://upload-images.jianshu.io/upload_images/24889239-6574f44fb21b483f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
-
-
 
 ### 简介
 
