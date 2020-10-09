@@ -738,6 +738,24 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		016EE434252D7EC20080133E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				011320A725286D5C00B3B3BE /* BookDetailHeaderView.xib */,
+				011320B425287BD600B3B3BE /* BookDetailHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		016EE435252D7ED70080133E /* SegmentVC */ = {
+			isa = PBXGroup;
+			children = (
+				01132020252444DF00B3B3BE /* BookDetailStoryBoard.storyboard */,
+				0113202D2524595B00B3B3BE /* BookDetailSegmentVC.swift */,
+			);
+			path = SegmentVC;
+			sourceTree = "<group>";
+		};
 		01754F6625072992004C06F8 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -837,11 +855,9 @@
 		01BB69DA25234C2100B2CA53 /* 书籍详情 */ = {
 			isa = PBXGroup;
 			children = (
-				01132020252444DF00B3B3BE /* BookDetailStoryBoard.storyboard */,
+				016EE434252D7EC20080133E /* View */,
+				016EE435252D7ED70080133E /* SegmentVC */,
 				011320252524557900B3B3BE /* BookDetailVC.swift */,
-				0113202D2524595B00B3B3BE /* BookDetailSegmentVC.swift */,
-				011320A725286D5C00B3B3BE /* BookDetailHeaderView.xib */,
-				011320B425287BD600B3B3BE /* BookDetailHeaderView.swift */,
 			);
 			path = "书籍详情";
 			sourceTree = "<group>";
