@@ -107,3 +107,4 @@ class URefreshTipKissFooter: MJRefreshBackFooter {
         tipLabel.text = tip
     }
 }
+

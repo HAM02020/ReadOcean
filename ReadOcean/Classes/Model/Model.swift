@@ -48,10 +48,15 @@ struct Record:HandyJSON {
     var accuracy:Double? //0.7333333333333333,
     var consume: TimeInterval?
 }
+struct Course:HandyJSON {
+    var author: String?//": "王慧杰",
+    var video: String?//": "http://ro.bnuz.edu.cn/tinyread/book/5917bd81-2daa-4cef-a940-9fec3a070f8c/index.html",
+    var title:String?//": "了不起的狐狸爸爸"
+}
 struct BookDetail:HandyJSON{
 
     
-    var courses:[String]?
+    var courses:[Course]?
     var comments:[String]?
     var coverImg:String?// http://ro.bnuz.edu.cn/book/category_tonghua/7f20b155-cf83-4d42-93e8-95310975afe7.png,
     var records:[Record]?  //[{date: 1567089540931, accuracy: 0.7333333333333333, consume: 184 }, {date: 1551862195839,…],

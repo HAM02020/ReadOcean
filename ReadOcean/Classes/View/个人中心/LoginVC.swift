@@ -11,6 +11,10 @@ import SwiftyJSON
 
 class LoginVC:BaseViewController{
     
+    
+    
+    
+    
     let txtColor = UIColor(hexString: "999999")
     
     override func viewDidLoad() {
@@ -19,42 +23,10 @@ class LoginVC:BaseViewController{
         edgeGes.edges = .left
         view.addGestureRecognizer(edgeGes)
     }
-    //MARK:OBJC Functions
-    @objc func back(){
-        self.dismiss(animated: true, completion: nil)
-    }
     
-    @objc func loginBtnClick(){
-        guard
-            let userName = userNameField.text,
-            let password = passwordField.text else {return}
-        networkManager.request(.login(userName: userName, password: password)) {[weak self] (result) in
-            switch result {
-            case .success(let response):
-                
-                guard
-                    let json = JSON(response.data).dictionaryObject,
-                    let token = json["token"] ,
-                    let userId = json["userId"]
-                    else {
-                        //登陆失败
-                        ProgressHUD.showError("登陆失败，用户名或密码错误", image: nil, interaction: true)
-                        return
-                }
-                shardAccount.userId = userId as! String
-                shardAccount.token = token as? String
-                //登陆成功通知
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: YDUserLoginSuccessNotification), object: nil)
-                ProgressHUD.showSucceed()
-                self?.back()
-                
-            case .failure(_):
-                break
-            }
-        }
-        
-    }
+    //MARK: - 变量声明区Start
     
+    //MARK: 返回按钮
     private lazy var dissmissBtn:UIButton = {
         let btn = UIButton()
         let img = UIImage(named: "dismiss")
@@ -62,7 +34,7 @@ class LoginVC:BaseViewController{
         btn.addTarget(self, action: #selector(back), for: .touchUpInside)
         return btn
     }()
-    
+    //MARK: 标题
     private lazy var lab1:UILabel = {
         let txt = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
         txt.text = "北京师范大学微课教学研究中心"
@@ -76,14 +48,18 @@ class LoginVC:BaseViewController{
     private lazy var lab2:UILabel = {
         let txt = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
         txt.text = "阅读海洋"
-        txt.font = .monospacedSystemFont(ofSize: 30, weight: .bold)
+        if #available(iOS 13.0, *) {
+            txt.font = .monospacedSystemFont(ofSize: 30, weight: .bold)
+        } else {
+            // Fallback on earlier versions
+        }
         txt.textColor = UIColor.darkGray
         txt.textAlignment = .center
         txt.numberOfLines = 0
         
         return txt
     }()
-    
+    //MARK: 用户类型按钮
     private lazy var userTypeBtn:UIButton = {
         let btn = UIButton()
         btn.addSubview(avatarView)
@@ -101,20 +77,7 @@ class LoginVC:BaseViewController{
         return btn
     }()
     
-    @objc func changeUserType(){
-        UIView.transition(with: self.avatarView, duration: 0.6, options: .transitionFlipFromLeft, animations: {
-            if self.avatarView.image == UIImage(named: "avatar_student") {
-              self.avatarView.image = UIImage(named: "avatar_teacher")
-            }else{
-              self.avatarView.image = UIImage(named: "avatar_student")
-            }
-        }, completion: nil)
-        UIView.transition(with: self.userTypeLabel, duration: 0.6, options: .transitionFlipFromLeft, animations: {
-            self.userTypeLabel.text = self.userTypeLabel.text == "学生" ? "老师" : "学生"
-        }, completion: nil)
-            
-        
-    }
+    
     
     private lazy var avatarView:UIImageView = {
 
@@ -149,6 +112,8 @@ class LoginVC:BaseViewController{
         let tf = UITextField()
         tf.placeholder = "用户名"
         tf.textColor = UIColor.darkGray
+        tf.returnKeyType = .next
+        tf.delegate = self
         
         return tf
     }()
@@ -157,6 +122,8 @@ class LoginVC:BaseViewController{
         tf.placeholder = "请输入密码"
         tf.textColor = UIColor.darkGray
         tf.isSecureTextEntry = true
+        tf.returnKeyType = .done
+        tf.delegate = self
         return tf
     }()
     
@@ -263,7 +230,11 @@ class LoginVC:BaseViewController{
         
         return imgView
     }()
+    //MARK: 变量声明区END
     
+    
+    
+    //MARK: - SetupLayout()
     override func setupLayout() {
         
         view.backgroundColor = UIColor.white
@@ -339,4 +310,85 @@ class LoginVC:BaseViewController{
         
     }
     
+}
+
+//MARK: - UITextFieldDelegate
+extension LoginVC:UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if(textField.isEqual(userNameField)){
+            passwordField.becomeFirstResponder()
+        }
+        else{
+            passwordField.resignFirstResponder()
+            userNameField.resignFirstResponder()
+            loginBtnClick()
+        }
+        return true
+    }
+    
+}
+
+
+//MARK: - OBJC Function
+extension LoginVC{
+
+    /// 返回上级页面
+    @objc func back(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    ///登陆按钮CLick
+    @objc func loginBtnClick(){
+        guard
+            let userName = userNameField.text,
+            let password = passwordField.text else {return}
+        networkManager.request(.login(userName: userName, password: password)) {[weak self] (result) in
+            switch result {
+            case .success(let response):
+                
+                guard
+                    let json = JSON(response.data).dictionaryObject,
+                    let token = json["token"] ,
+                    let userId = json["userId"]
+                    else {
+                        //登陆失败
+                    if #available(iOS 13.0, *) {
+                        ProgressHUD.showError("登陆失败，用户名或密码错误", image: nil, interaction: true)
+                    } else {
+                        // Fallback on earlier versions
+                    }
+                        return
+                }
+                shardAccount.userId = userId as! String
+                shardAccount.token = token as? String
+                //登陆成功通知
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: YDUserLoginSuccessNotification), object: nil)
+                if #available(iOS 13.0, *) {
+                    ProgressHUD.showSucceed()
+                } else {
+                    // Fallback on earlier versions
+                }
+                self?.back()
+                
+            case .failure(_):
+                break
+            }
+        }
+             
+    }
+    
+    @objc func changeUserType(){
+        UIView.transition(with: self.avatarView, duration: 0.6, options: .transitionFlipFromLeft, animations: {
+            if self.avatarView.image == UIImage(named: "avatar_student") {
+              self.avatarView.image = UIImage(named: "avatar_teacher")
+            }else{
+              self.avatarView.image = UIImage(named: "avatar_student")
+            }
+        }, completion: nil)
+        UIView.transition(with: self.userTypeLabel, duration: 0.6, options: .transitionFlipFromLeft, animations: {
+            self.userTypeLabel.text = self.userTypeLabel.text == "学生" ? "老师" : "学生"
+        }, completion: nil)
+            
+        
+    }
 }

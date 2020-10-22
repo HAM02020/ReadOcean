@@ -52,6 +52,9 @@
 		014488F824BE0BBF00B61DDB /* UINavigationBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014488F724BE0BBF00B61DDB /* UINavigationBar+Extensions.swift */; };
 		014488FA24BE0CF700B61DDB /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014488F924BE0CF700B61DDB /* CustomNavigationBar.swift */; };
 		014488FE24BF4BE300B61DDB /* WBTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014488FD24BF4BE300B61DDB /* WBTitleButton.swift */; };
+		014FDB33254128CE00F225CD /* StoryBoardLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014FDB32254128CE00F225CD /* StoryBoardLoadable.swift */; };
+		014FDB3C254162A000F225CD /* BookDetailTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014FDB3B254162A000F225CD /* BookDetailTaskTableViewCell.swift */; };
+		014FDB4C25417E4800F225CD /* BookDetailCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014FDB4B25417E4800F225CD /* BookDetailCourseTableViewCell.swift */; };
 		01508D9E2478D0C1000AA9E9 /* YDMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508D9D2478D0C1000AA9E9 /* YDMainViewController.swift */; };
 		01508DA02478FDF1000AA9E9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508D9F2478FDF1000AA9E9 /* BaseViewController.swift */; };
 		01508DAA2478FEC3000AA9E9 /* YDt5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508DA92478FEC3000AA9E9 /* YDt5ViewController.swift */; };
@@ -228,6 +231,9 @@
 		014488F724BE0BBF00B61DDB /* UINavigationBar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Extensions.swift"; sourceTree = "<group>"; };
 		014488F924BE0CF700B61DDB /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		014488FD24BF4BE300B61DDB /* WBTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBTitleButton.swift; sourceTree = "<group>"; };
+		014FDB32254128CE00F225CD /* StoryBoardLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardLoadable.swift; sourceTree = "<group>"; };
+		014FDB3B254162A000F225CD /* BookDetailTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailTaskTableViewCell.swift; sourceTree = "<group>"; };
+		014FDB4B25417E4800F225CD /* BookDetailCourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailCourseTableViewCell.swift; sourceTree = "<group>"; };
 		01508D9D2478D0C1000AA9E9 /* YDMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDMainViewController.swift; sourceTree = "<group>"; };
 		01508D9F2478FDF1000AA9E9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		01508DA92478FEC3000AA9E9 /* YDt5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt5ViewController.swift; sourceTree = "<group>"; };
@@ -596,6 +602,15 @@
 			path = LLCycleScrollView;
 			sourceTree = "<group>";
 		};
+		014FDB3A2541628200F225CD /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				014FDB3B254162A000F225CD /* BookDetailTaskTableViewCell.swift */,
+				014FDB4B25417E4800F225CD /* BookDetailCourseTableViewCell.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 		01508D922478CDAD000AA9E9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -727,6 +742,7 @@
 			children = (
 				011320C62528A3A000B3B3BE /* DarkImage */,
 				011320B925289B4400B3B3BE /* NibLoadable.swift */,
+				014FDB32254128CE00F225CD /* StoryBoardLoadable.swift */,
 				01508DAE247AA413000AA9E9 /* UIColor+Extensions.swift */,
 				01A834582493A5B2002D2327 /* UIImageView + Extensions.swift */,
 				014488F724BE0BBF00B61DDB /* UINavigationBar+Extensions.swift */,
@@ -742,6 +758,7 @@
 		016EE434252D7EC20080133E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				014FDB3A2541628200F225CD /* TableView */,
 				011320A725286D5C00B3B3BE /* BookDetailHeaderView.xib */,
 				011320B425287BD600B3B3BE /* BookDetailHeaderView.swift */,
 			);
@@ -1387,6 +1404,7 @@
 				01EC89D8251EE5190038C39B /* GXRefreshCustomFooter.swift in Sources */,
 				017962CC24E3D75500C26419 /* Global.swift in Sources */,
 				01D5687625159E0B00E3248D /* ColorDifference.swift in Sources */,
+				014FDB33254128CE00F225CD /* StoryBoardLoadable.swift in Sources */,
 				01CA62F225120888006522AE /* BookDetailCollectionViewCell.swift in Sources */,
 				013EC1A625060C1A00BC8891 /* LLImagePageControl.swift in Sources */,
 				0178776E2514B39500A25F4D /* LoadingPlaceholderView.swift in Sources */,
@@ -1400,6 +1418,7 @@
 				01079D63250A424200593D34 /* YDt2ViewController.swift in Sources */,
 				013E80B62521B94C00B16103 /* DiscoverRankCollectionViewCell.swift in Sources */,
 				01C143EB249363B5006ECD2C /* Model.swift in Sources */,
+				014FDB3C254162A000F225CD /* BookDetailTaskTableViewCell.swift in Sources */,
 				01A83453249366D1002D2327 /* YDNetworkManager.swift in Sources */,
 				01D5685E25158CF200E3248D /* GXSegmentTitleCell.swift in Sources */,
 				01EC8A232520C2E90038C39B /* CDPLoopContainer.m in Sources */,
@@ -1444,6 +1463,7 @@
 				01EC89FD252056480038C39B /* RAMFumeAnimation.swift in Sources */,
 				01CA62EE2511F407006522AE /* BooksListViewModel.swift in Sources */,
 				01E755E2250E00DA0038E782 /* GXAnimationPushELDelegate.m in Sources */,
+				014FDB4C25417E4800F225CD /* BookDetailCourseTableViewCell.swift in Sources */,
 				012D85BC24FD65EE008B2063 /* TeacherTaskVC.swift in Sources */,
 				0113209A25285A3D00B3B3BE /* WMZPageNaviBtn.m in Sources */,
 				01D5687425159E0B00E3248D /* KMeans.swift in Sources */,
@@ -1554,7 +1574,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1609,7 +1629,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

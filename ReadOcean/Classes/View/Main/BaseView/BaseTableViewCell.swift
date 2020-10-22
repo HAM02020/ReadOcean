@@ -19,8 +19,32 @@ class BaseTableViewCell: UITableViewCell, Reusable {
         setupLayout()
     }
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     open func setupLayout() {}
 
+}
+extension BaseTableViewCell{
+    func addDashdeBorderLayer(by view:UIView){
+        let imgV:UIImageView = UIImageView(frame: CGRect(x: 0, y: view.bounds.height, width: view.bounds.width, height: 5))
+        view.addSubview(imgV)
+        UIGraphicsBeginImageContext(imgV.frame.size)
+        
+        let context = UIGraphicsGetCurrentContext()
+        context?.setLineCap(CGLineCap.square)
+        
+        let lengths:[CGFloat] = [5]
+        
+        context?.setStrokeColor(UIColor(hexString: "8a8a8a").cgColor)
+        context?.setLineWidth(1)
+        context?.setLineDash(phase: 0, lengths: lengths)
+        context?.move(to: CGPoint(x: 0, y: 3))
+        context?.addLine(to: CGPoint(x: view.bounds.width, y: 3))
+        context?.strokePath()
+
+        imgV.image = UIGraphicsGetImageFromCurrentImageContext()
+     //结束
+        UIGraphicsEndImageContext()
+    }
+   
 }

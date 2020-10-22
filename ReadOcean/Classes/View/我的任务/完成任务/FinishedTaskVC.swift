@@ -9,11 +9,19 @@ import UIKit
 class FinishedTaskVC : BaseTaskVC {
 
     override func loadData(){
-        ProgressHUD.show()
+        if #available(iOS 13.0, *) {
+            ProgressHUD.show()
+        } else {
+            // Fallback on earlier versions
+        }
         networkManager.requestDataList(.myTask(user: shardAccount, taskType: .none()), model: Task.self) {[weak self] (dataList) in
 
             self?.tableView.myHead.endRefreshing()
-            guard let dataList = dataList else {ProgressHUD.showFailed();return}
+            guard let dataList = dataList else {if #available(iOS 13.0, *) {
+                ProgressHUD.showFailed()
+            } else {
+                // Fallback on earlier versions
+            };return}
 
             //已完成任务的列表
             var doneList:[Task] = []
@@ -38,7 +46,11 @@ class FinishedTaskVC : BaseTaskVC {
                 self?.taskList += doneList
                 self?.tableView.reloadData()
             }
-            ProgressHUD.showSucceed()
+            if #available(iOS 13.0, *) {
+                ProgressHUD.showSucceed()
+            } else {
+                // Fallback on earlier versions
+            }
         }
 
         

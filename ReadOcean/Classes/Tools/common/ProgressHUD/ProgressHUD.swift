@@ -235,6 +235,9 @@ public extension ProgressHUD {
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
 public class ProgressHUD: UIView {
 
     private var viewBackground: UIView?

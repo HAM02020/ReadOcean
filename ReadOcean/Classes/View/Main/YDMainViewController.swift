@@ -11,6 +11,8 @@ import UIKit
 
 
 public var tabbarHeight:CGFloat?
+let dateformat = DateFormatter()
+
 
 
 class YDMainViewController: RAMAnimatedTabBarController {
@@ -19,6 +21,7 @@ class YDMainViewController: RAMAnimatedTabBarController {
         super.viewDidLoad()
         setupUI()
         
+        dateformat.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
         // 注册通知
         NotificationCenter.default.addObserver(self, selector: #selector(userLogin), name: NSNotification.Name(rawValue: YDUserShouldLoginNotification), object: nil)

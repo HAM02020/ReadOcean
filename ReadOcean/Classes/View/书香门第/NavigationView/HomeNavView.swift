@@ -21,7 +21,11 @@ class HomeNavView: UIView {
     private lazy var titleLabel:UILabel = {
         let txt = UILabel(frame: CGRect.zero)
         txt.text = "阅读海洋"
-        txt.font = .monospacedSystemFont(ofSize: 24, weight: .heavy)
+        if #available(iOS 13.0, *) {
+            txt.font = .monospacedSystemFont(ofSize: 24, weight: .heavy)
+        } else {
+            // Fallback on earlier versions
+        }
         txt.textColor = .black
         txt.textAlignment = .center
         txt.numberOfLines = 0

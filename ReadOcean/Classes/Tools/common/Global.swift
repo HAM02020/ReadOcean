@@ -11,7 +11,6 @@ import UIKit
 let screenWidth = UIScreen.main.bounds.width
 let screenHeight = UIScreen.main.bounds.height
 
-
 var topVC: UIViewController? {
     var resultVC: UIViewController?
     resultVC = _topVC(UIApplication.shared.keyWindow?.rootViewController)

@@ -16,16 +16,18 @@ class BookDetailVC:WMZPageController{
         didSet{
             headerView.viewModel = model
             navigationItem.title = model?.title
+            vc1.model = model
+            vc2.model = model
         }
     }
     
     let headerView = BookDetailHeaderView.loadFromNib()
     
-    let vc1 = BookDetailSegmentVC.initFromStoryBoard()
+    let vc1 = BookDetailSegmentVC.initFromStoryBoard(id: "BookDetailSegmentVC")
 
-    let vc2 = YDt5ViewController()
+    let vc2 = BookDetailSegmentVC.initFromStoryBoard(id: "segmentTableViewVC")
     
-    let vc3 = YDt2ViewController()
+    let vc3 = BookDetailSegmentVC.initFromStoryBoard(id: "segmentTableViewVC",tableViewType: "course")
     
     var scrollPoint = CGPoint.zero
     
