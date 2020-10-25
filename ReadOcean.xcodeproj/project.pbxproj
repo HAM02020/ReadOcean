@@ -211,7 +211,7 @@
 		012D85B924FD4199008B2063 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		012D85BB24FD65EE008B2063 /* TeacherTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherTaskVC.swift; sourceTree = "<group>"; };
 		012D85BF24FE439F008B2063 /* NSArray+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSArray+Extensions.swift"; sourceTree = "<group>"; };
-		013BD85E24752ADD00AABEA2 /* 阅读海洋.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "阅读海洋.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		013BD85E24752ADD00AABEA2 /* ReadOcean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadOcean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		013BD86124752ADD00AABEA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		013BD86D24752ADF00AABEA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		013BD86F24752ADF00AABEA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -488,7 +488,7 @@
 		013BD85F24752ADD00AABEA2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				013BD85E24752ADD00AABEA2 /* 阅读海洋.app */,
+				013BD85E24752ADD00AABEA2 /* ReadOcean.app */,
 				01D44040252361850021E4B2 /* ReadOceanUITests.xctest */,
 				01D440562523619E0021E4B2 /* ReadOceanTests.xctest */,
 			);
@@ -1164,9 +1164,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		013BD85D24752ADD00AABEA2 /* 阅读海洋 */ = {
+		013BD85D24752ADD00AABEA2 /* ReadOcean */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 013BD87224752ADF00AABEA2 /* Build configuration list for PBXNativeTarget "阅读海洋" */;
+			buildConfigurationList = 013BD87224752ADF00AABEA2 /* Build configuration list for PBXNativeTarget "ReadOcean" */;
 			buildPhases = (
 				F5E6C3219101361B0ADAEE01 /* [CP] Check Pods Manifest.lock */,
 				013BD85A24752ADD00AABEA2 /* Sources */,
@@ -1178,9 +1178,9 @@
 			);
 			dependencies = (
 			);
-			name = "阅读海洋";
+			name = ReadOcean;
 			productName = ReadOcean;
-			productReference = 013BD85E24752ADD00AABEA2 /* 阅读海洋.app */;
+			productReference = 013BD85E24752ADD00AABEA2 /* ReadOcean.app */;
 			productType = "com.apple.product-type.application";
 		};
 		01D4403F252361850021E4B2 /* ReadOceanUITests */ = {
@@ -1256,7 +1256,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				013BD85D24752ADD00AABEA2 /* 阅读海洋 */,
+				013BD85D24752ADD00AABEA2 /* ReadOcean */,
 				01D4403F252361850021E4B2 /* ReadOceanUITests */,
 				01D440552523619E0021E4B2 /* ReadOceanTests */,
 			);
@@ -1502,12 +1502,12 @@
 /* Begin PBXTargetDependency section */
 		01D44046252361850021E4B2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 013BD85D24752ADD00AABEA2 /* 阅读海洋 */;
+			target = 013BD85D24752ADD00AABEA2 /* ReadOcean */;
 			targetProxy = 01D44045252361850021E4B2 /* PBXContainerItemProxy */;
 		};
 		01D4405C2523619E0021E4B2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 013BD85D24752ADD00AABEA2 /* 阅读海洋 */;
+			target = 013BD85D24752ADD00AABEA2 /* ReadOcean */;
 			targetProxy = 01D4405B2523619E0021E4B2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1786,7 +1786,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		013BD87224752ADF00AABEA2 /* Build configuration list for PBXNativeTarget "阅读海洋" */ = {
+		013BD87224752ADF00AABEA2 /* Build configuration list for PBXNativeTarget "ReadOcean" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				013BD87324752ADF00AABEA2 /* Debug */,
