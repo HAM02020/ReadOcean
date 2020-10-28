@@ -21,7 +21,7 @@ class YDNavigationViewController: UINavigationController {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: YDUserShouldLoginNotification), object: nil)
             return
         }
-        
+        //configNav()
         print("pushViewController = \(viewController.title)")
         super.pushViewController(viewController, animated: animated)
         pushCount += 1
@@ -29,21 +29,19 @@ class YDNavigationViewController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         self.navHeight = navigationBar.frame.height
         
-    }
-    override func viewDidAppear(_ animated: Bool) {
         
+    }
+    override func popViewController(animated: Bool) -> UIViewController? {
+        return super.popViewController(animated: animated)
         
     }
     
-    private func setupUI(){
-        
+    func configNav(){
+        navigationBar.setBackgroundImage(UIImage.imageWithColor(color: UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 1)), for: .default)
+        navigationBar.shadowImage = UIImage.imageWithColor(color: UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 0))
 
     }
-    
-    @objc private func btn_click(){
-        
-    }
+
 }

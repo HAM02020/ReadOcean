@@ -101,7 +101,7 @@ extension CategoryVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: BlockTableViewCell.self)
         cell.viewModel = listViewModel.myBlockList[indexPath.row]
-        cell.selectionStyle = .none
+        
         return cell
     }
     //cell高度

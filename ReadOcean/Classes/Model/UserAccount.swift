@@ -83,6 +83,20 @@ class UserAccount:HandyJSON{
         (data as NSData).write(toFile: filePath, atomically: true)
         print("用户账户保存成功\(filePath)")
     }
+    func deleteAccount(){
+        token = nil
+        // 写入磁盘
+        let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let filePath = (docDir as NSString).appendingPathComponent(accountFile)
+        let fileManger = FileManager.default
+        do{
+            try fileManger.removeItem(atPath: filePath)
+            print("Success to remove file.")
+        }catch{
+            print("Failed to remove file.")
+        }
+
+    }
     
 //    static let main:UserAccount = {
 //        let instance = UserAccount.build()

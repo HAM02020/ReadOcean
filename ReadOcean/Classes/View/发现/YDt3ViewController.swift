@@ -18,7 +18,13 @@ class YDt3ViewController : BaseViewController{
     var titles = ["排行榜","故事新编","书香门第"]
     var rankTypes = ["book","point","community"]
     
-    private var bannerpics:[String] = ["b1","b2","b3"]
+    private var bannerpics:[String] = {
+        var list = [String]()
+        for i in 1...18{
+            list.append("1_\(i)")
+        }
+        return list
+    }()
     
     var style: UIStatusBarStyle = .lightContent
     

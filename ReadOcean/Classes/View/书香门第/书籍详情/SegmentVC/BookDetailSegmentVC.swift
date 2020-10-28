@@ -86,7 +86,7 @@ extension BookDetailSegmentVC:UITableViewDelegate,UITableViewDataSource{
         case "task":
             return model?.records?.count ?? 0
         case "course":
-            print(model?.courses)
+            
             return model?.courses?.count ?? 0
         default:
             return 0
@@ -112,6 +112,19 @@ extension BookDetailSegmentVC:UITableViewDelegate,UITableViewDataSource{
         
         
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch tableViewType {
+        case "task":
+            return 60
+        case "course":
+            
+            return 30
+        default:
+            return 0
+        }
+    }
+    
     
     
     

@@ -17,6 +17,7 @@ class BookDetailCourseTableViewCell:BaseTableViewCell{
     
     lazy var label: UILabel = {
         let txt = UILabel()
+        txt.text = "《标题》-- 作者"
         txt.font = UIFont.systemFont(ofSize: 12)
         txt.textColor = UIColor.black
         return txt

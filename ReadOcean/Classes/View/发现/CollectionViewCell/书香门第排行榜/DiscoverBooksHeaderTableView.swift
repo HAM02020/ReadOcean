@@ -74,4 +74,5 @@ extension DiscoverBooksHeaderTableView :UITableViewDataSource,UITableViewDelegat
         cell.title.text = name + "排行榜"
         
     }
+    
 }

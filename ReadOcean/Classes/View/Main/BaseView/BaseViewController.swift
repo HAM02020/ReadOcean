@@ -15,6 +15,7 @@ var navHeight:CGFloat = 0
 class BaseViewController: UIViewController {
 
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -107,8 +108,11 @@ class BaseViewController: UIViewController {
     }
     
     @objc func logoutSuccess(n:Notification){
-        shardAccount.token = nil
+        
+        shardAccount.deleteAccount()
         viewDidLoad()
+        //注销通知 避免通知被重复注册
+        NotificationCenter.default.removeObserver(self)
     }
     
     

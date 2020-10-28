@@ -10,19 +10,26 @@ import UIKit
 
 class BooksCategorysMainVC:BaseViewController{
 
-
+    private var categoryParam = ""
+    
     private let categoriesParams = ["category_shige","category_kexue","category_manhua","category_tonghua","category_shenhua","category_lishi","category_shuxue","category_xiaoshuo","category_mingzhu","category_mingren"]
     
-
+    convenience init(_ categoryParam: String){
+        self.init()
+        self.categoryParam = categoryParam
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        title = "分类"
+        pageView.scrollToItem(to: categoriesParams.firstIndex(of: categoryParam) ?? 0, animated: false)
+        titleView.setSelectIndex(at: categoriesParams.firstIndex(of: categoryParam) ?? 0, animated: false)
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .darkContent
@@ -52,23 +59,26 @@ class BooksCategorysMainVC:BaseViewController{
         config.indicatorColor = UIColor(hexString: "23c993")
         config.isShowBottomLine = false
         
+        
         return config
     }()
     
     private lazy var titleView : GXSegmentTitleView = {
         let v = GXSegmentTitleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 40), config: config, titles: ["优美诗歌","自然","绘本","童话故事","神话传奇","文史","数学","小说散文","世界名著","名人传记"])
         v.delegate = self
-        v.backgroundColor = UIColor.init(patternImage: UIImage(named: "f5tof2") ?? UIImage())
+        //v.backgroundColor = UIColor.init(patternImage: UIImage(named: "f5tof2") ?? UIImage())
+        v.backgroundColor = UIColor.white
         return v
     }()
     
     private lazy var pageView: GXSegmentPageView = {
-        var vcs:[CategoryVC] = []
+        var vcs:[BookCategorysVC] = []
         for category in categoriesParams{
-            vcs.append(CategoryVC.build(category))
+            vcs.append(BookCategorysVC(category))
         }
         let v = GXSegmentPageView(parent: self, children: vcs)
         v.delegate = self
+        
         return v
     }()
     
@@ -90,14 +100,14 @@ class BooksCategorysMainVC:BaseViewController{
         view.addSubview(pageView)
         pageView.snp.makeConstraints { (make) in
             print("navHeight = \(navHeight)  statusBarHeight = \(statusBarHeight)")
-            make.top.equalToSuperview().offset(navHeight+statusBarHeight)
+            make.top.equalToSuperview().offset(navHeight + statusBarHeight + 40)
             make.left.right.bottom.equalToSuperview()
 
         }
         view.addSubview(titleView)
         titleView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
-            make.top.equalTo(pageView.snp.top)
+            make.top.equalToSuperview().offset(navigationNormalHeight + statusBarHeight)
             make.height.equalTo(40)
         }
     }

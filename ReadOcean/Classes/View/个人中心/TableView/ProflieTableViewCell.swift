@@ -42,6 +42,7 @@ class ProfileTableViewCell : BaseTableViewCell{
     
     override func setupLayout() {
         backgroundColor = UIColor.white
+        selectionStyle = .none
         addSubview(iconView)
         iconView.snp.makeConstraints { (make) in
             make.centerY.equalTo(self.snp.centerY)

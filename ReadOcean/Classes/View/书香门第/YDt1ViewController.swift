@@ -412,6 +412,13 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath, viewType: BookCollectionHeaderView.self)
             headerView.titleLabel.text = listViewModel.categoryName[indexPath.section]
             headerView.backgroundColor = bgColor
+            
+            headerView.moreActionClosure {[weak self] in
+                let vc = BooksCategorysMainVC(self?.listViewModel.categoriesParams[indexPath.section] ?? "category_shige")
+                vc.hidesBottomBarWhenPushed = true
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+            
             return headerView
         } else {
             let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, for: indexPath, viewType: YDBookCollectionFooterView.self)
@@ -440,6 +447,7 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
         bookDetailVC.bookId = listViewModel.dataDict[key]![indexPath.item].id
         bookDetailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(bookDetailVC, animated: true)
+        
     }
     
     //使头部视图滚动

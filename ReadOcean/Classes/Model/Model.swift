@@ -43,11 +43,14 @@ struct Book : HandyJSON {
     var topicId:String?
     
 }
+///任务记录
 struct Record:HandyJSON {
     var date: TimeInterval?
     var accuracy:Double? //0.7333333333333333,
     var consume: TimeInterval?
 }
+
+///课程
 struct Course:HandyJSON {
     var author: String?//": "王慧杰",
     var video: String?//": "http://ro.bnuz.edu.cn/tinyread/book/5917bd81-2daa-4cef-a940-9fec3a070f8c/index.html",

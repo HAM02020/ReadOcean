@@ -64,20 +64,15 @@ class BookDetailVC:WMZPageController{
     }
     
     func configNav(point:CGPoint,isAppear:Bool = true){
-        
-        
-        
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: point.y/(400-navigationNormalHeight-statusBarHeight))]
-        
-        
-        
+
         if isAppear{
-            
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: point.y/(400-navigationNormalHeight-statusBarHeight))]
             navigationController?.navigationBar.setBackgroundImage(UIImage.imageWithColor(color: UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: point.y/(400-navigationNormalHeight-statusBarHeight))), for: .default)
             navigationController?.navigationBar.shadowImage = UIImage.imageWithColor(color: UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 0))
         }else{
             navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
             navigationController?.navigationBar.shadowImage = nil
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 1)]
         }
         
     }

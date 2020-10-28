@@ -17,10 +17,10 @@ class BlockTableViewCell:BaseTableViewCell{
         let v = UIView()
         v.backgroundColor = UIColor.white
         v.layer.cornerRadius = 5
-        v.layer.shadowOffset = CGSize(width: 0, height: 2)
-        v.layer.shadowColor = UIColor.darkGray.cgColor
-        v.layer.shadowOpacity = 0.3
-        v.layer.shadowRadius = 10
+//        v.layer.shadowOffset = CGSize(width: 0, height: 2)
+//        v.layer.shadowColor = UIColor.darkGray.cgColor
+//        v.layer.shadowOpacity = 0.3
+//        v.layer.shadowRadius = 10
         
         v.addSubview(coverView)
         coverView.snp.makeConstraints { (make) in
@@ -181,6 +181,7 @@ class BlockTableViewCell:BaseTableViewCell{
         
         
         backgroundColor = UIColor.clear
+        selectionStyle = .none
         contentView.addSubview(view)
         view.snp.makeConstraints { (make) in
             make.top.equalToSuperview().inset(30)

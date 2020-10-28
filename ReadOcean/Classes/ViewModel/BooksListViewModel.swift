@@ -9,11 +9,13 @@
 import UIKit
 
 class BooksListViewModel{
-    let categoryName = [ "优美诗歌","绘本","自然","童话故事","神话传奇","文史","数学","小说散文","世界名著","名人传记"]
+    let categoryName = [ "优美诗歌","自然","绘本","童话故事","神话传奇","文史","数学","小说散文","世界名著","名人传记"]
     let categoriesParams = ["category_shige","category_kexue","category_manhua","category_tonghua","category_shenhua","category_lishi","category_shuxue","category_xiaoshuo","category_mingzhu","category_mingren"]
     let maxCellNum = 8
     
     var dataDict = [String:[Book]]()
+    
+    var pageNums = [String:Int]()
     
     init() {
         //为了loadingCover 添加假数据
@@ -60,6 +62,7 @@ class BooksListViewModel{
                 }
                 group2.notify(queue: DispatchQueue.main) {[weak self] in
                     self?.dataDict[category] = bookList
+                    self?.pageNums[category] = 2
                     group.leave()
                 }
                 
@@ -71,6 +74,31 @@ class BooksListViewModel{
             completion()
         }
     }
-        
+    func getBooksByCategory(category:String, completion:@escaping()->Void){
+        networkManager.requestDataList(.getBooks(category: category, pageNum: pageNums[category]!), model: Book.self) { (modelList) in
+            
+            guard let modelList = modelList else {return}
+            
+            let group = DispatchGroup()
+            
+            var bookList = [Book]()
+            
+            for book in modelList{
+                group.enter()
+                guard let bookId = book.id else{return}
+                networkManager.requestData(.infoBook(bookId: bookId), model: Book.self) { (model) in
+                    guard let model = model else {return}
+                    bookList.append(model)
+                    group.leave()
+                }
+               
+            }
+            group.notify(queue: DispatchQueue.main) {[weak self] in
+                self?.dataDict[category] = self!.dataDict[category]! + bookList
+                self?.pageNums[category]! += 1
+                completion()
+            }
+        }
+    }
     
 }
