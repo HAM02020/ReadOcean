@@ -95,7 +95,7 @@ class BaseViewController: UIViewController {
                     userInfo.avatar = url
                 }
                 shardAccount.userInfo = userInfo
-                self?.viewDidLoad()
+                self?.didLogon()
             case .failure(_):
                 break
             }
@@ -104,15 +104,17 @@ class BaseViewController: UIViewController {
         
         
         //注销通知 避免通知被重复注册
-        NotificationCenter.default.removeObserver(self)
+        //NotificationCenter.default.removeObserver(self)
     }
     
     @objc func logoutSuccess(n:Notification){
-        
+        print("用户退出登陆通知")
         shardAccount.deleteAccount()
-        viewDidLoad()
+//        viewDidLoad()
+        didLogout()
+        
         //注销通知 避免通知被重复注册
-        NotificationCenter.default.removeObserver(self)
+        //NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -140,3 +142,14 @@ extension BaseViewController {
     }
 }
 
+extension BaseViewController:LogonDelegate{
+    func didLogon() {
+        
+    }
+    
+    func didLogout() {
+        
+    }
+    
+    
+}

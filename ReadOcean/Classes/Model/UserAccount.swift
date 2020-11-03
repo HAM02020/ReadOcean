@@ -27,7 +27,7 @@ class UserAccount:HandyJSON{
     
     var token:String?
     
-    var schoolId:Int = 4404001
+    var schoolId:Int = 1000000
     
     var lat:Int = 1
     

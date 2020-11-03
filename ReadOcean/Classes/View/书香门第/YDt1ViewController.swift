@@ -32,17 +32,9 @@ class YDt1ViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if userLogon{
-            img_avatar.sd_setImage(with: URL(string: (shardAccount.userInfo?.avatar)!), placeholderImage: nil, options: [], progress: nil) {[weak self] (image, _, _, _) in
-                self?.img_avatar.image = image?.reSizeImage(reSize: CGSize(width: 50, height: 50))
-            }
-            
-            guard let userName = shardAccount.userInfo?.userName else {return}
-            loginLabel.text = "欢迎：\(userName)!"
-            loginBtn.setTitle("退出登陆", for: .normal)
-            loginBtn.removeTarget(self, action: #selector(loginAction), for: .touchUpInside)
-            loginBtn.addTarget(self, action: #selector(logoutAction), for: .touchUpInside)
+            didLogon()
         }else{
-            resetData()
+            didLogout()
         }
         
         loadData(true)
@@ -62,12 +54,7 @@ class YDt1ViewController : BaseViewController {
     
     
     
-    private func resetData(){
-        loginLabel.text = "登陆后发现精彩内容,阅读最新书籍，成为读书之星"
-        loginBtn.setTitle("立即登陆", for: .normal)
-        let img = UIImage(named: "img_boy")?.reSizeImage(reSize: CGSize(width: 50, height: 50))
-        img_avatar.image = img
-    }
+
     
     override func logoutAction() {
         super.logoutAction()
@@ -458,8 +445,34 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
             navView.value = scrollView.contentOffset.y
             headerView.snp.updateConstraints{ $0.top.equalToSuperview().offset(min(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))) }
         }
+        
     }
 
     
 }
 
+@objc protocol LogonDelegate {
+    func didLogon()
+    func didLogout()
+}
+extension YDt1ViewController{
+    override func didLogout() {
+        loginLabel.text = "登陆后发现精彩内容,阅读最新书籍，成为读书之星"
+        loginBtn.setTitle("立即登陆", for: .normal)
+        let img = UIImage(named: "img_boy")?.reSizeImage(reSize: CGSize(width: 50, height: 50))
+        img_avatar.image = img
+        
+    }
+
+    override func didLogon() {
+        img_avatar.sd_setImage(with: URL(string: (shardAccount.userInfo?.avatar)!), placeholderImage: nil, options: [], progress: nil) {[weak self] (image, _, _, _) in
+            self?.img_avatar.image = image?.reSizeImage(reSize: CGSize(width: 50, height: 50))
+        }
+        
+        guard let userName = shardAccount.userInfo?.userName else {return}
+        loginLabel.text = "欢迎：\(userName)!"
+        loginBtn.setTitle("退出登陆", for: .normal)
+        loginBtn.removeTarget(self, action: #selector(loginAction), for: .touchUpInside)
+        loginBtn.addTarget(self, action: #selector(logoutAction), for: .touchUpInside)
+    }
+}
