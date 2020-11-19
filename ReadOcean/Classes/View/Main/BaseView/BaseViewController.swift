@@ -39,6 +39,7 @@ class BaseViewController: UIViewController {
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
+        print("Base deinit")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,13 +120,13 @@ class BaseViewController: UIViewController {
     
     
     @objc func loginAction(){
-        //发送通知
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: YDUserShouldLoginNotification), object: nil)
+        if(!userLogon){
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: YDUserShouldLoginNotification), object: nil)
+        }else{
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: YDUserShouldLogoutNotification), object: nil)
+        }
     }
-    @objc func logoutAction(){
-        //发送通知
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: YDUserShouldLogoutNotification), object: nil)
-    }
+    
 }
 
 extension BaseViewController {
@@ -153,3 +154,4 @@ extension BaseViewController:LogonDelegate{
     
     
 }
+

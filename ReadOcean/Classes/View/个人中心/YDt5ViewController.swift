@@ -209,7 +209,7 @@ class YDt5ViewController : BaseViewController {
         let btn = WBTittleButton(title: "退出登陆", image: UIImage(named: "logout"))
         btn.titleLabel?.font = UIFont.monospacedSystemFont(ofSize: 16, weight: .semibold)
         btn.imagePosition(style: .left, spacing: 5)
-        btn.addTarget(self, action: #selector(logoutAction), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
         return btn
     }()
     

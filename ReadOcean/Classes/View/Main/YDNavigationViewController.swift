@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YDNavigationViewController: UINavigationController {
+class YDNavigationViewController: AlwaysPoppableNavigationController {
 
     var navHeight:CGFloat?
     

@@ -69,7 +69,6 @@ class DiscoverRankCollectionViewCell:UICollectionViewCell{
             rankName.text = rankStr
             descriptLabel.text = descript
             
-
         }
         
     }

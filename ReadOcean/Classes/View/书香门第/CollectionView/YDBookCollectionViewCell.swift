@@ -36,7 +36,7 @@ class YDBookCollectionViewCell: BaseCollectionViewCell {
 
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.textColor = UIColor.black
+        titleLabel.textColor = YDColor.textBlack
         titleLabel.font = UIFont.systemFont(ofSize: 14)
         titleLabel.text = "Swift编程从入门到入土"
         titleLabel.numberOfLines = 0
@@ -44,7 +44,7 @@ class YDBookCollectionViewCell: BaseCollectionViewCell {
     }()
     private lazy var authorLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.textColor = UIColor.darkGray
+        titleLabel.textColor = YDColor.textlightGray
         titleLabel.font = UIFont.systemFont(ofSize: 12)
         titleLabel.text = "作者"
         titleLabel.numberOfLines = 0

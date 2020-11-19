@@ -70,16 +70,17 @@ class YDMainViewController: RAMAnimatedTabBarController {
         DispatchQueue.main.asyncAfter(deadline: when) {
             //SVProgressHUD.setDefaultMaskType(.clear)
             //展现登陆控制器
-            
+            let nav = UINavigationController(rootViewController: LoginVC())
+            nav.modalPresentationStyle = .fullScreen
+            self.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
         }
-        let nav = UINavigationController(rootViewController: LoginVC())
-        nav.modalPresentationStyle = .fullScreen
-        self.modalPresentationStyle = .fullScreen
+        
         
         //self.modalTransitionStyle = .partialCurl
         //nav.modalTransitionStyle = .partialCurl
 
-        self.present(nav, animated: true, completion: nil)
+        
         
         
     }
@@ -159,7 +160,8 @@ extension YDMainViewController:UITabBarControllerDelegate{
             let clsName = dict["clsName"] as? String,
             let title = dict["title"] as? String,
             let imgName = dict["imgName"] as? String,
-            let cls = NSClassFromString("\(Bundle.main.infoDictionary?["CFBundleName"] ?? "").\(clsName)") as? BaseViewController.Type
+            //let cls = NSClassFromString("\(Bundle.main.infoDictionary?["CFBundleName"] ?? "").\(clsName)") as? BaseViewController.Type
+            let cls = objc_getClass("\(Bundle.main.infoDictionary?["CFBundleName"] ?? "").\(clsName)") as? BaseViewController.Type
             else {
                 return UIViewController()
         }
@@ -175,10 +177,11 @@ extension YDMainViewController:UITabBarControllerDelegate{
 //        }else{
 //            vc = cls.init()
 //        }
+        
         let vc = cls.init()
         vc.title = title
         
-        UITabBar.appearance().backgroundColor = UIColor.white
+        UITabBar.appearance().backgroundColor = YDColor.backgroundNormal
         
         //设置tabbar的标题颜色 和字体
         //vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(hexString: "#23c993")], for: .highlighted)

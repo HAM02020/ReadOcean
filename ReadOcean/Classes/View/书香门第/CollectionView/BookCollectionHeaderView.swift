@@ -34,7 +34,7 @@ class BookCollectionHeaderView: BaseCollectionReusableView {
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        titleLabel.textColor = .black
+        titleLabel.textColor = YDColor.textBlack
         return titleLabel
     }()
     
@@ -59,6 +59,7 @@ class BookCollectionHeaderView: BaseCollectionReusableView {
     // 继承父类方法 布局
     override func setupLayout() {
         
+        backgroundColor = YDColor.backgroundNormal
         
         addSubview(iconView)
         iconView.snp.makeConstraints { make in

@@ -379,16 +379,12 @@ extension LoginVC{
     
     @objc func changeUserType(){
         UIView.transition(with: self.avatarView, duration: 0.6, options: .transitionFlipFromLeft, animations: {
-            if self.avatarView.image == UIImage(named: "avatar_student") {
-              self.avatarView.image = UIImage(named: "avatar_teacher")
-            }else{
-              self.avatarView.image = UIImage(named: "avatar_student")
-            }
+            guard let img = self.avatarView.image else {return}
+            self.avatarView.image =  img.isEqual(UIImage(named: "avatar_student")) ? UIImage(named: "avatar_teacher") : UIImage(named: "avatar_student")
         }, completion: nil)
         UIView.transition(with: self.userTypeLabel, duration: 0.6, options: .transitionFlipFromLeft, animations: {
             self.userTypeLabel.text = self.userTypeLabel.text == "学生" ? "老师" : "学生"
         }, completion: nil)
-            
         
     }
 }

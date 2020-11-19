@@ -21,13 +21,13 @@ class YDt1ViewController : BaseViewController {
     func testApi(){
         
     }
-    
+    deinit {
+        print("YDt1 deinit")
+    }
     
     
     //书籍数据列表
     var listViewModel = BooksListViewModel.shared
-    
-    let bgColor:UIColor = UIColor(hexString: "fefefe")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,14 +53,6 @@ class YDt1ViewController : BaseViewController {
     }
     
     
-    
-
-    
-    override func logoutAction() {
-        super.logoutAction()
-        loginBtn.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
-        
-    }
 
 
     private lazy var navView : HomeNavView = {
@@ -147,7 +139,7 @@ class YDt1ViewController : BaseViewController {
     
     private lazy var rect:UIView = {
        let v = UIView()
-        v.backgroundColor = UIColor.white
+        v.backgroundColor = YDColor.backgroundLight
         v.layer.cornerRadius = 5
         v.layer.borderColor = UIColor.clear.cgColor
         v.layer.borderWidth = 0.5
@@ -191,7 +183,7 @@ class YDt1ViewController : BaseViewController {
         //layout.headerReferenceSize = CGSize(width: screenWidth, height: 50)
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         
-        collectionView.backgroundColor = bgColor
+        collectionView.backgroundColor = YDColor.backgroundNormal
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.alwaysBounceVertical = true
@@ -398,8 +390,6 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
         if kind == UICollectionView.elementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath, viewType: BookCollectionHeaderView.self)
             headerView.titleLabel.text = listViewModel.categoryName[indexPath.section]
-            headerView.backgroundColor = bgColor
-            
             headerView.moreActionClosure {[weak self] in
                 let vc = BooksCategorysMainVC(self?.listViewModel.categoriesParams[indexPath.section] ?? "category_shige")
                 vc.hidesBottomBarWhenPushed = true
@@ -409,7 +399,6 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
             return headerView
         } else {
             let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, for: indexPath, viewType: YDBookCollectionFooterView.self)
-            footerView.backgroundColor = bgColor
             return footerView
         }
     }
@@ -419,12 +408,12 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
 //        if section == 0{
 //            return CGSize(width: screenWidth, height: 80)
 //        }
-        return CGSize(width: screenWidth, height: 50)
+        return CGSize(width: screenWidth, height: 30)
     }
 
     // 尾部高度
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: screenWidth, height: 10)
+        return CGSize(width: screenWidth, height: 5)
     }
     //MARK: 点击Cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -450,10 +439,9 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
 
     
 }
-
 @objc protocol LogonDelegate {
-    func didLogon()
-    func didLogout()
+    @objc optional func didLogon()
+    @objc optional func didLogout()
 }
 extension YDt1ViewController{
     override func didLogout() {
@@ -472,7 +460,7 @@ extension YDt1ViewController{
         guard let userName = shardAccount.userInfo?.userName else {return}
         loginLabel.text = "欢迎：\(userName)!"
         loginBtn.setTitle("退出登陆", for: .normal)
-        loginBtn.removeTarget(self, action: #selector(loginAction), for: .touchUpInside)
-        loginBtn.addTarget(self, action: #selector(logoutAction), for: .touchUpInside)
+//        loginBtn.removeTarget(self, action: #selector(loginAction), for: .touchUpInside)
+//        loginBtn.addTarget(self, action: #selector(logoutAction), for: .touchUpInside)
     }
 }

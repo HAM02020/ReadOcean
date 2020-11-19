@@ -61,7 +61,12 @@
 		01508DAA2478FEC3000AA9E9 /* YDt5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508DA92478FEC3000AA9E9 /* YDt5ViewController.swift */; };
 		01508DAC247AA237000AA9E9 /* YDNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508DAB247AA237000AA9E9 /* YDNavigationViewController.swift */; };
 		01508DAF247AA413000AA9E9 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01508DAE247AA413000AA9E9 /* UIColor+Extensions.swift */; };
+		0152CF132562903C00E2FE4E /* ColorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152CF122562903C00E2FE4E /* ColorConfig.swift */; };
+		0152CF182562BAF900E2FE4E /* T3MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152CF172562BAF900E2FE4E /* T3MenuView.swift */; };
+		0152CF4D2564E03F00E2FE4E /* T3RankSegmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152CF4C2564E03F00E2FE4E /* T3RankSegmentVC.swift */; };
 		015D451F2549187D00D50D54 /* BooksCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D451E2549187D00D50D54 /* BooksCategoryViewModel.swift */; };
+		01785F21255A3B8900831F58 /* T3RankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01785F20255A3B8900831F58 /* T3RankVC.swift */; };
+		01785F27255A566600831F58 /* AlwaysPoppableNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01785F26255A566500831F58 /* AlwaysPoppableNavigationController.swift */; };
 		0178773A25147D3F00A25F4D /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178773925147D3F00A25F4D /* UserAccount.swift */; };
 		017877642514A90900A25F4D /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017877632514A90900A25F4D /* ProgressHUD.swift */; };
 		0178776D2514B39500A25F4D /* UIBezierPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017877692514B39400A25F4D /* UIBezierPath+.swift */; };
@@ -244,7 +249,12 @@
 		01508DA92478FEC3000AA9E9 /* YDt5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt5ViewController.swift; sourceTree = "<group>"; };
 		01508DAB247AA237000AA9E9 /* YDNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDNavigationViewController.swift; sourceTree = "<group>"; };
 		01508DAE247AA413000AA9E9 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		0152CF122562903C00E2FE4E /* ColorConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConfig.swift; sourceTree = "<group>"; };
+		0152CF172562BAF900E2FE4E /* T3MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T3MenuView.swift; sourceTree = "<group>"; };
+		0152CF4C2564E03F00E2FE4E /* T3RankSegmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T3RankSegmentVC.swift; sourceTree = "<group>"; };
 		015D451E2549187D00D50D54 /* BooksCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCategoryViewModel.swift; sourceTree = "<group>"; };
+		01785F20255A3B8900831F58 /* T3RankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T3RankVC.swift; sourceTree = "<group>"; };
+		01785F26255A566500831F58 /* AlwaysPoppableNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysPoppableNavigationController.swift; sourceTree = "<group>"; };
 		017877312513529A00A25F4D /* ro-bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ro-bridge.h"; sourceTree = "<group>"; };
 		0178773925147D3F00A25F4D /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		017877632514A90900A25F4D /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
@@ -667,6 +677,7 @@
 		01508D952478CDF0000AA9E9 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				0152CF0625628DAF00E2FE4E /* Color */,
 				017962CA24E3D72F00C26419 /* common */,
 				01A83451249366B1002D2327 /* Network */,
 				01508DAD247AA3F0000AA9E9 /* Extensions */,
@@ -748,6 +759,7 @@
 		01508D9C2478CF7E000AA9E9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				01785F25255A565600831F58 /* Navigation */,
 				017877752514DADD00A25F4D /* LoadingPlaceholder */,
 				017962D124E596D600C26419 /* BaseView */,
 				01508D9D2478D0C1000AA9E9 /* YDMainViewController.swift */,
@@ -762,7 +774,6 @@
 				011320C62528A3A000B3B3BE /* DarkImage */,
 				011320B925289B4400B3B3BE /* NibLoadable.swift */,
 				014FDB32254128CE00F225CD /* StoryBoardLoadable.swift */,
-				01508DAE247AA413000AA9E9 /* UIColor+Extensions.swift */,
 				01A834582493A5B2002D2327 /* UIImageView + Extensions.swift */,
 				014488F724BE0BBF00B61DDB /* UINavigationBar+Extensions.swift */,
 				017962DD24E815BC00C26419 /* UIImage+Extensions.swift */,
@@ -772,6 +783,15 @@
 				01EC8A122520B1CB0038C39B /* CALayer + Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0152CF0625628DAF00E2FE4E /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				01508DAE247AA413000AA9E9 /* UIColor+Extensions.swift */,
+				0152CF122562903C00E2FE4E /* ColorConfig.swift */,
+			);
+			path = Color;
 			sourceTree = "<group>";
 		};
 		016EE434252D7EC20080133E /* View */ = {
@@ -799,6 +819,14 @@
 				012D85B724FD4112008B2063 /* TaskTableViewCell.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		01785F25255A565600831F58 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				01785F26255A566500831F58 /* AlwaysPoppableNavigationController.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		017877622514A8FB00A25F4D /* ProgressHUD */ = {
@@ -1133,6 +1161,9 @@
 		01EC8A0A25209F1F0038C39B /* 排行榜 */ = {
 			isa = PBXGroup;
 			children = (
+				01785F20255A3B8900831F58 /* T3RankVC.swift */,
+				0152CF172562BAF900E2FE4E /* T3MenuView.swift */,
+				0152CF4C2564E03F00E2FE4E /* T3RankSegmentVC.swift */,
 			);
 			path = "排行榜";
 			sourceTree = "<group>";
@@ -1386,6 +1417,8 @@
 				017962CE24E3DD3800C26419 /* YDBookCollectionViewCell.swift in Sources */,
 				01D568822518FE9F00E3248D /* DiscoverBookCollectionViewCell.swift in Sources */,
 				01E755DF250E00DA0038E782 /* GXAnimationPushABDelegate.m in Sources */,
+				0152CF4D2564E03F00E2FE4E /* T3RankSegmentVC.swift in Sources */,
+				0152CF182562BAF900E2FE4E /* T3MenuView.swift in Sources */,
 				012D85B424FCEE9E008B2063 /* FinishedTaskVC.swift in Sources */,
 				015D451F2549187D00D50D54 /* BooksCategoryViewModel.swift in Sources */,
 				0113209F25285A3D00B3B3BE /* UIView+PageRect.m in Sources */,
@@ -1396,6 +1429,7 @@
 				01E755E6250E00DA0038E782 /* GXAnimationSystemDelegate.m in Sources */,
 				01EC8A01252056480038C39B /* RAMBounceAnimation.swift in Sources */,
 				017962DA24E59CAB00C26419 /* HomeNavView.swift in Sources */,
+				01785F21255A3B8900831F58 /* T3RankVC.swift in Sources */,
 				01EC89DC251EE5190038C39B /* GXRefreshGifHeader.swift in Sources */,
 				0113209925285A3D00B3B3BE /* WMZPageLoopView.m in Sources */,
 				01E755E7250E00DA0038E782 /* GXAnimationOglFlipDelegate.m in Sources */,
@@ -1405,6 +1439,7 @@
 				011320BA25289B4400B3B3BE /* NibLoadable.swift in Sources */,
 				01EC8A262520C42D0038C39B /* DiscoverStoryDetailTableViewCell.swift in Sources */,
 				01E755E5250E00DA0038E782 /* GXAnimationErectDelegate.m in Sources */,
+				01785F27255A566600831F58 /* AlwaysPoppableNavigationController.swift in Sources */,
 				017877772514DB0500A25F4D /* LPH.swift in Sources */,
 				01EC89D4251EE5190038C39B /* GXRefreshNormalHeader.swift in Sources */,
 				01D5687A25159E0B00E3248D /* Memoization.swift in Sources */,
@@ -1456,6 +1491,7 @@
 				01EC8A232520C2E90038C39B /* CDPLoopContainer.m in Sources */,
 				011320B525287BD600B3B3BE /* BookDetailHeaderView.swift in Sources */,
 				01EC897A251D848B0038C39B /* MGImageView.swift in Sources */,
+				0152CF132562903C00E2FE4E /* ColorConfig.swift in Sources */,
 				01E755E9250E00DA0038E782 /* GXAnimationPushALDelegate.m in Sources */,
 				01EC89FA252056480038C39B /* RAMAnimatedTabBarController.swift in Sources */,
 				0197120A24E9738000C57717 /* UINavigationController+Extensions.swift in Sources */,

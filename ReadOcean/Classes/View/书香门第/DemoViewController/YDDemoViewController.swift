@@ -8,6 +8,7 @@
 
 import UIKit
 import HandyJSON
+import CoreFoundation
 
 class YDDemoViewController: BaseViewController {
 
@@ -18,7 +19,7 @@ class YDDemoViewController: BaseViewController {
         //设置标题
         title = "第\(navigationController?.viewControllers.count ?? 0)个"
         view.backgroundColor = UIColor.white
-
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image:UIImage(named: "blue"),style: .plain,target: self,action: #selector(showNext))
         
     }

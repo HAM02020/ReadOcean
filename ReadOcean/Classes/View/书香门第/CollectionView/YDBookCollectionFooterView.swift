@@ -10,6 +10,6 @@ import UIKit
 
 class YDBookCollectionFooterView : BaseCollectionReusableView{
     override func setupLayout() {
-        backgroundColor = UIColor.white
+        backgroundColor = YDColor.backgroundBlack
     }
 }

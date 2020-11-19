@@ -233,6 +233,16 @@ extension YDt3ViewController:UICollectionViewDataSource,UICollectionViewDelegate
         return CGSize.zero
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            let vc = T3RankVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
+        }
+    }
     
     
     
