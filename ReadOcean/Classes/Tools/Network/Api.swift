@@ -19,11 +19,12 @@ let networkManager = MoyaProvider<Api>(requestClosure: timeoutClosure)
 let timeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<Api>.RequestResultClosure) -> Void in
     
     if var urlRequest = try? endpoint.urlRequest() {
-        urlRequest.timeoutInterval = 20
+        urlRequest.timeoutInterval = 10
         closure(.success(urlRequest))
     } else {
         closure(.failure(MoyaError.requestMapping(endpoint.url)))
     }
+    
 }
 
 enum Api{
@@ -38,7 +39,6 @@ enum Api{
     //我的任务
     case myTask(user:UserAccount = shardAccount,taskType:TaskType = .none())
     case taskDetail(taskId:String,user:UserAccount = shardAccount)
-    
     case login(userName:String,password:String)
     case userInfo(user:UserAccount = shardAccount)
     
@@ -218,4 +218,5 @@ extension MoyaProvider {
             
         })
     }
+    
 }

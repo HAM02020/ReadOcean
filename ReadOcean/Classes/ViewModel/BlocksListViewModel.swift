@@ -107,7 +107,7 @@ class BlocksListViewModel{
             
 
             self?.blockList = self!.blockList + modelList
-
+            
             
             completion()
         }

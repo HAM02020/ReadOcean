@@ -39,7 +39,8 @@ extension UIColor {
                return lightColor
             }
         }
-    
+
+        
     // Hex String -> UIColor
     convenience init(hexString: String) {
         let hexString = hexString.trimmingCharacters(in: .whitespacesAndNewlines)
