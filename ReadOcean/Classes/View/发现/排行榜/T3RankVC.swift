@@ -61,7 +61,7 @@ class T3RankVC: BaseViewController{
     
     
     lazy var pageView: GXSegmentPageView = {
-        let v = GXSegmentPageView(parent: self, children: [TeacherTaskVC(),FinishedTaskVC()])
+        let v = GXSegmentPageView(parent: self, children: [T3RankSegmentVC(),T3RankSegmentVC()])
         v.frame = CGRect.zero
         v.delegate = self
         return v

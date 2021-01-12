@@ -10,4 +10,17 @@ import UIKit
 
 class T3RankSegmentVC: BaseViewController {
     
+    private lazy var tableView: UITableView = {
+        let t = UITableView()
+        t.backgroundColor = UIColor.blue
+        
+        
+        return UITableView()
+    }()
+    override func setupLayout() {
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
 }
