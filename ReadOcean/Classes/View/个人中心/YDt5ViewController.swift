@@ -22,50 +22,9 @@ class YDt5ViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if userLogon{
-            img_avatar.sd_setImage(with: URL(string: (shardAccount.userInfo?.avatar)!), placeholderImage: nil, options: [], progress: nil) {[weak self] (image, _, _, _) in
-                self?.img_avatar.image = image?.reSizeImage(reSize: CGSize(width: screenHeight*0.1, height: screenHeight*0.1))
-            }
-            
-            guard
-                let userInfo = shardAccount.userInfo,
-                let userName = userInfo.userName,
-                let schoolName = userInfo.schoolName,
-                let userPoints = userInfo.userPoints,
-                let rankTitle = userInfo.rankTitle,
-                let rank = userInfo.rank
-                else {return}
-            nameLabel.text = userName
-            schoolLabel.text = schoolName
-            levelTextView.text = "Lv\(rank)"
-            
-            let userPointsLabel = scoreLabelView.arrangedSubviews[1] as! UILabel
-            userPointsLabel.text = userPoints
-            let rankTitleLabel = rankTitleLabelView.arrangedSubviews[1] as! UILabel
-            rankTitleLabel.text = rankTitle
-            
-            //移除登陆点击手势
-            headerView.removeGestureRecognizer(LoginTap)
-        }
-        else{
-            resetData()
-        }
-
     }
     
-    private func resetData(){
-        nameLabel.text = "点我登陆"
-        schoolLabel.text = "登陆阅读更精彩"
-        levelTextView.text = "Lv0"
-        
-        let userPointsLabel = scoreLabelView.arrangedSubviews[1] as! UILabel
-        userPointsLabel.text = "0"
-        let rankTitleLabel = rankTitleLabelView.arrangedSubviews[1] as! UILabel
-        rankTitleLabel.text = "白丁"
-        
-        let img = UIImage(named: "img_boy")?.reSizeImage(reSize: CGSize(width: avatarWidth, height: avatarWidth))
-        img_avatar.image = img
-    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -381,4 +340,53 @@ extension YDt5ViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     
+}
+
+extension YDt5ViewController{
+    override func didLogon() {
+        super.didLogon();
+        img_avatar.sd_setImage(with: URL(string: (shardAccount.userInfo?.avatar)!), placeholderImage: nil, options: [], progress: nil) {[weak self] (image, _, _, _) in
+            self?.img_avatar.image = image?.reSizeImage(reSize: CGSize(width: screenHeight*0.1, height: screenHeight*0.1))
+        }
+        
+        guard
+            let userInfo = shardAccount.userInfo,
+            let userName = userInfo.userName,
+            let schoolName = userInfo.schoolName,
+            let userPoints = userInfo.userPoints,
+            let rankTitle = userInfo.rankTitle,
+            let rank = userInfo.rank
+            else {return}
+        nameLabel.text = userName
+        schoolLabel.text = schoolName
+        levelTextView.text = "Lv\(rank)"
+        
+        let userPointsLabel = scoreLabelView.arrangedSubviews[1] as! UILabel
+        userPointsLabel.text = userPoints
+        let rankTitleLabel = rankTitleLabelView.arrangedSubviews[1] as! UILabel
+        rankTitleLabel.text = rankTitle
+        
+        //移除登陆点击手势
+        headerView.removeGestureRecognizer(LoginTap)
+    }
+    override func didLogout() {
+        super.didLogout();
+        resetData();
+    }
+    
+    private func resetData(){
+        nameLabel.text = "点我登陆"
+        schoolLabel.text = "登陆阅读更精彩"
+        levelTextView.text = "Lv0"
+        
+        let userPointsLabel = scoreLabelView.arrangedSubviews[1] as! UILabel
+        userPointsLabel.text = "0"
+        let rankTitleLabel = rankTitleLabelView.arrangedSubviews[1] as! UILabel
+        rankTitleLabel.text = "白丁"
+        
+        let img = UIImage(named: "img_boy")?.reSizeImage(reSize: CGSize(width: avatarWidth, height: avatarWidth))
+        img_avatar.image = img
+        
+        headerView.addGestureRecognizer(LoginTap)
+    }
 }

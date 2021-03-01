@@ -31,11 +31,7 @@ class YDt1ViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if userLogon{
-            didLogon()
-        }else{
-            didLogout()
-        }
+        
         
         loadData(true)
         

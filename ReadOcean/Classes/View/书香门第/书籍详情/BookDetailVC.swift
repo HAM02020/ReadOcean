@@ -18,6 +18,7 @@ class BookDetailVC:WMZPageController{
             navigationItem.title = model?.title
             vc1.model = model
             vc2.model = model
+            vc3.model = model
         }
     }
     

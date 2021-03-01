@@ -36,6 +36,13 @@ class BaseViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess), name: NSNotification.Name(YDUserLoginSuccessNotification), object: nil)
         //注册通知
         NotificationCenter.default.addObserver(self, selector: #selector(logoutSuccess(n:)), name: NSNotification.Name(YDUserLogoutSuccessNotification), object: nil)
+        
+        if userLogon{
+            didLogon()
+        }else{
+            didLogout()
+        }
+        
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
