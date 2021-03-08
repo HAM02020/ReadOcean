@@ -28,6 +28,7 @@
 		011320BA25289B4400B3B3BE /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011320B925289B4400B3B3BE /* NibLoadable.swift */; };
 		011320C92528A3DE00B3B3BE /* UIImage+ImageDarken.m in Sources */ = {isa = PBXBuildFile; fileRef = 011320C82528A3DE00B3B3BE /* UIImage+ImageDarken.m */; };
 		01133AA62546B29800FB410E /* BookCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01133AA52546B29800FB410E /* BookCategoryVC.swift */; };
+		0115444825ECDC3A006D01F3 /* YDSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0115444725ECDC3A006D01F3 /* YDSearchController.swift */; };
 		012758C32578DF1A00E63485 /* T3RankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012758C22578DF1A00E63485 /* T3RankTableViewCell.swift */; };
 		012D85B224FCEE90008B2063 /* BaseTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012D85B124FCEE90008B2063 /* BaseTaskVC.swift */; };
 		012D85B424FCEE9E008B2063 /* FinishedTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012D85B324FCEE9E008B2063 /* FinishedTaskVC.swift */; };
@@ -215,6 +216,7 @@
 		011320C72528A3B500B3B3BE /* UIImage+ImageDarken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageDarken.h"; sourceTree = "<group>"; };
 		011320C82528A3DE00B3B3BE /* UIImage+ImageDarken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageDarken.m"; sourceTree = "<group>"; };
 		01133AA52546B29800FB410E /* BookCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCategoryVC.swift; sourceTree = "<group>"; };
+		0115444725ECDC3A006D01F3 /* YDSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDSearchController.swift; sourceTree = "<group>"; };
 		012758C22578DF1A00E63485 /* T3RankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T3RankTableViewCell.swift; sourceTree = "<group>"; };
 		012D85B124FCEE90008B2063 /* BaseTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTaskVC.swift; sourceTree = "<group>"; };
 		012D85B324FCEE9E008B2063 /* FinishedTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedTaskVC.swift; sourceTree = "<group>"; };
@@ -476,6 +478,14 @@
 			path = SegmentVC;
 			sourceTree = "<group>";
 		};
+		0115444625ECDC22006D01F3 /* 搜索 */ = {
+			isa = PBXGroup;
+			children = (
+				0115444725ECDC3A006D01F3 /* YDSearchController.swift */,
+			);
+			path = "搜索";
+			sourceTree = "<group>";
+		};
 		012758C12578DF0000E63485 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -708,6 +718,7 @@
 		01508D972478CE3C000AA9E9 /* 书香门第 */ = {
 			isa = PBXGroup;
 			children = (
+				0115444625ECDC22006D01F3 /* 搜索 */,
 				01BB69DA25234C2100B2CA53 /* 书籍详情 */,
 				013EC18F250609D200BC8891 /* NavigationView */,
 				017962D424E5987100C26419 /* CollectionView */,
@@ -1499,6 +1510,7 @@
 				01C143EB249363B5006ECD2C /* Model.swift in Sources */,
 				014FDB3C254162A000F225CD /* BookDetailTaskTableViewCell.swift in Sources */,
 				01A83453249366D1002D2327 /* YDNetworkManager.swift in Sources */,
+				0115444825ECDC3A006D01F3 /* YDSearchController.swift in Sources */,
 				01D5685E25158CF200E3248D /* GXSegmentTitleCell.swift in Sources */,
 				01EC8A232520C2E90038C39B /* CDPLoopContainer.m in Sources */,
 				011320B525287BD600B3B3BE /* BookDetailHeaderView.swift in Sources */,

@@ -49,18 +49,20 @@ class YDt1ViewController : BaseViewController {
     }
     
     
-
+    
 
     private lazy var navView : HomeNavView = {
         let nav = HomeNavView()
         nav.searchBtnClickClosure = {
             print("搜索click")
-            let vc = DemoPickerVC()
+            let vc = YDSearchController()
+            vc.hidesBottomBarWhenPushed = true
             self.navigationController?.hidesBarsOnSwipe = false
+            
             self.navigationController?.pushViewController(vc, animated: true)
         }
         nav.categorysBtnClickClosure = {
-            print("搜索click")
+            print("分类click")
             let vc = BooksCategorysMainVC()
             vc.title = "分类书籍"
             self.navigationController?.hidesBarsOnSwipe = false
