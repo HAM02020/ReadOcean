@@ -11,7 +11,22 @@ import UIKit
 let CellIndentifier = "CellIdentifier"
 
 class YDSearchController: BaseViewController, UISearchBarDelegate, UISearchResultsUpdating{
-    var searchController : UISearchController!
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        
+        //设置self为更新搜索结果对象
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        
+        searchController.searchBar.sizeToFit()
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false //点击搜索bar时不使背景透明
+        
+        //设置搜索范围栏中的按钮
+        //searchController.searchBar.scopeButtonTitles = ["中文","英文"]
+
+        return searchController
+    }()
     
     private lazy var tableView: UITableView = {
         let t = UITableView()
@@ -31,36 +46,15 @@ class YDSearchController: BaseViewController, UISearchBarDelegate, UISearchResul
         self.listTeams = NSArray(contentsOfFile: plistPath!)
         
         self.filterContentForSearchText("", scope: -1)
-        
-        //实例化UISearchController
-        self.searchController = UISearchController(searchResultsController: nil)
-        //设置self为更新搜索结果对象
-        self.searchController.searchResultsUpdater = self
-        //在搜索时,设置背景为灰色
-        //self.searchController.dimsBackgroundDuringPresentation = false
-        
-        //设置搜索范围栏中的按钮
-        //self.searchController.searchBar.scopeButtonTitles = ["中文","英文"]
-        self.searchController.searchBar.delegate = self
-        
-        //将搜索栏放到表视图的表头中
-        self.tableView.tableHeaderView = self.searchController.searchBar
-        
-        self.searchController.searchBar.sizeToFit()
-        
-        searchController.hidesNavigationBarDuringPresentation = false
+ 
+
+        navigationItem.titleView = searchController.searchBar
         
         
         
-        //searchController.hidesNavigationBarDuringPresentation = false
-        //这里不需要手动把控制器类分配给表视图的委托属性delegate和数据源属性DataSource.因为父类UITableViewController已经并且分配表视图的委托属性delegate和数据源属性dataSource.
-        //        self.tableView = UITableView(frame: self.view.frame, style: .plain)
-        //        //设置表视图委托对象为self
-        //        self.tableView.delegate = self
-        //        self.tableView.dataSource = self
-        //        self.view.addSubview(self.tableView)
-        
+
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
