@@ -43,6 +43,13 @@ struct Book : HandyJSON {
     var topicId:String?
     
 }
+
+struct QueryBook: HandyJSON{
+    var id: String?
+    var title: String?
+    var coverImg: String?
+}
+
 ///任务记录
 struct Record:HandyJSON {
     var date: TimeInterval?

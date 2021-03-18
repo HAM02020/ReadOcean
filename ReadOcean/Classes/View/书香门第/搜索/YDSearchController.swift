@@ -7,25 +7,26 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 let CellIndentifier = "CellIdentifier"
 
 class YDSearchController: BaseViewController, UISearchBarDelegate, UISearchResultsUpdating{
+    
     private lazy var searchController: UISearchController = {
-        let searchController = UISearchController(searchResultsController: nil)
+        let s = UISearchController(searchResultsController: nil)
         
         //设置self为更新搜索结果对象
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
+        s.searchResultsUpdater = self
+        s.searchBar.delegate = self
         
-        searchController.searchBar.sizeToFit()
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.obscuresBackgroundDuringPresentation = false //点击搜索bar时不使背景透明
+        s.searchBar.sizeToFit()
+        s.hidesNavigationBarDuringPresentation = false
+        s.obscuresBackgroundDuringPresentation = false //点击搜索bar时不使背景透明
         
         //设置搜索范围栏中的按钮
         //searchController.searchBar.scopeButtonTitles = ["中文","英文"]
 
-        return searchController
+        return s
     }()
     
     private lazy var tableView: UITableView = {
@@ -36,12 +37,16 @@ class YDSearchController: BaseViewController, UISearchBarDelegate, UISearchResul
     }()
     
     var listTeams : NSArray! //全部数据
-    var listFilterTeams : NSArray! //过滤后数据
+    var listFilterTeams = [QueryBook]() //过滤后数据
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //导入外部资源文件,文件名为team.plist
         let plistPath = Bundle.main.path(forResource:"team",ofType:"plist")
+        
+        
         //获取属性列表文件中的全部数据
         self.listTeams = NSArray(contentsOfFile: plistPath!)
         
@@ -69,30 +74,42 @@ class YDSearchController: BaseViewController, UISearchBarDelegate, UISearchResul
         }
     }
     
+    func loadData(keyWord: String = "",pageNum: Int = 1){
+        networkManager.requestDataList(.bookSearch(keyWord: keyWord, pageNum: pageNum), model: QueryBook.self) { (resList) in
+            guard let resList = resList else {return}
+            self.listFilterTeams = resList
+            self.tableView.reloadData() //搜索完成后,重新加载表视图
+            print("重新加载数据")
+            print(resList)
+        }
+        
+    }
+    
     
     //自定义过滤结果集方法
-    func filterContentForSearchText(_ searchText: NSString, scope: Int){
+    func filterContentForSearchText(_ searchText: String, scope: Int){
+        loadData(keyWord: searchText)
         
-        if(searchText.length == 0){
-            //查询所有数据,listFilterTeams是可变数组类型NSMutableArray
-            self.listFilterTeams = NSMutableArray(array: self.listTeams)
-            return
-        }
-        var tempArray: NSArray!
-        if(scope == 0){ //中文,name字段是中文名
-            //NSPredicate是谓词,y可以定义一个查询条件,用来在内存中过滤集合对象.format用于设置Predicate字符串格式.本例中SELF代表要查询的对象,SELF.name是查询对象的name字段(字典对象的键或实体对象的属性),contains[c]是包含字符的意思,小写c表示不区分大小写.
-            let scopePredicate = NSPredicate(format: "SELF.name contains[c] %@", searchText)
-            tempArray = self.listTeams.filtered(using: scopePredicate) as NSArray?
-            self.listFilterTeams = NSMutableArray(array: tempArray)
-            
-        } else if (scope == 1) {
-            let scopePredicate = NSPredicate(format: "SELF.image contains[c] %@", searchText)
-            tempArray = self.listTeams.filtered(using: scopePredicate) as NSArray?
-            self.listFilterTeams = NSMutableArray(array: tempArray)
-          
-        } else {  //查询所有
-            self.listFilterTeams = NSMutableArray(array: self.listTeams)
-        }
+//        if(searchText.isEmpty){
+//            //查询所有数据,listFilterTeams是可变数组类型NSMutableArray
+//            self.listFilterTeams = NSMutableArray(array: self.listTeams)
+//            return
+//        }
+//        var tempArray: NSArray!
+//        if(scope == 0){ //中文,name字段是中文名
+//            //NSPredicate是谓词,y可以定义一个查询条件,用来在内存中过滤集合对象.format用于设置Predicate字符串格式.本例中SELF代表要查询的对象,SELF.name是查询对象的name字段(字典对象的键或实体对象的属性),contains[c]是包含字符的意思,小写c表示不区分大小写.
+//            let scopePredicate = NSPredicate(format: "SELF.name contains[c] %@", searchText)
+//            tempArray = self.listTeams.filtered(using: scopePredicate) as NSArray?
+//            self.listFilterTeams = NSMutableArray(array: tempArray)
+//
+//        } else if (scope == 1) {
+//            let scopePredicate = NSPredicate(format: "SELF.image contains[c] %@", searchText)
+//            tempArray = self.listTeams.filtered(using: scopePredicate) as NSArray?
+//            self.listFilterTeams = NSMutableArray(array: tempArray)
+//
+//        } else {  //查询所有
+//            self.listFilterTeams = NSMutableArray(array: self.listTeams)
+//        }
     }
     
     //实现UISearchBarDelegate协议方法
@@ -104,10 +121,9 @@ class YDSearchController: BaseViewController, UISearchBarDelegate, UISearchResul
     //实现UISearchResultUpdating协议方法
     //当搜索栏成为第一响应者,并且内容被改变时调用该方法.
     func updateSearchResults(for searchController: UISearchController) {
-        let searchString = searchController.searchBar.text
-        self.filterContentForSearchText(searchString! as NSString, scope: searchController.searchBar.selectedScopeButtonIndex)
-        self.tableView.reloadData() //搜索完成后,重新加载表视图
-        print("重新加载数据")
+        let searchString = searchController.searchBar.text ?? ""
+        self.filterContentForSearchText(searchString, scope: searchController.searchBar.selectedScopeButtonIndex)
+        
     }
     
     
@@ -116,7 +132,7 @@ class YDSearchController: BaseViewController, UISearchBarDelegate, UISearchResul
 
 
 extension YDSearchController: UITableViewDelegate,UITableViewDataSource{
-    //因为这是重写父类UITableViewController的方法,所以要加override关键字.
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.listFilterTeams.count
     }
@@ -135,8 +151,8 @@ extension YDSearchController: UITableViewDelegate,UITableViewDataSource{
         }
         
         let row = (indexPath as NSIndexPath).row
-        let rowDict = self.listFilterTeams[row] as! NSDictionary
-        cell.textLabel?.text = rowDict["name"] as? String
+        let rowModel = self.listFilterTeams[row]
+        cell.textLabel?.text = rowModel.title
         //cell.detailTextLabel?.text = rowDict["image"] as? String
         //let imagePath = String(format: "%@.png", rowDict["image"] as! String)
         //cell.imageView?.image = UIImage(named: imagePath)

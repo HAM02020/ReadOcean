@@ -12,13 +12,25 @@ import Kingfisher
 import SwiftyJSON
 import HandyJSON
 
+
 let YDBookCollectionViewNormalCell = "BookCollectionViewNormalCell"
 
 
 
 class YDt1ViewController : BaseViewController {
     
+    //书籍数据列表
+    var listViewModel = BooksListViewModel.shared
+    
+    let loadingView = LPH.getPlaceHolderView()
+    
+    
     func testApi(){
+        
+        
+        
+            
+        
         
     }
     deinit {
@@ -26,8 +38,7 @@ class YDt1ViewController : BaseViewController {
     }
     
     
-    //书籍数据列表
-    var listViewModel = BooksListViewModel.shared
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -235,7 +246,7 @@ class YDt1ViewController : BaseViewController {
     @objc func loadData(_ isFirstLoad:Bool = false){
     
         if isFirstLoad{
-            LPH.cover(self.view, animated: false)
+            loadingView.cover(self.view, animated: false)
         }else{
             ProgressHUD.show()
         }
@@ -245,7 +256,7 @@ class YDt1ViewController : BaseViewController {
             
             self?.collectionView.myHead.endRefreshing()
             self?.reloadData()
-            LPH.uncover()
+            self?.loadingView.uncover()
             ProgressHUD.showSucceed()
         }
     }
@@ -441,6 +452,7 @@ extension YDt1ViewController:UICollectionViewDelegate,UICollectionViewDataSource
     @objc optional func didLogon()
     @objc optional func didLogout()
 }
+
 extension YDt1ViewController{
     override func didLogout() {
         loginLabel.text = "登陆后发现精彩内容,阅读最新书籍，成为读书之星"

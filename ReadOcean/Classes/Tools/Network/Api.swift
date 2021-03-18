@@ -33,12 +33,15 @@ enum Api{
     case getBooks(category:String?,pageNum:Int = 1)
     case infoBook(bookId:String)
     case bookDetail(user:UserAccount = shardAccount,bookId:String)
+    case bookSearch(keyWord: String = "",pageNum: Int = 1)
     //作品社区
     case getBlocks(category:String?,pageNum:Int? = 1)
     
     //我的任务
     case myTask(user:UserAccount = shardAccount,taskType:TaskType = .none())
     case taskDetail(taskId:String,user:UserAccount = shardAccount)
+    
+    //个人中心
     case login(userName:String,password:String)
     case userInfo(user:UserAccount = shardAccount)
     
@@ -46,34 +49,43 @@ enum Api{
 
 extension Api:TargetType{
     var baseURL: URL {
-        return URL(string: "https://ro.bnuz.edu.cn")!
+        return URL(string: HOST_ADDRESS)!
     }
     
     var path: String {
         switch self {
-        case .getBlocks:
-            return "mobileForum/getBlocks"
-
+        
+        //书香门第
         case .getBooks:
             return "mobileBook/getBooks"
         case .infoBook:
             return "mobileBook/infoBook"
         case .bookDetail:
             return "mobileBook/bookDetail"
+        case .bookSearch:
+            return "ReadingOcean/mobileBook/search"
+        //作品社区
+        case .getBlocks:
+            return "mobileForum/getBlocks"
+            
+        //我的任务
         case .myTask:
             return "mobileTask/myTask"
         case .taskDetail:
             return "mobileTask/taskDetail"
+            
+        //个人中心
         case .login:
             return "mobileUser/login"
         case .userInfo:
             return "mobileUser/userInfo"
         }
+        
     }
     
     var method: Moya.Method {
         switch self {
-        case .getBlocks,.getBooks,.infoBook,.bookDetail,.myTask,.taskDetail,.userInfo:
+        case .getBlocks,.getBooks,.infoBook,.bookDetail,.myTask,.taskDetail,.userInfo,.bookSearch:
             return .get
         case .login:
             return .post
@@ -87,9 +99,10 @@ extension Api:TargetType{
         var parmeters: [String : Any] = [:]
         
         switch self {
-        case .getBlocks(let category,let pageNum):
-            parmeters["category"] = category
-            parmeters["pageNum"] = pageNum
+        
+         
+        //书香门第
+            
         case .getBooks(let category,let pageNum):
             parmeters["category"] = category
             parmeters["pageNum"] = pageNum
@@ -100,6 +113,17 @@ extension Api:TargetType{
             parmeters["userType"] = user.userType
             parmeters["bookId"] = bookId
             parmeters["schoolId"] = user.schoolId
+        case .bookSearch(let keyWord, let pageNum):
+            parmeters["keyWord"] = keyWord
+            parmeters["pageNum"] = pageNum
+        //作品社区
+        
+        case .getBlocks(let category,let pageNum):
+            parmeters["category"] = category
+            parmeters["pageNum"] = pageNum
+            
+        //我的任务
+            
         case .myTask(let user,let taskType):
             parmeters["userId"] = user.userId
             parmeters["userType"] = user.userType
@@ -117,6 +141,9 @@ extension Api:TargetType{
             parmeters["taskId"] = taskId
             parmeters["userId"] = user.userId
             parmeters["userType"] = user.userType
+        
+        //个人中心
+        
         case .login(let userName,let password):
             let user = shardAccount
             parmeters["userName"] = userName
@@ -134,8 +161,8 @@ extension Api:TargetType{
     }
     
     var headers: [String : String]? {
-        let headers : [String:String] = [:]
-        
+        var headers : [String:String] = [:]
+        headers["Authorization"] = shardAccount.token
         return headers
     }
     
@@ -154,12 +181,36 @@ extension Response {
 }
 
 extension MoyaProvider {
+    
+    func MyRequest(_ target: Target, completion:@escaping (_ result: Result<Moya.Response, MoyaError>) -> Void) -> Cancellable{
+        
+        let com = {(_ result: Result<Moya.Response, MoyaError>)->() in
+            switch result {
+            case .success(let resp):
+                guard let json = JSON(resp.data).dictionaryObject else {return}
+                let errorMsg = json["errorMsg"]
+                
+                if(errorMsg != nil){
+                    print(errorMsg)
+                    //需要重新登陆
+                    
+                }
+                completion(result)
+            case .failure(let error):
+                print(error)
+                completion(result)
+            }
+        }
+        
+        return request(target, completion: com)
+    }
+    
     @discardableResult
     open func requestModel<T: HandyJSON>(_ target: Target,
                                     model: T.Type,
                                     completion:@escaping((_ returnData: T?) -> Void)) -> Cancellable? {
         
-        return request(target, completion: { (result) in
+        return MyRequest(target, completion: { (result) in
             //guard let completion = completion else { return }
             switch result {
             case .success(let response):
@@ -179,7 +230,7 @@ extension MoyaProvider {
                                     model: T.Type,
                                     completion:@escaping((_ returnData: T?) -> Void)) -> Cancellable? {
         
-        return request(target, completion: { (result) in
+        return MyRequest(target, completion: { (result) in
             //guard let completion = completion else { return }
             switch result {
             case .success(let response):
@@ -201,7 +252,7 @@ extension MoyaProvider {
                                     model: T.Type,
                                     completion: @escaping((_ returnDataList: [T]?) -> Void)) -> Cancellable? {
         
-        return request(target, completion: { (result) in
+        return MyRequest(target, completion: { (result) in
             //guard let completion = completion else { return }
             switch result {
             case .success(let response):

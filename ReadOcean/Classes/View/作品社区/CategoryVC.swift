@@ -15,6 +15,7 @@ class CategoryVC : BaseViewController {
 
     var listViewModel = BlocksListViewModel()
     
+    var loadingView = LPH.getPlaceHolderView()
     
     
     override func viewDidLoad() {
@@ -76,7 +77,7 @@ class CategoryVC : BaseViewController {
         
 
         if isFirstLoad{
-            LPH.cover(self.view,animated: false)
+            loadingView.cover(self.view,animated: false)
         }else{
             //ProgressHUD.show()
         }
@@ -84,7 +85,7 @@ class CategoryVC : BaseViewController {
             self?.tableView.reloadData()
             self?.tableView.myHead.endRefreshing()
             self?.tableView.gx_footer?.endRefreshing(isNoMore: noMoreData)
-            LPH.uncover()
+            self?.loadingView.uncover()
             
         }
         

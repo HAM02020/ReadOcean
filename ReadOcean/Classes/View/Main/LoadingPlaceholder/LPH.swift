@@ -23,7 +23,7 @@ class LPH {
         return getPlaceHolderView()
     }()
     static func cover(_ viewToCover: UIView, animated: Bool = false){
-
+        //main.uncover()
         main.cover(viewToCover,animated: animated)
         
         
@@ -31,4 +31,11 @@ class LPH {
     static func uncover(){
         main.uncover()
     }
+    
+    func getxxx(title: String)->UINavigationController{
+        var n = UINavigationController();
+        n.title = title
+        return n
+    }
+    
 }
