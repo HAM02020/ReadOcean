@@ -98,6 +98,7 @@
 		01C143EB249363B5006ECD2C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C143EA249363B5006ECD2C /* Model.swift */; };
 		01C14698250666170072586A /* YDt4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C14697250666170072586A /* YDt4ViewController.swift */; };
 		01C146B125068B290072586A /* DiscoverNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C146B025068B290072586A /* DiscoverNavView.swift */; };
+		01C30357260080BE009C02FF /* team.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01C30356260080BE009C02FF /* team.plist */; };
 		01CA62E72511BA82006522AE /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CA62E62511BA82006522AE /* Api.swift */; };
 		01CA62EE2511F407006522AE /* BooksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CA62ED2511F407006522AE /* BooksListViewModel.swift */; };
 		01CA62F02511F709006522AE /* YDt1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CA62EF2511F709006522AE /* YDt1ViewController.swift */; };
@@ -289,6 +290,7 @@
 		01C143EA249363B5006ECD2C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		01C14697250666170072586A /* YDt4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt4ViewController.swift; sourceTree = "<group>"; };
 		01C146B025068B290072586A /* DiscoverNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverNavView.swift; sourceTree = "<group>"; };
+		01C30356260080BE009C02FF /* team.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = team.plist; sourceTree = "<group>"; };
 		01CA62E62511BA82006522AE /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		01CA62ED2511F407006522AE /* BooksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListViewModel.swift; sourceTree = "<group>"; };
 		01CA62EF2511F709006522AE /* YDt1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt1ViewController.swift; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 		013BD86024752ADD00AABEA2 /* ReadOcean */ = {
 			isa = PBXGroup;
 			children = (
+				01C30356260080BE009C02FF /* team.plist */,
 				01508D922478CDAD000AA9E9 /* Classes */,
 				013BD86124752ADD00AABEA2 /* AppDelegate.swift */,
 				017877312513529A00A25F4D /* ro-bridge.h */,
@@ -1354,6 +1357,7 @@
 				013BD86E24752ADF00AABEA2 /* LaunchScreen.storyboard in Resources */,
 				013E80B32521B08500B16103 /* DiscoverRankCollectionViewCell.xib in Resources */,
 				01132021252444DF00B3B3BE /* BookDetailStoryBoard.storyboard in Resources */,
+				01C30357260080BE009C02FF /* team.plist in Resources */,
 				01EC8A292520CE1E0038C39B /* DiscoverStoryDetailTableViewCell.xib in Resources */,
 				01D568802518FCB200E3248D /* DiscoverBookCollectionViewCell.xib in Resources */,
 				013EC19F25060C1A00BC8891 /* README.md in Resources */,
