@@ -3,4 +3,22 @@
    uuid = "256E3B58-8A56-4713-98C2-F00EEDDF655D"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3E06F69A-4ECC-4118-8F3C-3720872A2BA1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ReadOcean/Classes/View/&#x4e66;&#x9999;&#x95e8;&#x7b2c;/&#x641c;&#x7d22;/YDSearchResultTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "bookId"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

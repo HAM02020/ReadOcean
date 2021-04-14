@@ -52,6 +52,8 @@ class BookDetailSegmentVC:BaseViewController,WMZPageProtocol,StoryBoardLoadable{
             
             author?.text = model.author
             publishHouse?.text = model.press
+            let dateformat = DateFormatter()
+            dateformat.dateFormat = "yyyy-MM-dd"
             publishDate?.text =  dateformat.string(from: Date(timeIntervalSince1970: date/1000))
             desc?.text = model.review
             EditorChoice?.text = model.introduction

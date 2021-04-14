@@ -51,10 +51,8 @@ extension Api:TargetType{
     var baseURL: URL {
         return URL(string: HOST_ADDRESS)!
     }
-    
     var path: String {
         switch self {
-        
         //书香门第
         case .getBooks:
             return "mobileBook/getBooks"
@@ -67,22 +65,18 @@ extension Api:TargetType{
         //作品社区
         case .getBlocks:
             return "mobileForum/getBlocks"
-            
         //我的任务
         case .myTask:
             return "mobileTask/myTask"
         case .taskDetail:
             return "mobileTask/taskDetail"
-            
         //个人中心
         case .login:
             return "mobileUser/login"
         case .userInfo:
             return "mobileUser/userInfo"
         }
-        
     }
-    
     var method: Moya.Method {
         switch self {
         case .getBlocks,.getBooks,.infoBook,.bookDetail,.myTask,.taskDetail,.userInfo,.bookSearch:
@@ -176,6 +170,7 @@ extension Response {
         guard let model = JSONDeserializer<T>.deserializeFrom(dict: json) else {
             throw MoyaError.jsonMapping(self)
         }
+       
         return model
     }
 }
@@ -191,8 +186,8 @@ extension MoyaProvider {
                 let errorMsg = json["errorMsg"]
                 
                 if(errorMsg != nil){
-                    print(errorMsg)
-                    //需要重新登陆
+                    print(errorMsg as Any)
+                    //FIXME: 需要重新登陆
                     
                 }
                 completion(result)

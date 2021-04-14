@@ -17,6 +17,7 @@
 #include "CDPLoopContainer.h"
 #include "WMZPageController.h"
 #include "UIImage+ImageDarken.h"
+#include "TTTagView.h"
 extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
 
 

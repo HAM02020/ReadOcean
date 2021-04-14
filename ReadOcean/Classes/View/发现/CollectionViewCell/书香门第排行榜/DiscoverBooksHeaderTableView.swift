@@ -14,6 +14,8 @@ class DiscoverBooksHeaderTableView : BaseCollectionViewCell{
     
     private lazy var listViewModel = BooksListViewModel.shared
     
+    var bookDelegate:DiscoverBookDelegate?
+    
     private lazy var tableView:UITableView = {
         let t = UITableView()
         t.automaticallyAdjustsScrollIndicatorInsets = false
@@ -64,6 +66,7 @@ extension DiscoverBooksHeaderTableView :UITableViewDataSource,UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DiscoverTableViewCellType, for: indexPath) as! DiscoverBookTableViewCell
         cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
+        cell.delegate = bookDelegate
         return cell
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

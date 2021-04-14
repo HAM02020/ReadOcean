@@ -51,7 +51,7 @@ class T3MenuView: UIView{
     }()
     
     func setupLayout(){
-        backgroundColor = UIColor.red
+        backgroundColor = UIColor.lightGray
         for btn in btns{
             stackV.addArrangedSubview(btn)
         }

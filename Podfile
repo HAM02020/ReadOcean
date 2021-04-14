@@ -13,4 +13,6 @@ pod 'HandyJSON'
 pod 'Kingfisher'
 pod 'SwiftyJSON'
 
+pod 'EmptyStateKit'
+
 end

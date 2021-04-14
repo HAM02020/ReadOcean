@@ -9,7 +9,7 @@
 import UIKit
 
 class YDt2ViewController: BaseViewController {
-
+    
     private let categoriesParams = ["category_shige","category_kexue","category_manhua","category_tonghua","category_shenhua","category_lishi","category_shuxue","category_xiaoshuo","category_mingzhu","category_mingren"]
     override func viewDidLoad() {
         super.viewDidLoad()

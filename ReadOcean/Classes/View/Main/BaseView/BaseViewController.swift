@@ -66,9 +66,8 @@ class BaseViewController: UIViewController {
         
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
-            if navi.visibleViewController == self {
-                //navi.barStyle(.theme)
-                //navi.disablePopGesture = false
+            //if navi.visibleViewController == self {
+
                 navi.navigationBar.tintColor = .black
                 navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
                 
@@ -80,7 +79,7 @@ class BaseViewController: UIViewController {
                 }else{
                     navigationController?.setNavigationBarHidden(true, animated: false)
             }
-        }
+        //}
     }
     
     @objc func pressBack() {

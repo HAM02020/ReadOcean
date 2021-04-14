@@ -15,8 +15,16 @@ let dateformat = DateFormatter()
 
 
 
+
 class YDMainViewController: RAMAnimatedTabBarController {
 
+    lazy var notficationCenter: UNUserNotificationCenter = {
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+
+        return center
+    }();
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -28,6 +36,7 @@ class YDMainViewController: RAMAnimatedTabBarController {
         //注册通知
         NotificationCenter.default.addObserver(self, selector: #selector(userLogout), name: NSNotification.Name(YDUserShouldLogoutNotification), object: nil)
 
+        
     }
     
     deinit {
@@ -144,7 +153,7 @@ extension YDMainViewController:UITabBarControllerDelegate{
             ["title":"我的任务"],
             ["title":"个人中心"],
         ]
-        for i in 0...4{
+        for i in 0..<array.count{
             array[i]["clsName"] = "YDt\(i+1)ViewController"
             array[i]["imgName"] = "t\(i+1)"
         }
@@ -204,4 +213,8 @@ extension YDMainViewController:UITabBarControllerDelegate{
         return nav
 
     }
+}
+
+extension YDMainViewController:UNUserNotificationCenterDelegate{
+    
 }

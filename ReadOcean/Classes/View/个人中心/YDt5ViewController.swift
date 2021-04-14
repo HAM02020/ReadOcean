@@ -323,7 +323,9 @@ extension YDt5ViewController:UITableViewDelegate,UITableViewDataSource{
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let pmodel = config[indexPath.section][indexPath.row]
+    }
     
     
     //使头部视图滚动

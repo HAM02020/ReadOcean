@@ -109,6 +109,15 @@ extension CategoryVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let bookDetailVC = BookDetailVC()
+        
+        bookDetailVC.bookId = listViewModel.myBlockList[indexPath.row].bookId
+        bookDetailVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(bookDetailVC, animated: true)
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
 //        print("contentoffset.y = \(scrollView.contentOffset.y)")

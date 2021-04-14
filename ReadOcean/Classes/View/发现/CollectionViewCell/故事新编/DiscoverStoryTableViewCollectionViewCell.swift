@@ -94,6 +94,8 @@ class DiscoverStoryTableViewCollectionViewCell:BaseCollectionViewCell{
         
         invalidateTimer()
         
+        
+        
         let l_dtimer = DispatchSource.makeTimerSource()
         l_dtimer.schedule(deadline: .now()+3, repeating: 3)
         l_dtimer.setEventHandler { [weak self] in

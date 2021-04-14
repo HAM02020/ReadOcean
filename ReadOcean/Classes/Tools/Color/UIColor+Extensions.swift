@@ -22,7 +22,7 @@ extension UIColor {
              return color(lightColor: light, darkColor: dark)
          }
 
-         // MARK: - extension 适配深色模式 浅色模式 非layer
+         // MARK: - extension 适配深色模式 浅色模式
          ///lightColor  浅色模式的颜色（UIColor）
          ///darkColor   深色模式的颜色（UIColor）
          ///return    返回一个颜色（UIColor）

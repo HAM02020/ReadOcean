@@ -172,6 +172,7 @@ extension YDt3ViewController:UICollectionViewDataSource,UICollectionViewDelegate
         switch indexPath.section {
         case 2:
             let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: DiscoverBooksHeaderTableView.self)
+            cell.bookDelegate = self;
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: DiscoverStoryTableViewCollectionViewCell.self)
@@ -276,5 +277,14 @@ extension YDt3ViewController:UICollectionViewDataSource,UICollectionViewDelegate
         }
 
     }
+    
+}
+
+extension YDt3ViewController:DiscoverBookDelegate{
+    
+    func discover(didSelectItem vc: UIViewController) {
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
 }

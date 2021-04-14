@@ -15,10 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        
+        //新写法
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge,.carPlay,.announcement,.criticalAlert,.providesAppNotificationSettings,.provisional]) {
+         (success, error) in
+         //Parse errors and track state
+            
+        }
+        
+            
         window = UIWindow()
         window?.backgroundColor = UIColor.white
         window?.rootViewController = YDMainViewController()
         window?.makeKeyAndVisible()
+        
+
         
 //        if #available(iOS 13.0, *) {
 //          let appearance = UINavigationBarAppearance()
@@ -39,6 +50,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.base64EncodedString()
+        print("token = %@",token)
+    }
+    
     
 }
 

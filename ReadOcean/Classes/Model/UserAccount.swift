@@ -39,6 +39,8 @@ class UserAccount:HandyJSON{
             saveAccount()
         }
     }
+    
+    var searchHistoryArray = [String]()
 
     
     required init() {
@@ -70,7 +72,7 @@ class UserAccount:HandyJSON{
         dict["lng"] = lng
         dict["token"] = token
         dict["userInfo"] = userInfo?.toJSON()
-        
+        dict["searchHistoryArray"] = searchHistoryArray
         // 字典序列化
         
         guard let data =  try? JSONSerialization.data(withJSONObject: dict, options: [.prettyPrinted]) else {
@@ -96,6 +98,26 @@ class UserAccount:HandyJSON{
             print("Failed to remove file.")
         }
 
+    }
+    func saveSearchHistory(){
+        DispatchQueue.main.async {
+            //读
+            let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+            let filePath = (docDir as NSString).appendingPathComponent(accountFile)
+            guard
+                let rdata = NSData(contentsOfFile: filePath),
+                var dict = try? JSONSerialization.jsonObject(with: rdata as Data, options: []) as? [String:Any]
+            else {return}
+            
+            dict["searchHistoryArray"] = self.searchHistoryArray
+            //写
+            // 字典序列化
+            guard let wdata =  try? JSONSerialization.data(withJSONObject: dict, options: [.prettyPrinted]) else {return}
+            (wdata as NSData).write(toFile: filePath, atomically: true)
+            print("搜索记录保存成功\(filePath)")
+        }
+        
+        
     }
     
 //    static let main:UserAccount = {

@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.2.2)
+  - EmptyStateKit (1.1.0)
   - HandyJSON (5.0.2)
   - Kingfisher (5.15.0):
     - Kingfisher/Core (= 5.15.0)
@@ -21,6 +22,7 @@ PODS:
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
+  - EmptyStateKit
   - HandyJSON
   - Kingfisher
   - MJRefresh
@@ -33,6 +35,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - EmptyStateKit
     - HandyJSON
     - Kingfisher
     - MJRefresh
@@ -44,6 +47,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  EmptyStateKit: dc41e9ce5c6089f67a49d063bce73ade9f2ba73f
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
@@ -53,6 +57,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 0f7f5d62e23457b903dc05b90e6d907772d87284
+PODFILE CHECKSUM: 7dbf0ed5102ca18a2d5ccd4a157563b00a517a17
 
 COCOAPODS: 1.9.1

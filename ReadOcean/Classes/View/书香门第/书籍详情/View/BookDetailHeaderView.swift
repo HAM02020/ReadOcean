@@ -46,18 +46,20 @@ class BookDetailHeaderView:UIView,NibLoadable{
                 let viewModel = viewModel,
                 let titleText = viewModel.title,
                 let readingNum = viewModel.readingNum,
-                let readedNum = viewModel.readNum,
-                let creature = viewModel.creature,
-                let creatureName = creature["name"],
-                let creatureImg = creature["img"],
-                let isDone = viewModel.isDone
+                let readedNum = viewModel.readNum
+                
+                //let creatureImg = creature["img"],
+                //let isDone = viewModel.isDone
             
             else {return}
            
             titleLabel.text = titleText
             readingLabel.text = "\(readingNum)人正在阅读"
             readedLabel.text = "\(readedNum)人读过"
-            fishLabel.text = creatureName
+            
+            let creature = viewModel.creature
+            let creatureName = creature?["name"]
+            fishLabel.text = creatureName ?? ""
             
         }
     }

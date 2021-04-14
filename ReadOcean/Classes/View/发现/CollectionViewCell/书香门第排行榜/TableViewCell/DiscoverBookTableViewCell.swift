@@ -16,6 +16,7 @@ class DiscoverBookTableViewCell: UITableViewCell {
         }
     }
     
+    var delegate:DiscoverBookDelegate?
     
     @IBOutlet weak var view: UIView!{
         didSet{
@@ -91,5 +92,16 @@ extension DiscoverBookTableViewCell:UICollectionViewDelegate,UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         (cell as! DiscoverBookCollectionViewCell).viewModel = listViewModel[indexPath.item]
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        let bookDetailVC = BookDetailVC()
+        bookDetailVC.bookId = listViewModel[indexPath.item].id
+        bookDetailVC.hidesBottomBarWhenPushed = true
+        delegate?.discover(didSelectItem: bookDetailVC)
+        //navigationController?.pushViewController(bookDetailVC, animated: true)
+    }
+}
+
+protocol DiscoverBookDelegate {
+    func discover(didSelectItem vc:UIViewController);
 }

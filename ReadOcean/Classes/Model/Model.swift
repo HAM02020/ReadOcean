@@ -31,8 +31,9 @@ struct Book : HandyJSON {
     var id:String?
     var name:String?
     var picUrl:String?
+    var coverImg: String? //
     var author:String?
-    
+    var title:String? //
     var introduction:String?
     var recommend:String?
     var pages:Int?
@@ -125,6 +126,14 @@ struct Task:HandyJSON{
     var publisher: String?
     var isDone: Bool?
     var hasComment: Bool?
+    
+    //Detail
+    var assess: Any?
+    var taskBooks: [Book]?
+    var description: String?
+    var taskTitle: String?
+    
+    
 
     
 }

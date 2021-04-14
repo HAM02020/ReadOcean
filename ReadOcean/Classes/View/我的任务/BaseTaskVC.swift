@@ -19,7 +19,7 @@ class BaseTaskVC : BaseViewController {
         loadData()
         view.backgroundColor = .white
     }
-
+    
     lazy var tableView : UITableView = {
         let t = UITableView()
         t.backgroundColor = UIColor.white
@@ -87,4 +87,15 @@ extension BaseTaskVC : UITableViewDelegate,UITableViewDataSource{
         return 200
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //let nib = UINib(nibName: "YDTaskDetailViewControllerXib", bundle: nil)
+//let vc = nib.instantiate(withOwner: nil, options: nil)[0] as! YDTaskDetailViewController
+        
+        let vc = YDTaskDetailViewController(nibName: "YDTaskDetailViewControllerXib", bundle: nil)
+        vc.taskId = taskList[indexPath.row].id;
+        vc.taskName = taskList[indexPath.row].taskTitle ?? ""
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
 }

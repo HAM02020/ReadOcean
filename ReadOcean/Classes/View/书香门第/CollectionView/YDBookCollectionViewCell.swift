@@ -55,7 +55,7 @@ class YDBookCollectionViewCell: BaseCollectionViewCell {
         didSet{
             titleLabel.text = viewModel?.name
             authorLabel.text = viewModel?.author
-            shadowView.mg_setImage(urlString: viewModel?.picUrl, placeholderImage: UIImage(named: "placeholder"))
+            shadowView.mg_setImage(urlString: viewModel?.picUrl, placeholderImage: UIImage(named: "llplaceholder"))
 
         }
     }
