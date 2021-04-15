@@ -1,11 +1,3 @@
-//
-//  ColorCube.h
-//  ColorCube
-//
-//  Created by Guilherme Rambo on 01/01/17.
-//  Copyright © 2017 Guilherme Rambo. All rights reserved.
-//
-
 
 #ifndef ro_bridge_h
 #define ro_bridge_h
@@ -17,7 +9,6 @@
 #include "CDPLoopContainer.h"
 #include "WMZPageController.h"
 #include "UIImage+ImageDarken.h"
-#include "TTTagView.h"
 #include "TagListView.h"
 extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
 

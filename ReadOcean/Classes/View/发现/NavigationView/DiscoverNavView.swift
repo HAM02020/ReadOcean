@@ -10,7 +10,7 @@ import UIKit
 
 class DiscoverNavView: UIView {
     
-    
+    var delegate: DiscoverNavViewDelegate?
     
     private let MaxValue: CGFloat = (screenWidth - 20)/2
     
@@ -36,6 +36,7 @@ class DiscoverNavView: UIView {
         btn.titleLabel?.textAlignment = .left
         btn.backgroundColor = .init(red: 1, green: 1, blue: 1, alpha: 0.5)
         btn.layer.cornerRadius = 20
+        btn.addTarget(self, action: #selector(buttonClick(_:)), for: .touchUpInside)
         return btn
     }()
     
@@ -49,25 +50,46 @@ class DiscoverNavView: UIView {
 
     private lazy var rankBtn: WBTittleButton = {
         let btn = WBTittleButton(title: "排行榜", image: UIImage(named: "rank_white"))
+        btn.addTarget(self, action: #selector(buttonClick(_:)), for: .touchUpInside)
         btn.setTitleColor(.white, for: .normal)
         return btn
     }()
     private lazy var weClassBtn: WBTittleButton = {
         let btn = WBTittleButton(title: "名师微课", image: UIImage(named: "weclass_white"))
         btn.setTitleColor(.white, for: .normal)
+        btn.addTarget(self, action: #selector(buttonClick(_:)), for: .touchUpInside)
         return btn
     }()
     private lazy var storyBtn: WBTittleButton = {
         let btn = WBTittleButton(title: "故事新编", image: UIImage(named: "story_white"))
         btn.setTitleColor(.white, for: .normal)
+        btn.addTarget(self, action: #selector(buttonClick(_:)), for: .touchUpInside)
         return btn
     }()
     private lazy var parentBtn: WBTittleButton = {
         let btn = WBTittleButton(title: "家长阅读", image: UIImage(named: "parent_white"))
         btn.setTitleColor(.white, for: .normal)
+        btn.addTarget(self, action: #selector(buttonClick(_:)), for: .touchUpInside)
         return btn
     }()
 
+    @objc func buttonClick(_ sender:UIButton){
+        switch sender {
+        case searchBtn:
+            delegate?.searchBtnClick?()
+        case rankBtn:
+            delegate?.rankBtnClick?()
+        case weClassBtn:
+            delegate?.weClassBtnClick?()
+        case storyBtn:
+            delegate?.storyBtnClick?()
+        case parentBtn:
+            delegate?.parentBtnClick?()
+        default:
+            break
+        }
+    }
+    
     public var defaultSearch: String? {
         didSet {
             if let defaultSearch = defaultSearch {
@@ -244,4 +266,13 @@ class DiscoverNavView: UIView {
         stackView.addArrangedSubview(parentBtn)
         
     }
+}
+
+@objc protocol DiscoverNavViewDelegate {
+    @objc optional func searchBtnClick()
+    @objc optional func rankBtnClick()
+    @objc optional func weClassBtnClick()
+    @objc optional func storyBtnClick()
+    @objc optional func parentBtnClick()
+    
 }

@@ -23,6 +23,13 @@ class YDt2ViewController: BaseViewController {
     private lazy var navView:CommunityNavView={
        let nav = CommunityNavView()
         nav.backgroundColor = UIColor.clear
+        nav.searchBtnClickClosure = {
+            let vc = YDSearchController()
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.hidesBarsOnSwipe = false
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
        return nav
     }()
     

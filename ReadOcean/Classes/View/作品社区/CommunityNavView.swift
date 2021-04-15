@@ -28,23 +28,15 @@ class CommunityNavView: UIView {
         stackV.distribution = .fillEqually
         return stackV
     }()
-    private lazy var categoryBtn:WBTittleButton = {
-        let img = UIImage(named: "fenlei")?.reSizeImage(reSize: CGSize(width: 15, height: 15))
-       let btn = WBTittleButton(title: "分类", image: img)
-        
-        return btn
-    }()
     private lazy var searchBtn:WBTittleButton = {
         let img = UIImage(named: "sousuo")?.reSizeImage(reSize: CGSize(width: 15, height: 15))
-       let btn = WBTittleButton(title: "搜索", image: img)
-
+        let btn = WBTittleButton(title: "搜索", image: img)
+        btn.addTarget(self, action: #selector(searchBtnClick(_:)), for: .touchUpInside)
         return btn
     }()
-    private lazy var moreBtn:WBTittleButton = {
-        let img = UIImage(named: "gengduo")?.reSizeImage(reSize: CGSize(width: 15, height: 15))
-       let btn = WBTittleButton(title: "更多", image: img)
-        return btn
-    }()
+    
+    var searchBtnClickClosure: (()->())?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor.clear
@@ -59,42 +51,7 @@ class CommunityNavView: UIView {
     private var selfDefaultHeight: CGFloat = 0
     private let MaxValue: CGFloat = (screenWidth - 20)/2
     
-    public var value: CGFloat? {
-            didSet {
-                self.layoutIfNeeded()
-                print("didset nav 的 value")
-                if let value = value {
-    //                print("didSet:", value)
-                    if defaultValue == 0 {
-                        // 设置默认值
-                        defaultValue = value
-                        selfDefaultHeight = self.frame.size.height
-    //                    print("设置默认值:", defaultValue)
-    //                    print("自身高度:", selfDefaultHeight)
-                    } else {
-                        var changeValue = ((-defaultValue)-(-value))
-                        //var changeValue = value - defaultValue
-                        if changeValue < 0 {
-                            changeValue = 0
-                        }
-                        if changeValue > MaxValue {
-                            changeValue = MaxValue
-                        }
-                        if value > defaultValue {
-                            // 往上推
-                            self.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: changeValue/100)
-                            
-                        }
-                        if value <= defaultValue {
-                            // 往下推
-                            self.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: changeValue/100)
-                        }
 
-                    }
-                }
-            }
-
-        }
     private func setupLayout(){
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
@@ -104,16 +61,6 @@ class CommunityNavView: UIView {
             make.width.equalTo(screenWidth/3)
         }
         
-        //stackView.addArrangedSubview(searchBtn)
-        //stackView.addArrangedSubview(categoryBtn)
-        //stackView.addArrangedSubview(moreBtn)
-//        addSubview(stackView)
-//        stackView.snp.makeConstraints { (make) in
-//            make.bottom.equalToSuperview().offset(-15)
-//            make.right.equalToSuperview().offset(-10)
-//            make.width.equalTo(screenWidth/3)
-//            make.height.equalTo(30)
-//        }
         addSubview(searchBtn)
         searchBtn.snp.makeConstraints { (make) in
                     make.bottom.equalToSuperview().offset(-15)
@@ -121,6 +68,11 @@ class CommunityNavView: UIView {
                     
                     make.height.equalTo(30)
         }
+    }
+    
+    @objc func searchBtnClick(_ sender:UIButton){
+        guard let searchBtnClickClosure = searchBtnClickClosure else {return}
+        searchBtnClickClosure()
     }
 }
 

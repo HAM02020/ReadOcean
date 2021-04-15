@@ -40,7 +40,7 @@ class YDt3ViewController : BaseViewController{
     
     private lazy var navView : DiscoverNavView = {
         let nav = DiscoverNavView()
-
+        nav.delegate = self
         return nav
     }()
 
@@ -287,4 +287,14 @@ extension YDt3ViewController:DiscoverBookDelegate{
     }
     
     
+}
+
+extension YDt3ViewController: DiscoverNavViewDelegate{
+    func searchBtnClick() {
+        let vc = YDSearchController()
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.hidesBarsOnSwipe = false
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
