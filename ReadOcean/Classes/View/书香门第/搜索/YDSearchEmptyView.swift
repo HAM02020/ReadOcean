@@ -108,14 +108,6 @@ class YDSearchEmptyView: UIView{
         updateAccountSearchHistory()
     }
 
-    func ttTageViewDidsSelect(_ item: TTTagItem) {
-        guard let delegate = delegate else {return}
-        delegate.searchEmptyView(didSelect: item.model as! String)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
-            item.isSelected = false
-        }
-
-    }
     
 }
 
@@ -123,9 +115,6 @@ extension YDSearchEmptyView:TagListViewDelegate{
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
         guard let delegate = delegate else {return}
         delegate.searchEmptyView(didSelect: title)
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
-//            item.isSelected = false
-//        }
     }
 }
 
