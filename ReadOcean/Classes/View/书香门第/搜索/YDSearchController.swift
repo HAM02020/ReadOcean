@@ -73,7 +73,6 @@ class YDSearchController: BaseViewController, UISearchBarDelegate, UISearchResul
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.filterContentForSearchText("")
         
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -130,7 +129,6 @@ class YDSearchController: BaseViewController, UISearchBarDelegate, UISearchResul
     //当搜索栏成为第一响应者,并且内容被改变时调用该方法.
     func updateSearchResults(for searchController: UISearchController) {
         let searchString = searchController.searchBar.text ?? ""
-//        if(searchString.elementsEqual("")){listFilterTeams.removeAll();tableView.reloadData();resultView.reloadData();return}
         filterContentForSearchText(searchString)
         
     }
@@ -201,6 +199,12 @@ extension YDSearchController: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(tableView == self.tableView){
+            searchController.searchBar.text = listFilterTeams[indexPath.item].title
+            searchBarSearchButtonClicked(searchController.searchBar)
+            return
+        }
+        
         let vc = BookDetailVC()
         vc.bookId = listFilterTeams[indexPath.item].id
         vc.hidesBottomBarWhenPushed = true

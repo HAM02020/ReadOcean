@@ -8,15 +8,29 @@
 
 import UIKit
 
-class YDSearchEmptyView: UIView,TTTagViewDelegate{
+class YDSearchEmptyView: UIView{
     
     var delegate:YDSearchEmptyViewDelegate?
     
-    lazy var tagView : TTTagView = {
-        let tagV = TTTagView()
+
+    
+    lazy var tagView : TagListView = {
+        let tagV = TagListView()
         tagV.delegate = self
-        tagV.tagsArray = shardAccount.searchHistoryArray
-        tagV.tagBackgroundColor = UIColor.white
+        //tagV.borderWidth = 1
+        tagV.cornerRadius = 15
+        tagV.marginX = 10
+        tagV.marginY = 10
+        tagV.paddingX = 5
+        tagV.paddingY = 5
+        
+        tagV.tagLineBreakMode = .byTruncatingTail
+        tagV.tagBackgroundColor = UIColor(hexString: "EEEEEE")
+        tagV.textColor = UIColor.darkGray
+        tagV.textFont = UIFont.monospacedSystemFont(ofSize: 18, weight: .regular)
+        
+        
+        tagV.addTags(shardAccount.searchHistoryArray)
         return tagV
     }()
     lazy var blueBlock: UIView = {
@@ -62,7 +76,7 @@ class YDSearchEmptyView: UIView,TTTagViewDelegate{
             make.width.lessThanOrEqualToSuperview()
         }
         tagView.snp.makeConstraints { (make) in
-            make.top.equalTo(label.snp.bottom)
+            make.top.equalTo(label.snp.bottom).offset(20)
             make.left.right.equalToSuperview()
             make.height.equalTo(300)
         }
@@ -76,23 +90,22 @@ class YDSearchEmptyView: UIView,TTTagViewDelegate{
         super.init(coder: coder)
     }
     
-    func updateTagView(){
-        tagView.tagsArray.removeAll()
-        tagView.tagsArray = shardAccount.searchHistoryArray
+    func updateAccountSearchHistory(){
+        shardAccount.searchHistoryArray.removeAll()
+        shardAccount.searchHistoryArray = tagView.tagViews.map{$0.title(for: UIControl.State()) ?? ""}
     }
 
     
     func addTag(_ tag: String){
-        shardAccount.searchHistoryArray = shardAccount.searchHistoryArray.filter { (historyStr) -> Bool in
-            return historyStr != tag
-        }
+        tagView.removeTag(tag)
+        tagView.insertTag(tag, at: 0)
         shardAccount.searchHistoryArray.insert(tag, at: 0)
-        updateTagView()
+        updateAccountSearchHistory()
     }
     
     @objc func clearAllTags(){
-        shardAccount.searchHistoryArray.removeAll()
-        updateTagView()
+        tagView.removeAllTags()
+        updateAccountSearchHistory()
     }
 
     func ttTageViewDidsSelect(_ item: TTTagItem) {
@@ -104,6 +117,16 @@ class YDSearchEmptyView: UIView,TTTagViewDelegate{
 
     }
     
+}
+
+extension YDSearchEmptyView:TagListViewDelegate{
+    func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        guard let delegate = delegate else {return}
+        delegate.searchEmptyView(didSelect: title)
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
+//            item.isSelected = false
+//        }
+    }
 }
 
 protocol YDSearchEmptyViewDelegate {

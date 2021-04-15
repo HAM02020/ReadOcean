@@ -96,10 +96,8 @@
 		01A83453249366D1002D2327 /* YDNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A83452249366D1002D2327 /* YDNetworkManager.swift */; };
 		01A834592493A5B2002D2327 /* UIImageView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A834582493A5B2002D2327 /* UIImageView + Extensions.swift */; };
 		01AA03D22626BB9A00E25C47 /* YDSearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA03D12626BB9A00E25C47 /* YDSearchEmptyView.swift */; };
-		01AA03E22626C06600E25C47 /* TTTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AA03DD2626C06600E25C47 /* TTTagView.m */; };
 		01AA04052626D9D200E25C47 /* YDSearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA04032626D9D200E25C47 /* YDSearchResultTableViewCell.swift */; };
 		01AA04062626D9D200E25C47 /* YDSearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01AA04042626D9D200E25C47 /* YDSearchResultTableViewCell.xib */; };
-		01AA0419262764CA00E25C47 /* TestSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AA0418262764CA00E25C47 /* TestSearchVC.swift */; };
 		01AFD72D2623E8E100EFB17D /* YDTaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AFD72C2623E8E100EFB17D /* YDTaskDetailViewController.swift */; };
 		01AFD7352623E93100EFB17D /* YDTaskDetailViewControllerXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01AFD7342623E93100EFB17D /* YDTaskDetailViewControllerXib.xib */; };
 		01B02890250E4F2700FD4896 /* DemoPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B0288F250E4F2700FD4896 /* DemoPickerVC.swift */; };
@@ -174,6 +172,9 @@
 		01EC8A232520C2E90038C39B /* CDPLoopContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EC8A212520C2E90038C39B /* CDPLoopContainer.m */; };
 		01EC8A262520C42D0038C39B /* DiscoverStoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC8A252520C42D0038C39B /* DiscoverStoryDetailTableViewCell.swift */; };
 		01EC8A292520CE1E0038C39B /* DiscoverStoryDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EC8A282520CE1D0038C39B /* DiscoverStoryDetailTableViewCell.xib */; };
+		01FBCF7526280C3C009C5C5F /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FBCF7126280C3C009C5C5F /* CloseButton.swift */; };
+		01FBCF7626280C3C009C5C5F /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FBCF7226280C3C009C5C5F /* TagView.swift */; };
+		01FBCF7726280C3C009C5C5F /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FBCF7326280C3C009C5C5F /* TagListView.swift */; };
 		A9315993D1C6519FF959FB78 /* Pods_ReadOcean.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7B46C8AB20EB21263119A9 /* Pods_ReadOcean.framework */; };
 /* End PBXBuildFile section */
 
@@ -297,11 +298,8 @@
 		01A83452249366D1002D2327 /* YDNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDNetworkManager.swift; sourceTree = "<group>"; };
 		01A834582493A5B2002D2327 /* UIImageView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extensions.swift"; sourceTree = "<group>"; };
 		01AA03D12626BB9A00E25C47 /* YDSearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDSearchEmptyView.swift; sourceTree = "<group>"; };
-		01AA03DD2626C06600E25C47 /* TTTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTagView.m; sourceTree = "<group>"; };
-		01AA03DF2626C06600E25C47 /* TTTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTagView.h; sourceTree = "<group>"; };
 		01AA04032626D9D200E25C47 /* YDSearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDSearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		01AA04042626D9D200E25C47 /* YDSearchResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDSearchResultTableViewCell.xib; sourceTree = "<group>"; };
-		01AA0418262764CA00E25C47 /* TestSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSearchVC.swift; sourceTree = "<group>"; };
 		01AFD72C2623E8E100EFB17D /* YDTaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDTaskDetailViewController.swift; sourceTree = "<group>"; };
 		01AFD7342623E93100EFB17D /* YDTaskDetailViewControllerXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDTaskDetailViewControllerXib.xib; sourceTree = "<group>"; };
 		01B0288F250E4F2700FD4896 /* DemoPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPickerVC.swift; sourceTree = "<group>"; };
@@ -394,6 +392,10 @@
 		01EC8A222520C2E90038C39B /* CDPLoopContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDPLoopContainer.h; sourceTree = "<group>"; };
 		01EC8A252520C42D0038C39B /* DiscoverStoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverStoryDetailTableViewCell.swift; sourceTree = "<group>"; };
 		01EC8A282520CE1D0038C39B /* DiscoverStoryDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverStoryDetailTableViewCell.xib; sourceTree = "<group>"; };
+		01FBCF7026280C3C009C5C5F /* TagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListView.h; sourceTree = "<group>"; };
+		01FBCF7126280C3C009C5C5F /* CloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		01FBCF7226280C3C009C5C5F /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		01FBCF7326280C3C009C5C5F /* TagListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagListView.swift; sourceTree = "<group>"; };
 		C585E163256E88B98A684169 /* Pods-ReadOcean.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadOcean.debug.xcconfig"; path = "Target Support Files/Pods-ReadOcean/Pods-ReadOcean.debug.xcconfig"; sourceTree = "<group>"; };
 		C63B3FAB73B4545615C5E725 /* Pods-ReadOcean.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadOcean.release.xcconfig"; path = "Target Support Files/Pods-ReadOcean/Pods-ReadOcean.release.xcconfig"; sourceTree = "<group>"; };
 		EB7B46C8AB20EB21263119A9 /* Pods_ReadOcean.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadOcean.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -502,11 +504,9 @@
 		0115444625ECDC22006D01F3 /* 搜索 */ = {
 			isa = PBXGroup;
 			children = (
+				01FBCF8226281EE2009C5C5F /* ResultTableViewCell */,
 				0115444725ECDC3A006D01F3 /* YDSearchController.swift */,
 				01AA03D12626BB9A00E25C47 /* YDSearchEmptyView.swift */,
-				01AA04032626D9D200E25C47 /* YDSearchResultTableViewCell.swift */,
-				01AA04042626D9D200E25C47 /* YDSearchResultTableViewCell.xib */,
-				01AA0418262764CA00E25C47 /* TestSearchVC.swift */,
 			);
 			path = "搜索";
 			sourceTree = "<group>";
@@ -943,7 +943,7 @@
 		017962CA24E3D72F00C26419 /* common */ = {
 			isa = PBXGroup;
 			children = (
-				01AA03DB2626C06600E25C47 /* TTTagView */,
+				01FBCF6F26280C3C009C5C5F /* TagListView */,
 				0113208525285A3C00B3B3BE /* WMZPageController */,
 				01EC8A202520C2E90038C39B /* CDPLoopContainer */,
 				01EC89E2252056480038C39B /* RAMAnimatedTabBarController */,
@@ -991,23 +991,6 @@
 				01CA62E62511BA82006522AE /* Api.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		01AA03DB2626C06600E25C47 /* TTTagView */ = {
-			isa = PBXGroup;
-			children = (
-				01AA03DC2626C06600E25C47 /* Classes */,
-			);
-			path = TTTagView;
-			sourceTree = "<group>";
-		};
-		01AA03DC2626C06600E25C47 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				01AA03DD2626C06600E25C47 /* TTTagView.m */,
-				01AA03DF2626C06600E25C47 /* TTTagView.h */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		01B6D9162545AA690006A697 /* TableView */ = {
@@ -1295,6 +1278,26 @@
 				01EC8A222520C2E90038C39B /* CDPLoopContainer.h */,
 			);
 			path = CDPLoopContainer;
+			sourceTree = "<group>";
+		};
+		01FBCF6F26280C3C009C5C5F /* TagListView */ = {
+			isa = PBXGroup;
+			children = (
+				01FBCF7026280C3C009C5C5F /* TagListView.h */,
+				01FBCF7126280C3C009C5C5F /* CloseButton.swift */,
+				01FBCF7226280C3C009C5C5F /* TagView.swift */,
+				01FBCF7326280C3C009C5C5F /* TagListView.swift */,
+			);
+			path = TagListView;
+			sourceTree = "<group>";
+		};
+		01FBCF8226281EE2009C5C5F /* ResultTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				01AA04032626D9D200E25C47 /* YDSearchResultTableViewCell.swift */,
+				01AA04042626D9D200E25C47 /* YDSearchResultTableViewCell.xib */,
+			);
+			path = ResultTableViewCell;
 			sourceTree = "<group>";
 		};
 		B8124B933267B4F5C40ACE20 /* Pods */ = {
@@ -1590,9 +1593,11 @@
 				01D5685E25158CF200E3248D /* GXSegmentTitleCell.swift in Sources */,
 				01EC8A232520C2E90038C39B /* CDPLoopContainer.m in Sources */,
 				011320B525287BD600B3B3BE /* BookDetailHeaderView.swift in Sources */,
+				01FBCF7726280C3C009C5C5F /* TagListView.swift in Sources */,
 				01EC897A251D848B0038C39B /* MGImageView.swift in Sources */,
 				0152CF132562903C00E2FE4E /* YDColor.swift in Sources */,
 				01E755E9250E00DA0038E782 /* GXAnimationPushALDelegate.m in Sources */,
+				01FBCF7526280C3C009C5C5F /* CloseButton.swift in Sources */,
 				01EC89FA252056480038C39B /* RAMAnimatedTabBarController.swift in Sources */,
 				0197120A24E9738000C57717 /* UINavigationController+Extensions.swift in Sources */,
 				01E755EA250E00DA0038E782 /* GXAnimationBaseDelegate.m in Sources */,
@@ -1604,6 +1609,7 @@
 				017962DC24E68D7700C26419 /* MyRefresh.swift in Sources */,
 				01AA03D22626BB9A00E25C47 /* YDSearchEmptyView.swift in Sources */,
 				013E80BE25222AC000B16103 /* BooksCategorysMainVC.swift in Sources */,
+				01FBCF7626280C3C009C5C5F /* TagView.swift in Sources */,
 				01E755E1250E00DA0038E782 /* GXAnimationPushDelegate.m in Sources */,
 				01E755A3250B6B1B0038E782 /* BlocksListViewModel.swift in Sources */,
 				01AA04052626D9D200E25C47 /* YDSearchResultTableViewCell.swift in Sources */,
@@ -1614,7 +1620,6 @@
 				01EC89F9252056480038C39B /* RAMAnimatedTabBarController+BottomLine.swift in Sources */,
 				01079D5E2509C9BE00593D34 /* ProflieTableViewCell.swift in Sources */,
 				017962D624E598B600C26419 /* BookCollectionHeaderView.swift in Sources */,
-				01AA03E22626C06600E25C47 /* TTTagView.m in Sources */,
 				01C146B125068B290072586A /* DiscoverNavView.swift in Sources */,
 				01508DA02478FDF1000AA9E9 /* BaseViewController.swift in Sources */,
 				01EC8A102520A0CF0038C39B /* DiscoverStoryTableViewCollectionViewCell.swift in Sources */,
@@ -1634,7 +1639,6 @@
 				012D85BA24FD4199008B2063 /* BaseTableViewCell.swift in Sources */,
 				01EC89FD252056480038C39B /* RAMFumeAnimation.swift in Sources */,
 				01CA62EE2511F407006522AE /* BooksListViewModel.swift in Sources */,
-				01AA0419262764CA00E25C47 /* TestSearchVC.swift in Sources */,
 				01E755E2250E00DA0038E782 /* GXAnimationPushELDelegate.m in Sources */,
 				014FDB4C25417E4800F225CD /* BookDetailCourseTableViewCell.swift in Sources */,
 				012D85BC24FD65EE008B2063 /* TeacherTaskVC.swift in Sources */,

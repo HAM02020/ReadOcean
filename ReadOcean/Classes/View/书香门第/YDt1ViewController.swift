@@ -69,7 +69,7 @@ class YDt1ViewController : BaseViewController {
         nav.searchBtnClickClosure = {
             print("搜索click")
             //let vc = YDSearchController()
-            let vc = TestSearchVC()
+            let vc = YDSearchController()
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.hidesBarsOnSwipe = false
             
