@@ -5,6 +5,7 @@
 //  Created by ruruzi on 2020/9/16.
 //  Copyright © 2020 HAM02020. All rights reserved.
 //
+
 import Moya
 import HandyJSON
 import SwiftyJSON
@@ -14,7 +15,7 @@ public let HOST_ADDRESS = "https://ro.bnuz.edu.cn"
 
 
 
-let networkManager = MoyaProvider<Api>(requestClosure: timeoutClosure)
+//let networkManager = MoyaProvider<Api>(requestClosure: timeoutClosure)
 
 let timeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<Api>.RequestResultClosure) -> Void in
     
@@ -28,22 +29,29 @@ let timeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<Api>.RequestRes
 }
 
 enum Api{
-    
+    static let networkManager = MoyaProvider<Api>(requestClosure: timeoutClosure)
     //书香门第
     case getBooks(category:String?,pageNum:Int = 1)
     case infoBook(bookId:String)
-    case bookDetail(user:UserAccount = shardAccount,bookId:String)
+    case bookDetail(user:UserAccount = UserAccount.shardAccount,bookId:String)
     case bookSearch(keyWord: String = "",pageNum: Int = 1)
+    case bookQuestion(bookId:String)
+    case commitBookQuestion(bookId:String, detailJson: String, sessionUserId: String = UserAccount.shardAccount.userId)
     //作品社区
     case getBlocks(category:String?,pageNum:Int? = 1)
+    case getPosts(category:String,blockId:String,pageNum:Int = 1)
+    case publishPost(category: String, blockId: String, userId:String = UserAccount.shardAccount.userId, title: String, description:String, isVoice: String = "true", voiceId:String? = "null", file:Data?)
+    //发现
+    
     
     //我的任务
-    case myTask(user:UserAccount = shardAccount,taskType:TaskType = .none())
-    case taskDetail(taskId:String,user:UserAccount = shardAccount)
+    case myTask(user:UserAccount = UserAccount.shardAccount,taskType:TaskType = .none())
+    case taskDetail(taskId:String,user:UserAccount = UserAccount.shardAccount)
     
     //个人中心
     case login(userName:String,password:String)
-    case userInfo(user:UserAccount = shardAccount)
+    case userInfo(user:UserAccount = UserAccount.shardAccount)
+    case userInfoById(userId:String,userType:String = "user_type_student")
     
 }
 
@@ -62,9 +70,17 @@ extension Api:TargetType{
             return "mobileBook/bookDetail"
         case .bookSearch:
             return "ReadingOcean/mobileBook/search"
+        case .bookQuestion:
+            return "ReadingOcean/mbookq/answer"
+        case .commitBookQuestion:
+            return "ReadingOcean/mbookq/detail/add"
         //作品社区
         case .getBlocks:
             return "mobileForum/getBlocks"
+        case .getPosts:
+            return "mobileForum/getPosts"
+        case .publishPost:
+            return "ReadingOcean/mobileForum/publish"
         //我的任务
         case .myTask:
             return "mobileTask/myTask"
@@ -75,13 +91,15 @@ extension Api:TargetType{
             return "mobileUser/login"
         case .userInfo:
             return "mobileUser/userInfo"
+        case .userInfoById:
+            return "mobileUser/userInfo"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .getBlocks,.getBooks,.infoBook,.bookDetail,.myTask,.taskDetail,.userInfo,.bookSearch:
+        case .getBlocks,.getPosts,.getBooks,.infoBook,.bookDetail,.bookQuestion,.myTask,.taskDetail,.userInfo,.bookSearch,.userInfoById:
             return .get
-        case .login:
+        case .login, .publishPost, .commitBookQuestion:
             return .post
             
         }
@@ -110,12 +128,42 @@ extension Api:TargetType{
         case .bookSearch(let keyWord, let pageNum):
             parmeters["keyWord"] = keyWord
             parmeters["pageNum"] = pageNum
+            
+        case .bookQuestion(let bookId):
+            parmeters["bookId"] = bookId
+            
+        case .commitBookQuestion(let bookId, let detailJson, let sessionUserId):
+            parmeters["bookId"] = bookId
+            parmeters["detailJson"] = detailJson
+            parmeters["sessionUserId"] = sessionUserId
         //作品社区
         
         case .getBlocks(let category,let pageNum):
             parmeters["category"] = category
             parmeters["pageNum"] = pageNum
+         
+        case .getPosts(let category, let blockId, let pageNum):
+            parmeters["category"] = category
+            parmeters["blockId"] = blockId
+            parmeters["pageNum"] = pageNum
+        
+        case .publishPost(let category,let blockId, let userId, let title, let description, let isVoice, let voiceId, let file):
+            parmeters["category"] = category
+            parmeters["blockId"] = blockId
+            parmeters["userId"] = userId
+            parmeters["title"] = title
+            parmeters["description"] = description
+            parmeters["isVoice"] = isVoice
+            parmeters["voiceId"] = voiceId
             
+            if file != nil{
+                parmeters["voiceId"] = UUID().uuidString
+                parmeters["file"]  = file
+            }
+            //parmeters["file"] = file == nil ? "" : file
+            
+            return .uploadCompositeMultipart([MultipartFormData(provider: .data(file ?? Data()), name: "file")], urlParameters: parmeters)
+
         //我的任务
             
         case .myTask(let user,let taskType):
@@ -139,7 +187,7 @@ extension Api:TargetType{
         //个人中心
         
         case .login(let userName,let password):
-            let user = shardAccount
+            let user = UserAccount.shardAccount
             parmeters["userName"] = userName
             parmeters["password"] = password
             parmeters["schoolId"] = user.schoolId
@@ -150,13 +198,17 @@ extension Api:TargetType{
         case .userInfo(let user):
             parmeters["userId"] = user.userId
             parmeters["userType"] = user.userType
+        case .userInfoById(let id,let userType):
+            parmeters["userId"] = id
+            parmeters["userType"] = userType
         }
+        
         return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
     }
     
     var headers: [String : String]? {
         var headers : [String:String] = [:]
-        headers["Authorization"] = shardAccount.token
+        headers["Authorization"] = UserAccount.shardAccount.token
         return headers
     }
     

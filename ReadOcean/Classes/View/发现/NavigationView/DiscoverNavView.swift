@@ -21,9 +21,10 @@ class DiscoverNavView: UIView {
         return v
     }()
     
-    private lazy var msgBtn: UIButton = {
+    private lazy var oceanWorldBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(named: "oceanworld_white"), for: .normal)
+        btn.addTarget(self, action: #selector(buttonClick(_:)), for: .touchUpInside)
         return btn
     }()
 
@@ -75,6 +76,8 @@ class DiscoverNavView: UIView {
 
     @objc func buttonClick(_ sender:UIButton){
         switch sender {
+        case oceanWorldBtn:
+            delegate?.oceanWorldBtnClick?()
         case searchBtn:
             delegate?.searchBtnClick?()
         case rankBtn:
@@ -139,9 +142,9 @@ class DiscoverNavView: UIView {
 
                     if changeValue > 100 {
                         searchBtn.backgroundColor = UIColor.init(red: 236/255, green: 236/255, blue: 236/255, alpha: changeValue/100)
-                        msgBtn.setImage(UIImage(named: "oceanworld"), for: .normal)
+                        oceanWorldBtn.setImage(UIImage(named: "oceanworld"), for: .normal)
                     } else {
-                        msgBtn.setImage(UIImage(named: "oceanworld_white"), for: .normal)
+                        oceanWorldBtn.setImage(UIImage(named: "oceanworld_white"), for: .normal)
                         searchBtn.backgroundColor = .init(red: 1, green: 1, blue: 1, alpha: 0.5)
                     }
                     
@@ -236,8 +239,8 @@ class DiscoverNavView: UIView {
     func setupLayout() {
 
         
-        addSubview(msgBtn)
-        msgBtn.snp.makeConstraints { (make) in
+        addSubview(oceanWorldBtn)
+        oceanWorldBtn.snp.makeConstraints { (make) in
             make.top.equalTo(38)
             make.left.equalTo(20)
             make.width.height.equalTo(35)
@@ -274,5 +277,6 @@ class DiscoverNavView: UIView {
     @objc optional func weClassBtnClick()
     @objc optional func storyBtnClick()
     @objc optional func parentBtnClick()
+    @objc optional func oceanWorldBtnClick()
     
 }

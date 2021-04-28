@@ -97,7 +97,7 @@ class BlocksListViewModel{
     
     func getBlocks(_ completion:@escaping()->Void){
         
-        networkManager.requestDataList(.getBlocks(category: category, pageNum: pageNum), model: Block.self) {[weak self] (modelList) in
+        Api.networkManager.requestDataList(.getBlocks(category: category, pageNum: pageNum), model: Block.self) {[weak self] (modelList) in
             
             guard let modelList = modelList else {return}
             
@@ -115,7 +115,7 @@ class BlocksListViewModel{
     
     func getBooks(_ completion:@escaping()->Void){
         
-        networkManager.requestDataList(.getBooks(category: category, pageNum: pageNum), model: Book.self) {[weak self] (dataList) in
+        Api.networkManager.requestDataList(.getBooks(category: category, pageNum: pageNum), model: Book.self) {[weak self] (dataList) in
             
             guard let dataList = dataList else{return}
             
@@ -151,7 +151,7 @@ class BlocksListViewModel{
     }
     func getbookById(bookId:String,_ completion:@escaping(_ book:Book)->()){
         
-        networkManager.requestData(.infoBook(bookId: bookId), model: Book.self) {(model) in
+        Api.networkManager.requestData(.infoBook(bookId: bookId), model: Book.self) {(model) in
             
             guard let model = model else{return}
             
@@ -180,6 +180,8 @@ class BlocksListViewModel{
                     myBlock.postNum = block.postNum
                     myBlock.likeNum = block.likeNum
                     myBlock.introduction = book.introduction
+                    myBlock.publishingHouse = book.publishingHouse
+                    myBlock.remark = book.remark
                     list.append(myBlock)
                     
                     

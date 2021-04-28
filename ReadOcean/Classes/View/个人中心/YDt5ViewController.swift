@@ -347,12 +347,12 @@ extension YDt5ViewController:UITableViewDelegate,UITableViewDataSource{
 extension YDt5ViewController{
     override func didLogon() {
         super.didLogon();
-        img_avatar.sd_setImage(with: URL(string: (shardAccount.userInfo?.avatar)!), placeholderImage: nil, options: [], progress: nil) {[weak self] (image, _, _, _) in
+        img_avatar.sd_setImage(with: URL(string: (UserAccount.shardAccount.userInfo?.avatar)!), placeholderImage: nil, options: [], progress: nil) {[weak self] (image, _, _, _) in
             self?.img_avatar.image = image?.reSizeImage(reSize: CGSize(width: screenHeight*0.1, height: screenHeight*0.1))
         }
         
         guard
-            let userInfo = shardAccount.userInfo,
+            let userInfo = UserAccount.shardAccount.userInfo,
             let userName = userInfo.userName,
             let schoolName = userInfo.schoolName,
             let userPoints = userInfo.userPoints,

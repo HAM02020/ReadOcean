@@ -31,11 +31,16 @@ class BookDetailHeaderView:UIView,NibLoadable{
     @IBOutlet weak var readingLabel: UILabel!
     @IBOutlet weak var readedLabel: UILabel!
     @IBOutlet weak var commentBtn: UIButton!
-    @IBOutlet weak var buyBtn: UIButton!
+    @IBOutlet weak var buyBtn: UIButton!{
+        didSet{
+            buyBtn.addTarget(self, action: #selector(answerQuestion), for: .touchUpInside)
+        }
+    }
     
     @IBOutlet weak var fishLabel: UILabel!
     @IBOutlet weak var tagStackV: UIStackView!
     
+    var ansQuestionsBtnClickClosure: (()->Void)?
     
     var viewModel:BookDetail?{
         didSet{
@@ -46,7 +51,10 @@ class BookDetailHeaderView:UIView,NibLoadable{
                 let viewModel = viewModel,
                 let titleText = viewModel.title,
                 let readingNum = viewModel.readingNum,
-                let readedNum = viewModel.readNum
+                let readedNum = viewModel.readNum,
+                let hasComment = viewModel.hasComment,
+                let isDone = viewModel.isDone,
+                let hasTask = viewModel.hasTask
                 
                 //let creatureImg = creature["img"],
                 //let isDone = viewModel.isDone
@@ -56,12 +64,18 @@ class BookDetailHeaderView:UIView,NibLoadable{
             titleLabel.text = titleText
             readingLabel.text = "\(readingNum)人正在阅读"
             readedLabel.text = "\(readedNum)人读过"
-            
+            commentBtn.setTitle(hasComment ? "已评价" : "未评价", for: UIControl.State())
+            buyBtn.setTitle(isDone ? "已完成" : "答题", for: UIControl.State())
             let creature = viewModel.creature
             let creatureName = creature?["name"]
             fishLabel.text = creatureName ?? ""
             
         }
+    }
+    
+    @objc func answerQuestion(){
+        guard let ansQuestionsBtnClickClosure = ansQuestionsBtnClickClosure else {return}
+        ansQuestionsBtnClickClosure()
     }
 }
 

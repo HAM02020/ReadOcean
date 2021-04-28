@@ -12,6 +12,7 @@ class YDTaskDetailViewController: BaseViewController{
     
     var taskId: String?
     var taskName: String?
+    var bookId: String?
     @IBOutlet weak var taskNameLabel: UILabel?
     @IBOutlet weak var publisherLabel: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!
@@ -20,7 +21,16 @@ class YDTaskDetailViewController: BaseViewController{
     @IBOutlet weak var isDoneButton: UIButton!
     @IBOutlet weak var hasCommentButton: UIButton!
     
-    @IBOutlet weak var bookCoverImage: UIImageView!
+    @IBOutlet weak var bookCoverImage: UIImageView!{
+        didSet{
+            let tap = UITapGestureRecognizer()
+            tap.isEnabled = true
+            tap.addTarget(self, action: #selector(bookCoverImageClick))
+            bookCoverImage.isUserInteractionEnabled = true
+            bookCoverImage.addGestureRecognizer(tap)
+            
+        }
+    }
     @IBOutlet weak var bookNameLabel: UILabel!
     
     
@@ -40,7 +50,7 @@ class YDTaskDetailViewController: BaseViewController{
 
     @objc func loadData(){
         guard let taskId = taskId else {return}
-        networkManager.requestModel(.taskDetail(taskId: taskId), model: Task.self) { (model) in
+        Api.networkManager.requestModel(.taskDetail(taskId: taskId), model: Task.self) { (model) in
             guard let model = model,
                   let publisher = model.publisher,
                   let isDone = model.isDone,
@@ -62,6 +72,13 @@ class YDTaskDetailViewController: BaseViewController{
             self.hasCommentButton.setTitle(hasComment ? "已评价":"未评价", for: .normal)
             self.bookCoverImage.mg_setImage(urlString: books[0].coverImg, placeholderImage: nil)
             self.bookNameLabel.text = books[0].title ?? ""
+            self.bookId = books[0].id
         }
+    }
+    @objc private func bookCoverImageClick(){
+        let bookDetailVC = BookDetailVC()
+        bookDetailVC.bookId = bookId
+        bookDetailVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(bookDetailVC, animated: true)
     }
 }

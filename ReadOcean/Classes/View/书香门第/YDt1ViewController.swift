@@ -25,13 +25,18 @@ class YDt1ViewController : BaseViewController {
     let loadingView = LPH.getPlaceHolderView()
     
     
-    func testApi(){
-        
-        
-        
-            
-        
-        
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        Api.networkManager.request(.bookQuestion(bookId: "09e7be8e-d6e2-4fd1-8184-239a607d499e")) { (res) in
+            switch res{
+            case .success(let resp):
+                print(try? resp.mapString())
+            case .failure(_):
+                print("question errro")
+            default:
+                break;
+            }
+        }
     }
 
     
@@ -44,21 +49,16 @@ class YDt1ViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         loadData(true)
-        
-        testApi()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("t1 viewWillApper")
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("t1 viewDidAppear")
+
     }
     
     
@@ -259,6 +259,9 @@ class YDt1ViewController : BaseViewController {
             self?.loadingView.uncover()
             ProgressHUD.showSucceed()
         }
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+10) {
+//            self.loadingView.uncover()
+//        }
     }
     
     override func setupLayout(){
@@ -463,11 +466,11 @@ extension YDt1ViewController{
     }
 
     override func didLogon() {
-        img_avatar.sd_setImage(with: URL(string: (shardAccount.userInfo?.avatar)!), placeholderImage: nil, options: [], progress: nil) {[weak self] (image, _, _, _) in
+        img_avatar.sd_setImage(with: URL(string: (UserAccount.shardAccount.userInfo?.avatar)!), placeholderImage: nil, options: [], progress: nil) {[weak self] (image, _, _, _) in
             self?.img_avatar.image = image?.reSizeImage(reSize: CGSize(width: 50, height: 50))
         }
         
-        guard let userName = shardAccount.userInfo?.userName else {return}
+        guard let userName = UserAccount.shardAccount.userInfo?.userName else {return}
         loginLabel.text = "欢迎：\(userName)!"
         loginBtn.setTitle("退出登陆", for: .normal)
 //        loginBtn.removeTarget(self, action: #selector(loginAction), for: .touchUpInside)

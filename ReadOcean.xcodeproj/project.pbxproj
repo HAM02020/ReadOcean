@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,10 @@
 		01079D63250A424200593D34 /* YDt2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01079D62250A424200593D34 /* YDt2ViewController.swift */; };
 		01079D65250A496B00593D34 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01079D64250A496B00593D34 /* CategoryVC.swift */; };
 		01079D67250A605D00593D34 /* BlockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01079D66250A605D00593D34 /* BlockTableViewCell.swift */; };
+		0107BA412629703D00CF41AE /* YDBlocksDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0107BA402629703D00CF41AE /* YDBlocksDetailViewController.swift */; };
+		0107BA4E2629715900CF41AE /* YDBlockDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0107BA4D2629715900CF41AE /* YDBlockDetailHeaderView.swift */; };
+		0107BA532629716C00CF41AE /* YDBlockDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0107BA522629716C00CF41AE /* YDBlockDetailHeaderView.xib */; };
+		0107BA9B2629D2F600CF41AE /* YDOceanWorldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0107BA9A2629D2F600CF41AE /* YDOceanWorldViewController.swift */; };
 		01132021252444DF00B3B3BE /* BookDetailStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01132020252444DF00B3B3BE /* BookDetailStoryBoard.storyboard */; };
 		011320262524557900B3B3BE /* BookDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011320252524557900B3B3BE /* BookDetailVC.swift */; };
 		0113202E2524595B00B3B3BE /* BookDetailSegmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0113202D2524595B00B3B3BE /* BookDetailSegmentVC.swift */; };
@@ -66,10 +70,17 @@
 		0152CF132562903C00E2FE4E /* YDColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152CF122562903C00E2FE4E /* YDColor.swift */; };
 		0152CF182562BAF900E2FE4E /* T3MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152CF172562BAF900E2FE4E /* T3MenuView.swift */; };
 		0152CF4D2564E03F00E2FE4E /* T3RankSegmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152CF4C2564E03F00E2FE4E /* T3RankSegmentVC.swift */; };
+		0159790C26307298001A2EAB /* BlockPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159790B26307298001A2EAB /* BlockPostViewModel.swift */; };
+		01597912263075F6001A2EAB /* YDBlockPublishPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01597911263075F6001A2EAB /* YDBlockPublishPostViewController.swift */; };
 		015AE7582620490900B4B2E3 /* YDProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015AE7572620490900B4B2E3 /* YDProfileViewController.swift */; };
 		015AE76326204DD700B4B2E3 /* YDProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015AE76126204DD700B4B2E3 /* YDProfileTableViewCell.swift */; };
 		015AE76426204DD700B4B2E3 /* YDProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015AE76226204DD700B4B2E3 /* YDProfileTableViewCell.xib */; };
 		015D451F2549187D00D50D54 /* BooksCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D451E2549187D00D50D54 /* BooksCategoryViewModel.swift */; };
+		01645C482632B99100784F20 /* YDBookQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01645C472632B99100784F20 /* YDBookQuestionViewController.swift */; };
+		01645C612632E19600784F20 /* YDBookQuestionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01645C602632E19600784F20 /* YDBookQuestionHeaderView.swift */; };
+		01645C6D2632EBC000784F20 /* YDBookQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01645C6C2632EBC000784F20 /* YDBookQuestionTableViewCell.swift */; };
+		01645C732632F7FF00784F20 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01645C722632F7FF00784F20 /* Blur.swift */; };
+		01645C7B263320C700784F20 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01645C7A263320C700784F20 /* DispatchQueue+Extensions.swift */; };
 		01785F21255A3B8900831F58 /* T3RankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01785F20255A3B8900831F58 /* T3RankVC.swift */; };
 		01785F27255A566600831F58 /* AlwaysPoppableNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01785F26255A566500831F58 /* AlwaysPoppableNavigationController.swift */; };
 		0178773A25147D3F00A25F4D /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178773925147D3F00A25F4D /* UserAccount.swift */; };
@@ -90,6 +101,11 @@
 		017962DE24E815BC00C26419 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017962DD24E815BC00C26419 /* UIImage+Extensions.swift */; };
 		017962E024E9004D00C26419 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 017962DF24E9004D00C26419 /* Assets.xcassets */; };
 		017962E224E91B5700C26419 /* YDDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017962E124E91B5700C26419 /* YDDemoViewController.swift */; };
+		01841AE42629E52B00825DCC /* YDBlockDetailSegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01841AE32629E52B00825DCC /* YDBlockDetailSegmentViewController.swift */; };
+		01841AEA2629E5C100825DCC /* YDBlockDetailPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01841AE92629E5C100825DCC /* YDBlockDetailPostTableViewCell.swift */; };
+		01841AEF2629E61400825DCC /* YDBlockDetailPostNormalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01841AEE2629E61400825DCC /* YDBlockDetailPostNormalTableViewCell.xib */; };
+		01841AF42629F24C00825DCC /* BlockPostsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01841AF32629F24C00825DCC /* BlockPostsListViewModel.swift */; };
+		01841AF9262A994C00825DCC /* YDBlockDetailPostSoundTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01841AF8262A994C00825DCC /* YDBlockDetailPostSoundTableViewCell.xib */; };
 		01890B09251B0C530063CC24 /* MGRoundCornerShadowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01890B08251B0C530063CC24 /* MGRoundCornerShadowImageView.swift */; };
 		0194777B24ED90CF00C80158 /* CommunityNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194777A24ED90CF00C80158 /* CommunityNavView.swift */; };
 		0197120A24E9738000C57717 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0197120924E9738000C57717 /* UINavigationController+Extensions.swift */; };
@@ -201,6 +217,10 @@
 		01079D62250A424200593D34 /* YDt2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDt2ViewController.swift; sourceTree = "<group>"; };
 		01079D64250A496B00593D34 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
 		01079D66250A605D00593D34 /* BlockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockTableViewCell.swift; sourceTree = "<group>"; };
+		0107BA402629703D00CF41AE /* YDBlocksDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBlocksDetailViewController.swift; sourceTree = "<group>"; };
+		0107BA4D2629715900CF41AE /* YDBlockDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBlockDetailHeaderView.swift; sourceTree = "<group>"; };
+		0107BA522629716C00CF41AE /* YDBlockDetailHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDBlockDetailHeaderView.xib; sourceTree = "<group>"; };
+		0107BA9A2629D2F600CF41AE /* YDOceanWorldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDOceanWorldViewController.swift; sourceTree = "<group>"; };
 		01132020252444DF00B3B3BE /* BookDetailStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookDetailStoryBoard.storyboard; sourceTree = "<group>"; };
 		011320252524557900B3B3BE /* BookDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailVC.swift; sourceTree = "<group>"; };
 		0113202D2524595B00B3B3BE /* BookDetailSegmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailSegmentVC.swift; sourceTree = "<group>"; };
@@ -267,10 +287,17 @@
 		0152CF122562903C00E2FE4E /* YDColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDColor.swift; sourceTree = "<group>"; };
 		0152CF172562BAF900E2FE4E /* T3MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T3MenuView.swift; sourceTree = "<group>"; };
 		0152CF4C2564E03F00E2FE4E /* T3RankSegmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T3RankSegmentVC.swift; sourceTree = "<group>"; };
+		0159790B26307298001A2EAB /* BlockPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockPostViewModel.swift; sourceTree = "<group>"; };
+		01597911263075F6001A2EAB /* YDBlockPublishPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBlockPublishPostViewController.swift; sourceTree = "<group>"; };
 		015AE7572620490900B4B2E3 /* YDProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDProfileViewController.swift; sourceTree = "<group>"; };
 		015AE76126204DD700B4B2E3 /* YDProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDProfileTableViewCell.swift; sourceTree = "<group>"; };
 		015AE76226204DD700B4B2E3 /* YDProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDProfileTableViewCell.xib; sourceTree = "<group>"; };
 		015D451E2549187D00D50D54 /* BooksCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCategoryViewModel.swift; sourceTree = "<group>"; };
+		01645C472632B99100784F20 /* YDBookQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBookQuestionViewController.swift; sourceTree = "<group>"; };
+		01645C602632E19600784F20 /* YDBookQuestionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBookQuestionHeaderView.swift; sourceTree = "<group>"; };
+		01645C6C2632EBC000784F20 /* YDBookQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBookQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		01645C722632F7FF00784F20 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
+		01645C7A263320C700784F20 /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
 		01785F20255A3B8900831F58 /* T3RankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T3RankVC.swift; sourceTree = "<group>"; };
 		01785F26255A566500831F58 /* AlwaysPoppableNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysPoppableNavigationController.swift; sourceTree = "<group>"; };
 		017877312513529A00A25F4D /* ro-bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ro-bridge.h"; sourceTree = "<group>"; };
@@ -292,6 +319,11 @@
 		017962DD24E815BC00C26419 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		017962DF24E9004D00C26419 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		017962E124E91B5700C26419 /* YDDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDemoViewController.swift; sourceTree = "<group>"; };
+		01841AE32629E52B00825DCC /* YDBlockDetailSegmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBlockDetailSegmentViewController.swift; sourceTree = "<group>"; };
+		01841AE92629E5C100825DCC /* YDBlockDetailPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDBlockDetailPostTableViewCell.swift; sourceTree = "<group>"; };
+		01841AEE2629E61400825DCC /* YDBlockDetailPostNormalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDBlockDetailPostNormalTableViewCell.xib; sourceTree = "<group>"; };
+		01841AF32629F24C00825DCC /* BlockPostsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockPostsListViewModel.swift; sourceTree = "<group>"; };
+		01841AF8262A994C00825DCC /* YDBlockDetailPostSoundTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDBlockDetailPostSoundTableViewCell.xib; sourceTree = "<group>"; };
 		01890B08251B0C530063CC24 /* MGRoundCornerShadowImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGRoundCornerShadowImageView.swift; sourceTree = "<group>"; };
 		0194777A24ED90CF00C80158 /* CommunityNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNavView.swift; sourceTree = "<group>"; };
 		0197120924E9738000C57717 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
@@ -442,6 +474,51 @@
 				01079D66250A605D00593D34 /* BlockTableViewCell.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		0107BA3D26296FFB00CF41AE /* NavView */ = {
+			isa = PBXGroup;
+			children = (
+				0194777A24ED90CF00C80158 /* CommunityNavView.swift */,
+			);
+			path = NavView;
+			sourceTree = "<group>";
+		};
+		0107BA3E2629701200CF41AE /* Segment */ = {
+			isa = PBXGroup;
+			children = (
+				01079D64250A496B00593D34 /* CategoryVC.swift */,
+			);
+			path = Segment;
+			sourceTree = "<group>";
+		};
+		0107BA3F2629701D00CF41AE /* 作品社区详情 */ = {
+			isa = PBXGroup;
+			children = (
+				01597910263075D5001A2EAB /* publishPost */,
+				0107BA49262970E900CF41AE /* HeaderVIew */,
+				0107BA45262970BC00CF41AE /* Segment */,
+				0107BA402629703D00CF41AE /* YDBlocksDetailViewController.swift */,
+			);
+			path = "作品社区详情";
+			sourceTree = "<group>";
+		};
+		0107BA45262970BC00CF41AE /* Segment */ = {
+			isa = PBXGroup;
+			children = (
+				01841AE82629E5A500825DCC /* tableViewCell */,
+				01841AE32629E52B00825DCC /* YDBlockDetailSegmentViewController.swift */,
+			);
+			path = Segment;
+			sourceTree = "<group>";
+		};
+		0107BA49262970E900CF41AE /* HeaderVIew */ = {
+			isa = PBXGroup;
+			children = (
+				0107BA4D2629715900CF41AE /* YDBlockDetailHeaderView.swift */,
+				0107BA522629716C00CF41AE /* YDBlockDetailHeaderView.xib */,
+			);
+			path = HeaderVIew;
 			sourceTree = "<group>";
 		};
 		0113208525285A3C00B3B3BE /* WMZPageController */ = {
@@ -715,6 +792,8 @@
 				01E755A2250B6B1B0038E782 /* BlocksListViewModel.swift */,
 				01CA62ED2511F407006522AE /* BooksListViewModel.swift */,
 				015D451E2549187D00D50D54 /* BooksCategoryViewModel.swift */,
+				01841AF32629F24C00825DCC /* BlockPostsListViewModel.swift */,
+				0159790B26307298001A2EAB /* BlockPostViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -796,10 +875,11 @@
 		01508D9B2478CE5D000AA9E9 /* 作品社区 */ = {
 			isa = PBXGroup;
 			children = (
+				0107BA3F2629701D00CF41AE /* 作品社区详情 */,
+				0107BA3E2629701200CF41AE /* Segment */,
+				0107BA3D26296FFB00CF41AE /* NavView */,
 				01079D61250A421D00593D34 /* TableView */,
-				0194777A24ED90CF00C80158 /* CommunityNavView.swift */,
 				01079D62250A424200593D34 /* YDt2ViewController.swift */,
-				01079D64250A496B00593D34 /* CategoryVC.swift */,
 			);
 			path = "作品社区";
 			sourceTree = "<group>";
@@ -819,6 +899,7 @@
 		01508DAD247AA3F0000AA9E9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				01645C712632F7EF00784F20 /* 高斯模糊 */,
 				011320C62528A3A000B3B3BE /* DarkImage */,
 				011320B925289B4400B3B3BE /* NibLoadable.swift */,
 				014FDB32254128CE00F225CD /* StoryBoardLoadable.swift */,
@@ -829,6 +910,7 @@
 				012D85BF24FE439F008B2063 /* NSArray+Extensions.swift */,
 				01E755B8250CBB070038E782 /* Sync+Extensions.swift */,
 				01EC8A122520B1CB0038C39B /* CALayer + Extensions.swift */,
+				01645C7A263320C700784F20 /* DispatchQueue+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -840,6 +922,14 @@
 				0152CF122562903C00E2FE4E /* YDColor.swift */,
 			);
 			path = Color;
+			sourceTree = "<group>";
+		};
+		01597910263075D5001A2EAB /* publishPost */ = {
+			isa = PBXGroup;
+			children = (
+				01597911263075F6001A2EAB /* YDBlockPublishPostViewController.swift */,
+			);
+			path = publishPost;
 			sourceTree = "<group>";
 		};
 		015AE74926200EF800B4B2E3 /* 任务详情 */ = {
@@ -867,6 +957,40 @@
 				015AE76226204DD700B4B2E3 /* YDProfileTableViewCell.xib */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		01645C462632B97A00784F20 /* 答题 */ = {
+			isa = PBXGroup;
+			children = (
+				01645C6B2632EBA800784F20 /* TableViewCell */,
+				01645C5F2632E18100784F20 /* headerView */,
+				01645C472632B99100784F20 /* YDBookQuestionViewController.swift */,
+			);
+			path = "答题";
+			sourceTree = "<group>";
+		};
+		01645C5F2632E18100784F20 /* headerView */ = {
+			isa = PBXGroup;
+			children = (
+				01645C602632E19600784F20 /* YDBookQuestionHeaderView.swift */,
+			);
+			path = headerView;
+			sourceTree = "<group>";
+		};
+		01645C6B2632EBA800784F20 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				01645C6C2632EBC000784F20 /* YDBookQuestionTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		01645C712632F7EF00784F20 /* 高斯模糊 */ = {
+			isa = PBXGroup;
+			children = (
+				01645C722632F7FF00784F20 /* Blur.swift */,
+			);
+			path = "高斯模糊";
 			sourceTree = "<group>";
 		};
 		016EE434252D7EC20080133E /* View */ = {
@@ -984,6 +1108,16 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
+		01841AE82629E5A500825DCC /* tableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				01841AE92629E5C100825DCC /* YDBlockDetailPostTableViewCell.swift */,
+				01841AEE2629E61400825DCC /* YDBlockDetailPostNormalTableViewCell.xib */,
+				01841AF8262A994C00825DCC /* YDBlockDetailPostSoundTableViewCell.xib */,
+			);
+			path = tableViewCell;
+			sourceTree = "<group>";
+		};
 		01A83451249366B1002D2327 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -1005,6 +1139,7 @@
 		01BB69DA25234C2100B2CA53 /* 书籍详情 */ = {
 			isa = PBXGroup;
 			children = (
+				01645C462632B97A00784F20 /* 答题 */,
 				016EE434252D7EC20080133E /* View */,
 				016EE435252D7ED70080133E /* SegmentVC */,
 				011320252524557900B3B3BE /* BookDetailVC.swift */,
@@ -1248,6 +1383,7 @@
 		01EC8A0B25209F340038C39B /* 海洋世界 */ = {
 			isa = PBXGroup;
 			children = (
+				0107BA9A2629D2F600CF41AE /* YDOceanWorldViewController.swift */,
 			);
 			path = "海洋世界";
 			sourceTree = "<group>";
@@ -1388,13 +1524,16 @@
 				TargetAttributes = {
 					013BD85D24752ADD00AABEA2 = {
 						CreatedOnToolsVersion = 11.3.1;
+						ProvisioningStyle = Automatic;
 					};
 					01D4403F252361850021E4B2 = {
 						CreatedOnToolsVersion = 12.0;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 013BD85D24752ADD00AABEA2;
 					};
 					01D440552523619E0021E4B2 = {
 						CreatedOnToolsVersion = 12.0;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 013BD85D24752ADD00AABEA2;
 					};
 				};
@@ -1425,7 +1564,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				01D5687E2518E31600E3248D /* DiscoverBooksTableViewCell.xib in Resources */,
+				01841AEF2629E61400825DCC /* YDBlockDetailPostNormalTableViewCell.xib in Resources */,
 				01AFD7352623E93100EFB17D /* YDTaskDetailViewControllerXib.xib in Resources */,
+				0107BA532629716C00CF41AE /* YDBlockDetailHeaderView.xib in Resources */,
 				013EC19E25060C1A00BC8891 /* LICENSE in Resources */,
 				013BD86E24752ADF00AABEA2 /* LaunchScreen.storyboard in Resources */,
 				013E80B32521B08500B16103 /* DiscoverRankCollectionViewCell.xib in Resources */,
@@ -1437,6 +1578,7 @@
 				011320A025285A3D00B3B3BE /* PageController.bundle in Resources */,
 				015AE76426204DD700B4B2E3 /* YDProfileTableViewCell.xib in Resources */,
 				013EC1A725060C1A00BC8891 /* LLCycleScrollView.bundle in Resources */,
+				01841AF9262A994C00825DCC /* YDBlockDetailPostSoundTableViewCell.xib in Resources */,
 				017962E024E9004D00C26419 /* Assets.xcassets in Resources */,
 				01B6D91A2545AA9F0006A697 /* BookCategoryTableViewCell.xib in Resources */,
 				011320A825286D5C00B3B3BE /* BookDetailHeaderView.xib in Resources */,
@@ -1465,12 +1607,35 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ReadOcean/Pods-ReadOcean-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReadOcean/Pods-ReadOcean-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/EmptyStateKit/EmptyStateKit.framework",
+				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/LMJDropdownMenu/LMJDropdownMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/STRegex/Regex.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ReadOcean/Pods-ReadOcean-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EmptyStateKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LMJDropdownMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Regex.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1507,18 +1672,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				01EC89DD251EE5190038C39B /* GXRefreshBaseFooter.swift in Sources */,
+				01645C6D2632EBC000784F20 /* YDBookQuestionTableViewCell.swift in Sources */,
 				01E755C5250DBA070038E782 /* LoginVC.swift in Sources */,
 				01EC8A00252056480038C39B /* RAMRotationAnimation.swift in Sources */,
 				011320C92528A3DE00B3B3BE /* UIImage+ImageDarken.m in Sources */,
 				0113209E25285A3D00B3B3BE /* WMZPageScroller.m in Sources */,
+				01645C612632E19600784F20 /* YDBookQuestionHeaderView.swift in Sources */,
+				01597912263075F6001A2EAB /* YDBlockPublishPostViewController.swift in Sources */,
 				01EC89F7252056480038C39B /* RAMAnimatedTabBarItem.swift in Sources */,
 				01EC89FE252056480038C39B /* RAMFrameItemAnimation.swift in Sources */,
+				0107BA4E2629715900CF41AE /* YDBlockDetailHeaderView.swift in Sources */,
 				01CA62E72511BA82006522AE /* Api.swift in Sources */,
 				017962CE24E3DD3800C26419 /* YDBookCollectionViewCell.swift in Sources */,
 				01D568822518FE9F00E3248D /* DiscoverBookCollectionViewCell.swift in Sources */,
 				01E755DF250E00DA0038E782 /* GXAnimationPushABDelegate.m in Sources */,
 				0152CF4D2564E03F00E2FE4E /* T3RankSegmentVC.swift in Sources */,
 				0152CF182562BAF900E2FE4E /* T3MenuView.swift in Sources */,
+				0107BA9B2629D2F600CF41AE /* YDOceanWorldViewController.swift in Sources */,
 				012D85B424FCEE9E008B2063 /* FinishedTaskVC.swift in Sources */,
 				015D451F2549187D00D50D54 /* BooksCategoryViewModel.swift in Sources */,
 				0113209F25285A3D00B3B3BE /* UIView+PageRect.m in Sources */,
@@ -1564,6 +1734,8 @@
 				01EC89FC252056480038C39B /* RAMItemAnimationProtocol.swift in Sources */,
 				017962D024E5969500C26419 /* BaseCollectionReusableView.swift in Sources */,
 				01E755E3250E00DA0038E782 /* UIViewController+GXTransitionDelegate.m in Sources */,
+				01645C482632B99100784F20 /* YDBookQuestionViewController.swift in Sources */,
+				0107BA412629703D00CF41AE /* YDBlocksDetailViewController.swift in Sources */,
 				01D5686025158CF200E3248D /* GXSegmentView+Configuration.swift in Sources */,
 				01D5685F25158CF200E3248D /* GXSegmentPageView.swift in Sources */,
 				01EC89D6251EE5190038C39B /* GXRefreshGifFooter.swift in Sources */,
@@ -1595,6 +1767,7 @@
 				011320B525287BD600B3B3BE /* BookDetailHeaderView.swift in Sources */,
 				01FBCF7726280C3C009C5C5F /* TagListView.swift in Sources */,
 				01EC897A251D848B0038C39B /* MGImageView.swift in Sources */,
+				01841AEA2629E5C100825DCC /* YDBlockDetailPostTableViewCell.swift in Sources */,
 				0152CF132562903C00E2FE4E /* YDColor.swift in Sources */,
 				01E755E9250E00DA0038E782 /* GXAnimationPushALDelegate.m in Sources */,
 				01FBCF7526280C3C009C5C5F /* CloseButton.swift in Sources */,
@@ -1612,9 +1785,11 @@
 				01FBCF7626280C3C009C5C5F /* TagView.swift in Sources */,
 				01E755E1250E00DA0038E782 /* GXAnimationPushDelegate.m in Sources */,
 				01E755A3250B6B1B0038E782 /* BlocksListViewModel.swift in Sources */,
+				01645C732632F7FF00784F20 /* Blur.swift in Sources */,
 				01AA04052626D9D200E25C47 /* YDSearchResultTableViewCell.swift in Sources */,
 				01EC89D2251EE5190038C39B /* UIScrollView+GXRefresh.swift in Sources */,
 				01AFD72D2623E8E100EFB17D /* YDTaskDetailViewController.swift in Sources */,
+				0159790C26307298001A2EAB /* BlockPostViewModel.swift in Sources */,
 				0194777B24ED90CF00C80158 /* CommunityNavView.swift in Sources */,
 				01E755E8250E00DA0038E782 /* GXAnimationPushATDelegate.m in Sources */,
 				01EC89F9252056480038C39B /* RAMAnimatedTabBarController+BottomLine.swift in Sources */,
@@ -1633,10 +1808,12 @@
 				01D5687825159E0B00E3248D /* DominantColors.swift in Sources */,
 				014488FA24BE0CF700B61DDB /* CustomNavigationBar.swift in Sources */,
 				017877702514B39500A25F4D /* Coverable.swift in Sources */,
+				01841AE42629E52B00825DCC /* YDBlockDetailSegmentViewController.swift in Sources */,
 				01EC8983251E26090038C39B /* YDt3ViewController.swift in Sources */,
 				01079D65250A496B00593D34 /* CategoryVC.swift in Sources */,
 				01CA62F02511F709006522AE /* YDt1ViewController.swift in Sources */,
 				012D85BA24FD4199008B2063 /* BaseTableViewCell.swift in Sources */,
+				01645C7B263320C700784F20 /* DispatchQueue+Extensions.swift in Sources */,
 				01EC89FD252056480038C39B /* RAMFumeAnimation.swift in Sources */,
 				01CA62EE2511F407006522AE /* BooksListViewModel.swift in Sources */,
 				01E755E2250E00DA0038E782 /* GXAnimationPushELDelegate.m in Sources */,
@@ -1649,6 +1826,7 @@
 				012D85B224FCEE90008B2063 /* BaseTaskVC.swift in Sources */,
 				017962E224E91B5700C26419 /* YDDemoViewController.swift in Sources */,
 				017962DE24E815BC00C26419 /* UIImage+Extensions.swift in Sources */,
+				01841AF42629F24C00825DCC /* BlockPostsListViewModel.swift in Sources */,
 				01508D9E2478D0C1000AA9E9 /* YDMainViewController.swift in Sources */,
 				01079D60250A012A00593D34 /* PModel.swift in Sources */,
 				01508DAC247AA237000AA9E9 /* YDNavigationViewController.swift in Sources */,
@@ -1811,9 +1989,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_ENABLE_BATCH_MODE = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1826,14 +2003,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = N9AW3S3984;
 				INFOPLIST_FILE = ReadOcean/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ruruzi.ReadOcean;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
@@ -1852,13 +2026,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = N9AW3S3984;
 				INFOPLIST_FILE = ReadOcean/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ruruzi.ReadOcean;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
@@ -1877,11 +2049,7 @@
 				DEVELOPMENT_TEAM = QUW3T5GZ23;
 				INFOPLIST_FILE = ReadOceanUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HAMO.ReadOceanUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1898,11 +2066,7 @@
 				DEVELOPMENT_TEAM = QUW3T5GZ23;
 				INFOPLIST_FILE = ReadOceanUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HAMO.ReadOceanUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1920,11 +2084,7 @@
 				DEVELOPMENT_TEAM = QUW3T5GZ23;
 				INFOPLIST_FILE = ReadOceanTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HAMO.ReadOceanTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1942,11 +2102,7 @@
 				DEVELOPMENT_TEAM = QUW3T5GZ23;
 				INFOPLIST_FILE = ReadOceanTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HAMO.ReadOceanTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

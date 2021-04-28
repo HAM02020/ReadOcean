@@ -33,6 +33,18 @@ class YDNavigationViewController: AlwaysPoppableNavigationController {
         
         
     }
+    func setNavAlpa(){
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)]
+        navigationBar.setBackgroundImage(UIImage.imageWithColor(color: UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 0)), for: .default)
+        navigationBar.shadowImage = UIImage.imageWithColor(color: UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 0))
+        navigationBar.isUserInteractionEnabled = false
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.children.count <= 1{
+            setNavAlpa()
+        }
+    }
     override func popViewController(animated: Bool) -> UIViewController? {
         return super.popViewController(animated: animated)
         

@@ -73,7 +73,21 @@ class MGImageView:UIView{
 }
 
 extension MGImageView{
-    
+    func mg_setImage_withoutMostColor(urlString:String?,placeholderImage : UIImage?) {
+        
+        //处理url
+        guard let urlString = urlString,
+        let url = URL(string: urlString) else {
+            //  设置占位图像
+            self.imageView.image = placeholderImage
+            return
+        }
+
+        self.imageView.kf.setImage(with: url, placeholder: placeholderImage, options: nil, progressBlock: nil) { (_) in
+            
+            }
+        }
+
     func mg_setImage(urlString:String?,placeholderImage : UIImage?) {
         
         //处理url

@@ -98,17 +98,18 @@ class BooksCategorysMainVC:BaseViewController{
         
         
         view.addSubview(pageView)
-        pageView.snp.makeConstraints { (make) in
-            print("navHeight = \(navHeight)  statusBarHeight = \(statusBarHeight)")
-            make.top.equalToSuperview().offset(navHeight + statusBarHeight + 40)
-            make.left.right.bottom.equalToSuperview()
-
-        }
+        
         view.addSubview(titleView)
         titleView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
-            make.top.equalToSuperview().offset(navigationNormalHeight + statusBarHeight)
+            make.top.equalToSuperview().offset(navHeight + statusBarHeight)
             make.height.equalTo(40)
+        }
+        pageView.snp.makeConstraints { (make) in
+            print("navHeight = \(navHeight)  statusBarHeight = \(statusBarHeight)")
+            make.top.equalTo(titleView.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
+
         }
     }
     

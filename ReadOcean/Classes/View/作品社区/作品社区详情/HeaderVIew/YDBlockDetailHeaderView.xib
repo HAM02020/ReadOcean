@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TGe-VF-2D3" customClass="YDBlockDetailHeaderView" customModule="ReadOcean" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eKq-4Z-N14">
+                    <rect key="frame" x="15" y="15" width="120" height="170"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="t1G-U9-qIq"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="安徒生童话" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5K-1U-JIG">
+                    <rect key="frame" x="159" y="30" width="87" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出版社：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTK-rg-wT4">
+                    <rect key="frame" x="159" y="92" width="57.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="作者：安徒生" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEV-ec-QMI">
+                    <rect key="frame" x="159" y="63" width="86" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="适读年龄：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFd-Dd-GQw">
+                    <rect key="frame" x="159" y="117" width="72" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="VL6-vM-t4c"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <accessibility key="accessibilityConfiguration" label="111"/>
+            <constraints>
+                <constraint firstItem="VL6-vM-t4c" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MFd-Dd-GQw" secondAttribute="trailing" constant="10" id="8ma-zQ-JqI"/>
+                <constraint firstItem="C5K-1U-JIG" firstAttribute="leading" secondItem="eKq-4Z-N14" secondAttribute="trailing" constant="24" id="9bD-yx-Eg6"/>
+                <constraint firstItem="MFd-Dd-GQw" firstAttribute="leading" secondItem="cTK-rg-wT4" secondAttribute="leading" id="BtF-tr-4fG"/>
+                <constraint firstItem="UEV-ec-QMI" firstAttribute="top" secondItem="C5K-1U-JIG" secondAttribute="bottom" constant="12" id="DHi-CU-aWK"/>
+                <constraint firstItem="cTK-rg-wT4" firstAttribute="top" secondItem="UEV-ec-QMI" secondAttribute="bottom" constant="12" id="F1N-PW-i5s"/>
+                <constraint firstItem="VL6-vM-t4c" firstAttribute="bottom" secondItem="eKq-4Z-N14" secondAttribute="bottom" constant="15" id="QNr-NQ-d16"/>
+                <constraint firstItem="MFd-Dd-GQw" firstAttribute="top" secondItem="cTK-rg-wT4" secondAttribute="bottom" constant="8" symbolic="YES" id="QoK-Ft-pmR"/>
+                <constraint firstItem="VL6-vM-t4c" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UEV-ec-QMI" secondAttribute="trailing" constant="15" id="UGJ-tD-Rj1"/>
+                <constraint firstAttribute="top" secondItem="eKq-4Z-N14" secondAttribute="top" constant="-15" id="W8r-7J-lat"/>
+                <constraint firstAttribute="top" secondItem="C5K-1U-JIG" secondAttribute="top" constant="-30" id="aP7-lD-96L"/>
+                <constraint firstItem="cTK-rg-wT4" firstAttribute="leading" secondItem="UEV-ec-QMI" secondAttribute="leading" id="b2l-J0-V0J"/>
+                <constraint firstItem="UEV-ec-QMI" firstAttribute="leading" secondItem="C5K-1U-JIG" secondAttribute="leading" id="fUl-49-r6G"/>
+                <constraint firstItem="VL6-vM-t4c" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="C5K-1U-JIG" secondAttribute="trailing" constant="15" id="iAm-Sa-KtU"/>
+                <constraint firstItem="eKq-4Z-N14" firstAttribute="leading" secondItem="VL6-vM-t4c" secondAttribute="leading" constant="15" id="qR9-QK-kjm"/>
+                <constraint firstItem="VL6-vM-t4c" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cTK-rg-wT4" secondAttribute="trailing" constant="15" id="y2t-yh-4me"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="authorLabel" destination="UEV-ec-QMI" id="iTu-QM-yg6"/>
+                <outlet property="coverImageView" destination="eKq-4Z-N14" id="M0X-AL-Owv"/>
+                <outlet property="fitAgeToReadLabel" destination="MFd-Dd-GQw" id="lbH-4a-39r"/>
+                <outlet property="publishHourseLabel" destination="cTK-rg-wT4" id="eHm-AF-YXs"/>
+                <outlet property="titleLabel" destination="C5K-1U-JIG" id="WrO-LX-ANF"/>
+            </connections>
+            <point key="canvasLocation" x="215.94202898550725" y="-318.75"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

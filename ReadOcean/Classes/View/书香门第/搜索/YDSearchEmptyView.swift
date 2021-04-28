@@ -30,7 +30,7 @@ class YDSearchEmptyView: UIView{
         tagV.textFont = UIFont.monospacedSystemFont(ofSize: 18, weight: .regular)
         
         
-        tagV.addTags(shardAccount.searchHistoryArray)
+        tagV.addTags(UserAccount.shardAccount.searchHistoryArray)
         return tagV
     }()
     lazy var blueBlock: UIView = {
@@ -91,15 +91,15 @@ class YDSearchEmptyView: UIView{
     }
     
     func updateAccountSearchHistory(){
-        shardAccount.searchHistoryArray.removeAll()
-        shardAccount.searchHistoryArray = tagView.tagViews.map{$0.title(for: UIControl.State()) ?? ""}
+        UserAccount.shardAccount.searchHistoryArray.removeAll()
+        UserAccount.shardAccount.searchHistoryArray = tagView.tagViews.map{$0.title(for: UIControl.State()) ?? ""}
     }
 
     
     func addTag(_ tag: String){
         tagView.removeTag(tag)
         tagView.insertTag(tag, at: 0)
-        shardAccount.searchHistoryArray.insert(tag, at: 0)
+        UserAccount.shardAccount.searchHistoryArray.insert(tag, at: 0)
         updateAccountSearchHistory()
     }
     

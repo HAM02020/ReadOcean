@@ -5,6 +5,7 @@ PODS:
   - Kingfisher (5.15.0):
     - Kingfisher/Core (= 5.15.0)
   - Kingfisher/Core (5.15.0)
+  - LMJDropdownMenu (3.0.4)
   - MJRefresh (3.5.0)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
@@ -19,17 +20,20 @@ PODS:
     - SDWebImage/Core (= 5.8.4)
   - SDWebImage/Core (5.8.4)
   - SnapKit (5.0.1)
+  - STRegex (2.1.1)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - EmptyStateKit
   - HandyJSON
   - Kingfisher
+  - LMJDropdownMenu
   - MJRefresh
   - Moya
   - Reusable
   - SDWebImage
   - SnapKit
+  - STRegex (~> 2.1)
   - SwiftyJSON
 
 SPEC REPOS:
@@ -38,11 +42,13 @@ SPEC REPOS:
     - EmptyStateKit
     - HandyJSON
     - Kingfisher
+    - LMJDropdownMenu
     - MJRefresh
     - Moya
     - Reusable
     - SDWebImage
     - SnapKit
+    - STRegex
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -50,13 +56,15 @@ SPEC CHECKSUMS:
   EmptyStateKit: dc41e9ce5c6089f67a49d063bce73ade9f2ba73f
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
+  LMJDropdownMenu: 50c74e9d50a480c290fec47eb575826861d0823b
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  STRegex: d49e88d0fe58538d3175fdd989bc1243b9be2a07
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 7dbf0ed5102ca18a2d5ccd4a157563b00a517a17
+PODFILE CHECKSUM: d52d45e3aea13077e99b864d8ac93f0701773113
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.1

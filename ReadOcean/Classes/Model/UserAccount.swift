@@ -11,15 +11,16 @@ import SwiftyJSON
 import HandyJSON
 private let accountFile = "userAccount.json"
 
-let shardAccount = UserAccount.build()
+//let shardAccount = UserAccount.build()
 
 var userLogon:Bool{
     get{
-        return shardAccount.token != nil
+        return UserAccount.shardAccount.token != nil
     }
 
 }
 class UserAccount:HandyJSON{
+    static let shardAccount = UserAccount.build()
     
     var userId:String = "F2F9105E-B6F8-C2A2-279A-A9DF84701F57"
     
@@ -27,7 +28,7 @@ class UserAccount:HandyJSON{
     
     var token:String?
     
-    var schoolId:Int = 1000000
+    var schoolId:Int = 4404001
     
     var lat:Int = 1
     

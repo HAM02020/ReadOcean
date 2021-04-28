@@ -16,6 +16,10 @@ class YDt2ViewController: BaseViewController {
         
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .darkContent
     }
@@ -74,7 +78,6 @@ class YDt2ViewController: BaseViewController {
     override func configNavigationBar() {
         super.configNavigationBar()
         
-        
     }
     override func setupLayout() {
         super.setupLayout()
@@ -109,6 +112,7 @@ class YDt2ViewController: BaseViewController {
 extension YDt2ViewController: GXSegmentPageViewDelegate {
     func segmentPageView(_ segmentPageView: GXSegmentPageView, at index: Int) {
         NSLog("index = %d", index)
+        setNavAlpa()
     }
     func segmentPageView(_ page: GXSegmentPageView, progress: CGFloat) {
         self.titleView.setSegmentTitleView(selectIndex: page.selectIndex, willSelectIndex: page.willSelectIndex, progress: progress)
@@ -118,5 +122,6 @@ extension YDt2ViewController: GXSegmentPageViewDelegate {
 extension YDt2ViewController: GXSegmentTitleViewDelegate {
     func segmentTitleView(_ page: GXSegmentTitleView, at index: Int) {
         self.pageView.scrollToItem(to: index, animated: true)
+        
     }
 }

@@ -12,7 +12,8 @@ pod 'Moya'
 pod 'HandyJSON'
 pod 'Kingfisher'
 pod 'SwiftyJSON'
-
+pod 'LMJDropdownMenu'
+pod "STRegex", "~> 2.1"
 pod 'EmptyStateKit'
 
 end

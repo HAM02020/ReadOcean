@@ -33,7 +33,10 @@ class YDt3ViewController : BaseViewController{
         
         loadData()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return self.style
     }
@@ -297,4 +300,14 @@ extension YDt3ViewController: DiscoverNavViewDelegate{
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    func oceanWorldBtnClick(){
+        print("oceanclick")
+        let vc = YDOceanWorldViewController()
+        vc.title = "海洋世界"
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.hidesBarsOnSwipe = false
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

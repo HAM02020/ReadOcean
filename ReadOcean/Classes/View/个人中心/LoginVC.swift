@@ -342,7 +342,7 @@ extension LoginVC{
         guard
             let userName = userNameField.text,
             let password = passwordField.text else {return}
-        networkManager.request(.login(userName: userName, password: password)) {[weak self] (result) in
+        Api.networkManager.request(.login(userName: userName, password: password)) {[weak self] (result) in
             switch result {
             case .success(let response):
                 
@@ -359,12 +359,12 @@ extension LoginVC{
                     }
                         return
                 }
-                shardAccount.userId = userId as! String
-                shardAccount.token = token as? String
+                UserAccount.shardAccount.userId = userId as! String
+                UserAccount.shardAccount.token = token as? String
                 //登陆成功通知
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: YDUserLoginSuccessNotification), object: nil)
                 if #available(iOS 13.0, *) {
-                    ProgressHUD.showSucceed()
+                    ProgressHUD.showSucceed("登陆成功", interaction: true)
                 } else {
                     // Fallback on earlier versions
                 }

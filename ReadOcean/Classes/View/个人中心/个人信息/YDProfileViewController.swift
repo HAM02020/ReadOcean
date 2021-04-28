@@ -84,7 +84,7 @@ extension YDProfileViewController:UITableViewDelegate,UITableViewDataSource{
         let nib = UINib(nibName: "YDProfileTableViewCell", bundle: nil)
         let cell = nib.instantiate(withOwner: nil, options: nil)[0] as! YDProfileTableViewCell
         cell.titile.text = nameList[indexPath.section][indexPath.row]
-        cell.subTitle.text = shardAccount.userInfo?.className
+        cell.subTitle.text = UserAccount.shardAccount.userInfo?.className
         return cell;
     }
     

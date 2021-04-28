@@ -41,7 +41,7 @@ class BookDetailVC:WMZPageController{
         params.wControllers = [vc1,vc2,vc3]
         
         params.wTopSuspension = true
-        params.wBounces = true
+        params.wBounces = false
         params.wFromNavi = false
         params.wNaviAlpha = false
         params.wMenuTitleSelectColor = UIColor(hexString: "23c993")
@@ -61,7 +61,11 @@ class BookDetailVC:WMZPageController{
         
         loadData()
         
-        
+        headerView.ansQuestionsBtnClickClosure = {[weak self] in
+            let vc = YDBookQuestionViewController()
+            vc.bookId = self?.bookId
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func configNav(point:CGPoint,isAppear:Bool = true){
@@ -96,7 +100,7 @@ extension BookDetailVC{
     
     func loadData(){
         guard let bookId = bookId else {return}
-        networkManager.requestModel(.bookDetail(bookId: bookId), model: BookDetail.self) { (model) in
+        Api.networkManager.requestModel(.bookDetail(bookId: bookId), model: BookDetail.self) { (model) in
             guard let model = model else {return}
             self.model = model
             

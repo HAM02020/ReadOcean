@@ -111,11 +111,12 @@ extension CategoryVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let bookDetailVC = BookDetailVC()
         
-        bookDetailVC.bookId = listViewModel.myBlockList[indexPath.row].bookId
-        bookDetailVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(bookDetailVC, animated: true)
+        let blockDetailVC = YDBlocksDetailViewController()
+        blockDetailVC.blockId = listViewModel.myBlockList[indexPath.row].blockId
+        blockDetailVC.myBlock = listViewModel.myBlockList[indexPath.row]
+        blockDetailVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(blockDetailVC, animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

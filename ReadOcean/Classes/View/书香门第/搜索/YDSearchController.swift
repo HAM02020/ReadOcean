@@ -77,7 +77,7 @@ class YDSearchController: BaseViewController, UISearchBarDelegate, UISearchResul
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        shardAccount.saveSearchHistory()
+        UserAccount.shardAccount.saveSearchHistory()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,7 +108,7 @@ class YDSearchController: BaseViewController, UISearchBarDelegate, UISearchResul
             
             return
         }
-        networkManager.requestDataList(.bookSearch(keyWord: keyWord, pageNum: pageNum), model: QueryBook.self) { (resList) in
+        Api.networkManager.requestDataList(.bookSearch(keyWord: keyWord, pageNum: pageNum), model: QueryBook.self) { (resList) in
             guard let resList = resList else {return}
             self.listFilterTeams = resList
             self.tableView.reloadData() //搜索完成后,重新加载表视图

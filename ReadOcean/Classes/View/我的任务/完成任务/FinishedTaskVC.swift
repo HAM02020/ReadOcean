@@ -14,7 +14,7 @@ class FinishedTaskVC : BaseTaskVC {
         } else {
             // Fallback on earlier versions
         }
-        networkManager.requestDataList(.myTask(user: shardAccount, taskType: .none()), model: Task.self) {[weak self] (dataList) in
+        Api.networkManager.requestDataList(.myTask(user: UserAccount.shardAccount, taskType: .none()), model: Task.self) {[weak self] (dataList) in
 
             self?.tableView.myHead.endRefreshing()
             guard let dataList = dataList else {if #available(iOS 13.0, *) {

@@ -21,10 +21,6 @@ class BaseViewController: UIViewController {
 
         view.backgroundColor = UIColor.clear
 
-        
-        
-        
-        
         if #available(iOS 11.0, *) {
             UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
         } else {
@@ -44,18 +40,26 @@ class BaseViewController: UIViewController {
         }
         
     }
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-        print("Base deinit")
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configNavigationBar()
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 1)]
+    }
     func setupLayout() {}
 
+    func setNavAlpa(){
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)]
+        navigationController?.navigationBar.setBackgroundImage(UIImage.imageWithColor(color: UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 0)), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage.imageWithColor(color: UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 0))
+        navigationController?.navigationBar.isUserInteractionEnabled = false
+    }
+    
     func configNavigationBar() {
         guard let navi = navigationController else { return }
         
@@ -74,10 +78,13 @@ class BaseViewController: UIViewController {
                 if navi.viewControllers.count > 1{
                 
 //                navigationItem.backBarButtonItem = UIBarButtonItem(image:UIImage(named: "back")?.withRenderingMode(.alwaysOriginal),style: .plain,target: self,action: #selector(pressBack))
-                    
+                    navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+                    navigationController?.navigationBar.shadowImage = nil
+                    navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 1)]
+                    navigationController?.navigationBar.isUserInteractionEnabled = true
                 
                 }else{
-                    navigationController?.setNavigationBarHidden(true, animated: false)
+                    setNavAlpa()
             }
         //}
     }
@@ -88,8 +95,9 @@ class BaseViewController: UIViewController {
     
     @objc func loginSuccess(n:Notification) {
         print("登陆成功\(n)")
-        
-        networkManager.request(.userInfo()) {[weak self] (result) in
+      
+//        DispatchQueue.once(token: "\(DispatchTime.now().uptimeNanoseconds/1000000000)") {
+        Api.networkManager.request(.userInfo()) {[weak self] (result) in
             switch result{
             case .success(let response):
                 guard
@@ -101,13 +109,15 @@ class BaseViewController: UIViewController {
                     url = "https://ro.bnuz.edu.cn/user/big/"+url
                     userInfo.avatar = url
                 }
-                shardAccount.userInfo = userInfo
+                UserAccount.shardAccount.userInfo = userInfo
                 self?.didLogon()
             case .failure(_):
                 break
             }
             
         }
+       // }
+        
         
         
         //注销通知 避免通知被重复注册
@@ -116,7 +126,7 @@ class BaseViewController: UIViewController {
     
     @objc func logoutSuccess(n:Notification){
         print("用户退出登陆通知")
-        shardAccount.deleteAccount()
+        UserAccount.shardAccount.deleteAccount()
 //        viewDidLoad()
         didLogout()
         

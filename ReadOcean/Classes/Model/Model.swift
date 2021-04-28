@@ -89,6 +89,92 @@ struct BookDetail:HandyJSON{
     
 }
 
+struct Question: HandyJSON{
+    var id: String?//":"3B2110CB-6A46-40D3-CC38-30DAFB9962CD",
+    var question: String? //":"《庄子说老子说》中智者的低语是指谁",
+    var choiceA: String? //":"老子",
+    var choiceB: String? //":"墨子",
+    var choiceC: String? //":"庄子",
+    var choiceD: String? //:"孔子",
+    var choiceE: String?
+    var choiceF: String?
+    var choiceG: String?
+    var choiceH: String?
+    var answer: String? //:"A",
+    var bookId: String? //:"b2dcfa5a-6e03-4f5e-98a9-49324eb0d87b",
+    var difficultyType: String? //:"book_question_diff_jiandan",
+    var diffName: String? //:"简单",
+    var bookName: String? //:null
+    
+    enum QuestionType {
+        case panduan
+        case danxuan
+        case duoxuan
+        case none
+    }
+    
+    func questionType()->QuestionType{
+        guard let answer = self.answer else {
+            return .none
+        }
+        if(answer == "0" || answer == "1" ){
+            return .panduan
+        }else if(answer.count > 1){
+            return .duoxuan
+        }else{
+            return .danxuan
+        }
+    }
+    func numOfChoices()->Int{
+        if(questionType() == .panduan){ return 2}
+        var num = 0
+        guard let _ = choiceA else {return num};num += 1
+        guard let _ = choiceB else {return num};num += 1
+        guard let _ = choiceC else {return num};num += 1
+        guard let D = choiceD else {return num};if(D.count > 0){num += 1}
+        guard let _ = choiceE else {return num};num += 1
+        guard let _ = choiceF else {return num};num += 1
+        guard let _ = choiceG else {return num};num += 1
+        guard let _ = choiceH else {return num};num += 1
+        return num;
+    }
+    func getChoice(index:Int)->String?{
+        if(questionType() == .panduan || index < 0 || index >= numOfChoices()){
+            return nil
+        }
+        
+        switch index {
+        case 0:
+            return choiceA
+        case 1:
+            return choiceB
+        case 2:
+            return choiceC
+        case 3:
+            return choiceD
+        case 4:
+            return choiceE
+        case 5:
+            return choiceF
+        case 6:
+            return choiceG
+        case 7:
+            return choiceH
+            
+        default:
+            return nil
+        }
+    }
+    func isCorrect(choice:String)->Bool{
+        guard let answer = answer else {
+            return false
+        }
+
+        return choice == answer
+
+    }
+}
+
 struct Block:HandyJSON {
     var img:String?
     //讨论
@@ -109,6 +195,27 @@ struct MyBlock {
     var bookId:String?
     var author:String?
     var introduction:String?
+    //Detail
+    var publishingHouse: String?
+    var remark: String?
+}
+//帖子
+struct Post:HandyJSON {
+    var category: String?//": "forum_post_pinglun",
+    var description: String?//": "不能太贪婪，贪婪就会害了你。",
+    var id: String? //": "35fbca2c-8b89-4a74-9b54-3b651ff09764",
+    var bookName:String? //": "希腊神话故事",
+    var bookId:String? //": "a4c48c89-9ac7-4340-b704-285651d2e2a7",
+    var isMine:Bool? //": false,
+    var likeNum:Int? //": 0,
+    var media: String? //": "",
+    var publishDate:TimeInterval? //": 1577717011235,
+    var publisher: String? //": "程钰海",
+    var publisherId:String? //": "83C47AA4-4992-0ED2-CC51-B07622677A13",
+    var title:String? //": "评论",
+    var classId:String? //": "31DDF670-BB29-02F1-4774-C700163FFC57",
+    var replypost:[Any]? //":[]
+    var picHeight:CGFloat?
 }
 
 enum TaskType{
@@ -146,6 +253,6 @@ struct ReturnData<T: HandyJSON>: HandyJSON {
 struct ReturnWithDataList<T: HandyJSON>: HandyJSON{
     var totalPage:Int?
     var dataList:[T]?
-    var currentPage:Int = 1
+    var currentPage:Int?
 }
 

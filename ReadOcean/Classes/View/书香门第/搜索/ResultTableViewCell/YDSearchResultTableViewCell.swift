@@ -21,7 +21,7 @@ class YDSearchResultTableViewCell: UITableViewCell,NibReusable{
         didSet{
             guard let bookId = bookId else {return}
             print("bookId = \(bookId)")
-            networkManager.requestModel(.bookDetail(bookId: bookId), model: Book.self) { (model) in
+            Api.networkManager.requestModel(.bookDetail(bookId: bookId), model: Book.self) { (model) in
                 guard let model = model,
                       let titleStr = model.title,
                       let `description` = model.introduction,

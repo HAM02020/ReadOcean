@@ -43,7 +43,7 @@ class BooksListViewModel{
         for category in categoriesParams{
             group.enter()
 
-            networkManager.requestDataList(.getBooks(category: category), model: Book.self) {[weak self] (modelList) in
+            Api.networkManager.requestDataList(.getBooks(category: category), model: Book.self) {[weak self] (modelList) in
                 guard let modelList = modelList else {return}
                 
                 let group2 = DispatchGroup()
@@ -53,7 +53,7 @@ class BooksListViewModel{
                 for book in modelList{
                     group2.enter()
                     guard let bookId = book.id else{return}
-                    networkManager.requestData(.infoBook(bookId: bookId), model: Book.self) { (model) in
+                    Api.networkManager.requestData(.infoBook(bookId: bookId), model: Book.self) { (model) in
                         guard let model = model else {return}
                         bookList.append(model)
                         group2.leave()
@@ -75,7 +75,7 @@ class BooksListViewModel{
         }
     }
     func getBooksByCategory(category:String, completion:@escaping()->Void){
-        networkManager.requestDataList(.getBooks(category: category, pageNum: pageNums[category]!), model: Book.self) { (modelList) in
+        Api.networkManager.requestDataList(.getBooks(category: category, pageNum: pageNums[category]!), model: Book.self) { (modelList) in
             
             guard let modelList = modelList else {return}
             
@@ -86,7 +86,7 @@ class BooksListViewModel{
             for book in modelList{
                 group.enter()
                 guard let bookId = book.id else{return}
-                networkManager.requestData(.infoBook(bookId: bookId), model: Book.self) { (model) in
+                Api.networkManager.requestData(.infoBook(bookId: bookId), model: Book.self) { (model) in
                     guard let model = model else {return}
                     bookList.append(model)
                     group.leave()
